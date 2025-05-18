@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import DetailHeader from "../../components/DetailHeader.astro";
 import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
 
-import sofas_different_mozaic from "../../assets/projects/Sofas/Sofas_different_mozaic.jpg";
+import sofas_different_mozaic from "../../assets/projects/Sofas/sofas_collage_8k_rotated.jpg";
 import sofas_mozaic from "../../assets/projects/Sofas/sofas_mozaic.jpg";
 import sofa_closeup from "../../assets/projects/Sofas/sofa_example_closeup.jpeg";
 import sofa_far from "../../assets/projects/Sofas/sofa_example_far.jpeg";
@@ -12,10 +12,18 @@ import sofa_single from "../../assets/projects/Sofas/sofa_single_mozaic.jpg";
 import houdini_VOP from "../../assets/projects/Sofas/houdini_vop.png";
 import houdini_TOP from "../../assets/projects/Sofas/houdini_top.png";
 import houdini_COP from "../../assets/projects/Sofas/houdini_cop.png";
+import sofa_example1 from "../../assets/projects/Sofas/FLOU-Olivier_Velvet_Tarracota_roomB_Angle.jpeg";
+import sofa_example2 from "../../assets/projects/Sofas/NATUZZIITALIA-ReviveQuiltedQueen_SandChenille_Navy_roomC_Far.jpeg";
+import sofa_example3 from "../../assets/projects/Sofas/ROCHEBOBOIS-Cadrage-armchair_LoomWeave_Natural_roomB_Far.jpeg";
+import sofa_example4 from "../../assets/projects/Sofas/NONCHALANCE_FERRARA_Velvet_LightGrey_roomB_Far.jpeg";
+import sofa_example6 from "../../assets/projects/Sofas/NATUZZIITALIA-Couture_LoomWeave_Mud_roomC_Far.jpeg";
+import sofa_example7 from "../../assets/projects/Sofas/ROCHEBOBOIS-Digital_Velvet_Emerald_roomC_Far.jpeg";
+import sofa_example8 from "../../assets/projects/Sofas/NATUZZIITALIA-ReviveQuiltedQueen_Boucle_MarineBlue_roomB_Far.jpeg";
+import sofa_example5 from "../../assets/projects/Sofas/ROCHEBOBOIS-Digital_Boucle_MarineBlue_roomB_Far.jpeg";
 
 ---
 <DetailPostLayout
-	title="Sofas"
+	title="Sofas and Chairs"
 	description = 'Sofas Visualization',
 	keywords = 'Sofas, Product Visualization',
 >
@@ -38,7 +46,7 @@ import houdini_COP from "../../assets/projects/Sofas/houdini_cop.png";
 									Client requested high quality images for whole line of sofas.
 								</p>
 								<p>
-									Each sofa needed multiple variations. In total 28(sofas) * 15(colors) * 6(angles) = 2520 images.
+									Each sofa needed multiple variations. In total around(15(colors) x 6(angles) x 2(backgrounds)) = 180 images per single model, or 7000 images in total, so far.
 									Some sofas also required different variations to show how mechanism works.
 								</p>
 								<p>
@@ -66,14 +74,23 @@ import houdini_COP from "../../assets/projects/Sofas/houdini_cop.png";
 								<video width="100%" autoplay loop muted >
 									<source src="/assets/projects/Sofas/BubbleTransition_v10.mp4" type="video/mp4">
 								</video>
-								<p>Here are different sofas with different colors and angles:</p>
+
+								<p>Here are different models with different colors and angles:</p>
 								<Image src={sofas_different_mozaic} alt="different sofas with different colors and angles" />
+								<p>Let's look at few models in full resolution:
+								<Image src={sofa_closeup} alt="Single sofa, closeup shot" />
+								<Image src={sofa_example1} alt="Single Sofa example" />
+								<Image src={sofa_example2} alt="Single Sofa example" />
+								<Image src={sofa_example3} alt="Single Sofa example" />
+								<Image src={sofa_example4} alt="Single Sofa example" />
+								<Image src={sofa_far} alt="Single sofa, angled shot" />
+								<Image src={sofa_example5} alt="Single Sofa example" />
+								<Image src={sofa_example6} alt="Single Sofa example" />
+								<Image src={sofa_example7} alt="Single Sofa example" />
+								<Image src={sofa_side} alt="Single sofa, side shot" />
+								<Image src={sofa_example8} alt="Single Sofa example" />
 								<p>Here are sofas with the consistent color and angle:</p>
 								<Image src={sofas_mozaic} alt="different sofas with different colors and angles" />
-								<p>Let's look at few angles for single sofa in full resolution:
-								<Image src={sofa_closeup} alt="Single sofa, closeup shot" />
-								<Image src={sofa_far} alt="Single sofa, angled shot" />
-								<Image src={sofa_side} alt="Single sofa, angle from the side" />
 								<p>Here are all possible variations for single sofa: </p>
 								<Image src={sofa_single} alt="Single sofa, multiple views and colors" />
 								<p>Example of switching between different models, camera angles and sets: </p>
