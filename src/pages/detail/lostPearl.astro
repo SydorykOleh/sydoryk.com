@@ -4,9 +4,6 @@ import DetailHeader from "../../components/DetailHeader.astro";
 import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
 import CallToAction from "../../components/CallToAction.astro";
 
-import image_gif1 from '../../assets/projects/lostPearlMakingOff/lostPearl_comp01.gif';
-import image_gif2 from '../../assets/projects/lostPearlMakingOff/PearlScene.gif';
-
 //Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
 const images = await Astro.glob('../../assets/projects/lostPearl/*.{jpg,png,webp}');
 
@@ -49,9 +46,9 @@ const images = await Astro.glob('../../assets/projects/lostPearl/*.{jpg,png,webp
 			<section class="preview">
 				<div>
 					Here are compositing steps for one of the shots:
-					<img src={image_gif1.src} width={image_gif1.width} height={image_gif1.height} alt="Compositing steps for snake shot" />
+					<img src="/assets/projects/LostPearl/lostPearl_comp01.gif" alt="Compositing steps for snake shot" />
 					Here are compositing steps for another shot:
-					<img src={image_gif2.src} width={image_gif2.width} height={image_gif2.height} alt="Compositing steps for Pearl in the water" />
+					<img src="/assets/projects/LostPearl/PearlScene.gif" alt="Compositing steps for Pearl in the water" />
 				</div>
 				<br>
 				<div>

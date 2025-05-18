@@ -2,12 +2,6 @@
 import { Image } from "astro:assets";
 import DetailHeader from "../../components/DetailHeader.astro";
 import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
-
-
-import image1 from "../../assets/projects/Apparel/hoodie001_1536x_loop.webp";
-import image3 from "../../assets/projects/Apparel/JP207_TechPack_Balaclava_1536x_loop.webp";
-import image4 from "../../assets/projects/Apparel/JP207_TechPack_SurveillanceSystems_Black_1536x_loop.webp";
-import image5 from "../../assets/projects/Apparel/JPEGMAFIA_TruckerHat_1536x_loop.webp";
 ---
 <DetailPostLayout
 	title="Apparel"
@@ -49,10 +43,10 @@ import image5 from "../../assets/projects/Apparel/JPEGMAFIA_TruckerHat_1536x_loo
 								<video width="100%" autoplay loop muted>
 									<source src="/assets/projects/Apparel/cloth_mozaic.mp4" type="video/mp4">
 								</video>
-								<img src={image1.src} width={image1.width} height={image1.height} />
-								<img src={image5.src} width={image5.width} height={image5.height} />
-								<img src={image3.src} width={image3.width} height={image3.height} />
-								<img src={image4.src} width={image4.width} height={image4.height} />
+								<img src="/assets/projects/Apparel/hoodie001_1536x_loop.webp" />
+								<img src="/assets/projects/Apparel/JP207_TechPack_Balaclava_1536x_loop.webp" />
+								<img src="/assets/projects/Apparel/JP207_TechPack_SurveillanceSystems_Black_1536x_loop.webp" />
+								<img src="/assets/projects/Apparel/JPEGMAFIA_TruckerHat_1536x_loop.webp" />
 							</p>
 						</div>
 					</div>
