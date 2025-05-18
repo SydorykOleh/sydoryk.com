@@ -46,12 +46,15 @@ const count = cards.length;
                               src={card.cover} loading="lazy"
                               alt="Loading Animations"
                         >)
+                        (<video class="card-figure__video lazy" width="100%" autoplay loop muted>
+                            <source src={card.cover} 
+                        >)
                       </a>
                   </div>
                   <div class="card-footer">
                       <div class="card-detail">
                           <a href={card.detail ? card.detail :"javascript:void(0)"} target={card.detail ? "_blank":"_self"} class="card-name card-item__title">
-                            {card.mark && <span class="tag-original">推荐</span>}   {card.title}
+                            {card.mark && <span class="tag-original"></span>}   {card.title}
                           </a>
                           <div class="card-info">
                             {card.description}
