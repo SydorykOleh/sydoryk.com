@@ -24,9 +24,14 @@ import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
 					<div class="row desc">
 						<div class="col-1a">
 							<p class="post-desc">
-								Client needed cathy animation for Conservatory roof panels. 
-								<br>
-								Software: Houdini
+								<p>The client asked for an eye-catching animation of conservatory roof panels, I had fun exploring diffent ways to solve problems:</p>
+									<ul>
+										<li>Custom tree builder - built my own generator(guides help a ton!) so leaves are simulated as POP points, giving precise control.</li>
+										<li>Snow-buildup workflow - set up a Volume VOP system to fade smoothly between snowy and clear roofs; minor artifacts stay hidden by the camera move.</li>
+										<li>Efficient snow/rain particles for Solaris - learned to pack the weather FX properly so taht Houdini stays responsive even with dense particle counts.</li>
+										<li>Procedural animation everywhere - the conservatory, brickwork, and surrounding vegetation all where animate procedurally.</li>
+									</ul>
+								</p>
 							</p>
 						</div>
 					</div>
