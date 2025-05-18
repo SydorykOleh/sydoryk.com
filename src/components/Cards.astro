@@ -1,8 +1,8 @@
 ---
 import Filter from '../components/Filter.astro';
 // 引入 JSON 文件并加载数据
-// const cardJsonString = '/assets/data/card.json';
-// const cardData = JSON.parse(cardJsonString);
+const cardJsonString = '/assets/data/card.json';
+//const cardData = JSON.parse(cardJsonString);
 // 使用 JSON 数据
 // import cardData from '../components/card.json';
 import cardData from '../data/home.json';
@@ -23,7 +23,7 @@ for (const [index,item] of cardData.entries()) {
   };
   cards.push(card);
 }
-// const cardFullData= JSON.stringify(cards);
+//const cardFullData= JSON.stringify(cards);
 const count = cards.length;
 ---
 <Filter count={count} />
@@ -46,9 +46,6 @@ const count = cards.length;
                               src={card.cover} loading="lazy"
                               alt="Loading Animations"
                         >)
-                        (<video class="card-figure__video lazy" muted autoplay loop
-                              src={card.cover}                              
-                        >)
                       </a>
                   </div>
                   <div class="card-footer">
@@ -63,8 +60,7 @@ const count = cards.length;
                      {card.url && <a href={card.url ? card.url : "javascript:void(0)" } class="card-link card-link__go js-gotip" target={card.url ? "_blank" : "_self"}>
                       </a> }
                   </div>
-              </div>
-              ))}
+              </div>))}
         </div>
         <div class="col-sm-1 col-xs-1 my-sizer-element" id="my-sizer-element"></div>
     </div>
