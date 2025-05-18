@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+import sofas_different_mozaic from "../../assets/projects/Sofas/Sofas_different_mozaic.jpg";
+import sofas_mozaic from "../../assets/projects/Sofas/sofas_mozaic.jpg";
+import sofa_closeup from "../../assets/projects/Sofas/sofa_example_closeup.jpeg";
+import sofa_far from "../../assets/projects/Sofas/sofa_example_far.jpeg";
+import sofa_side from "../../assets/projects/Sofas/sofa_example_side.jpeg";
+import sofa_single from "../../assets/projects/Sofas/sofa_single_mozaic.jpg";
+import houdini_VOP from "../../assets/projects/Sofas/houdini_vop.png";
+import houdini_TOP from "../../assets/projects/Sofas/houdini_top.png";
+import houdini_COP from "../../assets/projects/Sofas/houdini_cop.png";
+
+---
+<DetailPostLayout
+	title="Sofas"
+	description = 'Sofas Visualization',
+	keywords = 'Sofas, Product Visualization',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Sofas
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								<p>
+									Client requested high quality images for whole line of sofas.
+								</p>
+								<p>
+									Each sofa needed multiple variations. In total 28(sofas) * 15(colors) * 6(angles) = 2520 images.
+									Some sofas also required different variations to show how mechanism works.
+								</p>
+								<p>
+									Usually these renders would be a big and complicated task, 
+									but using Houdini Solaris I was able to build a system that was easy to manage 
+									and make any adjustments for any particular sofa/angle/color configuration.
+								</p>
+								<p>
+									I had to rebuild low quality CAD models into high resolution meshes 
+									by using different workflows(remeshing, retopology, VDB conversion and vellum simulation).
+								</p>
+								<p>
+									I build a  system to automatically assemble scene and center camera 
+									around sofa with proper parameters for each camera angle. 
+								</p>
+								<p>
+									With this setup I was able to output properly organized and named files.
+								</p>
+								<p>
+									I was able to optimize render times by rendering unique part of the image only once and combining all parts in compositing.
+								</p>
+								<p>
+									We also created sofa animation, showing old used fabric changed to new. 
+								</p>
+								<video width="100%" autoplay loop muted >
+									<source src="/assets/projects/Sofas/BubbleTransition_v10.mp4" type="video/mp4">
+								</video>
+								<p>Here are different sofas with different colors and angles:</p>
+								<Image src={sofas_different_mozaic} alt="different sofas with different colors and angles" />
+								<p>Here are sofas with the consistent color and angle:</p>
+								<Image src={sofas_mozaic} alt="different sofas with different colors and angles" />
+								<p>Let's look at few angles for single sofa in full resolution:
+								<Image src={sofa_closeup} alt="Single sofa, closeup shot" />
+								<Image src={sofa_far} alt="Single sofa, angled shot" />
+								<Image src={sofa_side} alt="Single sofa, angle from the side" />
+								<p>Here are all possible variations for single sofa: </p>
+								<Image src={sofa_single} alt="Single sofa, multiple views and colors" />
+								<p>Example of switching between different models, camera angles and sets: </p>
+								<video width="100%" autoplay loop muted>
+									<source src="/assets/projects/Sofas/houdini_Variations.mp4">
+								</video>
+								<p>Houdini VOP, this is where whole scene is setup:</p>
+								<Image src={houdini_VOP} alt="Houdini VOP" />
+								<p>Houdini COP, final image assembly happens here: </p>
+								<Image src={houdini_COP} alt="Houdini COP" />
+								<p>Houdini TOP, this is used to automate renders and comp jobs:</p>
+								<Image src={houdini_TOP} alt="Houdini TOP" />
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

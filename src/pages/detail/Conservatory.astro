@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+---
+<DetailPostLayout
+	title="Conservatory"
+	description = 'Conservatory Animation',
+	keywords = 'Conservatory, Ad Animation',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Seasons of the Conservatory
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								Client needed cathy animation for Conservatory roof panels. 
+								<br>
+								Software: Houdini
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				<video width="100%" autoplay loop muted>
+					<source src="/assets/projects/Conservatory/conservatory_v006_1080_square.mp4">
+				</video>
+				<br>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

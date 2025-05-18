@@ -1,0 +1,1947 @@
+#! C:/Program Files/Nuke15.1v4/nuke-15.1.4.dll -nx
+version 15.1 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="2557" h="1360" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1463" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1133"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="185"/>
+                <dock id="" activePageId="DopeSheet.1">
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="1046"/>
+            <dock id="" activePageId="DAG.1" focus="true">
+                <page id="DAG.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name G:/repos/sydoryk.com/nuke/prepare_images_v001.nk
+ frame 5
+ last_frame 19
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config custom
+ customOCIOConfigPath G:/projects/00_LIBRARY/tools/ocio/aces_1.2/config.ocio
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut "sRGB (ACES)"
+ monitorOutLUT "sRGB (ACES)"
+ int8Lut color_picking
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/Freelance/EarPlug/EarPlug02/V3Charger_finalRender01.png
+ format "2048 2048 0 0 2048 2048 1 square_2K"
+ origset true
+ name Read2
+ xpos 21
+ ypos 72
+}
+set N90e97800 [stack 0]
+Transform {
+ translate {0 -80}
+ scale 0.8
+ center {1024 1024}
+ name Transform1
+ xpos 21
+ ypos 168
+}
+push $N90e97800
+Grade {
+ white 0
+ add {16.29174614 16.29174995 16.29175949 0}
+ name Grade1
+ xpos 159
+ ypos 162
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 21
+ ypos 254
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat1
+ xpos 21
+ ypos 319
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/hush_earplug.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ checkHashOnRead false
+ version 2
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write1
+ xpos 21
+ ypos 355
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0011.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read17
+ xpos 691
+ ypos 60
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0012.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read1
+ xpos 362
+ ypos 60
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0008.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read14
+ xpos 581
+ ypos 60
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0007.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read13
+ xpos 471
+ ypos 59
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat2
+ xpos 471
+ ypos 155
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/dave_and_ava.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ checkHashOnRead false
+ version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write2
+ xpos 471
+ ypos 191
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/StormRiders/Images/RAW/Step19_00422.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read12
+ xpos 926
+ ypos 83
+}
+ColorCorrect {
+ saturation 0.7
+ name ColorCorrect1
+ xpos 926
+ ypos 179
+}
+Grade {
+ white {1 1 1 1}
+ white_panelDropped true
+ gamma {1.1 1 1 1}
+ gamma_panelDropped true
+ mix 0.44
+ name Grade2
+ xpos 926
+ ypos 203
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat3
+ xpos 926
+ ypos 284
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/stormRiders.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ create_directories true
+ checkHashOnRead false
+ version 6
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write3
+ xpos 926
+ ypos 320
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Banner/Banner04.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read8
+ xpos 4964
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Banner/Banner06.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read10
+ xpos 4524
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/Poster01_preview.png
+ format "1754 2280 0 0 1754 2280 1 "
+ origset true
+ name Read7
+ xpos 4744
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Banner/Banner02.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read6
+ xpos 4854
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Banner/Banner01.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read4
+ xpos 5074
+ ypos -397
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect4
+ xpos 5074
+ ypos -301
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat5
+ xpos 5074
+ ypos -267
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/PolarDream.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ create_directories true
+ checkHashOnRead false
+ version 8
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write6
+ xpos 5074
+ ypos -232
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0009.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read3
+ xpos 3920
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0011.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read5
+ xpos 3810
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0020.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read18
+ xpos 3700
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0022.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read20
+ xpos 3590
+ ypos -357
+}
+set Nc6312800 [stack 0]
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0023.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read21
+ xpos 3480
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0026.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read24
+ xpos 3370
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0027.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read25
+ xpos 3260
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0040.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read38
+ xpos 2710
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0035.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read33
+ xpos 2820
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0033.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read31
+ xpos 2930
+ ypos -357
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0031.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read29
+ xpos 3040
+ ypos -358
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/theLostPearl/Images/ScreenGrab/LostPearl_0029.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read27
+ xpos 3150
+ ypos -357
+}
+AppendClip {
+ inputs 12
+ meta_from_first false
+ time ""
+ name AppendClip1
+ xpos 3284
+ ypos -7
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect2
+ xpos 3284
+ ypos 55
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/lostPearl/lostPearl-##.jpg
+ file_type jpeg
+ create_directories true
+ last 12
+ use_limit true
+ checkHashOnRead false
+ version 2
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write4
+ xpos 3284
+ ypos 112
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/mpc-hc64_6Gd6mIXaLK.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read30
+ xpos 6340
+ ypos -213
+}
+Crop {
+ box {0 454 2560 987}
+ reformat true
+ crop false
+ name Crop4
+ xpos 6340
+ ypos -117
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/mpc-hc64_njwhtfEGoM.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read28
+ xpos 6230
+ ypos -213
+}
+Crop {
+ box {0 454 2560 987}
+ reformat true
+ crop false
+ name Crop3
+ xpos 6230
+ ypos -117
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/mpc-hc64_InLE5dcxoD.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read26
+ xpos 6120
+ ypos -213
+}
+Crop {
+ box {0 454 2560 987}
+ reformat true
+ crop false
+ name Crop2
+ xpos 6120
+ ypos -117
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/mpc-hc64_EmSgDEF9zD.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read19
+ xpos 6010
+ ypos -213
+}
+Crop {
+ box {0 454 2560 987}
+ reformat true
+ crop false
+ name Crop1
+ xpos 6010
+ ypos -117
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/safari_004.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read23
+ xpos 5900
+ ypos -333
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/safari_002.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read22
+ xpos 5790
+ ypos -333
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/safari_005.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read11
+ xpos 5570
+ ypos -333
+}
+set Ncb12e400 [stack 0]
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Safari/mpc-hc64_0cPtFPbx7A.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read16
+ xpos 5680
+ ypos -332
+}
+AppendClip {
+ inputs 8
+ meta_from_first false
+ time ""
+ name AppendClip2
+ xpos 5867
+ ypos 6
+}
+ColorCorrect {
+ saturation 1.02
+ name ColorCorrect5
+ xpos 5867
+ ypos 30
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/safari/safari-##.jpg
+ file_type jpeg
+ create_directories true
+ last 8
+ use_limit true
+ checkHashOnRead false
+ version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write7
+ xpos 5867
+ ypos 146
+}
+push $Nc6312800
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect3
+ xpos 3621
+ ypos -26
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat4
+ xpos 3621
+ ypos 8
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/LostPearl.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ create_directories true
+ checkHashOnRead false
+ version 7
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write5
+ xpos 3621
+ ypos 43
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0050.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read39
+ xpos 7440
+ ypos -188
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0046.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read37
+ xpos 7330
+ ypos -189
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0025.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read36
+ xpos 7220
+ ypos -189
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0015.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read35
+ xpos 7110
+ ypos -189
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0012.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read34
+ xpos 7000
+ ypos -189
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0006.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read32
+ xpos 6890
+ ypos -189
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/SeaExplorer4D/Images/SeaExplorer_0001.png
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read15
+ xpos 6779
+ ypos -191
+}
+set Nc6571c00 [stack 0]
+AppendClip {
+ inputs 7
+ meta_from_first false
+ time ""
+ name AppendClip3
+ xpos 7012
+ ypos 34
+}
+ColorCorrect {
+ saturation 0.9
+ name ColorCorrect7
+ xpos 7012
+ ypos 58
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/Dive/Dive-##.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 4
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write9
+ xpos 7012
+ ypos 174
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/mpc-hc64_y7Ac9Q17Bn.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read47
+ xpos 8430
+ ypos -165
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/mpc-hc64_qSH3ZRmsc0.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read46
+ xpos 8320
+ ypos -165
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/mpc-hc64_oUigL2F2Ta.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read44
+ xpos 8100
+ ypos -165
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/mpc-hc64_pqqRQeGDNk.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read45
+ xpos 8202
+ ypos -174
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/mpc-hc64_oRHXvXSz0j.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read43
+ xpos 7990
+ ypos -165
+}
+AppendClip {
+ inputs 5
+ meta_from_first false
+ time ""
+ name AppendClip4
+ xpos 8240
+ ypos 52
+}
+Crop {
+ box {0 38 2560 1403}
+ reformat true
+ crop false
+ name Crop5
+ xpos 8240
+ ypos 76
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect9
+ xpos 8240
+ ypos 100
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/Danfoss/Danfoss-##.jpg
+ file_type jpeg
+ create_directories true
+ last 5
+ use_limit true
+ checkHashOnRead false
+ version 6
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write11
+ xpos 8245
+ ypos 202
+}
+push $Ncb12e400
+ColorCorrect {
+ saturation 1.02
+ name ColorCorrect6
+ xpos 6232
+ ypos 1
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat6
+ xpos 6232
+ ypos 25
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Safari.jpg
+ file_type jpeg
+ _jpeg_quality 0.8
+ create_directories true
+ checkHashOnRead false
+ version 9
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write8
+ xpos 6232
+ ypos 89
+}
+push $Nc6571c00
+ColorCorrect {
+ saturation 0.9
+ name ColorCorrect8
+ xpos 6779
+ ypos 42
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat7
+ xpos 6779
+ ypos 66
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Dive.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 6
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write10
+ xpos 6779
+ ypos 140
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DANFOSS/danfoss_002.jpg
+ format "1024 1366 0 0 1024 1366 1 "
+ origset true
+ name Read41
+ xpos 8588
+ ypos -170
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect10
+ xpos 8588
+ ypos -74
+}
+Transform {
+ translate {0 -70}
+ center {512 683}
+ name Transform2
+ xpos 8588
+ ypos -50
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat8
+ xpos 8588
+ ypos 49
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Danfoss.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 6
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write12
+ xpos 8588
+ ypos 121
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_003.jpg
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read58
+ xpos 9402
+ ypos 1
+}
+set N32342400 [stack 0]
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_011.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read53
+ xpos 10300
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_004.jpg
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read40
+ xpos 9530
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_005.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read42
+ xpos 9640
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_006.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read48
+ xpos 9750
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_007.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read49
+ xpos 9860
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_008.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read50
+ xpos 9970
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_009.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read51
+ xpos 10080
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_010.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read52
+ xpos 10190
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_012.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read54
+ xpos 10410
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_013.png
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read55
+ xpos 10520
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_001.jpg
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read56
+ xpos 10630
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/BUNNY/screenshots/SunnyBunny_002.jpg
+ format "2560 1296 0 0 2560 1296 1 "
+ origset true
+ name Read57
+ xpos 10740
+ ypos 3
+}
+AppendClip {
+ inputs 13
+ meta_from_first false
+ time ""
+ name AppendClip5
+ xpos 9970
+ ypos 187
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect11
+ xpos 9970
+ ypos 252
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/SunnyBunny/SunnyBunny-##.jpg
+ file_type jpeg
+ create_directories true
+ last 13
+ use_limit true
+ checkHashOnRead false
+ version 7
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write13
+ xpos 9970
+ ypos 353
+}
+push $N32342400
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ resize height
+ name Reformat9
+ xpos 9394
+ ypos 144
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/SunnyBunny.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 7
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write14
+ xpos 9394
+ ypos 216
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/Immersium_volcano.png
+ format "2238 1200 0 0 2238 1200 1 "
+ origset true
+ name Read59
+ xpos 11016
+ ypos -4
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ resize height
+ name Reformat10
+ xpos 11016
+ ypos 92
+}
+ColorCorrect {
+ saturation 0.9
+ name ColorCorrect12
+ xpos 11016
+ ypos 128
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Immersium.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 8
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write15
+ xpos 11016
+ ypos 171
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_WDO7SFCoRl.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read67
+ xpos 11950
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_YjOhmqkDpW.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read68
+ xpos 12060
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_BjbxMbxsK8.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read61
+ xpos 11290
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_TGTOZZPvsf.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read65
+ xpos 11730
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_Wb4Q6MyiMM.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read66
+ xpos 11840
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_daenBIAaS8.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read62
+ xpos 11400
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_OUeq68UaJs.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read63
+ xpos 11510
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_qVgjPsbHA0.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read64
+ xpos 11620
+ ypos 3
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/Immersium/mpc-hc64_7RLDozc3L3.png
+ format "2560 1294 0 0 2560 1294 1 "
+ origset true
+ name Read60
+ xpos 12170
+ ypos 3
+}
+AppendClip {
+ inputs 9
+ meta_from_first false
+ time ""
+ name AppendClip6
+ xpos 12170
+ ypos 99
+}
+Crop {
+ box {0 525 2560 769}
+ reformat true
+ crop false
+ name Crop6
+ xpos 12170
+ ypos 157
+}
+ColorCorrect {
+ saturation 0.95
+ name ColorCorrect13
+ xpos 12170
+ ypos 181
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/Immersium/Immersium-##.jpg
+ file_type jpeg
+ create_directories true
+ last 9
+ use_limit true
+ checkHashOnRead false
+ version 8
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write16
+ xpos 12170
+ ypos 283
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_003.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read74
+ xpos 13600
+ ypos 75
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_001.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read73
+ xpos 13490
+ ypos 76
+}
+set N83888800 [stack 0]
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_008.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read72
+ xpos 13380
+ ypos 75
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_007.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read71
+ xpos 13270
+ ypos 75
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_005.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read69
+ xpos 13051
+ ypos 75
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/MARS/images/mars_006.png
+ format "1920 1200 0 0 1920 1200 1 "
+ origset true
+ name Read70
+ xpos 13160
+ ypos 76
+}
+AppendClip {
+ inputs 6
+ meta_from_first false
+ time ""
+ name AppendClip7
+ xpos 13600
+ ypos 171
+}
+ColorCorrect {
+ saturation 0.95
+ name ColorCorrect14
+ xpos 13600
+ ypos 277
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/Mars/Mars-##.jpg
+ file_type jpeg
+ create_directories true
+ last 6
+ use_limit true
+ checkHashOnRead false
+ version 9
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write17
+ xpos 13600
+ ypos 379
+}
+push $N83888800
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat11
+ xpos 13827
+ ypos 203
+}
+ColorCorrect {
+ name ColorCorrect15
+ xpos 13827
+ ypos 239
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Mars.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 9
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write18
+ xpos 13827
+ ypos 282
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_5ojO6YMdRW.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read75
+ xpos 14260
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_HpG50vBEFi.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read76
+ xpos 14370
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_lGgNwBambQ.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read77
+ xpos 14480
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_Lnng2xE4My.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read78
+ xpos 14590
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_M4WdtgxrJs.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read79
+ xpos 14700
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_x8yfRVPE7P.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read80
+ xpos 14810
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_yO4ECiKrEF.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read81
+ xpos 14920
+ ypos 435
+}
+set N8f235800 [stack 0]
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_5dJSMJFmBf.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read83
+ xpos 15140
+ ypos 435
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/DinoVR/mpc-hc64_ZIj3QAFOaX.png
+ format "2560 1440 0 0 2560 1440 1 "
+ origset true
+ name Read82
+ xpos 15030
+ ypos 435
+}
+AppendClip {
+ inputs 9
+ meta_from_first false
+ time ""
+ name AppendClip8
+ xpos 15140
+ ypos 531
+}
+Crop {
+ box {200 0 2360 1440}
+ reformat true
+ crop false
+ name Crop7
+ xpos 15140
+ ypos 555
+}
+ColorCorrect {
+ saturation 0.95
+ name ColorCorrect16
+ xpos 15140
+ ypos 627
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/DinoVR/DinoVR-##.jpg
+ file_type jpeg
+ create_directories true
+ last 9
+ use_limit true
+ checkHashOnRead false
+ version 10
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write19
+ xpos 15140
+ ypos 730
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_007.png
+ format "2160 1440 0 0 2160 1440 1 "
+ origset true
+ name Read90
+ xpos 16117
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_006.png
+ format "2477 1440 0 0 2477 1440 1 "
+ origset true
+ name Read89
+ xpos 16007
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_005.png
+ format "1538 1440 0 0 1538 1440 1 "
+ origset true
+ name Read88
+ xpos 15897
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_004.png
+ format "1578 1440 0 0 1578 1440 1 "
+ origset true
+ name Read87
+ xpos 15787
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_003.png
+ format "1583 1440 0 0 1583 1440 1 "
+ origset true
+ name Read86
+ xpos 15677
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_001.png
+ format "1602 1440 0 0 1602 1440 1 "
+ origset true
+ name Read84
+ xpos 15457
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_002.png
+ format "1495 1440 0 0 1495 1440 1 "
+ origset true
+ name Read85
+ xpos 15567
+ ypos 440
+}
+set N8ab7f800 [stack 0]
+AppendClip {
+ inputs 7
+ meta_from_first false
+ time ""
+ name AppendClip9
+ xpos 16117
+ ypos 535
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect18
+ xpos 16117
+ ypos 559
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/NaturaVision/NaturaVision-##.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 12
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write21
+ xpos 16117
+ ypos 662
+}
+push $N8ab7f800
+Transform {
+ scale 1.07
+ center {1024 778}
+ name Transform3
+ xpos 15897
+ ypos 647
+}
+ColorCorrect {
+ saturation 0.95
+ gamma 0.9
+ gain 1.1
+ name ColorCorrect19
+ xpos 15897
+ ypos 723
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat13
+ xpos 15897
+ ypos 747
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/NaturaVision.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 12
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write22
+ xpos 15897
+ ypos 826
+}
+push $N8f235800
+Crop {
+ box {200 0 2360 1440}
+ reformat true
+ crop false
+ name Crop8
+ xpos 14910
+ ypos 651
+}
+ColorCorrect {
+ saturation 0.95
+ gamma 0.9
+ gain 1.1
+ name ColorCorrect17
+ xpos 14910
+ ypos 723
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat12
+ xpos 14910
+ ypos 747
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/DinoVR.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 11
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write20
+ xpos 14910
+ ypos 826
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-houdiniPractice/comp/mic/mic_static_back_multiColor.png
+ format "1024 2048 0 0 1024 2048 1 "
+ origset true
+ name Read103
+ xpos 16413
+ ypos 431
+}
+Transform {
+ translate {0 -544}
+ center {512 1024}
+ name Transform4
+ xpos 16413
+ ypos 527
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat14
+ xpos 16413
+ ypos 599
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Microphone.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 13
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write23
+ xpos 16413
+ ypos 678
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_jalapeno_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read96
+ xpos 17230
+ ypos 507
+}
+Transform {
+ translate {4096 0}
+ center {1024 2000}
+ name Transform6
+ xpos 17230
+ ypos 603
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habaneroHot_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read94
+ xpos 17010
+ ypos 506
+}
+Transform {
+ translate {2048 0}
+ center {1024 2000}
+ name Transform5
+ xpos 17010
+ ypos 602
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habanero_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read91
+ xpos 16894
+ ypos 508
+}
+Constant {
+ inputs 0
+ channels rgb
+ format "6144 4000 0 0 6144 4000 1 hotSause"
+ name Constant1
+ xpos 16751
+ ypos 525
+}
+Merge2 {
+ inputs 2
+ name Merge2
+ xpos 16788
+ ypos 685
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 16909
+ ypos 735
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ xpos 17020
+ ypos 753
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_presentbox_v001.png
+ format "4726 3072 0 0 4726 3072 1 "
+ origset true
+ name Read92
+ xpos 17453
+ ypos 497
+}
+Transform {
+ scale 1.1
+ center {2363 1536}
+ name Transform7
+ xpos 17453
+ ypos 593
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat15
+ xpos 17453
+ ypos 713
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/HotSause.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 14
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write24
+ xpos 17453
+ ypos 793
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
+ format "1528 2308 0 0 1528 2308 1 "
+ origset true
+ name Read9
+ xpos 4634
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-AudioFeel_packaging/04_output/Review/EarPlug_general_still_v005_preview_SILVER.png
+ format "4000 4000 0 0 4000 4000 1 "
+ origset true
+ name Read93
+ xpos 17736
+ ypos 488
+}
+set N887df400 [stack 0]
+Transform {
+ scale 0.9
+ center {2363 1536}
+ name Transform8
+ xpos 17736
+ ypos 618
+}
+Blur {
+ channels alpha
+ size 400
+ name Blur1
+ xpos 17736
+ ypos 653
+}
+Grade {
+ channels alpha
+ gamma 0.1
+ name Grade4
+ xpos 17736
+ ypos 690
+}
+Premult {
+ name Premult1
+ xpos 17736
+ ypos 726
+}
+push $N887df400
+Grade {
+ channels alpha
+ add 1
+ name Grade3
+ xpos 17846
+ ypos 540
+ disable true
+}
+Merge2 {
+ inputs 2
+ name Merge6
+ xpos 17846
+ ypos 726
+}
+set N87fcf800 [stack 0]
+Transform {
+ scale 0.95
+ center {2363 1536}
+ name Transform9
+ xpos 17733
+ ypos 813
+}
+Grade {
+ channels alpha
+ gamma 2.7
+ name Grade5
+ xpos 17733
+ ypos 837
+}
+Premult {
+ name Premult2
+ xpos 17733
+ ypos 921
+}
+push $N87fcf800
+Merge2 {
+ inputs 2
+ name Merge5
+ xpos 17843
+ ypos 921
+}
+Transform {
+ translate {0 -50}
+ center {2000 2000}
+ name Transform10
+ xpos 17843
+ ypos 945
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat16
+ xpos 17843
+ ypos 1004
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/EarPlugs.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 15
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write25
+ xpos 17843
+ ypos 1085
+}
+Viewer {
+ inputs 2
+ frame 5
+ frame_range 1-19
+ colour_sample_bbox {0.5874999762 0.3979166746 0.5895833373 0.400000006}
+ samplepoints {{0.5874999762 0.3979166746}
+   }
+ viewerProcess "sRGB (ACES)"
+ monitorOutNDISenderName "Nuke - prepare_images_v001 - Viewer1"
+ name Viewer1
+ xpos -40
+ ypos -9
+}

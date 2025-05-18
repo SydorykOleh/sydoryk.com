@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+import image1 from "../../assets/projects/Apparel/hoodie001_1536x_loop.webp";
+import image3 from "../../assets/projects/Apparel/JP207_TechPack_Balaclava_1536x_loop.webp";
+import image4 from "../../assets/projects/Apparel/JP207_TechPack_SurveillanceSystems_Black_1536x_loop.webp";
+import image5 from "../../assets/projects/Apparel/JPEGMAFIA_TruckerHat_1536x_loop.webp";
+---
+<DetailPostLayout
+	title="Apparel"
+	description = 'Apparel Visualization',
+	keywords = 'Apparel, Product Visualization',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Apparel
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								<p>
+									Client requested high quality videos of rotating apparel.
+								</p>
+								<p>
+								Models were created in Marvelous Designer. 
+								Everything else was done in Houdini:
+								<ul>
+								<li>Model cleanup</li>
+								<li>Shading with procedural texture to add cloth details</li>
+								<li>Studio lighting</li>
+								<li>Rendering</li>
+								<li>Compositing</li>
+								<li>FFmpeg conversion to final files</li>
+								</ul>
+								</p>
+
+								<p>Here are some clothing pieces:</p>
+								<video width="100%" autoplay loop muted>
+									<source src="/assets/projects/Apparel/cloth_mozaic.mp4" type="video/mp4">
+								</video>
+								<img src={image1.src} width={image1.width} height={image1.height} />
+								<img src={image5.src} width={image5.width} height={image5.height} />
+								<img src={image3.src} width={image3.width} height={image3.height} />
+								<img src={image4.src} width={image4.width} height={image4.height} />
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

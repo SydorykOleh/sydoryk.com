@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+//Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
+const images = await Astro.glob('../../assets/projects/NaturaVision/*.{jpg,png,webp}');
+
+---
+<DetailPostLayout
+	title="NaturaVision"
+	description = '270 degree Animation movie for Immersive experience',
+	keywords = 'NaturaVision, CGI Movie',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						NaturaVision
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								Short movie for immersive experience at Coral Kingdom at Loro Parque at Tenerife. <br>
+								<h3>Responsibilities: </h3>
+								<ul>
+								<li>Figure our proper camera projection.</li>
+								<li>Integrate heavy water FX into animation scene.</li>
+								<li>Create smoke FX in EmberGen and particle simulation in Unreal.</li>
+								<li>Shading, lighting, and compositing.</li>
+								</ul> 
+								Software used: Maya, Houdini, EmberGen, Redshift, Nuke
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				Animal lookdev examples:
+				<iframe width="100%" height="690" src="https://www.youtube.com/embed/c1SIWbM_L_Q?si=FMpsgXiWzCgcM5vb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<iframe width="100%" height="690" src="https://www.youtube.com/embed/iVKYdtyE1Bg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<iframe width="100%" height="690" src="https://www.youtube.com/embed/6ZiBaw5G3Z8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<iframe width="100%" height="690" src="https://www.youtube.com/embed/DkiULDksfIA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<iframe width="100%" height="690" src="https://www.youtube.com/embed/zbtuxPzjAAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+				<div>
+					<h3>Some screenshots from the movie:</h3>
+				</div>
+				{images.map((img, index) => (
+					<picture class="gsap-picture">
+					  <Image src={img.default} alt={`Image ${index + 1}`}   loading="lazy" decoding="async" />
+					</picture>
+				  ))}
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+import houdini_VOP from "../../assets/projects/Fans/houdini_VOP.png";
+import houdini_TOP from "../../assets/projects/Fans/houdini_TOP.png";
+import houdini_COP from "../../assets/projects/Fans/houdini_COP.png";
+
+---
+<DetailPostLayout
+	title="Fans"
+	description = 'Fans Visualization',
+	keywords = 'Fans, Product Visualization',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Fans
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								<p>
+									Client requested high quality videos of rotating fans.
+								</p>
+								<p>
+									Fans needed multiple variations. Different materials for body and blade. Including light on/off options. In total some fans required up to 24 variations.
+
+								</p>
+								<p>
+									Using Houdini Solaris I was able to build a system that was easy to manage 
+									and make any adjustments for any particular fan/material configuration.
+								</p>
+								<p>
+									I had to rebuild low quality CAD models into high resolution meshes 
+									by using different workflows(remeshing, retopology, VDB conversion).
+								</p>
+								<p>
+									I build a system to automatically assemble scene and position fan and camera correctly. Renders where separated into different layers. Compositing and FFmpeg conversion to .mov files was also done in Houdini.
+								</p>
+								<p>
+									With this setup I was able to automate repetitive tasks and schedule render --> comp --> movie all in TOPs.
+								</p>
+								<p>
+								Here are some of the fans: 
+								</p>
+								<video width="100%" autoplay loop muted>
+									<source src="/assets/projects/Fans/fans_collage_1500p.mp4">
+								</video>
+								<p>
+								Example of me switching between different models and materials: 
+								</p>
+								<video width="100%" autoplay loop muted>
+									<source src="/assets/projects/Fans/fans_example.mp4" type="video/mp4">
+								</video>
+								<p>Houdini VOP, this is where whole scene is setup:</p>
+								<Image src={houdini_VOP} alt="Houdini VOP" />
+								<p>Houdini COP, final image assembly happens here: </p>
+								<Image src={houdini_COP} alt="Houdini COP" />
+								<p>Houdini TOP, this is used to automate renders and comp jobs:</p>
+								<Image src={houdini_TOP} alt="Houdini TOP" />
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

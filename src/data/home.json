@@ -3,94 +3,250 @@
 
 	{
 		"id": "1",
-		"cover": "/assets/cover/pexels-tink-s-838159870-19489123.jpg",
-		"title": "【示例】阿勒泰",
-		"desc": "阿勒泰旅行记录",
-		"category": "photography",
-		"tag": "摄影",
-		"date": "2024-07-05"
+		"cover": "/assets/cover/hush_earplug.jpg",
+		"title": "Hush Earplug",
+		"desc": "Visualization of earplug packaging",
+		"category": "still",
+		"tag": "Lookdev, Lighting",
+		"date": "2015-01-01"
 	},
 	{
 		"id": "2",
-		"cover": "/assets/cover/cover-3d-cloud.jpg",
-		"title": "【示例】Blender 云服务场景",
-		"desc": "Blender, Cloud",
-		"category": "3d",
-		"tag": "3D",
-		"date": "2024-07-05"
+		"cover": "/assets/cover/dave_and_ava.jpg",
+		"title": "Dave and Ava",
+		"desc": "Animation series for kids youtube channel",
+		"category": "movies", 
+		"tag": "Junior Lighting Artist",
+		"date": "2016-01-01"
 	},
 	{
 		"id": "3",
-		"cover": "/assets/cover/cover-travel.jpg",
-		"title": "【示例】Tink 旅行生活日记",
-		"desc": "Mobile 网站",
-		"detail": "/detail/tinklife",
-		"category": "ui",
-		"tag": "UI",
-		"date": "2024-10-07"
+		"cover": "/assets/cover/stormRiders.jpg",
+		"title": "Storm Riders 4D",
+		"desc": "Short Animation movie for 4D Theatres",
+		"detail": "/detail/stormriders",
+		"category": "movies",
+		"tag": "Lighting Artist",
+		"date": "2017-01-01"
 	},
 	{
 		"id": "4",
-		"cover": "/assets/cover/cover-free-3d-valentines-assets.jpg",
-		"title": "【示例】Valentine's Day 3D Icons",
-		"desc": "Free 3D Icons Pack",
-		"url": "https://valentine.uiuxdeck.com/",
-		"detail": "/detail/free-3d-valentines-assets/",
-		"category":  "web,3d",
-		"tag": "3D",
-		"date": "2024-10-8"
+		"cover": "/assets/cover/LostPearl.jpg",
+		"title": "the Legend of the Lost Pearl",
+		"desc": "Short Animation movie for Yas Waterworld in Abu Dhabi",
+		"detail": "/detail/lostPearl/",
+		"category":  "movies",
+		"tag": "Lead Lighting and Compositing Artist",
+		"date": "2018-10-8"
 	},
 	{
 		"id": "5",
-		"cover": "/assets/cover/cover-todo.jpg",
-		"title": "【示例】TodoList 网页版",
-		"desc": "一款优秀的设计简洁的 Todolist 网页版本",
-		"url": "https://todo.uiineed.com/",
-		"detail": "/detail/todo",
-		"category": "web",
-		"tag": "Web",
-		"date": "2024-10-20",
-		"mark": true
+		"cover": "/assets/cover/PolarDream.jpg",
+		"title": "Polar Journey",
+		"desc": "3D Stereo / 270 Degree Animation movie for Immersive Experience",
+		"detail": "/detail/polarDream",
+		"category": "movies",
+		"tag": "Lead Lighting and Compositing Artist",
+		"date": "2019-10-20"
 	},
 	{
 		"id": "6",
-		"cover": "/assets/cover/cover-gradientshub.jpg",
-		"useVideo": false,
-		"title": "GradientsHub.com",
-		"desc": "高级渐变背景下载",
-		"url": "https://gradientshub.com/?ref=portfolio",
-		"detail": "https://gradientshub.com/?ref=portfolio",
-		"category": "web,recommend,brand",
-		"tag": "Web",
-		"date": "2025-02-28",
-		"mark": true
+		"cover": "/assets/cover/Safari.jpg",
+		"title": "Safari",
+		"desc": "3D Stereo / 270 Degree Animation movie for Immersive Experience",
+		"detail": "/detail/Safari",
+		"category": "movies",
+		"tag": "Lead Lighting and Compositing Artist",
+		"date": "2020-10-20"
 	},
 	{
 		"id": "7",
-		"cover": "/assets/cover/cover-uiuxdeck.jpg",
-		"useVideo": false,
-		"title": "UIUX 设计工具&资源库",
-		"desc": "分享我的设计收藏库",
-		"url": "https://uiuxdeck.com/?ref=portfolio",
-		"detail": "https://uiuxdeck.com/?ref=portfolio",
-		"category": "web,recommend,brand",
-		"tag": "Web",
-		"date": "2025-03-20",
-		"mark": true
+		"cover": "/assets/cover/Dive.jpg",
+		"title": "Dive",
+		"desc": "3D Stereo / 270 Degree Animation movie for Immersive Experience",
+		"detail": "/detail/Dive",
+		"category": "movies",
+		"tag": "Lead Lighting and Compositing Artist",
+		"date": "2020-10-20"
 	},
 	{
 		"id": "8",
-		"cover": "/assets/cover/cover-inspoweb.jpg",
-		"useVideo": false,
-		"title": "Website Inspiration ",
-		"desc": "收集网站灵感和模板",
-		"url": "https://inspoweb.com/?ref=portfolio",
-		"detail": "https://inspoweb.com/?ref=portfolio",
-		"category": "web,brand,recommend",
-		"tag": "Web",
-		"date": "2025-02-16",
-		"mark": true
+		"cover": "/assets/cover/Danfoss.jpg",
+		"title": "Danfoss",
+		"desc": "270 Degree Animation movie for Immersive Experience",
+		"detail": "/detail/Danfoss",
+		"category": "movies",
+		"tag": "Lead Lighting and Compositing Artist",
+		"date": "2020-10-20"
+	},
+	{
+		"id": "9",
+		"cover": "/assets/cover/SunnyBunny.jpg",
+		"title": "The Magical Slide",
+		"desc": "Short Animation Movie for Cinesplash 5D theater at Sonnentherme Lutzmannsburg",
+		"detail": "/detail/SunnyBunny",
+		"category": "movies",
+		"tag": "Lead Lighting Artist",
+		"date": "2022-10-20"
+	},
+	{
+		"id": "10",
+		"cover": "/assets/cover/Immersium.jpg",
+		"title": "Immersium",
+		"desc": "360 Degree Animation movie for Immersive Experience at IMMERSIUM:WIEN",
+		"detail": "/detail/Immersium",
+		"category": "movies",
+		"tag": "Lead Compositing Artist",
+		"date": "2022-10-20"
+	},
+	{
+		"id": "11",
+		"cover": "/assets/cover/Mars.jpg",
+		"title": "Mars",
+		"desc": "VR / 270 Degree Animation movie for Immersive Experience",
+		"detail": "/detail/Mars",
+		"category": "movies",
+		"tag": "Lead Lighting Artist",
+		"date": "2022-10-20"
+	},
+	{
+		"id": "12",
+		"cover": "/assets/cover/DinoVR.jpg",
+		"title": "DinoVR",
+		"desc": "VR animated movie",
+		"detail": "/detail/DinoVR",
+		"category": "movies",
+		"tag": "Lighting Artist",
+		"date": "2022-10-20"
+	},
+	{
+		"id": "13",
+		"cover": "/assets/cover/NaturaVision.jpg",
+		"title": "NaturaVision",
+		"desc": "Short movie for Coral Kingdom at Loro Parque at Tenerife",
+		"detail": "/detail/NaturaVision",
+		"category": "movies",
+		"tag": "CG supervisor",
+		"date": "2024-10-20"
+	},
+	{
+		"id": "14",
+		"cover": "/assets/cover/Microphone.jpg",
+		"title": "Microphone",
+		"desc": "Product Visualization",
+		"detail": "/detail/Microphone",
+		"category": "still",
+		"tag": "Modeling, Shading, Lighting, Simulation",
+		"date": "2024-10-20"
+	},
+	{
+		"id": "14",
+		"cover": "/assets/cover/microphone_with_cloth.mp4",
+		"title": "Microphone Animation",
+		"desc": "Product Animation",
+		"detail": "/detail/Microphone",
+		"category": "animation",
+		"tag": "Modeling, Shading, Lighting, Simulation",
+		"date": "2024-11-20"
+	},
+	{
+		"id": "15",
+		"cover": "/assets/cover/HotSause.jpg",
+		"title": "Hot Sause",
+		"desc": "Product Visualization",
+		"detail": "/detail/HotSause",
+		"category": "still",
+		"tag": "Modeling, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "15",
+		"cover": "/assets/cover/hotSause_540p.mp4",
+		"title": "Hot Sause Animation",
+		"desc": "Product Animation",
+		"detail": "/detail/HotSause",
+		"category": "animation",
+		"tag": "Modeling, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "16",
+		"cover": "/assets/cover/EarPlugs.jpg",
+		"title": "Ear Plug packaging",
+		"desc": "Product Visualization",
+		"detail": "/detail/EarPlugs",
+		"category": "still",
+		"tag": "Modeling, Shading, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "16",
+		"cover": "/assets/cover/EarPlugs_540p.mp4",
+		"title": "Ear Plug packaging",
+		"desc": "Product Animation",
+		"detail": "/detail/EarPlugs",
+		"category": "animation",
+		"tag": "Modeling, Shading, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "17",
+		"cover": "/assets/cover/Sofas.jpg",
+		"title": "Sofas and chairs",
+		"desc": "Product Visualization",
+		"detail": "/detail/Sofas",
+		"category": "still, batch",
+		"tag": "Modeling, Shading, Lighting, Simulation",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "17",
+		"cover": "/assets/cover/BubbleTransition_v10_540p.mp4",
+		"title": "Sofa fabric replacement",
+		"desc": "Product Animation",
+		"detail": "/detail/Sofas",
+		"category": "animation",
+		"tag": "Modeling, Shading, Lighting, Simulation",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "18",
+		"cover": "/assets/cover/fan_animation_540p.mp4",
+		"title": "Fans",
+		"desc": "Product Animation",
+		"detail": "/detail/Fans",
+		"category": "animation, batch",
+		"tag": "Modeling, Shading, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "19",
+		"cover": "/assets/cover/apparel_preview_540p.mp4",
+		"title": "Apparel",
+		"desc": "Product Visualization",
+		"detail": "/detail/Apparel",
+		"category": "animation, batch",
+		"tag": "Modeling, Shading, Lighting",
+		"date": "2025-10-20"
+	},
+	{
+		"id": "20",
+		"cover": "/assets/cover/ShowReel_2024_540p_web.mp4",
+		"title": "Showreel",
+		"desc": "Movies Showreel",
+		"detail": "https://youtu.be/57tYajrnrwI",
+		"category": "movies",
+		"tag": "CG supervisor",
+		"date": "2024-10-20"
+	},
+	{
+		"id": "21",
+		"cover": "/assets/cover/conservatory_v006_540_square.mp4",
+		"title": "Conservatory",
+		"desc": "Ad Animation",
+		"detail": "/detail/Conservatory",
+		"category": "animation",
+		"tag": "Modeling, Animation, Shading, FX, Lighting",
+		"date": "2024-10-20"
 	}
-
-
 ]

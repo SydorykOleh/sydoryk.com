@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+//Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
+const images = await Astro.glob('../../assets/projects/sunnyBunny/*.{jpg,png,webp}');
+
+---
+<DetailPostLayout
+	title="Sunny Bunny"
+	description = '270 degree Animation movie for Immersive experience',
+	keywords = 'Sunny Bunny, CGI Movie',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Sunny Bunny
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								Short CGI Movie about magical world for Cinesplash 5D theater at Sonnentherme Lutzmannsburg. This 7-minute film follows the adventures of three young friends - Sunny Bunny, Pinky Bunny, and Mattie - as they journey through a magical world by reading a book.
+								<h3>Responsibilities: </h3>
+								<ul>
+								<li>Research and develop lighting/rendering workflow inside Unreal</li>
+								<li>Shading, Lighting, and Rendering for over 50 shots</li>
+								<li>Unreal tasks:</li>
+									<ul>
+									<li>Fancy FX transitions between environments</li>
+									<li>Master material creation</li>
+									<li>Toon shader FX</li>
+									</ul>
+								</ul> 
+								Software used: Maya, Unreal
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				<h3>FX examples </h3>
+				Opening sequence for the movie, bird is emitting particles and lighting up the whole environment:
+				<div style="position: relative; width: 100%; height: 0; padding-bottom: 55%">
+				<iframe style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;" src="https://www.youtube.com/embed/RuqfNEeidS8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<br>
+				Fancy transition from indoor pool to boat on the water:
+				<div style="position: relative; width: 100%; height: 0; padding-bottom: 55%">
+				<iframe style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;" src="https://www.youtube.com/embed/AZHnwZkkEn8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<br>
+				Fancy transition from boat to underwater submarine:
+				<div style="position: relative; width: 100%; height: 0; padding-bottom: 55%">
+				<iframe style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;" src="https://www.youtube.com/embed/lOUF9M7o44U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<br>
+				Transition from submarine to high in the air on the clouds:
+				<div style="position: relative; width: 100%; height: 0; padding-bottom: 55%">
+				<iframe style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;" src="https://www.youtube.com/embed/RiKJLGIcRLA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+				<br>
+				<div>
+					<h3>Some screenshots from the movie:</h3>
+				</div>
+				{images.map((img, index) => (
+					<picture class="gsap-picture">
+					  <Image src={img.default} alt={`Image ${index + 1}`}   loading="lazy" decoding="async" />
+					</picture>
+				  ))}
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

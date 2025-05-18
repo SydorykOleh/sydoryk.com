@@ -46,6 +46,9 @@ const count = cards.length;
                               src={card.cover} loading="lazy"
                               alt="Loading Animations"
                         >)
+                        (<video class="card-figure__video lazy" muted autoplay loop
+                              src={card.cover}                              
+                        >)
                       </a>
                   </div>
                   <div class="card-footer">
@@ -85,6 +88,7 @@ const count = cards.length;
               // 设置 playsinline 属性，以确保在移动设备上也能自动播放
               video.setAttribute('playsinline', '');
               // 为了确保视频开始播放，我们可以添加一个 play() 调用
+              video.load();
               video.play().catch(e => {
                   console.log("Auto-play was prevented:", e);
                   // 一些浏览器可能会阻止自动播放，特别是在没有用户交互的情况下

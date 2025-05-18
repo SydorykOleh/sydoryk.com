@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+//Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
+const images = await Astro.glob('../../assets/projects/EarPlugs/*.{jpg,png,webp,jpeg}');
+
+---
+<DetailPostLayout
+	title="Ear Plugs Visualization"
+	description = 'Ear Plugs Visualization',
+	keywords = 'Ear Plugs, Product Visualization',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Ear Plugs
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								Custom packaging model and animation. Software: Houdini, Nuke
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				<video width="100%" autoplay loop muted>
+					<source src="/assets/projects/EarPlugs/EarPlugs.mp4">
+				</video>
+				<br>
+				<video width="100%" autoplay loop muted>
+					<source src="/assets/projects/EarPlugs/EarPlugs_quickSpin_1080p.mp4" type="video/mp4">
+				</video>
+				<br>
+				<div>
+				</div>
+				{images.map((img, index) => (
+					<picture class="gsap-picture">
+					  <Image src={img.default} alt={`Image ${index + 1}`}   loading="lazy" decoding="async" />
+					</picture>
+				  ))}
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

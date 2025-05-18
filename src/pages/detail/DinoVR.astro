@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+
+//Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
+const images = await Astro.glob('../../assets/projects/DinoVR/*.{jpg,png,webp}');
+
+---
+<DetailPostLayout
+	title="DinoVR"
+	description = '270 degree Animation movie for Immersive experience',
+	keywords = 'DinoVR, CGI Movie',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						DinoVR
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								Short animated movie for VR glasses.<br> 
+								<h3>Responsibilities: </h3>
+								<ul>
+								<li>Figure out how to render properly VR content from Unreal.</li>
+								<li>Realtime river and ocean simulation.</li>
+								<li>Render optimization.</li>
+								</ul> 
+								Software used: Unreal
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				<div>
+					Some screenshots from the movie:
+				</div>
+				{images.map((img, index) => (
+					<picture class="gsap-picture">
+					  <Image src={img.default} alt={`Image ${index + 1}`}   loading="lazy" decoding="async" />
+					</picture>
+				  ))}
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

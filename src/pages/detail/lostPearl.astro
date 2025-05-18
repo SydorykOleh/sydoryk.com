@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+import image_gif1 from '../../assets/projects/lostPearlMakingOff/lostPearl_comp01.gif';
+import image_gif2 from '../../assets/projects/lostPearlMakingOff/PearlScene.gif';
+
+//Enter the folder address, all files will be automatically loaded according to the file name and compressed into webp format
+const images = await Astro.glob('../../assets/projects/lostPearl/*.{jpg,png,webp}');
+
+---
+<DetailPostLayout
+	title="the Legend of the Lost Pearl"
+	description = 'Animation movie for Cinemasplash located in Yas Waterworld, Abu Dhabi',
+	keywords = 'the Legend of the Lost Pearl, CGI Movie',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						the Legend of the Lost Pearl
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								<p>Short Animation movie for Yas Waterworld in Abu Dhabi.</p>
+								My responsibilities included: 
+								<ul>
+									<li>Establish Lighting / Rendering / Compositing workflow.</li>
+									<li>Lit and composite ~120 production shots.</li>
+									<li>Setup materials for most assets.</li>
+									<li>Optimize render.</li>
+								</ul>
+								<br>
+								Software used: Maya, Arnold, Nuke
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="preview">
+				<div>
+					Here are compositing steps for one of the shots:
+					<img src={image_gif1.src} width={image_gif1.width} height={image_gif1.height} alt="Compositing steps for snake shot" />
+					Here are compositing steps for another shot:
+					<img src={image_gif2.src} width={image_gif2.width} height={image_gif2.height} alt="Compositing steps for Pearl in the water" />
+				</div>
+				<br>
+				<div>
+					Some screenshots from the movie:
+				</div>
+				{images.map((img, index) => (
+					<picture class="gsap-picture">
+					  <Image src={img.default} alt={`Image ${index + 1}`}   loading="lazy" decoding="async" />
+					</picture>
+				  ))}
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>
