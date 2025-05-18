@@ -2,14 +2,14 @@
 import BlogPostLayout from "../layouts/BlogPostLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ProjectList from '../components/ProjectList.astro';
-import {pageTag, pageDescription,projectTdk} from '../data/content';
+import {pageTag, pageDescription,homeTdk} from '../data/content';
 
 ---
 
 <BlogPostLayout
-		title={projectTdk.title || ''}
-		description = {projectTdk.description || ''}
-		keywords = {projectTdk.keywords || ''}
+		title={homeTdk.title || ''}
+		description = {homeTdk.description || ''}
+		keywords = {homeTdk.keywords || ''}
 >
 	<div class="post">
 		<main class="post-wrapper about">
