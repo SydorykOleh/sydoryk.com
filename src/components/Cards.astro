@@ -42,7 +42,7 @@ const count = cards.length;
                       </div>
                   </div>
                   <div class="card-body">
-                      <a href={card.detail ? card.detail:"javascript:void(0)"} class="card-figure" target={card.detail ? "_blank":"_self"}>
+                      <a href={card.detail ? card.detail:"javascript:void(0)"} class="card-figure">
                         (<img class="card-figure__img lazy"
                               src={card.cover} loading="lazy"
                               alt="Loading Animations"
@@ -54,7 +54,7 @@ const count = cards.length;
                   </div>
                   <div class="card-footer">
                       <div class="card-detail">
-                          <a href={card.detail ? card.detail :"javascript:void(0)"} target={card.detail ? "_blank":"_self"} class="card-name card-item__title">
+                          <a href={card.detail ? card.detail :"javascript:void(0)"} class="card-name card-item__title">
                             {card.mark && <span class="tag-original"></span>}   {card.title}
                           </a>
                           <div class="card-info">

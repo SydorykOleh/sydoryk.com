@@ -59,7 +59,7 @@ Read {
  xpos 21
  ypos 72
 }
-set N90e97800 [stack 0]
+set Nff7c7800 [stack 0]
 Transform {
  translate {0 -80}
  scale 0.8
@@ -68,7 +68,7 @@ Transform {
  xpos 21
  ypos 168
 }
-push $N90e97800
+push $Nff7c7800
 Grade {
  white 0
  add {16.29174614 16.29174995 16.29175949 0}
@@ -330,7 +330,7 @@ Read {
  xpos 3590
  ypos -357
 }
-set Nc6312800 [stack 0]
+set Nba4fe800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -544,7 +544,7 @@ Read {
  xpos 5570
  ypos -333
 }
-set Ncb12e400 [stack 0]
+set Nba1de400 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -586,7 +586,7 @@ Write {
  xpos 5867
  ypos 146
 }
-push $Nc6312800
+push $Nba4fe800
 ColorCorrect {
  saturation 0.8
  name ColorCorrect3
@@ -685,7 +685,7 @@ Read {
  xpos 6779
  ypos -191
 }
-set Nc6571c00 [stack 0]
+set Nba834800 [stack 0]
 AppendClip {
  inputs 7
  meta_from_first false
@@ -708,6 +708,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 4
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -795,6 +797,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 6
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -802,7 +806,7 @@ Write {
  xpos 8245
  ypos 202
 }
-push $Ncb12e400
+push $Nba1de400
 ColorCorrect {
  saturation 1.02
  name ColorCorrect6
@@ -822,6 +826,8 @@ Write {
  create_directories true
  checkHashOnRead false
  version 9
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -829,7 +835,7 @@ Write {
  xpos 6232
  ypos 89
 }
-push $Nc6571c00
+push $Nba834800
 ColorCorrect {
  saturation 0.9
  name ColorCorrect8
@@ -850,6 +856,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 6
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -894,6 +902,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 6
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -911,7 +921,7 @@ Read {
  xpos 9402
  ypos 1
 }
-set N32342400 [stack 0]
+set Nba724800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1054,6 +1064,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 7
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1061,7 +1073,7 @@ Write {
  xpos 9970
  ypos 353
 }
-push $N32342400
+push $Nba724800
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  resize height
@@ -1077,6 +1089,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 7
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1115,6 +1129,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 8
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1242,6 +1258,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 8
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1269,7 +1287,7 @@ Read {
  xpos 13490
  ypos 76
 }
-set N83888800 [stack 0]
+set Nba3e1000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1332,6 +1350,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 9
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1339,7 +1359,7 @@ Write {
  xpos 13600
  ypos 379
 }
-push $N83888800
+push $Nba3e1000
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  name Reformat11
@@ -1359,6 +1379,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 9
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1436,7 +1458,7 @@ Read {
  xpos 14920
  ypos 435
 }
-set N8f235800 [stack 0]
+set Nb8ab6000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1487,6 +1509,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 10
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1494,144 +1518,7 @@ Write {
  xpos 15140
  ypos 730
 }
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_007.png
- format "2160 1440 0 0 2160 1440 1 "
- origset true
- name Read90
- xpos 16117
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_006.png
- format "2477 1440 0 0 2477 1440 1 "
- origset true
- name Read89
- xpos 16007
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_005.png
- format "1538 1440 0 0 1538 1440 1 "
- origset true
- name Read88
- xpos 15897
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_004.png
- format "1578 1440 0 0 1578 1440 1 "
- origset true
- name Read87
- xpos 15787
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_003.png
- format "1583 1440 0 0 1583 1440 1 "
- origset true
- name Read86
- xpos 15677
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_001.png
- format "1602 1440 0 0 1602 1440 1 "
- origset true
- name Read84
- xpos 15457
- ypos 440
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_002.png
- format "1495 1440 0 0 1495 1440 1 "
- origset true
- name Read85
- xpos 15567
- ypos 440
-}
-set N8ab7f800 [stack 0]
-AppendClip {
- inputs 7
- meta_from_first false
- time ""
- name AppendClip9
- xpos 16117
- ypos 535
-}
-ColorCorrect {
- saturation 0.8
- name ColorCorrect18
- xpos 16117
- ypos 559
-}
-Write {
- file G:/repos/sydoryk.com/src/assets/projects/NaturaVision/NaturaVision-##.jpg
- file_type jpeg
- create_directories true
- last 7
- use_limit true
- checkHashOnRead false
- version 12
- ocioColorspace scene_linear
- display ACES
- view sRGB
- name Write21
- xpos 16117
- ypos 662
-}
-push $N8ab7f800
-Transform {
- scale 1.07
- center {1024 778}
- name Transform3
- xpos 15897
- ypos 647
-}
-ColorCorrect {
- saturation 0.95
- gamma 0.9
- gain 1.1
- name ColorCorrect19
- xpos 15897
- ypos 723
-}
-Reformat {
- format "960 540 0 0 960 540 1 cover"
- name Reformat13
- xpos 15897
- ypos 747
-}
-Write {
- file G:/repos/sydoryk.com/public/assets/cover/NaturaVision.jpg
- file_type jpeg
- create_directories true
- last 7
- use_limit true
- checkHashOnRead false
- version 12
- ocioColorspace scene_linear
- display ACES
- view sRGB
- name Write22
- xpos 15897
- ypos 826
-}
-push $N8f235800
+push $Nb8ab6000
 Crop {
  box {200 0 2360 1440}
  reformat true
@@ -1662,6 +1549,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 11
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1700,6 +1589,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 13
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1808,6 +1699,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 14
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1818,12 +1711,41 @@ Write {
 Read {
  inputs 0
  file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
- format "1528 2308 0 0 1528 2308 1 "
+ file G:/projects/01_FREELANCE/2024-11-VincoLac-Sofas/01_scene/nuke/collage/sofas_collage_8k.png
+ format "8192 4608 0 0 8192 4608 1 "
  origset true
- name Read9
- xpos 4634
- ypos -397
+ name Read95
+ xpos 18250
+ ypos 491
+}
+set Nba160c00 [stack 0]
+Transform {
+ scale 1.4
+ center {4096 2304}
+ name Transform11
+ xpos 18250
+ ypos 587
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat17
+ xpos 18250
+ ypos 633
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/Sofas.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 15
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write26
+ xpos 18250
+ ypos 712
 }
 Read {
  inputs 0
@@ -1835,7 +1757,7 @@ Read {
  xpos 17736
  ypos 488
 }
-set N887df400 [stack 0]
+set Nba327400 [stack 0]
 Transform {
  scale 0.9
  center {2363 1536}
@@ -1862,7 +1784,7 @@ Premult {
  xpos 17736
  ypos 726
 }
-push $N887df400
+push $Nba327400
 Grade {
  channels alpha
  add 1
@@ -1877,7 +1799,7 @@ Merge2 {
  xpos 17846
  ypos 726
 }
-set N87fcf800 [stack 0]
+set Nba07ec00 [stack 0]
 Transform {
  scale 0.95
  center {2363 1536}
@@ -1897,7 +1819,7 @@ Premult {
  xpos 17733
  ypos 921
 }
-push $N87fcf800
+push $Nba07ec00
 Merge2 {
  inputs 2
  name Merge5
@@ -1930,11 +1852,177 @@ Write {
  view sRGB
  name Write25
  xpos 17843
- ypos 1085
+ ypos 1084
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_002.png
+ format "1495 1440 0 0 1495 1440 1 "
+ origset true
+ name Read85
+ xpos 15567
+ ypos 440
+}
+set Nb8b0b800 [stack 0]
+Transform {
+ scale 1.07
+ center {1024 778}
+ name Transform3
+ xpos 15897
+ ypos 647
+}
+ColorCorrect {
+ saturation 0.95
+ gamma 0.9
+ gain 1.1
+ name ColorCorrect19
+ xpos 15897
+ ypos 723
+}
+Reformat {
+ format "960 540 0 0 960 540 1 cover"
+ name Reformat13
+ xpos 15897
+ ypos 747
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/NaturaVision.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 12
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write22
+ xpos 15897
+ ypos 826
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_007.png
+ format "2160 1440 0 0 2160 1440 1 "
+ origset true
+ name Read90
+ xpos 16117
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_006.png
+ format "2477 1440 0 0 2477 1440 1 "
+ origset true
+ name Read89
+ xpos 16007
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_005.png
+ format "1538 1440 0 0 1538 1440 1 "
+ origset true
+ name Read88
+ xpos 15897
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_004.png
+ format "1578 1440 0 0 1578 1440 1 "
+ origset true
+ name Read87
+ xpos 15787
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_003.png
+ format "1583 1440 0 0 1583 1440 1 "
+ origset true
+ name Read86
+ xpos 15677
+ ypos 440
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/NaturaVision/images/NaturaVision_001.png
+ format "1602 1440 0 0 1602 1440 1 "
+ origset true
+ name Read84
+ xpos 15457
+ ypos 440
+}
+push $Nb8b0b800
+AppendClip {
+ inputs 7
+ meta_from_first false
+ time ""
+ name AppendClip9
+ xpos 16117
+ ypos 535
+}
+ColorCorrect {
+ saturation 0.8
+ name ColorCorrect18
+ xpos 16117
+ ypos 559
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/NaturaVision/NaturaVision-##.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 12
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write21
+ xpos 16117
+ ypos 662
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
+ format "1528 2308 0 0 1528 2308 1 "
+ origset true
+ name Read9
+ xpos 4634
+ ypos -397
+}
+push $Nba160c00
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/Sofas/Sofas_different_mozaic.jpg
+ file_type jpeg
+ create_directories true
+ last 7
+ use_limit true
+ checkHashOnRead false
+ version 13
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write27
+ xpos 18452
+ ypos 701
 }
 Viewer {
  inputs 2
- frame 5
  frame_range 1-19
  colour_sample_bbox {0.5874999762 0.3979166746 0.5895833373 0.400000006}
  samplepoints {{0.5874999762 0.3979166746}

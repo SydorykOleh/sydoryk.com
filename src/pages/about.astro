@@ -28,7 +28,7 @@ import myPortrait from "../assets/portrait.jpg";
 			<section class="border-top" style="padding-top: 2rem;">
 				<div class="content">
 					<div>
-						<Image src={myPortrait} alt="portrait" width="88" height="88" class="portrait">
+						<Image src={myPortrait} alt="portrait" width="250" height="250" class="portrait">
 					</div>
 					<p>
 						I'm <strong style="font-size:1.2em">Sydoryk Oleh</strong>, a 3D artist who brings ideas to life with photorealistic visualization and smooth motion graphics. With a focus on detail and storytelling, 
@@ -78,7 +78,7 @@ import myPortrait from "../assets/portrait.jpg";
 	}
 	img{max-width: 100%;}
 	.portrait{
-		border-radius: 100px;
+		border-radius: 250px;
 		margin:12px 0 12px;
 		overflow: hidden;
 		text-align: left;
@@ -86,4 +86,12 @@ import myPortrait from "../assets/portrait.jpg";
 	a, a:link{
 		color:var(--color-blue);
 	}
+	.avatar{
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        width: 0px;
+        height: 0px;
+        border-radius: 50%;
+    }
 </style>

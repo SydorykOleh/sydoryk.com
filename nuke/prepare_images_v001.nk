@@ -48,6 +48,36 @@ Root {
  int16Lut texture_paint
  logLut compositing_log
  floatLut scene_linear
+ addUserKnob {20 Deadline}
+ addUserKnob {1 FrameListMode l frameListMode}
+ addUserKnob {1 CustomFrameList l customFrameList}
+ addUserKnob {1 Department l department}
+ addUserKnob {1 Pool l pool}
+ addUserKnob {1 SecondaryPool l secondaryPool}
+ addUserKnob {1 Group l group}
+ addUserKnob {1 Priority l priority}
+ addUserKnob {1 MachineLimit l machineLimit}
+ addUserKnob {1 IsBlacklist l isBlacklist}
+ addUserKnob {1 MachineList l machineList}
+ addUserKnob {1 LimitGroups l limitGroups}
+ addUserKnob {1 SubmitSuspended l submitSuspended}
+ addUserKnob {1 ChunkSize l chunkSize}
+ addUserKnob {1 ConcurrentTasks l concurrentTasks}
+ addUserKnob {1 LimitConcurrentTasks l limitConcurrentTasks}
+ addUserKnob {1 Threads l threads}
+ addUserKnob {1 SubmitScene l submitScene}
+ addUserKnob {1 BatchMode l batchMode}
+ addUserKnob {1 ContinueOnError l continueOnError}
+ addUserKnob {1 SeparateJobs l separateJobs}
+ addUserKnob {1 UseNodeRange l useNodeRange}
+ addUserKnob {1 UseGpu l useGpu}
+ addUserKnob {1 UseSpecificGpu l useSpecificGpu}
+ addUserKnob {1 ChooseGpu l chooseGpu}
+ addUserKnob {1 EnforceRenderOrder l enforceRenderOrder}
+ addUserKnob {1 DeadlineRenderMode l deadlineRenderMode}
+ addUserKnob {1 PerformanceProfiler l performanceProfiler}
+ addUserKnob {1 ReloadPlugin l reloadPlugin}
+ addUserKnob {1 PerformanceProfilerPath l performanceProfilerPath}
 }
 Read {
  inputs 0
@@ -59,7 +89,7 @@ Read {
  xpos 21
  ypos 72
 }
-set Nff7c7800 [stack 0]
+set N989a6400 [stack 0]
 Transform {
  translate {0 -80}
  scale 0.8
@@ -68,7 +98,7 @@ Transform {
  xpos 21
  ypos 168
 }
-push $Nff7c7800
+push $N989a6400
 Grade {
  white 0
  add {16.29174614 16.29174995 16.29175949 0}
@@ -330,7 +360,7 @@ Read {
  xpos 3590
  ypos -357
 }
-set Nba4fe800 [stack 0]
+set N9881ec00 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -544,7 +574,7 @@ Read {
  xpos 5570
  ypos -333
 }
-set Nba1de400 [stack 0]
+set N968f6400 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -586,7 +616,7 @@ Write {
  xpos 5867
  ypos 146
 }
-push $Nba4fe800
+push $N9881ec00
 ColorCorrect {
  saturation 0.8
  name ColorCorrect3
@@ -685,7 +715,7 @@ Read {
  xpos 6779
  ypos -191
 }
-set Nba834800 [stack 0]
+set N946c2c00 [stack 0]
 AppendClip {
  inputs 7
  meta_from_first false
@@ -806,7 +836,7 @@ Write {
  xpos 8245
  ypos 202
 }
-push $Nba1de400
+push $N968f6400
 ColorCorrect {
  saturation 1.02
  name ColorCorrect6
@@ -835,7 +865,7 @@ Write {
  xpos 6232
  ypos 89
 }
-push $Nba834800
+push $N946c2c00
 ColorCorrect {
  saturation 0.9
  name ColorCorrect8
@@ -921,7 +951,7 @@ Read {
  xpos 9402
  ypos 1
 }
-set Nba724800 [stack 0]
+set N8e011000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1073,7 +1103,7 @@ Write {
  xpos 9970
  ypos 353
 }
-push $Nba724800
+push $N8e011000
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  resize height
@@ -1287,7 +1317,7 @@ Read {
  xpos 13490
  ypos 76
 }
-set Nba3e1000 [stack 0]
+set N8e466c00 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1359,7 +1389,7 @@ Write {
  xpos 13600
  ypos 379
 }
-push $Nba3e1000
+push $N8e466c00
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  name Reformat11
@@ -1458,7 +1488,7 @@ Read {
  xpos 14920
  ypos 435
 }
-set Nb8ab6000 [stack 0]
+set N98741800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1518,7 +1548,7 @@ Write {
  xpos 15140
  ypos 730
 }
-push $Nb8ab6000
+push $N98741800
 Crop {
  box {200 0 2360 1440}
  reformat true
@@ -1712,13 +1742,13 @@ Read {
  inputs 0
  file_type png
  file G:/projects/01_FREELANCE/2024-11-VincoLac-Sofas/01_scene/nuke/collage/sofas_collage_8k.png
- format "8192 4608 0 0 8192 4608 1 "
+ format "8192 4608 0 0 8192 4608 1 mozaic"
  origset true
  name Read95
  xpos 18250
  ypos 491
 }
-set Nba160c00 [stack 0]
+set N98556800 [stack 0]
 Transform {
  scale 1.4
  center {4096 2304}
@@ -1740,6 +1770,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 15
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1757,7 +1789,7 @@ Read {
  xpos 17736
  ypos 488
 }
-set Nba327400 [stack 0]
+set N98517000 [stack 0]
 Transform {
  scale 0.9
  center {2363 1536}
@@ -1784,7 +1816,7 @@ Premult {
  xpos 17736
  ypos 726
 }
-push $Nba327400
+push $N98517000
 Grade {
  channels alpha
  add 1
@@ -1799,7 +1831,7 @@ Merge2 {
  xpos 17846
  ypos 726
 }
-set Nba07ec00 [stack 0]
+set N984d1800 [stack 0]
 Transform {
  scale 0.95
  center {2363 1536}
@@ -1819,7 +1851,7 @@ Premult {
  xpos 17733
  ypos 921
 }
-push $Nba07ec00
+push $N984d1800
 Merge2 {
  inputs 2
  name Merge5
@@ -1847,6 +1879,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 15
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -1864,7 +1898,7 @@ Read {
  xpos 15567
  ypos 440
 }
-set Nb8b0b800 [stack 0]
+set N9848f000 [stack 0]
 Transform {
  scale 1.07
  center {1024 778}
@@ -1963,7 +1997,7 @@ Read {
  xpos 15457
  ypos 440
 }
-push $Nb8b0b800
+push $N9848f000
 AppendClip {
  inputs 7
  meta_from_first false
@@ -1995,17 +2029,7 @@ Write {
  xpos 16117
  ypos 662
 }
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
- format "1528 2308 0 0 1528 2308 1 "
- origset true
- name Read9
- xpos 4634
- ypos -397
-}
-push $Nba160c00
+push $N98556800
 Write {
  file G:/repos/sydoryk.com/src/assets/projects/Sofas/Sofas_different_mozaic.jpg
  file_type jpeg
@@ -2021,6 +2045,65 @@ Write {
  xpos 18452
  ypos 701
 }
+Read {
+ inputs 0
+ file_type jpeg
+ file G:/repos/sydoryk.com/src/assets/portrait_original.jpg
+ format "720 1280 0 0 720 1280 1 "
+ origset true
+ name Read97
+ xpos -8
+ ypos -17
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
+ format "1528 2308 0 0 1528 2308 1 "
+ origset true
+ name Read9
+ xpos 4634
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file G:/repos/sydoryk.com/src/assets/portrait_original.jpg
+ format "720 1280 0 0 720 1280 1 "
+ origset true
+ name Read98
+ xpos 18739
+ ypos 662
+}
+Transform {
+ translate {-20 -200}
+ scale 1.05
+ center {360 640}
+ name Transform12
+ xpos 18739
+ ypos 758
+}
+Crop {
+ box {0 0 720 720}
+ reformat true
+ crop false
+ name Crop9
+ xpos 18739
+ ypos 809
+}
+set N9813b400 [stack 0]
+Write {
+ file G:/repos/sydoryk.com/src/assets/portrait.jpg
+ file_type jpeg
+ checkHashOnRead false
+ version 2
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write28
+ xpos 18739
+ ypos 833
+}
 Viewer {
  inputs 2
  frame_range 1-19
@@ -2032,4 +2115,17 @@ Viewer {
  name Viewer1
  xpos -40
  ypos -9
+}
+push $N9813b400
+Write {
+ file G:/repos/sydoryk.com/public/assets/author.jpg
+ file_type jpeg
+ checkHashOnRead false
+ version 3
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write29
+ xpos 18874
+ ypos 840
 }
