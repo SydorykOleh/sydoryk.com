@@ -1,5 +1,6 @@
 ---
 import Filter from '../components/Filter.astro';
+
 // 引入 JSON 文件并加载数据
 const cardJsonString = '/assets/data/card.json';
 //const cardData = JSON.parse(cardJsonString);
@@ -108,10 +109,13 @@ class Demo {
     this.shuffle = new Shuffle(element, {
       itemSelector: '.card-item',
       sizer: element.querySelector('.js-shuffle-sizer') });
+
+
     // Log events.
     this.addShuffleEventListeners();
     this._activeFilters = [];
     this.addFilterButtons();
+    this._activateFilterFromURL();
     this.addSorting();
     this.addSearchFilter();
   }
@@ -159,6 +163,13 @@ class Demo {
     }
 
     this.shuffle.filter(filterGroup);
+
+
+    // NEW: keep URL in sync (empty string if "All")
+    this._updateURL(
+      filterGroup === Shuffle.ALL_ITEMS ? '' : filterGroup
+    );
+
   }
 
   _removeActiveClassFromChildren(parent) {
@@ -211,6 +222,41 @@ class Demo {
     }
     this.shuffle.sort(options);
   }
+
+// -----------------------------------------------------------
+  // Read ?filter=xyz or #filter=xyz on first load
+  _activateFilterFromURL() {
+    const url = new URL(window.location.href);
+
+    // 1️⃣ query string first
+    let filter = url.searchParams.get('filter');
+    // 2️⃣ hash fallback (#filter=xyz)
+    if (!filter) {
+      const m = url.hash.match(/filter=([^&]+)/);
+      filter = m ? m[1] : null;
+    }
+    if (!filter) return;         // nothing encoded → bail
+
+    // Find the button whose data-group equals the filter
+    const btn = document.querySelector(
+      `.filter-options [data-group="${CSS.escape(filter)}"]`
+    );
+    if (btn) {
+      btn.click();               // triggers Shuffle + visual state
+    }
+  }
+
+  // After a click, write the filter back into the URL
+  _updateURL(filter) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', filter);
+    history.replaceState(null, '', url);
+  }
+
+
+
+
+
 
   // Advanced filtering
   addSearchFilter() {
