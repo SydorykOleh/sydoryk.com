@@ -6,6 +6,9 @@ dist/
 # dependencies
 node_modules/
 
+videos_to_encode/
+videos_encoded/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
