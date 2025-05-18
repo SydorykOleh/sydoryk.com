@@ -38,7 +38,7 @@ interface SeoTdk {
 }
 // SEO TDK front page
 export const homeTdk: SeoTdk = {
-	title: 'This is personal website for Sydoryk Oleh',
+	title: 'Sydoryk Oleh Projects',
 	description: 'This is display of Sydoryk Oleh projects',
 	keywords: 'Sydoryk Oleh, blog'
 }
@@ -50,15 +50,20 @@ export const blogTdk: SeoTdk = {
 }
 // SEO TDK about
 export const aboutTdk: SeoTdk = {
-	title: 'Sydoryk Oleh Introduction',
+	title: 'About Sydoryk Oleh',
 	description: 'Sydoryk Oleh Introduction',
 	keywords: 'Sydoryk Oleh, blog'
 }
 // SEO TDK  项目
-export const projectTdk: SeoTdk = {
-	title: 'Sydoryk Oleh Projects',
+export const experienceTdk: SeoTdk = {
+	title: 'Sydoryk Oleh Experience',
 	description: 'Some of my projects',
 	keywords: 'Sydoryk Oleh, blog, project'
+}
+export const termsTdk: SeoTdk = {
+	title: 'Terms and Conditions',
+	description: 'Terms and Conditions',
+	keywords: 'Sydoryk Oleh, Terms and Conditions'
 }
 // SEO TDK 404
 export const notFoundTdk: SeoTdk = {
@@ -121,6 +126,7 @@ interface PageTag {
 	project: string
 	contact: string
 	experience: string
+	terms: string
 }
 export const pageTag: PageTag = {
 	index: 'PORTFOLIO',
@@ -128,7 +134,8 @@ export const pageTag: PageTag = {
 	blog: 'BLOG',
 	project: 'PROJECT',
 	contact: 'CONTACT',
-	experience: 'EXPERIENCE'
+	experience: 'EXPERIENCE',
+	terms: 'Fairplay'
 }
 
 
@@ -140,6 +147,7 @@ interface PageDescription {
 	about?: string
 	experience?: string
 	contact?: string
+	terms?: string
 }
 export const pageDescription: PageDescription = {
 	index: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can see some of my projects here",
@@ -147,6 +155,7 @@ export const pageDescription: PageDescription = {
 	about: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can read more about me here",
 	blog: 'My personal notes and thoughts',
 	experience: 'My Journey so far',
+	terms: 'Friendly legal stuff that protects your vision and my craft.',
 	contact: 'Constacts',
 }
 
