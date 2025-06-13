@@ -1,0 +1,168 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+//import ConfiguratorHeadphones from "../../components/ConfiguratorHeadphones.astro";
+
+
+---
+<DetailPostLayout
+	title="Headphones"
+	description = 'Headphones Copnfigurator',
+	keywords = 'Headphones, Product Visualization, Product Configurator',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						HEADPHONES
+					</h1>
+			</DetailHeader>
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+								<!-- Frame / Metal Color Picker -->
+								<div class="color-picker" data-part="metal">
+								<label>Frame:</label>
+								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
+								</div>
+
+								<!-- Earpads Color Picker -->
+								<div class="color-picker" data-part="earpads">
+								<label>Earpads:</label>
+								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
+								</div>
+
+								<!-- Headpad Color Picker -->
+								<div class="color-picker" data-part="headband">
+								<label>Headpad:</label>
+								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
+								</div>
+								<canvas id="configCanvas" width="1195" height="1195"></canvas>
+						</div>
+						<p class="post-desc">
+							
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>
+
+<script>
+
+	const imageCache = {};
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const canvas = document.getElementById("configCanvas");
+		const ctx = canvas.getContext("2d");
+
+		const parts = {
+		metal: "black",
+		earpads: "black",
+		headband: "black",
+	};
+
+    const partOrder = ["metal", "earpads", "headband"];
+    const assetsPath = "/assets/projects/Headphones/";
+
+    function renderHeadphones() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		partOrder.forEach(part => {
+			const img = new Image();
+			img.src = `${assetsPath}${part}/${part}_${parts[part]}.png`;
+			img.onload = () => ctx.drawImage(img, 0, 0);
+		});
+    }
+
+    // Event listeners for color swatches
+    document.querySelectorAll('.color-picker').forEach(picker => {
+		picker.addEventListener('click', (e) => {
+			const swatch = e.target.closest('.color-swatch');
+			if (!swatch) return;
+
+			const part = picker.dataset.part;
+			const value = swatch.dataset.value;
+			parts[part] = value;
+			renderHeadphones();
+
+			// Highlight selected swatch
+			picker.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+			swatch.classList.add('selected');
+		});
+    });
+
+    // Optional: set selected styles initially
+    document.querySelectorAll('.color-picker').forEach(picker => {
+		const part = picker.dataset.part;
+		const selected = picker.querySelector(`.color-swatch[data-value="${parts[part]}"]`);
+		if (selected) selected.classList.add('selected');
+    });
+
+    renderHeadphones(); // Initial draw
+  });
+</script>
+
+<style>
+.color-picker {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: border 0.2s;
+}
+.color-swatch:hover {
+  border-color: #000;
+}
+.color-swatch.selected {
+  border-color: #000;
+  outline: 2px solid #000;
+}
+</style>
