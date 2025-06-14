@@ -1,0 +1,93 @@
+---
+// ConfiguratorLayout.astro
+
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+    title?: string;
+    description?: string;
+    keywords?: string;
+}
+
+const { title, description, keywords } = Astro.props;
+---
+
+<html>
+    <head>
+        <MainHead title={title} description={description} keywords={keywords} />
+    </head>
+    <body class="_body">
+        <Nav transition:persist />
+
+        <main class="configurator-main">
+            <div class="configurator-wrapper">
+                <div class="controls-sidebar">
+                    <slot name="controls" />
+                </div>
+                <div class="canvas-container">
+                    <slot />
+                </div>
+            </div>
+        </main>
+
+        <Footer />
+
+        <style is:global lang="scss">
+            .configurator-main {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .configurator-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                gap: 32px;
+                padding: 0 1rem;
+            }
+
+            .controls-sidebar {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            .canvas-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            canvas {
+                display: block;
+                width: 100%;
+                max-width: 1195px;
+                height: auto;
+            }
+
+            @media (max-width: 768px) {
+                .configurator-wrapper {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .controls-sidebar {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
+                canvas {
+                    max-width: 100%;
+                }
+            }
+        </style>
+    </body>
+</html>

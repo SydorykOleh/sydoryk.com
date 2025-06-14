@@ -1,81 +1,89 @@
 ---
 import { Image } from "astro:assets";
 import DetailHeader from "../../components/DetailHeader.astro";
-import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 //import ConfiguratorHeadphones from "../../components/ConfiguratorHeadphones.astro";
 
 
 ---
-<DetailPostLayout
+<ConfiguratorLayout
 	title="Headphones"
 	description = 'Headphones Copnfigurator',
 	keywords = 'Headphones, Product Visualization, Product Configurator',
->
-	<div class="post">
-		<main class="post-wrapper">
-			<DetailHeader
-			tag="PROJECT"
-			description="">
-					<h1 class="font-type">
-						HEADPHONES
-					</h1>
-			</DetailHeader>
-			<section>
-				<div class="content">
-					<div class="row desc">
-						<div class="col-1a">
-								<!-- Frame / Metal Color Picker -->
-								<div class="color-picker" data-part="metal">
-								<label>Frame:</label>
-								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
-								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
-								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
-								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
-								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
-								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
-								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
-								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
-								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
-								</div>
+>	
 
-								<!-- Earpads Color Picker -->
-								<div class="color-picker" data-part="earpads">
-								<label>Earpads:</label>
-								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
-								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
-								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
-								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
-								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
-								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
-								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
-								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
-								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
-								</div>
+<div class="row configurator-wrapper">
+	<div class="controls-sidebar">
+		<div class="color-controls">
+			<!-- Tab Buttons -->
+			<div class="color-tabs">
+				<button data-target="metal" class="active">Frame</button>
+				<button data-target="earpads">Earpads</button>
+				<button data-target="headband">Headpad</button>
+			</div>
 
-								<!-- Headpad Color Picker -->
-								<div class="color-picker" data-part="headband">
-								<label>Headpad:</label>
-								<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
-								<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
-								<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
-								<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
-								<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
-								<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
-								<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
-								<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
-								<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
-								</div>
-								<canvas id="configCanvas" width="1195" height="1195"></canvas>
-						</div>
-						<p class="post-desc">
-							
-						</p>
-					</div>
+			<!-- Frame Colors -->
+			<div class="color-picker-group" data-group="metal">
+				<div class="color-picker" data-part="metal">
+					<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+					<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+					<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+					<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+					<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+					<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+					<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+					<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+					<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
 				</div>
-			</section>
-		</main>
+			</div>
+
+			<!-- Earpads Colors -->
+			<div class="color-picker-group" data-group="earpads" style="display: none;">
+				<div class="color-picker" data-part="earpads">
+					<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+					<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+					<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+					<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+					<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+					<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+					<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+					<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+					<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
+				</div>
+			</div>
+
+			<!-- Headpad Colors -->
+			<div class="color-picker-group" data-group="headband" style="display: none;">
+				<div class="color-picker" data-part="headband">
+					<div class="color-swatch" data-value="black" style="background-color: #111;"></div>
+					<div class="color-swatch" data-value="gray" style="background-color: #888;"></div>
+					<div class="color-swatch" data-value="white" style="background-color: #eee;"></div>
+					<div class="color-swatch" data-value="orange" style="background-color: orange;"></div>
+					<div class="color-swatch" data-value="blue" style="background-color: #1e90ff;"></div>
+					<div class="color-swatch" data-value="green" style="background-color: #2ecc71;"></div>
+					<div class="color-swatch" data-value="red" style="background-color: #e74c3c;"></div>
+					<div class="color-swatch" data-value="purple" style="background-color: #9b59b6;"></div>
+					<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
+				</div>
+			</div>
+		</div>
+
 	</div>
-</DetailPostLayout>
+	<div class="canvas-container">
+		<canvas id="configCanvas" width="1195" height="1195"></canvas>
+	</div>
+</div>
+
+<div class="post">
+	<main class="post-wrapper">
+		<div class="content">
+			<p class="post-desc">
+				
+			</p>
+		</div>
+	</main>
+</div>
+</ConfiguratorLayout>
 
 <style>
 img{
@@ -88,81 +96,236 @@ img{
 </style>
 
 <script>
-
 	const imageCache = {};
+
+	// 🔄 Tab switching for color groups
+	document.querySelectorAll('.color-tabs button').forEach(button => {
+		button.addEventListener('click', () => {
+			const target = button.dataset.target;
+
+			// Toggle active tab
+			document.querySelectorAll('.color-tabs button').forEach(btn => btn.classList.remove('active'));
+			button.classList.add('active');
+
+			// Show only selected color group
+			document.querySelectorAll('.color-picker-group').forEach(group => {
+				group.style.display = group.dataset.group === target ? 'block' : 'none';
+			});
+		});
+	});
+
+
 
 	document.addEventListener("DOMContentLoaded", () => {
 		const canvas = document.getElementById("configCanvas");
 		const ctx = canvas.getContext("2d");
 
 		const parts = {
-		metal: "black",
-		earpads: "black",
-		headband: "black",
-	};
+			angleIndex: 0, // values from 0 to 35
+			metal: "black",
+			earpads: "black",
+			headband: "black",
+		};
 
-    const partOrder = ["metal", "earpads", "headband"];
-    const assetsPath = "/assets/projects/Headphones/";
+		const partOrder = ["metal", "earpads", "headband"];
+		const colors = ["black", "gray", "white", "orange", "blue", "green", "red", "purple", "gold"];
+		const angles = [...Array(36).keys()].map(i => String(i));
+		const assetsPath = "/assets/projects/Headphones/";
 
-    function renderHeadphones() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		
+		// 🟡 Preload all combinations into imageCache
+		function preloadImages(callback) {
+			let loadedCount = 0;
+			let total = partOrder.length * colors.length * angles.length;
+			angles.forEach(angle => {
+				partOrder.forEach(part => {
+					colors.forEach(color => {
+						const key = `${angle}_${part}_${color}`;
+						const img = new Image();
+						img.src = `${assetsPath}${part}/${part}_${color}_${angle}.webp`;
+						img.onload = () => {
+							imageCache[key] = img;
+							loadedCount++;
+							if (loadedCount === total && typeof callback === "function") {
+								callback();
+							}
+						};
+						img.onerror = () => {
+							console.warn("Missing image:", img.src);
+							loadedCount++;
+							if (loadedCount === total && typeof callback === "function") {
+								callback();
+							}
+						};
+					});
+				});	
+			});
+			angles.forEach(angle => {
+				const key = `shadow_${angle}`;
+				const img = new Image();
+				img.src = `${assetsPath}shadow/shadow_${angle}.webp`;
+				img.onload = () => {
+					imageCache[key] = img;
+				};
+				img.onerror = () => {
+					console.warn("Missing shadow:", img.src);
+				};
+			});
+		}
 
-		partOrder.forEach(part => {
-			const img = new Image();
-			img.src = `${assetsPath}${part}/${part}_${parts[part]}.png`;
-			img.onload = () => ctx.drawImage(img, 0, 0);
+		// 🖼 Use cached images when rendering
+		function renderHeadphones() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+  			const angle = String(parts.angleIndex);
+			
+			// 🔳 Draw shadow first (as background layer)
+			const shadowKey = `shadow_${angle}`;
+			const shadowImg = imageCache[shadowKey];
+			if (shadowImg?.complete) {
+				ctx.drawImage(shadowImg, 0, 0);
+			}
+			
+			partOrder.forEach(part => {
+				const key = `${angle}_${part}_${parts[part]}`;
+				const img = imageCache[key];
+				if (img?.complete) {
+					ctx.drawImage(img, 0, 0);
+				}
+			});
+		}
+
+		// 🎯 Handle swatch clicks
+		document.querySelectorAll('.color-picker').forEach(picker => {
+			picker.addEventListener('click', (e) => {
+				const swatch = e.target.closest('.color-swatch');
+				if (!swatch) return;
+
+				const part = picker.dataset.part;
+				const value = swatch.dataset.value;
+				parts[part] = value;
+				renderHeadphones();
+
+				picker.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+				swatch.classList.add('selected');
+			});
 		});
-    }
 
-    // Event listeners for color swatches
-    document.querySelectorAll('.color-picker').forEach(picker => {
-		picker.addEventListener('click', (e) => {
-			const swatch = e.target.closest('.color-swatch');
-			if (!swatch) return;
-
+		// 🌟 Pre-select initial swatches
+		document.querySelectorAll('.color-picker').forEach(picker => {
 			const part = picker.dataset.part;
-			const value = swatch.dataset.value;
-			parts[part] = value;
-			renderHeadphones();
-
-			// Highlight selected swatch
-			picker.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
-			swatch.classList.add('selected');
+			const selected = picker.querySelector(`.color-swatch[data-value="${parts[part]}"]`);
+			if (selected) selected.classList.add('selected');
 		});
-    });
 
-    // Optional: set selected styles initially
-    document.querySelectorAll('.color-picker').forEach(picker => {
-		const part = picker.dataset.part;
-		const selected = picker.querySelector(`.color-swatch[data-value="${parts[part]}"]`);
-		if (selected) selected.classList.add('selected');
-    });
+		// 🚀 Start by preloading all images, then render
+		preloadImages(() => {
+			renderHeadphones();
+		});
 
-    renderHeadphones(); // Initial draw
-  });
+		let isDragging = false;
+		let startX = 0;
+
+		document.addEventListener("mousedown", (e) => {
+			isDragging = true;
+			startX = e.clientX;
+		});
+		document.addEventListener("mousemove", (e) => {
+		if (!isDragging) return;
+
+		const dx = e.clientX - startX;
+		const threshold = 20;
+
+		if (Math.abs(dx) >= threshold) {
+			const direction = Math.sign(-dx); // inverted
+			parts.angleIndex = (parts.angleIndex - direction + 36) % 36;
+			startX = e.clientX;
+			renderHeadphones();
+		}
+		});
+
+		document.addEventListener("mouseup", () => {
+		isDragging = false;
+		});
+
+		document.addEventListener("mouseleave", () => {
+		isDragging = false;
+		});
+
+		let touchStartX = 0;
+		document.addEventListener("touchstart", (e) => {
+		touchStartX = e.touches[0].clientX;
+		});
+
+		document.addEventListener("touchmove", (e) => {
+		const dx = e.touches[0].clientX - touchStartX;
+		const threshold = 20;
+
+			if (Math.abs(dx) >= threshold) {
+				const direction = Math.sign(-dx); // ✅ Inverted for touch too
+				parts.angleIndex = (parts.angleIndex - direction + 36) % 36;
+				touchStartX = e.touches[0].clientX;
+				renderHeadphones();
+			}
+		});
+	});
 </script>
+
 
 <style>
 .color-picker {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
 }
+
 .color-swatch {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  transition: border 0.2s;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    transition: border 0.2s;
 }
+
 .color-swatch:hover {
-  border-color: #000;
+    border-color: #000;
 }
+
 .color-swatch.selected {
-  border-color: #000;
-  outline: 2px solid #000;
+    border-color: #000;
+    outline: 4px solid #d1d1d1;
+}
+
+/* 🔄 Tab Buttons */
+.color-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.color-tabs button {
+    padding: 6px 16px;
+    border: none;
+    background: #000;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.2s;
+    color: #fff;
+}
+
+.color-tabs button.active {
+    background: #6e6e6e;
+}
+
+/* 🔄 Color Picker Sections */
+.color-picker-group {
+    display: none;
+}
+
+.color-picker-group.active {
+    display: block;
 }
 </style>
