@@ -11,11 +11,12 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 	description = 'Headphones Copnfigurator',
 	keywords = 'Headphones, Product Visualization, Product Configurator',
 >	
-
-<div class="row configurator-wrapper">
-	<div class="controls-sidebar">
-		<div class="color-controls">
-			<!-- Tab Buttons -->
+	<div id="rotate-hint">
+		<span class="mouse-icon">🖱️</span>
+		<span class="hint-text">Click and drag to rotate</span>
+	</div>
+    <Fragment slot="controls">
+        	<!-- Tab Buttons -->
 			<div class="color-tabs">
 				<button data-target="metal" class="active">Frame</button>
 				<button data-target="earpads">Earpads</button>
@@ -66,23 +67,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 					<div class="color-swatch" data-value="gold" style="background-color: #ffd700;"></div>
 				</div>
 			</div>
-		</div>
+    </Fragment>
 
-	</div>
-	<div class="canvas-container">
-		<canvas id="configCanvas" width="1195" height="1195"></canvas>
-	</div>
-</div>
+	<canvas id="configCanvas" width="1195" height="1195"></canvas>
 
-<div class="post">
-	<main class="post-wrapper">
-		<div class="content">
-			<p class="post-desc">
-				
-			</p>
-		</div>
-	</main>
-</div>
 </ConfiguratorLayout>
 
 <style>
@@ -97,6 +85,7 @@ img{
 
 <script>
 	const imageCache = {};
+	const shadowCache = {};
 
 	// 🔄 Tab switching for color groups
 	document.querySelectorAll('.color-tabs button').forEach(button => {
@@ -132,7 +121,29 @@ img{
 		const angles = [...Array(36).keys()].map(i => String(i));
 		const assetsPath = "/assets/projects/Headphones/";
 
-		
+		function preloadShadowImages(callback) {
+			let loadedShadow = 0;
+			const totalShadows = angles.length;
+
+			angles.forEach(angle => {
+				const img = new Image();
+				img.src = `${assetsPath}shadow/shadow_${angle}.webp`; // Adjust path as needed
+				img.onload = () => {
+					shadowCache[angle] = img;
+					loadedShadow++;
+					if (loadedShadow === totalShadows && typeof callback === "function") {
+						callback();
+					}
+				};
+				img.onerror = () => {
+					console.warn("Missing shadow image:", img.src);
+					loadedShadow++;
+					if (loadedShadow === totalShadows && typeof callback === "function") {
+						callback();
+					}
+				};
+			});
+		}
 		// 🟡 Preload all combinations into imageCache
 		function preloadImages(callback) {
 			let loadedCount = 0;
@@ -219,7 +230,9 @@ img{
 
 		// 🚀 Start by preloading all images, then render
 		preloadImages(() => {
-			renderHeadphones();
+			preloadShadowImages(() => {
+				renderHeadphones();
+			});
 		});
 
 		let isDragging = false;
@@ -268,6 +281,19 @@ img{
 			}
 		});
 	});
+
+	const hint = document.getElementById('rotate-hint');
+
+	function removeHint() {
+	hint.classList.add('fade-out');
+	setTimeout(() => {
+		hint.remove(); // Completely remove from DOM after fade-out
+	}, 500); // Match CSS transition duration
+	}
+
+	document.addEventListener('mousedown', () => {
+		removeHint();
+	}, { once: true });
 </script>
 
 
@@ -327,5 +353,28 @@ img{
 
 .color-picker-group.active {
     display: block;
+}
+
+#rotate-hint {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#rotate-hint.fade-out {
+  opacity: 0;
 }
 </style>
