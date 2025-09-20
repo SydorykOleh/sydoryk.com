@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import DetailHeader from "../../components/DetailHeader.astro";
+import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
+
+import CAD_01 from "../../assets/projects/IndustrialEquipment/CAD_01.jpg";
+import CAD_02 from "../../assets/projects/IndustrialEquipment/CAD_02.jpg";
+import CAD_03 from "../../assets/projects/IndustrialEquipment/CAD_03.jpg";
+import CAD_mozaic from "../../assets/projects/IndustrialEquipment/CAD_mozaic.jpg";
+
+---
+<DetailPostLayout
+	title="Industrial Equipment Visualization"
+	description = '3D Industrial Equipment Visualization from CAD files',
+	keywords = '3D, Product Visualization, Industrial, CAD',
+>
+	<div class="post">
+		<main class="post-wrapper">
+			<DetailHeader
+			tag="PROJECT"
+			description="">
+					<h1 class="font-type">
+						Industrial Equipment
+					</h1>
+			</DetailHeader>
+
+			<section>
+				<div class="content">
+					<div class="row desc">
+						<div class="col-1a">
+							<p class="post-desc">
+								<p>
+									Client needed visualization of industrial equipment from existing CAD files in consistent visual style.
+								</p>
+								<p>
+									CAD files required clean up and conversion to polygonal geometry for rendering.
+								</p>
+								<p>
+									Using Houdini Solaris I created clean workflow to create realistic and consistent renders.
+								</p>
+
+								<p>Here are multiple renders:
+								<Image src={CAD_mozaic} alt="Multiple renders"/>
+								</p>
+
+								<p>Here are some examples of individual renders:
+								<Image src={CAD_01} alt="Render of industrial equipment 1"/>
+								<Image src={CAD_02} alt="Render of industrial equipment 1"/>
+								<Image src={CAD_03} alt="Render of industrial equipment 1"/>
+								</p>
+
+								<p> Client also needed wireframe render for marketing purposes:
+									<video width="100%" autoplay loop muted>
+										<source src="/assets/projects/IndustrialEquipment/IndustrialEquipment_wireframe.mp4" type="video/mp4">
+									</video>
+								</p>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</DetailPostLayout>
+
+<style>
+img{
+	border:1px solid #ececec;
+}
+.btn{
+	display: flex;
+	gap: 16px;
+}
+</style>

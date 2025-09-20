@@ -247,7 +247,17 @@
 		"desc": "Ad Animation",
 		"detail": "/detail/Conservatory",
 		"category": "animation",
-		"tag": "Modeling, Animation, Shading, FX, Lighting",
+		"tag": "Modeling, Animation, Shading, Lighting",
 		"date": "2024-10-20"
+	},
+	{
+		"id": "22",
+		"cover": "/assets/cover/IndustrialEquipment.jpg",
+		"title": "Industrial Equipment",
+		"desc": "Product Visualization",
+		"detail": "/detail/IndustrialEquipment",
+		"category": "still, batch",
+		"tag": "Modeling, Shading, FX, Lighting",
+		"date": "2025-09-20"
 	}
 ]
