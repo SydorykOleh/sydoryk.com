@@ -41,18 +41,19 @@ import new5 from "../../assets/projects/Sofas/new_sunbed.png";
 							<p class="post-desc">
 								<p>
 								The client requested high-quality renders for their entire sofa collection.
-								Each sofa required multiple variations — 15 colors × 6 angles × 2 backgrounds, totaling around 180 images per model and over 8000 images to date. Some models also included special setups to demonstrate mechanical features.
-								<p>
-								Ordinarily, a render pipeline of this scale would be difficult and time-consuming to manage. Using Houdini Solaris, I developed a fully procedural rendering system that made it easy to configure and update any sofa, color, or camera angle with minimal manual work.
+								Each sofa required multiple variations: 15 colors × 6 angles × 2 backgrounds, totaling around 180 images per model and over 8000 images to date. Some models also included special setups to demonstrate mechanical features.
 								</p>
 								<p>
-								Because the provided CAD models lacked detail, I rebuilt them into high-resolution meshes using a combination of remeshing, retopology, and VDB workflows, complemented by vellum simulations for realistic fabric drape and volume. I also added custom stitching and piping for enhanced realism.
+								Looks like quite complited project, however by using Houdini, I developed a fully procedural rendering system that made it easy to configure and update any sofa, color, or camera angle with minimal manual work.
 								</p>
 								<p>
-								An automated scene assembly system handled camera placement and framing, ensuring consistent composition across all variations. The pipeline generated well-organized, properly named outputs, ready for client review and delivery.
+								Because the provided CAD models lacked detail, I rebuilt them into high-resolution meshes and used cloth simulation for realistic fabric shape. I also added custom stitching and piping.
 								</p>
 								<p>
-								To improve efficiency, I created a render optimization process that rendered unique elements only once and composited repeated parts automatically — dramatically reducing render times.
+								An automated scene assembly system handled camera placement and framing, ensuring consistent composition across all variations. The pipeline generated organized, properly named outputs, ready for client review and delivery.
+								</p>
+								<p>
+								To improve efficiency, I created a render optimization process that rendered unique elements only once and composited repeated parts automatically - dramatically reducing render times without compromising on quality.
 								</p>
 
 								<p>Let's look at few models:
