@@ -39,7 +39,7 @@ interface SeoTdk {
 // SEO TDK front page
 export const homeTdk: SeoTdk = {
 	title: 'Sydoryk Oleh Projects',
-	description: 'This is display of Sydoryk Oleh projects',
+	description: 'My projects',
 	keywords: 'Sydoryk Oleh, blog'
 }
 // SEO TDK blog
@@ -150,7 +150,7 @@ interface PageDescription {
 	terms?: string
 }
 export const pageDescription: PageDescription = {
-	index: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can see some of my projects here",
+	index: "I'm Sydoryk Oleh, a 3D artist. My works below:",
 	project: "Some of my projects are shown here",
 	about: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can read more about me here",
 	blog: 'My personal notes and thoughts',
