@@ -89,7 +89,7 @@ Read {
  xpos 21
  ypos 72
 }
-set N989a6400 [stack 0]
+set N4b617800 [stack 0]
 Transform {
  translate {0 -80}
  scale 0.8
@@ -98,7 +98,7 @@ Transform {
  xpos 21
  ypos 168
 }
-push $N989a6400
+push $N4b617800
 Grade {
  white 0
  add {16.29174614 16.29174995 16.29175949 0}
@@ -136,31 +136,11 @@ Write {
 Read {
  inputs 0
  file_type png
- file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0011.png"
- format "1280 720 0 0 1280 720 1 HD_720"
- origset true
- name Read17
- xpos 691
- ypos 60
-}
-Read {
- inputs 0
- file_type png
  file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0012.png"
  format "1280 720 0 0 1280 720 1 HD_720"
  origset true
  name Read1
  xpos 362
- ypos 60
-}
-Read {
- inputs 0
- file_type png
- file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0008.png"
- format "1280 720 0 0 1280 720 1 HD_720"
- origset true
- name Read14
- xpos 581
  ypos 60
 }
 Read {
@@ -360,7 +340,7 @@ Read {
  xpos 3590
  ypos -357
 }
-set N9881ec00 [stack 0]
+set Ncb02800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -574,7 +554,7 @@ Read {
  xpos 5570
  ypos -333
 }
-set N968f6400 [stack 0]
+set Nc7e2400 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -616,7 +596,7 @@ Write {
  xpos 5867
  ypos 146
 }
-push $N9881ec00
+push $Ncb02800
 ColorCorrect {
  saturation 0.8
  name ColorCorrect3
@@ -715,7 +695,7 @@ Read {
  xpos 6779
  ypos -191
 }
-set N946c2c00 [stack 0]
+set Nce36800 [stack 0]
 AppendClip {
  inputs 7
  meta_from_first false
@@ -836,7 +816,7 @@ Write {
  xpos 8245
  ypos 202
 }
-push $N968f6400
+push $Nc7e2400
 ColorCorrect {
  saturation 1.02
  name ColorCorrect6
@@ -865,7 +845,7 @@ Write {
  xpos 6232
  ypos 89
 }
-push $N946c2c00
+push $Nce36800
 ColorCorrect {
  saturation 0.9
  name ColorCorrect8
@@ -951,7 +931,7 @@ Read {
  xpos 9402
  ypos 1
 }
-set N8e011000 [stack 0]
+set Ncd28800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1103,7 +1083,7 @@ Write {
  xpos 9970
  ypos 353
 }
-push $N8e011000
+push $Ncd28800
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  resize height
@@ -1317,7 +1297,7 @@ Read {
  xpos 13490
  ypos 76
 }
-set N8e466c00 [stack 0]
+set Nc9e3000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1389,7 +1369,7 @@ Write {
  xpos 13600
  ypos 379
 }
-push $N8e466c00
+push $Nc9e3000
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  name Reformat11
@@ -1488,7 +1468,7 @@ Read {
  xpos 14920
  ypos 435
 }
-set N98741800 [stack 0]
+set Naffa000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1548,7 +1528,7 @@ Write {
  xpos 15140
  ypos 730
 }
-push $N98741800
+push $Naffa000
 Crop {
  box {200 0 2360 1440}
  reformat true
@@ -1631,76 +1611,6 @@ Write {
 Read {
  inputs 0
  file_type png
- file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_jalapeno_dark_v001.png
- format "2048 4000 0 0 2048 4000 1 "
- origset true
- name Read96
- xpos 17230
- ypos 507
-}
-Transform {
- translate {4096 0}
- center {1024 2000}
- name Transform6
- xpos 17230
- ypos 603
-}
-Read {
- inputs 0
- file_type png
- file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habaneroHot_dark_v001.png
- format "2048 4000 0 0 2048 4000 1 "
- origset true
- name Read94
- xpos 17010
- ypos 506
-}
-Transform {
- translate {2048 0}
- center {1024 2000}
- name Transform5
- xpos 17010
- ypos 602
-}
-Read {
- inputs 0
- file_type png
- file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habanero_dark_v001.png
- format "2048 4000 0 0 2048 4000 1 "
- origset true
- name Read91
- xpos 16894
- ypos 508
-}
-Constant {
- inputs 0
- channels rgb
- format "6144 4000 0 0 6144 4000 1 hotSause"
- name Constant1
- xpos 16751
- ypos 525
-}
-Merge2 {
- inputs 2
- name Merge2
- xpos 16788
- ypos 685
-}
-Merge2 {
- inputs 2
- name Merge3
- xpos 16909
- ypos 735
-}
-Merge2 {
- inputs 2
- name Merge4
- xpos 17020
- ypos 753
-}
-Read {
- inputs 0
- file_type png
  file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_presentbox_v001.png
  format "4726 3072 0 0 4726 3072 1 "
  origset true
@@ -1748,7 +1658,7 @@ Read {
  xpos 18250
  ypos 491
 }
-set N98556800 [stack 0]
+set Nc872c00 [stack 0]
 Transform {
  scale 1.4
  center {4096 2304}
@@ -1789,7 +1699,7 @@ Read {
  xpos 17736
  ypos 488
 }
-set N98517000 [stack 0]
+set Nc8ae400 [stack 0]
 Transform {
  scale 0.9
  center {2363 1536}
@@ -1816,7 +1726,7 @@ Premult {
  xpos 17736
  ypos 726
 }
-push $N98517000
+push $Nc8ae400
 Grade {
  channels alpha
  add 1
@@ -1831,7 +1741,7 @@ Merge2 {
  xpos 17846
  ypos 726
 }
-set N984d1800 [stack 0]
+set Nc8afc00 [stack 0]
 Transform {
  scale 0.95
  center {2363 1536}
@@ -1851,7 +1761,7 @@ Premult {
  xpos 17733
  ypos 921
 }
-push $N984d1800
+push $Nc8afc00
 Merge2 {
  inputs 2
  name Merge5
@@ -1898,7 +1808,7 @@ Read {
  xpos 15567
  ypos 440
 }
-set N9848f000 [stack 0]
+set Nc93a400 [stack 0]
 Transform {
  scale 1.07
  center {1024 778}
@@ -1997,7 +1907,7 @@ Read {
  xpos 15457
  ypos 440
 }
-push $N9848f000
+push $Nc93a400
 AppendClip {
  inputs 7
  meta_from_first false
@@ -2029,7 +1939,7 @@ Write {
  xpos 16117
  ypos 662
 }
-push $N98556800
+push $Nc872c00
 Write {
  file G:/repos/sydoryk.com/src/assets/projects/Sofas/Sofas_different_mozaic.jpg
  file_type jpeg
@@ -2038,6 +1948,8 @@ Write {
  use_limit true
  checkHashOnRead false
  version 13
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -2054,16 +1966,6 @@ Read {
  name Read97
  xpos -8
  ypos -17
-}
-Read {
- inputs 0
- file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
- format "1528 2308 0 0 1528 2308 1 "
- origset true
- name Read9
- xpos 4634
- ypos -397
 }
 Read {
  inputs 0
@@ -2091,7 +1993,7 @@ Crop {
  xpos 18739
  ypos 809
 }
-set N9813b400 [stack 0]
+set Nc74c000 [stack 0]
 Write {
  file G:/repos/sydoryk.com/src/assets/portrait.jpg
  file_type jpeg
@@ -2104,6 +2006,140 @@ Write {
  xpos 18739
  ypos 833
 }
+push $Nc74c000
+Write {
+ file G:/repos/sydoryk.com/public/assets/author.jpg
+ file_type jpeg
+ checkHashOnRead false
+ version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write29
+ xpos 18874
+ ypos 840
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0008.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read14
+ xpos 581
+ ypos 59
+}
+Read {
+ inputs 0
+ file_type png
+ file "Z:/10_Projects/OUTPUT/Dave And Ava/ScreenGrab/ScreenGrab_0011.png"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ name Read17
+ xpos 691
+ ypos 60
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_jalapeno_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read96
+ xpos 17230
+ ypos 507
+}
+Transform {
+ translate {4096 0}
+ center {1024 2000}
+ name Transform6
+ xpos 17230
+ ypos 603
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habaneroHot_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read94
+ xpos 17010
+ ypos 506
+}
+Transform {
+ translate {2048 0}
+ center {1024 2000}
+ name Transform5
+ xpos 17010
+ ypos 602
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/projects/01_FREELANCE/01_PORTFOLIO/2024-10-Hotsause/comp/hotsause/hotsause_habanero_dark_v001.png
+ format "2048 4000 0 0 2048 4000 1 "
+ origset true
+ name Read91
+ xpos 16894
+ ypos 508
+}
+Constant {
+ inputs 0
+ channels rgb
+ format "6144 4000 0 0 6144 4000 1 hotSause"
+ name Constant1
+ xpos 16751
+ ypos 525
+}
+Merge2 {
+ inputs 2
+ name Merge2
+ xpos 16788
+ ypos 685
+}
+Merge2 {
+ inputs 2
+ name Merge3
+ xpos 16909
+ ypos 735
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ xpos 17020
+ ypos 753
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
+ format "1528 2308 0 0 1528 2308 1 "
+ origset true
+ name Read9
+ xpos 4634
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/016-SheetingAssemblyProcessLine_v004_angle2_4k.png
+ format "4096 4096 0 0 4096 4096 1 square_4k"
+ origset true
+ name Read102
+ xpos 19760
+ ypos 747
+}
+Crop {
+ box {0 812 4096 3218}
+ reformat true
+ crop false
+ name Crop13
+ xpos 19760
+ ypos 843
+}
+set Ndbe8b400 [stack 0]
 Viewer {
  inputs 2
  frame_range 1-19
@@ -2116,16 +2152,110 @@ Viewer {
  xpos -40
  ypos -9
 }
-push $N9813b400
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/001-CustomHydraulicRollboxAssembly_v003_angle4_4k.png
+ format "4096 4096 0 0 4096 4096 1 square_4k"
+ origset true
+ name Read99
+ xpos 19430
+ ypos 747
+}
+Crop {
+ box {0 842 4096 3664}
+ reformat true
+ crop false
+ name Crop10
+ xpos 19430
+ ypos 843
+}
 Write {
- file G:/repos/sydoryk.com/public/assets/author.jpg
+ file G:/repos/sydoryk.com/src/assets/projects/IndustrialEquipment/CAD_04.jpg
  file_type jpeg
+ _jpeg_quality 0.99
  checkHashOnRead false
- version 3
+ version 1
  ocioColorspace scene_linear
  display ACES
  view sRGB
- name Write29
- xpos 18874
- ypos 840
+ name Write30
+ xpos 19430
+ ypos 953
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/012-CustomPackagingSolutions_v002_angle3_4k.png
+ format "4096 4096 0 0 4096 4096 1 square_4k"
+ origset true
+ name Read100
+ xpos 19540
+ ypos 747
+}
+Crop {
+ box {0 628 4096 3342}
+ reformat true
+ crop false
+ name Crop11
+ xpos 19540
+ ypos 843
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/IndustrialEquipment/CAD_05.jpg
+ file_type jpeg
+ _jpeg_quality 0.99
+ checkHashOnRead false
+ version 1
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write31
+ xpos 19540
+ ypos 959
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/013-ReverseEngineeringRebuildingMachines_v002_angle4_4k.png
+ format "4096 4096 0 0 4096 4096 1 square_4k"
+ origset true
+ name Read101
+ xpos 19650
+ ypos 747
+}
+Crop {
+ box {0 1076 4096 3458}
+ reformat true
+ crop false
+ name Crop12
+ xpos 19650
+ ypos 843
+}
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/IndustrialEquipment/CAD_06.jpg
+ file_type jpeg
+ _jpeg_quality 0.99
+ checkHashOnRead false
+ version 1
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write32
+ xpos 19650
+ ypos 966
+}
+push $Ndbe8b400
+Write {
+ file G:/repos/sydoryk.com/src/assets/projects/IndustrialEquipment/CAD_07.jpg
+ file_type jpeg
+ _jpeg_quality 0.99
+ checkHashOnRead false
+ version 1
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write33
+ xpos 19760
+ ypos 972
 }

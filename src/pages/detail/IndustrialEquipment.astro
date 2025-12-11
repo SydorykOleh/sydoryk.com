@@ -6,6 +6,10 @@ import DetailPostLayout from "../../layouts/DetailPostLayout.astro";
 import CAD_01 from "../../assets/projects/IndustrialEquipment/CAD_01.jpg";
 import CAD_02 from "../../assets/projects/IndustrialEquipment/CAD_02.jpg";
 import CAD_03 from "../../assets/projects/IndustrialEquipment/CAD_03.jpg";
+import CAD_04 from "../../assets/projects/IndustrialEquipment/CAD_04.jpg";
+import CAD_05 from "../../assets/projects/IndustrialEquipment/CAD_05.jpg";
+import CAD_06 from "../../assets/projects/IndustrialEquipment/CAD_06.jpg";
+import CAD_07 from "../../assets/projects/IndustrialEquipment/CAD_07.jpg";
 import CAD_mozaic from "../../assets/projects/IndustrialEquipment/CAD_mozaic.jpg";
 
 ---
@@ -30,26 +34,44 @@ import CAD_mozaic from "../../assets/projects/IndustrialEquipment/CAD_mozaic.jpg
 						<div class="col-1a">
 							<p class="post-desc">
 								<p>
-									Client needed visualization of industrial equipment from existing CAD files in consistent visual style.
-								</p>
-								<p>
-									CAD files required clean up and conversion to polygonal geometry for rendering.
-								</p>
-								<p>
-									Using Houdini Solaris I created clean workflow to create realistic and consistent renders.
+								The client needed high-quality visualizations of industrial equipment based on existing CAD files. 
+								The original CAD models required cleanup and conversion to polygonal geometry before they could be used for production-level rendering.
 								</p>
 
-								<p>Here are multiple renders:
+								<p>
+								I developed a clean, efficient workflow in Houdini to ensure realistic and consistent results across all assets. 
+								</p>
+								<p>
+								My work included:
+								</p>
+
+								<ul>
+								<li>converting STEP files into detailed polygonal models (using MOI)</li>
+								<li>modeling missing components (such as the blue conveyer)</li>
+								<li>creating and assigning correct materials</li>
+								<li>creating custom textures</li>
+								<li>building a realistic studio lighting setup</li>
+								<li>post-processing and delivering all images in a unified visual style</li>
+								</ul>
+
+								<p>
+								Each system was rendered in two variants: one with a transparent background and one with a studio background. 
+								Additionally, I produced blueprint-style renders.
+								</p>
+								<p>Collage of multiple systems:
 								<Image src={CAD_mozaic} alt="Multiple renders"/>
 								</p>
 
-								<p>Here are some examples of individual renders:
+								<p>Individual renders:
 								<Image src={CAD_01} alt="Render of industrial equipment 1"/>
-								<Image src={CAD_02} alt="Render of industrial equipment 1"/>
-								<Image src={CAD_03} alt="Render of industrial equipment 1"/>
+								<Image src={CAD_02} alt="Render of industrial equipment 2"/>
+								<Image src={CAD_03} alt="Render of industrial equipment 3"/>
+								<Image src={CAD_05} alt="Render of industrial equipment 5"/>
+								<Image src={CAD_06} alt="Render of industrial equipment 6"/>
+								<Image src={CAD_07} alt="Render of industrial equipment 7"/>
 								</p>
 
-								<p> Client also needed wireframe render for marketing purposes:
+								<p>Bluepring style render:
 									<video width="100%" autoplay loop muted>
 										<source src="/assets/projects/IndustrialEquipment/IndustrialEquipment_wireframe.mp4" type="video/mp4">
 									</video>
