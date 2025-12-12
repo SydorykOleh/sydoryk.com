@@ -10,8 +10,8 @@ const images = await Astro.glob('../../assets/projects/Dive/*.{jpg,png,webp}');
 ---
 <DetailPostLayout
 	title="Dive"
-	description = '270 degree Animation movie for Interactive and Immersive experience',
-	keywords = 'Dive, CGI Movie',
+	description = 'Animation movie for Explorer 5D',
+	keywords = 'Dive, CGI Movie, Explorer 5D',
 >
 	<div class="post">
 		<main class="post-wrapper">
@@ -28,24 +28,38 @@ const images = await Astro.glob('../../assets/projects/Dive/*.{jpg,png,webp}');
 					<div class="row desc">
 						<div class="col-1a">
 							<p class="post-desc">
-
-								<p>Short movie about a traveling underwater. This movie was produced in 3D Stereo and 270 degree versions.</p>
-								My responsibilities included: 
+								<p><h3>Movie was produced in different formats:</h3>
+									<ul>
+										<li>Normal 2D</li>
+										<li>Stereo format</li>
+										<li><a href="https://attraktion.com/explorer-5d/">Explorer 5D</a> - 3 screens with 270 degrees of vision</li>
+									</ul>
+								</p>
+								<h3>My responsibilities included: </h3>
 								<ul>
+									<li>Camera projection</li>
 									<li>World building</li>
-									<li>Shading, Lighting and Compositing for whole movie.</li>
-									<li>Render optimization.</li>
+									<li>Shading, Lighting and Compositing</li>
+									<li>Render optimization</li>
 								</ul>
 								<br>
-								Software used: Maya, Arnold, Nuke
+								Software used: Maya, Arnold, Nuke								
 							</p>
+							<p>
+								Here is original trailer: 
+							</p>
+							<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%">
+								<iframe style="position: absolute;width: 100%;height: 100%;left: 0;top: 0;" src="https://www.youtube.com/embed/DUW3EFUfWpM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 			<section class="preview">
+				
+				
 				<div>
-					Some screenshots from the movie:
+					2D format screenshots:
 				</div>
 				{images.map((img, index) => (
 					<picture class="gsap-picture">

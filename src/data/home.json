@@ -25,7 +25,7 @@
 		"id": "3",
 		"cover": "/assets/cover/stormRiders.jpg",
 		"title": "Storm Riders 4D",
-		"desc": "Short movie for 4D Theatres",
+		"desc": "Short 3D Stereo movie",
 		"category": "movies",
 		"tag": "Lighting Artist",
 		"date": "2017-01-01"
@@ -34,7 +34,7 @@
 		"id": "4",
 		"cover": "/assets/cover/LostPearl.jpg",
 		"title": "the Legend of the Lost Pearl",
-		"desc": "Short movie for Yas Waterworld in Abu Dhabi",
+		"desc": "Short 3D Stereo movie for Yas Waterworld in Abu Dhabi",
 		"detail": "/detail/lostPearl/",
 		"category":  "movies",
 		"tag": "Lead Lighting and Compositing Artist",
