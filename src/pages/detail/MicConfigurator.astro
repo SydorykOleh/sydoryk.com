@@ -284,6 +284,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         glow: 'off',        
     };
 
+	// 🔴 ADD THIS LINE HERE
+    let rainbowAnimationId = null;
+
     // --- 2. ASSET MANAGEMENT ---
 
     const canvas = document.getElementById("configCanvas");
@@ -297,20 +300,28 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
      * Example Base:   white_off_1001.webp
      * Example Glow:   white_rainbow_1001.webp
      */
-function getAssetPath(group, frameIndex) {
-        // 1. Determine Folder & Frame
+	function getAssetPath(group, frameIndex) {
+        // 1. Determine Folder & Config
         const currentViewConfig = VIEWS[state.view];
         const folder = currentViewConfig.folder;
+        const isRotation = currentViewConfig.type === '360';
         
-        // If static, always frame 1001. If rotation, use current angle.
-        const frameOffset = (currentViewConfig.type === '360') ? frameIndex : 0;
-        const fileNum = CONFIG.startFrame + frameOffset;
-        
-        // 2. Handle Glow Label (Same as before)
+        // 2. Handle Glow Label
         const glowLabel = (group === 'normal') ? 'off' : state.glow;
         
         // 3. Construct Filename
-        const fileName = `${state.frameColor}_${glowLabel}_${fileNum}`;
+        let fileName;
+        
+        if (isRotation) {
+            // Rotation needs frame number: "black_off_1001"
+            const fileNum = CONFIG.startFrame + frameIndex;
+            fileName = `${state.frameColor}_${glowLabel}_${fileNum}`;
+        } else {
+            // Static shots have NO number: "black_off"
+            // Note: If your static files are named "black_off_static" or similar, adjust here.
+            // Assuming strictly: "black_off.webp"
+            fileName = `${state.frameColor}_${glowLabel}`;
+        }
         
         // 4. Return Full Path
         return `${CONFIG.basePath}${folder}/${group}/${fileName}.webp`;
@@ -499,24 +510,46 @@ function render() {
     let fullAssetList = [];
     let loadedCount = 0;
 
-    function generateAssetList() {
+	function generateAssetList() {
         const list = [];
 
-        PRELOAD_CONFIG.colors.forEach(color => {
-            for (let a = 0; a < CONFIG.angles; a++) {
-                const frameNum = CONFIG.startFrame + a;
+        // 1. Iterate through every view (rotation, hero-1, detail-buttons, etc.)
+        Object.values(VIEWS).forEach(view => {
+            const isRotation = view.type === '360';
+            const folder = view.folder;
+            const pathPrefix = `${CONFIG.basePath}${folder}`;
 
-                // A. Normal Layer (1 per angle per color)
-                const normalName = `${color}_off_${frameNum}`;
-                list.push({ url: `${CONFIG.path}normal/${normalName}.webp`, priority: 1 });
+            // 2. Iterate through every Color
+            PRELOAD_CONFIG.colors.forEach(color => {
+                
+                // If it's a rotation, we loop 36 times. If static, just once.
+                const loopCount = isRotation ? CONFIG.angles : 1;
 
-                // B. Glow Layers
-                PRELOAD_CONFIG.glows.forEach(glow => {
-                    const glowName = `${color}_${glow}_${frameNum}`;
-                    list.push({ url: `${CONFIG.path}glowMesh/${glowName}.webp`, priority: 2 });
-                    list.push({ url: `${CONFIG.path}glowLight/${glowName}.webp`, priority: 2 });
-                });
-            }
+                for (let i = 0; i < loopCount; i++) {
+                    
+                    // 3. Construct the Filename Suffix
+                    // Rotation: "_1001"
+                    // Static:   "" (empty string)
+                    let suffix = '';
+                    if (isRotation) {
+                        const fileNum = CONFIG.startFrame + i;
+                        suffix = `_${fileNum}`;
+                    }
+
+                    // A. Normal Layer (Always "off")
+                    // Result: "black_off_1001" OR "black_off"
+                    const normalName = `${color}_off${suffix}`;
+                    list.push({ url: `${pathPrefix}/normal/${normalName}.webp`, priority: isRotation ? 2 : 1 });
+
+                    // B. Glow Layers
+                    // Result: "black_rainbow_1001" OR "black_rainbow"
+                    PRELOAD_CONFIG.glows.forEach(glow => {
+                        const glowName = `${color}_${glow}${suffix}`;
+                        list.push({ url: `${pathPrefix}/glowMesh/${glowName}.webp`, priority: 3 });
+                        list.push({ url: `${pathPrefix}/glowLight/${glowName}.webp`, priority: 3 });
+                    });
+                }
+            });
         });
         
         return list;
