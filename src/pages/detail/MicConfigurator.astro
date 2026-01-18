@@ -25,9 +25,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             <div class="control-section">
                 <h4>Glow Light</h4>
                 <div class="swatch-grid">
-                    <button class="swatch selected" data-type="glow" data-value="off" style="background: linear-gradient(45deg, #ccc, #999); font-size: 9px;" title="Off">OFF</button>
+                    <button class="swatch" data-type="glow" data-value="off" style="background: linear-gradient(45deg, #ccc, #999); font-size: 9px;" title="Off">OFF</button>
                     <button class="swatch" data-type="glow" data-value="white" style="background: white; box-shadow: 0 0 5px white;" title="White Glow"></button>
-                    <button class="swatch" data-type="glow" data-value="rainbow" style="background: linear-gradient(to right, red, orange, green, blue, violet);" title="Rainbow"></button>
+                    <button class="swatch selected" data-type="glow" data-value="rainbow" style="background: linear-gradient(to right, red, orange, green, blue, violet);" title="Rainbow"></button>
                 </div>
             </div>
 
@@ -304,7 +304,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         view: 'rotation', // 🟢 New State: 'rotation', 'hero-1', etc.
         angle: 0,           
         frameColor: 'black',
-        glow: 'off',        
+        glow: 'rainbow',        
     };
     // 🟢 NEW: Auto-Spin Variables
     let autoSpinTimer = null;
