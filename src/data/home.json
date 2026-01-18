@@ -1,6 +1,4 @@
-
 [
-
 	{
 		"id": "1",
 		"url": "",
@@ -8,7 +6,7 @@
 		"cover": "/assets/cover/hush_earplug.jpg",
 		"title": "Hush Earplug",
 		"desc": "Visualization of earplug packaging",
-		"category": "still",
+		"category": "still, general",
 		"tag": "Lookdev, Lighting",
 		"date": "2015-01-01"
 	},
@@ -17,7 +15,7 @@
 		"cover": "/assets/cover/dave_and_ava.jpg",
 		"title": "Dave and Ava",
 		"desc": "Animation series for kids youtube channel",
-		"category": "movies", 
+		"category": "movies, general", 
 		"tag": "Junior Lighting Artist",
 		"date": "2016-01-01"
 	},
@@ -26,7 +24,7 @@
 		"cover": "/assets/cover/stormRiders.jpg",
 		"title": "Storm Riders 4D",
 		"desc": "Short 3D Stereo movie",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lighting Artist",
 		"date": "2017-01-01"
 	},
@@ -36,7 +34,7 @@
 		"title": "the Legend of the Lost Pearl",
 		"desc": "Short 3D Stereo movie for Yas Waterworld in Abu Dhabi",
 		"detail": "/detail/lostPearl/",
-		"category":  "movies",
+		"category":  "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2018-10-8"
 	},
@@ -46,7 +44,7 @@
 		"title": "Polar Journey",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/polarDream",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2019-10-20"
 	},
@@ -56,7 +54,7 @@
 		"title": "Safari",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/Safari",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2020-10-20"
 	},
@@ -66,7 +64,7 @@
 		"title": "Dive",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/Dive",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2020-10-20"
 	},
@@ -76,7 +74,7 @@
 		"title": "Danfoss",
 		"desc": "Short 270° movie",
 		"detail": "/detail/Danfoss",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2020-10-20"
 	},
@@ -86,7 +84,7 @@
 		"title": "The Magical Slide",
 		"desc": "Short movie for Cinesplash 5D theater at Sonnentherme",
 		"detail": "/detail/SunnyBunny",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting Artist",
 		"date": "2022-10-20"
 	},
@@ -96,7 +94,7 @@
 		"title": "Immersium",
 		"desc": "Short 360° movie for IMMERSIUM:WIEN",
 		"detail": "/detail/Immersium",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Compositing Artist",
 		"date": "2022-10-20"
 	},
@@ -106,7 +104,7 @@
 		"title": "Mars",
 		"desc": "Short VR / 270° movie",
 		"detail": "/detail/Mars",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lead Lighting Artist",
 		"date": "2022-10-20"
 	},
@@ -116,7 +114,7 @@
 		"title": "DinoVR",
 		"desc": "Short VR movie",
 		"detail": "/detail/DinoVR",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "Lighting Artist",
 		"date": "2022-10-20"
 	},
@@ -126,7 +124,7 @@
 		"title": "NaturaVision",
 		"desc": "Short movie for Loro Parque at Tenerife",
 		"detail": "/detail/NaturaVision",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "CG supervisor",
 		"date": "2024-10-20"
 	},
@@ -146,7 +144,7 @@
 		"title": "Microphone",
 		"desc": "Product Animation",
 		"detail": "/detail/Microphone",
-		"category": "animation",
+		"category": "animation, general",
 		"tag": "Modeling, Shading, Lighting, Simulation",
 		"date": "2024-11-20"
 	},
@@ -166,7 +164,7 @@
 		"title": "Hot Sause",
 		"desc": "Product Animation",
 		"detail": "/detail/HotSause",
-		"category": "animation",
+		"category": "animation, general",
 		"tag": "Modeling, Lighting",
 		"date": "2025-10-20"
 	},
@@ -186,7 +184,7 @@
 		"title": "Ear Plug packaging",
 		"desc": "Product Animation",
 		"detail": "/detail/EarPlugs",
-		"category": "animation",
+		"category": "animation, general",
 		"tag": "Modeling, Shading, Lighting",
 		"date": "2025-10-20"
 	},
@@ -196,7 +194,7 @@
 		"title": "Sofas and chairs",
 		"desc": "Product Visualization",
 		"detail": "/detail/Sofas",
-		"category": "still, batch",
+		"category": "still, batch, general",
 		"tag": "Modeling, Shading, Lighting, Simulation",
 		"date": "2025-10-20"
 	},
@@ -206,7 +204,7 @@
 		"title": "Sofa fabric replacement",
 		"desc": "Product Animation",
 		"detail": "/detail/Sofas",
-		"category": "animation",
+		"category": "animation, general",
 		"tag": "Modeling, Shading, Lighting, Simulation",
 		"date": "2025-10-20"
 	},
@@ -216,7 +214,7 @@
 		"title": "Fans",
 		"desc": "Product Animation",
 		"detail": "/detail/Fans",
-		"category": "animation, batch",
+		"category": "animation, batch, general",
 		"tag": "Modeling, Shading, Lighting",
 		"date": "2025-10-20"
 	},
@@ -226,7 +224,7 @@
 		"title": "Apparel",
 		"desc": "Product Animation",
 		"detail": "/detail/Apparel",
-		"category": "animation, batch",
+		"category": "animation, batch, general",
 		"tag": "Modeling, Shading, Lighting",
 		"date": "2025-10-20"
 	},
@@ -236,7 +234,7 @@
 		"title": "Showreel",
 		"desc": "Movies Showreel",
 		"detail": "/detail/Showreel",
-		"category": "movies",
+		"category": "movies, general",
 		"tag": "CG supervisor",
 		"date": "2024-10-20"
 	},
@@ -246,7 +244,7 @@
 		"title": "Conservatory",
 		"desc": "Ad Animation",
 		"detail": "/detail/Conservatory",
-		"category": "animation",
+		"category": "animation, general",
 		"tag": "Modeling, Animation, Shading, Lighting",
 		"date": "2024-10-20"
 	},
@@ -256,8 +254,38 @@
 		"title": "Industrial Equipment",
 		"desc": "Product Visualization",
 		"detail": "/detail/IndustrialEquipment",
-		"category": "still, batch",
+		"category": "still, batch, general",
 		"tag": "Modeling, Shading, FX, Lighting",
 		"date": "2025-09-20"
+	},
+	{
+		"id": "23",
+		"cover": "/assets/cover/adtea_720p.mp4",
+		"title": "Tea Ad",
+		"desc": "Ad Animation",
+		"detail": "/detail/adtea",
+		"category": "animation, ad, general",
+		"tag": "Modeling, Animation, FX, Lighting",
+		"date": "2026-01-05"
+	},
+	{
+		"id": "24",
+		"cover": "/assets/cover/headphoneConfig.jpg",
+		"title": "Configurator Headphones",
+		"desc": "Product Configurator",
+		"detail": "/detail/Headphones",
+		"category": "still, general, configurator",
+		"tag": "Animation, Lighting, Compositing",
+		"date": "2026-01-05"
+	},
+	{
+		"id": "25",
+		"cover": "/assets/cover/micConfig.jpg",
+		"title": "Configurator Microphone",
+		"desc": "Product Configurator",
+		"detail": "/detail/MicConfigurator",
+		"category": "still, general, configurator",
+		"tag": "Animation, Lighting, Compositing",
+		"date": "2026-01-05"
 	}
 ]

@@ -34,7 +34,7 @@ Root {
  frame 5
  last_frame 19
  lock_range true
- format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ format "1080 720 0 0 1080 720 1 coverNew"
  proxy_type scale
  proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
  colorManagement OCIO
@@ -89,7 +89,7 @@ Read {
  xpos 21
  ypos 72
 }
-set N4b617800 [stack 0]
+set N440a7800 [stack 0]
 Transform {
  translate {0 -80}
  scale 0.8
@@ -98,7 +98,7 @@ Transform {
  xpos 21
  ypos 168
 }
-push $N4b617800
+push $N440a7800
 Grade {
  white 0
  add {16.29174614 16.29174995 16.29175949 0}
@@ -340,7 +340,7 @@ Read {
  xpos 3590
  ypos -357
 }
-set Ncb02800 [stack 0]
+set N56e000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -554,7 +554,7 @@ Read {
  xpos 5570
  ypos -333
 }
-set Nc7e2400 [stack 0]
+set Nf231c00 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -596,7 +596,7 @@ Write {
  xpos 5867
  ypos 146
 }
-push $Ncb02800
+push $N56e000
 ColorCorrect {
  saturation 0.8
  name ColorCorrect3
@@ -695,7 +695,7 @@ Read {
  xpos 6779
  ypos -191
 }
-set Nce36800 [stack 0]
+set Nef80000 [stack 0]
 AppendClip {
  inputs 7
  meta_from_first false
@@ -816,7 +816,7 @@ Write {
  xpos 8245
  ypos 202
 }
-push $Nc7e2400
+push $Nf231c00
 ColorCorrect {
  saturation 1.02
  name ColorCorrect6
@@ -845,7 +845,7 @@ Write {
  xpos 6232
  ypos 89
 }
-push $Nce36800
+push $Nef80000
 ColorCorrect {
  saturation 0.9
  name ColorCorrect8
@@ -931,7 +931,7 @@ Read {
  xpos 9402
  ypos 1
 }
-set Ncd28800 [stack 0]
+set Nc11e000 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1083,7 +1083,7 @@ Write {
  xpos 9970
  ypos 353
 }
-push $Ncd28800
+push $Nc11e000
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  resize height
@@ -1297,7 +1297,7 @@ Read {
  xpos 13490
  ypos 76
 }
-set Nc9e3000 [stack 0]
+set Nf542800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1369,7 +1369,7 @@ Write {
  xpos 13600
  ypos 379
 }
-push $Nc9e3000
+push $Nf542800
 Reformat {
  format "960 540 0 0 960 540 1 cover"
  name Reformat11
@@ -1468,7 +1468,7 @@ Read {
  xpos 14920
  ypos 435
 }
-set Naffa000 [stack 0]
+set Nf1a7800 [stack 0]
 Read {
  inputs 0
  file_type png
@@ -1528,7 +1528,7 @@ Write {
  xpos 15140
  ypos 730
 }
-push $Naffa000
+push $Nf1a7800
 Crop {
  box {200 0 2360 1440}
  reformat true
@@ -1658,7 +1658,7 @@ Read {
  xpos 18250
  ypos 491
 }
-set Nc872c00 [stack 0]
+set Nba00000 [stack 0]
 Transform {
  scale 1.4
  center {4096 2304}
@@ -1699,7 +1699,7 @@ Read {
  xpos 17736
  ypos 488
 }
-set Nc8ae400 [stack 0]
+set Nba01800 [stack 0]
 Transform {
  scale 0.9
  center {2363 1536}
@@ -1726,7 +1726,7 @@ Premult {
  xpos 17736
  ypos 726
 }
-push $Nc8ae400
+push $Nba01800
 Grade {
  channels alpha
  add 1
@@ -1741,7 +1741,7 @@ Merge2 {
  xpos 17846
  ypos 726
 }
-set Nc8afc00 [stack 0]
+set Nba3b000 [stack 0]
 Transform {
  scale 0.95
  center {2363 1536}
@@ -1761,7 +1761,7 @@ Premult {
  xpos 17733
  ypos 921
 }
-push $Nc8afc00
+push $Nba3b000
 Merge2 {
  inputs 2
  name Merge5
@@ -1808,7 +1808,7 @@ Read {
  xpos 15567
  ypos 440
 }
-set Nc93a400 [stack 0]
+set Nba83800 [stack 0]
 Transform {
  scale 1.07
  center {1024 778}
@@ -1907,7 +1907,7 @@ Read {
  xpos 15457
  ypos 440
 }
-push $Nc93a400
+push $Nba83800
 AppendClip {
  inputs 7
  meta_from_first false
@@ -1939,7 +1939,7 @@ Write {
  xpos 16117
  ypos 662
 }
-push $Nc872c00
+push $Nba00000
 Write {
  file G:/repos/sydoryk.com/src/assets/projects/Sofas/Sofas_different_mozaic.jpg
  file_type jpeg
@@ -1993,12 +1993,14 @@ Crop {
  xpos 18739
  ypos 809
 }
-set Nc74c000 [stack 0]
+set Nb717000 [stack 0]
 Write {
  file G:/repos/sydoryk.com/src/assets/portrait.jpg
  file_type jpeg
  checkHashOnRead false
  version 2
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -2006,7 +2008,7 @@ Write {
  xpos 18739
  ypos 833
 }
-push $Nc74c000
+push $Nb717000
 Write {
  file G:/repos/sydoryk.com/public/assets/author.jpg
  file_type jpeg
@@ -2114,47 +2116,6 @@ Merge2 {
 Read {
  inputs 0
  file_type png
- file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
- format "1528 2308 0 0 1528 2308 1 "
- origset true
- name Read9
- xpos 4634
- ypos -397
-}
-Read {
- inputs 0
- file_type png
- file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/016-SheetingAssemblyProcessLine_v004_angle2_4k.png
- format "4096 4096 0 0 4096 4096 1 square_4k"
- origset true
- name Read102
- xpos 19760
- ypos 747
-}
-Crop {
- box {0 812 4096 3218}
- reformat true
- crop false
- name Crop13
- xpos 19760
- ypos 843
-}
-set Ndbe8b400 [stack 0]
-Viewer {
- inputs 2
- frame_range 1-19
- colour_sample_bbox {0.5874999762 0.3979166746 0.5895833373 0.400000006}
- samplepoints {{0.5874999762 0.3979166746}
-   }
- viewerProcess "sRGB (ACES)"
- monitorOutNDISenderName "Nuke - prepare_images_v001 - Viewer1"
- name Viewer1
- xpos -40
- ypos -9
-}
-Read {
- inputs 0
- file_type png
  file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/001-CustomHydraulicRollboxAssembly_v003_angle4_4k.png
  format "4096 4096 0 0 4096 4096 1 square_4k"
  origset true
@@ -2176,6 +2137,8 @@ Write {
  _jpeg_quality 0.99
  checkHashOnRead false
  version 1
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -2207,6 +2170,8 @@ Write {
  _jpeg_quality 0.99
  checkHashOnRead false
  version 1
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -2238,6 +2203,8 @@ Write {
  _jpeg_quality 0.99
  checkHashOnRead false
  version 1
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
@@ -2245,17 +2212,233 @@ Write {
  xpos 19650
  ypos 966
 }
-push $Ndbe8b400
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/01_FREELANCE/01_PORTFOLIO/examples/016-SheetingAssemblyProcessLine_v004_angle2_4k.png
+ format "4096 4096 0 0 4096 4096 1 square_4k"
+ origset true
+ name Read102
+ xpos 19760
+ ypos 747
+}
+Crop {
+ box {0 812 4096 3218}
+ reformat true
+ crop false
+ name Crop13
+ xpos 19760
+ ypos 843
+}
 Write {
  file G:/repos/sydoryk.com/src/assets/projects/IndustrialEquipment/CAD_07.jpg
  file_type jpeg
  _jpeg_quality 0.99
  checkHashOnRead false
  version 1
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  ocioColorspace scene_linear
  display ACES
  view sRGB
  name Write33
  xpos 19760
  ypos 972
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/00_LIBRARY/Screenshots/2026-01/zen_ZF4MdhLKHs.png
+ format "1377 1220 0 0 1377 1220 1 "
+ origset true
+ name Read104
+ xpos 113
+ ypos 31
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/00_LIBRARY/Screenshots/2026-01/zen_ZF4MdhLKHs.png
+ format "1377 1220 0 0 1377 1220 1 "
+ origset true
+ name Read105
+ xpos 20089
+ ypos 692
+}
+Transform {
+ scale 0.75
+ center {688.5 610}
+ name Transform13
+ xpos 20089
+ ypos 788
+}
+Reformat {
+ format "1080 720 0 0 1080 720 1 coverNew"
+ name Reformat18
+ xpos 20089
+ ypos 812
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.03960030153 0.03947064653 0.04231375828 1}
+ format "1080 720 0 0 1080 720 1 coverNew"
+ name Constant2
+ xpos 20238
+ ypos 670
+}
+Merge2 {
+ inputs 2
+ name Merge7
+ xpos 20089
+ ypos 894
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/micConfig.jpg
+ file_type jpeg
+ checkHashOnRead false
+ version 1
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write34
+ xpos 20089
+ ypos 918
+}
+Read {
+ inputs 0
+ file_type png
+ file Z:/10_Projects/OUTPUT/ATTRAKTION/PolarDream/Images/Poster/Preview/poster02_preview.png
+ format "1528 2308 0 0 1528 2308 1 "
+ origset true
+ name Read9
+ xpos 4634
+ ypos -397
+}
+Read {
+ inputs 0
+ file_type png
+ file G:/projects/00_LIBRARY/Screenshots/2026-01/zen_N1Bmdu2h92.png
+ format "2060 1346 0 0 2060 1346 1 "
+ origset true
+ name Read106
+ xpos 20678
+ ypos 694
+}
+Transform {
+ translate {-130 -111}
+ scale 1.27
+ center {1030 673}
+ name Transform14
+ xpos 20678
+ ypos 790
+}
+Reformat {
+ format "1080 720 0 0 1080 720 1 coverNew"
+ name Reformat19
+ xpos 20678
+ ypos 859
+}
+Roto {
+ output alpha
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44070000 x43b40000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px x40a00000
+        {0 xbf800000}
+        {xc2080000 x441e4000}
+        {0 1}
+        {0 0}
+        {x43870000 x44140000}
+        {0 0}
+        {xc0000000 x40400000}
+        {x432c0000 x43ea0000}
+        {x40000000 xc0400000}
+        {0 0}
+        {xc2d40000 x43e58000}
+        {0 0}}}     idem}
+     {tx x40a00000 x42970000 x44068000}
+     {a a 0 osw x41200000 osf 0 str 1 spx x44070000 spy x43b40000 sb 1 ltn x40a00000 ltm x40a00000 tt x40800000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {540 360}
+ color {1 1 1 0}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ lifetime_start 5
+ lifetime_end 5
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto1
+ xpos 20678
+ ypos 883
+}
+Premult {
+ name Premult3
+ xpos 20678
+ ypos 919
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.03960030153 0.03947064653 0.04231375828 1}
+ format "1080 720 0 0 1080 720 1 coverNew"
+ name Constant3
+ xpos 20924
+ ypos 878
+}
+Merge2 {
+ inputs 2
+ name Merge8
+ xpos 20678
+ ypos 1011
+}
+Write {
+ file G:/repos/sydoryk.com/public/assets/cover/headphoneConfig.jpg
+ file_type jpeg
+ checkHashOnRead false
+ version 2
+ ocioColorspace scene_linear
+ display ACES
+ view sRGB
+ name Write35
+ xpos 20678
+ ypos 1035
+}
+Viewer {
+ inputs 2
+ frame_range 1-19
+ colour_sample_bbox {0.2759259343 0.1833333373 0.277777791 0.1851851791}
+ samplepoints {{0.5874999762 0.3979166746}
+   }
+ viewerProcess "sRGB (ACES)"
+ monitorOutNDISenderName "Nuke - prepare_images_v001 - Viewer1"
+ name Viewer1
+ xpos -40
+ ypos -9
 }

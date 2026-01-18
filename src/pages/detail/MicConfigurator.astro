@@ -1,13 +1,11 @@
 ---
 import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 ---
-
 <ConfiguratorLayout
     title="Microphone Configurator"
     description="Interactive 3D Microphone Configurator with Multipass Compositing"
-    keywords="Microphone, Product Visualization, Configurator, WebGL, Canvas"
->
-    
+    keywords="Microphone, Product Visualization, Configurator, WebGL, Canvas"    
+    >
     <div id="rotate-hint">
         <span class="mouse-icon">🖱️</span>
         <span class="hint-text">Click & Drag to Rotate</span>
@@ -48,6 +46,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         </div>
     </Fragment>
 
+
     <div class="canvas-wrapper">
         <canvas id="configCanvas" width="1200" height="1200"></canvas>
         <div id="loader">Loading...</div>
@@ -59,10 +58,34 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 		</div>
 		<div id="progress-text">Loading Assets... 0/0</div>
 	</div>
+    <Fragment slot="config-description">
+        <div class="content">
+            <div class="row desc">
+                <div class="col-1a">
+                    <p class="post-desc">
+                        <p>
+                            I have created renders with different variations, however it's hard to preview all possible variations. So I decided that best way is to have interactive preview.
+                        </p>
+                        <p>
+                            On this webpage, final image is created from multiple layers(base frame, glow mesh, glow lights). Each layer has separate files for each required variant(materials, glow color and angle).
 
+                        </p>
+                        <p>
+                            In total there are 420 unique images encoded into webp format. 
+                            All images in total take up less that 14mb of space. 
+                            When you open page for the first time, initial images are loaded and displayed, and all other images are queued to load into memory for smooth preview.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </Fragment>
 </ConfiguratorLayout>
 
+
 <style>
+    #content{
+
+    }
 	/* Canvas & Layout */
     .canvas-wrapper {
         position: relative;
@@ -283,6 +306,27 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         frameColor: 'black',
         glow: 'off',        
     };
+    // 🟢 NEW: Auto-Spin Variables
+    let autoSpinTimer = null;
+    const SPIN_SPEED = 50; // ms per frame (increase to slow down)
+
+    // 🟢 NEW: Auto-Spin Functions
+    function startAutoSpin() {
+        // Only spin if we are in 360 mode and not already spinning
+        if (state.view !== 'rotation' || autoSpinTimer) return;
+        
+        autoSpinTimer = setInterval(() => {
+            state.angle = (state.angle + 1) % CONFIG.angles;
+            render();
+        }, SPIN_SPEED);
+    }
+
+    function stopAutoSpin() {
+        if (autoSpinTimer) {
+            clearInterval(autoSpinTimer);
+            autoSpinTimer = null;
+        }
+    }
 
 	// 🔴 ADD THIS LINE HERE
     let rainbowAnimationId = null;
@@ -377,7 +421,7 @@ function render() {
             loadImage(urlNormal, () => {
                 // Only re-render if we aren't currently animating
                 // (If animating, the loop handles the re-render automatically)
-                if (!rainbowAnimationId && getAssetPath('normal', state.angle) === urlNormal) render();
+                if (!rainbowAnimationId && !autoSpinTimer && getAssetPath('normal', state.angle) === urlNormal) render();
             });
         }
 
@@ -397,7 +441,7 @@ function render() {
             const urlMesh = getAssetPath('glowMesh', state.angle);
             ctx.globalCompositeOperation = 'source-over'; 
             if (imageCache[urlMesh]?.complete) ctx.drawImage(imageCache[urlMesh], 0, 0);
-            else loadImage(urlMesh, () => { if(!rainbowAnimationId) render(); });
+            else loadImage(urlMesh, () => { if(!rainbowAnimationId && !autoSpinTimer) render(); });
         }
 
         // --- LAYER 3: GLOW LIGHT ---
@@ -405,7 +449,7 @@ function render() {
             const urlLight = getAssetPath('glowLight', state.angle);
             ctx.globalCompositeOperation = 'screen'; 
             if (imageCache[urlLight]?.complete) ctx.drawImage(imageCache[urlLight], 0, 0);
-            else loadImage(urlLight, () => { if(!rainbowAnimationId) render(); });
+            else loadImage(urlLight, () => { if(!rainbowAnimationId && !autoSpinTimer) render(); });
         }
 
         // Reset
@@ -413,9 +457,9 @@ function render() {
         
         // --- ANIMATION LOOP ---
         // If rainbow is active, request the next frame immediately
-        if (state.glow === 'rainbow') {
-            rainbowAnimationId = requestAnimationFrame(render);
-        }
+        //if (state.glow === 'rainbow') {
+        //    rainbowAnimationId = requestAnimationFrame(render);
+        //}
     }
 
     // --- 4. INTERACTION HANDLERS ---
@@ -446,7 +490,7 @@ function render() {
 	function handleDragStart(x) {
         // 🔒 LOCK: Only allow drag if in 360 mode
         if (VIEWS[state.view].type !== '360') return;
-
+        stopAutoSpin();
         isDragging = true;
         startX = x;
         if(hint) hint.classList.add('fade-out');

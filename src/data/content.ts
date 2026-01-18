@@ -170,6 +170,7 @@ export const filterItems: FilterItem[] = [
 	{ content: "CGI Movies", dataGroup: "movies" },
 	{ content: "Product Animation", dataGroup: "animation" },
 	{ content: "Product Stills", dataGroup: "still" },
+	{ content: "Configurator", dataGroup: "configurator" },
 ];
 
 

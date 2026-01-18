@@ -120,6 +120,23 @@ img{
 		const colors = ["black", "gray", "white", "orange", "blue", "green", "red", "purple", "gold"];
 		const angles = [...Array(36).keys()].map(i => String(i));
 		const assetsPath = "/assets/projects/Headphones/";
+		// NEW: Auto-spin variables
+		let autoSpinInterval = null;
+		const SPIN_SPEED = 50; // Time in ms between frames (Lower = faster, Higher = slower)
+
+		function startAutoSpin() {
+			if (autoSpinInterval) return; // Prevent multiple intervals
+			autoSpinInterval = setInterval(() => {
+				parts.angleIndex = (parts.angleIndex + 1) % 36; // Increment angle
+				renderHeadphones();
+			}, SPIN_SPEED);
+		}
+		function stopAutoSpin() {
+			if (autoSpinInterval) {
+				clearInterval(autoSpinInterval);
+				autoSpinInterval = null;
+			}
+		}
 
 		function preloadShadowImages(callback) {
 			let loadedShadow = 0;
@@ -239,6 +256,7 @@ img{
 		let startX = 0;
 
 		document.addEventListener("mousedown", (e) => {
+			stopAutoSpin()
 			isDragging = true;
 			startX = e.clientX;
 		});
@@ -266,6 +284,7 @@ img{
 
 		let touchStartX = 0;
 		document.addEventListener("touchstart", (e) => {
+		stopAutoSpin()
 		touchStartX = e.touches[0].clientX;
 		});
 
