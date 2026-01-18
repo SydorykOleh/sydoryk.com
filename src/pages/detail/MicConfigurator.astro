@@ -456,10 +456,16 @@ function render() {
         ctx.filter = 'none';
         
         // --- ANIMATION LOOP ---
+        // Clear any existing animation frame to prevent "doubling" speed
+        if (rainbowAnimationId) {
+            cancelAnimationFrame(rainbowAnimationId);
+            rainbowAnimationId = null;
+        }
+
         // If rainbow is active, request the next frame immediately
-        //if (state.glow === 'rainbow') {
-        //    rainbowAnimationId = requestAnimationFrame(render);
-        //}
+        if (state.glow === 'rainbow') {
+            rainbowAnimationId = requestAnimationFrame(render);
+        }
     }
 
     // --- 4. INTERACTION HANDLERS ---
@@ -467,11 +473,18 @@ function render() {
     // B. Color/Glow Swatches
     document.querySelectorAll('.swatch').forEach(btn => {
         btn.addEventListener('click', () => {
-            const type = btn.dataset.type; // 'color' or 'glow'
+            const type = btn.dataset.type;
             const value = btn.dataset.value;
 
             if(type === 'color') state.frameColor = value;
-            if(type === 'glow') state.glow = value;
+            if(type === 'glow') {
+                state.glow = value;
+                // Stop animation if switching AWAY from rainbow
+                if (value !== 'rainbow' && rainbowAnimationId) {
+                    cancelAnimationFrame(rainbowAnimationId);
+                    rainbowAnimationId = null;
+                }
+            }
 
             btn.parentElement.querySelectorAll('.swatch').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
