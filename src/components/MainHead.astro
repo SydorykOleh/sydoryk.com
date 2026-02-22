@@ -22,23 +22,14 @@ const { title, description,keywords } = Astro.props;
 <title>{title}</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 <script is:inline>
-	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
-		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('theme-dark');
+    const getThemePreference = () => {
+        return 'dark'; // Force return dark regardless of settings
+    };
+    
+    const isDark = true; // Always true
+    document.documentElement.classList.add('theme-dark');
 
-	if (typeof localStorage !== 'undefined') {
-		// Watch the document element and persist user preference when it changes.
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('theme-dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		});
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-	}
+    // You can delete the MutationObserver section entirely as well
 </script>
 
 <Analytics />
