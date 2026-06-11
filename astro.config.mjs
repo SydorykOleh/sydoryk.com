@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { VitePWA } from 'vite-plugin-pwa';
 
-const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://blog-template.606design.art/';
+const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://sydoryk.com/';
 export default defineConfig({
   markdown: {
     shikiConfig: {
