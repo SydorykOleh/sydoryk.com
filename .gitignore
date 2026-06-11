@@ -27,3 +27,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 yarn.lock
+
+# Custom document folders
+.skills/
+docs/
