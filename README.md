@@ -3,7 +3,7 @@
 Welcome to the repository for my personal portfolio website, available at [sydoryk.com](https://sydoryk.com).
 
 ## About Me
-I am a **3D Artist transitioning into Software Engineering**. This website serves as my primary portfolio, showcasing both my creative background in 3D graphics (Houdini, Unreal Engine) and my technical skills in web and software development.
+I am a **3D Artist with software engineering interest**. This website serves as my primary portfolio, showcasing both my creative background in 3D graphics (Houdini, Unreal Engine) and my technical skills in web and software development.
 
 ## Tech Stack
 This site is built with modern web technologies:
