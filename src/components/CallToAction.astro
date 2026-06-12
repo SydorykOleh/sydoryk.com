@@ -2,12 +2,13 @@
 interface Props {
 	href?: string;
 	target?: string;
+	[key: string]: any;
 }
 
-const { href="javascript:(void)",target="self" } = Astro.props;
+const { href="javascript:(void)",target="self", ...rest } = Astro.props;
 ---
 
-<a href={href} target={target} class="post-btn"><slot /></a>
+<a href={href} target={target} class="post-btn" {...rest}><slot /></a>
 
 <style>
 
