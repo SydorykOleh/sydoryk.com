@@ -8,11 +8,13 @@ date: "2025-10-20"
 keywords: "Apparel, Product Visualization"
 ---
 
-**Project Overview:** The client requested high-quality, seamless turnaround animations of rotating apparel for their e-commerce storefront. The garments were designed and simulated in Marvelous Designer, after which I imported the assets into Houdini to build a professional presentation pipeline.
+### Project Overview
+The client requested high-quality, seamless turnaround animations of rotating apparel for their e-commerce storefront. The garments were designed and simulated in Marvelous Designer, after which I imported the assets into Houdini to build a professional presentation pipeline.
 
-**Technical Execution:** My workflow in Houdini included mesh cleanup, custom procedural shading to add micro-level cloth texture details (weave pattern, displacement, roughness variation), and a realistic studio three-point lighting setup. Renders were output using Karma/Mantra, composited in Nuke/Houdini COPs, and batch-converted to optimized web formats using FFmpeg.
+### Technical Execution
+My workflow in Houdini included mesh cleanup, custom procedural shading to add micro-level cloth texture details (weave pattern, displacement, roughness variation), and a realistic studio three-point lighting setup. Renders were output using Karma/Mantra, composited in Nuke/Houdini COPs, and batch-converted to optimized web formats using FFmpeg.
 
-### Project Media
+### Examples
 
 <video width="100%" autoplay loop muted> <source src="/assets/projects/Apparel/cloth_mozaic.mp4" type="video/mp4"> </video>
 

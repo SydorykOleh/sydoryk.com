@@ -35,6 +35,7 @@ const projectsCollection = defineCollection({
 		mark: z.string().optional(),
 		url: z.string().optional(),
 		detail: z.string().optional(),
+		customComponent: z.string().optional(),
 	}),
 });
 

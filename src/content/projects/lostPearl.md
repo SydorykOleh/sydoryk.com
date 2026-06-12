@@ -8,9 +8,10 @@ date: "2018-10-8"
 keywords: "the Legend of the Lost Pearl, CGI Movie"
 ---
 
-**Project Overview:** A signature 3D CGI ride film developed for the Cinesplash theater attraction at Yas Waterworld in Abu Dhabi, delivered in both stereoscopic 3D and standard 2D formats.
+### Project Overview
+A signature 3D CGI ride film developed for the Cinesplash theater attraction at Yas Waterworld in Abu Dhabi, delivered in both stereoscopic 3D and standard 2D formats.
 
-**Technical Execution:**
+### Technical Execution
 * **Pipeline Setup:** Established the global shading, lighting, and compositing pipeline.
 * **Asset Lookdev:** Created custom PBR materials for key character and environment assets.
 * **Shot Delivery:** Lit, rendered, and composited approximately 120 production shots in Nuke.
