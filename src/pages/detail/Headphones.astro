@@ -239,6 +239,25 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     });
     window.addEventListener('mouseup', () => isDragging = false);
 
+    // Touch support for mobile devices
+    canvas.addEventListener('touchstart', e => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        // Do not prevent default to allow page scrolling unless touching canvas
+    }, {passive: true});
+    window.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        const dx = e.touches[0].clientX - startX;
+        if (Math.abs(dx) > 15) {
+            state.angle = (state.angle - Math.sign(-dx) + 36) % 36;
+            startX = e.touches[0].clientX;
+            render();
+            const hint = document.getElementById('rotate-hint');
+            if (hint) hint.style.opacity = '0';
+        }
+    }, {passive: true});
+    window.addEventListener('touchend', () => isDragging = false);
+
     // Smart Background Preloader
     function startPreload() {
         const parts = ['metal', 'earpads', 'headband'];
