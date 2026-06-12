@@ -62,19 +62,17 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         <div class="content">
             <div class="row desc">
                 <div class="col-1a">
-                    <p class="post-desc">
+                    <div class="post-desc">
                         <p>
-                            I have created renders with different variations, however it's hard to preview all possible variations. So I decided that best way is to have interactive preview.
+                            While rendering multiple static look development variations is common, showcasing all possible material and lighting combinations in a flat gallery can be limiting. To solve this, I designed and implemented this interactive real-time 3D product configurator.
                         </p>
                         <p>
-                            On this webpage, final image is created from multiple layers(base frame, glow mesh, glow lights). Each layer has separate files for each required variant(materials, glow color and angle).
-
+                            The interface operates by dynamically compositing multiple visual layers—including the base metallic frame, emissive glow meshes, and active lighting states—at runtime. Each layer is broken down into separate optimized files mapped by camera angles and material variations.
                         </p>
                         <p>
-                            In total there are 420 unique images encoded into webp format. 
-                            All images in total take up less that 14mb of space. 
-                            When you open page for the first time, initial images are loaded and displayed, and all other images are queued to load into memory for smooth preview.
-                    </p>
+                            To ensure high performance and smooth loading times, the system encodes all 420 unique render variations into highly compressed WebP files, totaling under 14MB. When a user first enters the page, the initial hero assets load immediately while the remaining state files are pre-cached in memory in the background, allowing latency-free interactive customization.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

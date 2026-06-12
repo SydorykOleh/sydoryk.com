@@ -77,18 +77,17 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         <div class="content">
             <div class="row desc">
                 <div class="col-1a">
-                    <p class="post-desc">
+                    <div class="post-desc">
                         <p>
-                            I have created renders with different variations, however it's hard to preview all possible variations. So I decided that best way is to have interactive preview.
+                            To overcome the constraints of static 2D product sheets and catalog renders, I built this interactive real-time product configurator to let clients preview any possible combination of materials and colors.
                         </p>
                         <p>
-                            On this webpage, final image is created from multiple layers(frame, earpads, headpad). Each layer has separate files for each required variant(color and angle).
+                            The customization engine works by dynamically overlaying and compositing multi-layer assets—including separate renders for the metal frame, earpads, and headpad—directly in the browser. Each layer corresponds to a specific material type, color tone, and camera angle.
                         </p>
                         <p>
-                            In total there are 1008 unique images encoded into webp format. 
-                            All images in total take up less that 50mb of space. 
-                            When you open page for the first time, initial images are loaded and displayed, and all other images are queued to load into memory for smooth preview.
-                    </p>
+                            The system processes and packages 1,008 unique render states into optimized WebP images, compressing the entire asset bundle to under 50MB. On load, the core imagery is displayed immediately, while a background pre-caching pipeline loads the remaining variants into active memory to enable responsive, fluid rotations and style switching.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

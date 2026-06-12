@@ -23,7 +23,23 @@ const proposalsCollection = defineCollection({
 		}),
 });
 
+const projectsCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		desc: z.string().optional(),
+		cover: z.string().optional(),
+		category: z.string().optional(),
+		tag: z.string().optional(),
+		date: z.coerce.date().optional(),
+		mark: z.string().optional(),
+		url: z.string().optional(),
+		detail: z.string().optional(),
+	}),
+});
+
 export const collections = {
 	'blog': blogCollection,
 	'proposals': proposalsCollection,
+	'projects': projectsCollection,
 };
