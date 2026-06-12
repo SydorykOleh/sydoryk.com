@@ -16,7 +16,7 @@ interface Nav {
 
 // Defining navigation items
 export const nav: Nav = {
-	avatar:'/assets/author.jpg',
+	avatar:'/assets/author.webp',
     items: [
         { label: 'Portfolio', href: '/', target: '_self' }, // target is '_blank' to open a new link
         //{ label: 'Work', href: '/project', target: '_self' },
