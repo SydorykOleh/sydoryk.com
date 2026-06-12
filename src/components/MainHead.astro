@@ -1,5 +1,10 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Analytics from '../components/functions/Analytics.astro';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/noto-sans-sc';
+import '@fontsource/special-elite';
+import '@fontsource-variable/inconsolata';
 import '../styles/layout.scss';
 import '../styles/global.scss';
 interface Props {
@@ -21,6 +26,7 @@ const { title, description,keywords } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+<ClientRouter />
 <script is:inline>
     const getThemePreference = () => {
         return 'dark'; // Force return dark regardless of settings
@@ -29,7 +35,18 @@ const { title, description,keywords } = Astro.props;
     const isDark = true; // Always true
     document.documentElement.classList.add('theme-dark');
 
-    // You can delete the MutationObserver section entirely as well
+    // Ensure all videos play on page transition
+    document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('video').forEach(video => {
+            if (video.hasAttribute('autoplay') || video.autoplay) {
+                video.muted = true;
+                video.loop = true;
+                video.setAttribute('playsinline', '');
+                video.load();
+                video.play().catch(e => console.warn("Autoplay prevented:", e));
+            }
+        });
+    });
 </script>
 
 <Analytics />

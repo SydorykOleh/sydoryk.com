@@ -25,7 +25,7 @@ export const projectItems: ProjectItem[] = [
 		date: "2023-10-15",
     	detail: "/detail/lostPearl",
     	url: "https://www.ricocc.com/todo/",
-    	cover: ['cover/cover-todo.jpg'],
+    	cover: ['cover/cover-todo.webp'],
 		tags: ['WEB', 'UI', 'TODO']
 	},
   {

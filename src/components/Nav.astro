@@ -15,6 +15,9 @@ import NavMobile from "../components/NavMobile.astro";
 					<figure class="avatar">
 						<img class="avatar__img"
 							src={nav.avatar} alt=""
+							width="60"
+							height="60"
+							style="width: 60px; height: 60px; object-fit: cover;"
 							draggable="false">
 					</figure>
 				</a>
@@ -34,7 +37,8 @@ import NavMobile from "../components/NavMobile.astro";
 									'link',
 									{
 										active: Astro.url.pathname === item.href ||
-											(item.href !== '/' && Astro.url.pathname.startsWith(item.href)),
+											(item.href !== '/' && Astro.url.pathname.startsWith(item.href)) ||
+											(item.href === '/' && Astro.url.pathname.startsWith('/detail/')),
 									},
 								]}
 								href={item.href}
@@ -147,6 +151,8 @@ import NavMobile from "../components/NavMobile.astro";
         width: 60px;
         height: 60px;
         border-radius: 50%;
+        margin-top: 12px;
+        margin-bottom: 12px;
     }
 	.avatar__img{
 		display: block;

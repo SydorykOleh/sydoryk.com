@@ -5,6 +5,10 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://sydoryk.com/';
 export default defineConfig({
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   markdown: {
     shikiConfig: {
     theme: "github-dark",

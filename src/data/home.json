@@ -12,7 +12,7 @@
 	},
 	{
 		"id": "2",
-		"cover": "/assets/cover/dave_and_ava.jpg",
+		"cover": "/assets/cover/dave_and_ava.webp",
 		"title": "Dave and Ava",
 		"desc": "Animation series for kids youtube channel",
 		"category": "movies, general", 
@@ -21,7 +21,7 @@
 	},
 	{
 		"id": "3",
-		"cover": "/assets/cover/stormRiders.jpg",
+		"cover": "/assets/cover/stormRiders.webp",
 		"title": "Storm Riders 4D",
 		"desc": "Short 3D Stereo movie",
 		"category": "movies, general",
@@ -30,7 +30,7 @@
 	},
 	{
 		"id": "4",
-		"cover": "/assets/cover/LostPearl.jpg",
+		"cover": "/assets/cover/LostPearl.webp",
 		"title": "the Legend of the Lost Pearl",
 		"desc": "Short 3D Stereo movie for Yas Waterworld in Abu Dhabi",
 		"detail": "/detail/lostPearl/",
@@ -40,7 +40,7 @@
 	},
 	{
 		"id": "5",
-		"cover": "/assets/cover/PolarDream.jpg",
+		"cover": "/assets/cover/PolarDream.webp",
 		"title": "Polar Journey",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/polarDream",
@@ -50,7 +50,7 @@
 	},
 	{
 		"id": "6",
-		"cover": "/assets/cover/Safari.jpg",
+		"cover": "/assets/cover/Safari.webp",
 		"title": "Safari",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/Safari",
@@ -60,7 +60,7 @@
 	},
 	{
 		"id": "7",
-		"cover": "/assets/cover/Dive.jpg",
+		"cover": "/assets/cover/Dive.webp",
 		"title": "Dive",
 		"desc": "Short 3D Stereo / 270° movie",
 		"detail": "/detail/Dive",
@@ -70,7 +70,7 @@
 	},
 	{
 		"id": "8",
-		"cover": "/assets/cover/Danfoss.jpg",
+		"cover": "/assets/cover/Danfoss.webp",
 		"title": "Danfoss",
 		"desc": "Short 270° movie",
 		"detail": "/detail/Danfoss",
@@ -80,7 +80,7 @@
 	},
 	{
 		"id": "9",
-		"cover": "/assets/cover/SunnyBunny.jpg",
+		"cover": "/assets/cover/SunnyBunny.webp",
 		"title": "The Magical Slide",
 		"desc": "Short movie for Cinesplash 5D theater at Sonnentherme",
 		"detail": "/detail/SunnyBunny",
@@ -90,7 +90,7 @@
 	},
 	{
 		"id": "10",
-		"cover": "/assets/cover/Immersium.jpg",
+		"cover": "/assets/cover/Immersium.webp",
 		"title": "Immersium",
 		"desc": "Short 360° movie for IMMERSIUM:WIEN",
 		"detail": "/detail/Immersium",
@@ -100,7 +100,7 @@
 	},
 	{
 		"id": "11",
-		"cover": "/assets/cover/Mars.jpg",
+		"cover": "/assets/cover/Mars.webp",
 		"title": "Mars",
 		"desc": "Short VR / 270° movie",
 		"detail": "/detail/Mars",
@@ -110,7 +110,7 @@
 	},
 	{
 		"id": "12",
-		"cover": "/assets/cover/DinoVR.jpg",
+		"cover": "/assets/cover/DinoVR.webp",
 		"title": "DinoVR",
 		"desc": "Short VR movie",
 		"detail": "/detail/DinoVR",
@@ -120,7 +120,7 @@
 	},
 	{
 		"id": "13",
-		"cover": "/assets/cover/NaturaVision.jpg",
+		"cover": "/assets/cover/NaturaVision.webp",
 		"title": "NaturaVision",
 		"desc": "Short movie for Loro Parque at Tenerife",
 		"detail": "/detail/NaturaVision",
@@ -130,7 +130,7 @@
 	},
 	{
 		"id": "14",
-		"cover": "/assets/cover/Microphone.jpg",
+		"cover": "/assets/cover/Microphone.webp",
 		"title": "Microphone",
 		"desc": "Product Visualization",
 		"detail": "/detail/Microphone",
@@ -150,7 +150,7 @@
 	},
 	{
 		"id": "15",
-		"cover": "/assets/cover/HotSause.jpg",
+		"cover": "/assets/cover/HotSause.webp",
 		"title": "Hot Sause",
 		"desc": "Product Visualization",
 		"detail": "/detail/HotSause",
@@ -190,7 +190,7 @@
 	},
 	{
 		"id": "17",
-		"cover": "/assets/cover/Sofas.jpg",
+		"cover": "/assets/cover/Sofas.webp",
 		"title": "Sofas and chairs",
 		"desc": "Product Visualization",
 		"detail": "/detail/Sofas",
@@ -250,7 +250,7 @@
 	},
 	{
 		"id": "22",
-		"cover": "/assets/cover/IndustrialEquipment.jpg",
+		"cover": "/assets/cover/IndustrialEquipment.webp",
 		"title": "Industrial Equipment",
 		"desc": "Product Visualization",
 		"detail": "/detail/IndustrialEquipment",
@@ -270,7 +270,7 @@
 	},
 	{
 		"id": "24",
-		"cover": "/assets/cover/headphoneConfig.jpg",
+		"cover": "/assets/cover/headphoneConfig.webp",
 		"title": "Configurator Headphones",
 		"desc": "Product Configurator",
 		"detail": "/detail/Headphones",

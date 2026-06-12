@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import DetailPostLayout from '../../layouts/DetailPostLayout.astro';
+import DetailHeader from '../../components/DetailHeader.astro';
+
+// Import custom configurators
+import MicConfigurator from '../../components/configurators/MicConfigurator.astro';
+import Headphones from '../../components/configurators/Headphones.astro';
+import ringInteractive from '../../components/configurators/ringInteractive.astro';
+import SolarPanels from '../../components/configurators/SolarPanels.astro';
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+  return projectEntries.map(entry => {
+    const originalCaseSlug = entry.id.replace(/\.mdx?$/, '');
+    return {
+      params: { slug: originalCaseSlug }, 
+      props: { entry }
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const configurators: Record<string, any> = {
+  'MicConfigurator': MicConfigurator,
+  'Headphones': Headphones,
+  'ringInteractive': ringInteractive,
+  'SolarPanels': SolarPanels
+};
+
+const CustomComponent = entry.data.customComponent ? configurators[entry.data.customComponent] : null;
+---
+{CustomComponent ? (
+  <CustomComponent />
+) : (
+  <DetailPostLayout title={entry.data.title} description={entry.data.desc} keywords={entry.data.keywords}>
+    <div class="post">
+      <main class="post-wrapper">
+        <DetailHeader tag="PROJECT" description="">
+          <h1 class="font-type">{entry.data.title}</h1>
+        </DetailHeader>
+        
+        <section>
+          <div class="content">
+            <div class="row desc">
+              <div class="col-1a">
+                <Content />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </DetailPostLayout>
+)}
+
+<style is:global>
+.post img {
+  border: 1px solid #ececec;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.post .btn {
+  display: flex;
+  gap: 16px;
+}
+.post video {
+  max-width: 100%;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.post h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-0);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.post ul {
+  padding-left: 2em;
+  margin: 1.5rem 0;
+}
+.post ul li {
+  margin: 0.5em 0 .75em;
+  list-style-type: disc;
+}
+.post p {
+  line-height: 1.6;
+  margin-bottom: 0.875em;
+  text-align: left;
+}
+</style>

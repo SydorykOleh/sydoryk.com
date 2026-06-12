@@ -14,7 +14,7 @@ interface Props {
 const { title, description, keywords } = Astro.props;
 ---
 
-<html>
+<html lang="en" class="theme-dark">
     <head>
         <MainHead title={title} description={description} keywords={keywords} />
     </head>
@@ -24,7 +24,14 @@ const { title, description, keywords } = Astro.props;
         <main class="configurator-main">
             <div class="configurator-wrapper">
                 <div class="controls-sidebar">
-                    <slot name="controls" />
+                    <button class="mobile-drawer-toggle" id="drawerToggle" aria-label="Toggle customization options">
+                        <span class="handle-bar"></span>
+                        <span class="toggle-text">Customize Product</span>
+                        <span class="toggle-arrow">▲</span>
+                    </button>
+                    <div class="drawer-inner-content">
+                        <slot name="controls" />
+                    </div>
                 </div>
                 <div class="canvas-container">
                     <slot />
@@ -88,25 +95,133 @@ const { title, description, keywords } = Astro.props;
                 padding-top: 2rem;
             }
 
+            .mobile-drawer-toggle {
+                display: none;
+            }
+
             /* Mobile Responsiveness */
             @media (max-width: 768px) {
                 .configurator-wrapper {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    padding: 1rem;
+                    padding-bottom: 80px; /* Space for collapsed drawer */
+                }
+
+                .canvas-container {
+                    width: 100%;
+                    max-width: 100vw;
+                    margin-bottom: 1.5rem;
+                }
+
+                .canvas-wrapper {
+                    width: 100% !important;
+                    height: auto !important;
+                    max-width: 100% !important;
+                    aspect-ratio: 1 / 1 !important;
+                }
+
+                .canvas-wrapper canvas {
+                    width: 100% !important;
+                    height: auto !important;
+                    max-width: 100% !important;
+                    aspect-ratio: 1 / 1 !important;
+                }
+
+                .mobile-drawer-toggle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    color: var(--color-100);
+                    padding: 15px 0 10px;
+                    cursor: pointer;
+                    font-family: var(--font-brand);
+                    font-weight: 600;
+                    font-size: 1rem;
+                    position: relative;
+                    margin-top: 10px;
+
+                    .handle-bar {
+                        display: block;
+                        width: 40px;
+                        height: 4px;
+                        background: var(--color-300);
+                        opacity: 0.5;
+                        border-radius: 2px;
+                        position: absolute;
+                        top: 2px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    .toggle-arrow {
+                        display: inline-block;
+                        transition: transform 0.3s ease;
+                        font-size: 0.8rem;
+                    }
                 }
 
                 .controls-sidebar {
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: center;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(var(--color-999-rgb), 0.95);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    border-top: 1px solid var(--border);
+                    border-radius: 20px 20px 0 0;
+                    padding: 0 1.5rem 1.5rem 1.5rem;
+                    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+                    z-index: 10000;
                     margin-top: 0;
+                    max-height: 70vh;
+                    overflow-y: auto;
+                    transform: translateY(calc(100% - 55px));
+                    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                    box-sizing: border-box;
+
+                    &::-webkit-scrollbar {
+                        width: 4px;
+                    }
+                }
+
+                .controls-sidebar.is-open {
+                    transform: translateY(0);
+                }
+
+                .controls-sidebar.is-open .toggle-arrow {
+                    transform: rotate(180deg);
+                }
+
+                .drawer-inner-content {
+                    width: 100%;
                 }
 
                 .config-description {
                     width: 100%;
+                    padding-top: 1rem;
                 }
             }
         </style>
+
+        <script>
+            function initDrawer() {
+                const toggle = document.getElementById('drawerToggle');
+                const sidebar = document.querySelector('.controls-sidebar');
+                if (toggle && sidebar) {
+                    toggle.addEventListener('click', () => {
+                        sidebar.classList.toggle('is-open');
+                    });
+                }
+            }
+
+            // Run on initial load
+            initDrawer();
+        </script>
     </body>
 </html>
