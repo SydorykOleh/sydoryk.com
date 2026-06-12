@@ -1,0 +1,151 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+	company?: string | undefined;
+	role?: string | undefined;
+}
+
+const { title, description, company, role } = Astro.props;
+---
+<html lang="en">
+	<head>
+		<MainHead title={title} description={description} />
+	</head>
+	<body class="_body">
+		<div class="">
+			<Nav transition:persist/>
+			<div class="section post">
+				<div class="container">
+					<main class="post-wrapper article">
+						<div class="section-header text-center">
+							<div class="title-tag">
+								Job Proposal
+							</div>
+							<h1 class="title">
+								{title}
+							</h1>
+							{company && role && (
+								<p class="subtitle" style="color: var(--color-500); margin-top: 0.5rem; font-size: 1.1rem;">
+									Applying for <strong>{role}</strong> at <strong>{company}</strong>
+								</p>
+							)}
+							<div style="margin-top: 2rem;">
+								<CallToAction href="/assets/resume_SydorykOleh.pdf" target="_blank" download="SydorykOleh_Resume.pdf">
+									Download Resume
+								</CallToAction>
+							</div>
+						</div>
+						
+						<section class="proposal-content">
+							<slot />
+						</section>
+					</main>
+				</div>
+			</div>
+			<Footer />
+		</div>
+
+		<style is:global lang="scss">
+			:root {
+				--bg-svg-blend-mode: overlay;
+				--bg-blend-mode: darken;
+			}
+			:root.theme-dark {
+				--bg-svg-blend-mode: darken;
+				--bg-blend-mode: lighten;
+			}
+			
+			.post {
+				display: block;
+				max-width: 800px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			
+			.section-header {
+				margin: 3rem 0 2rem;
+				border-bottom: 1px dashed var(--color-700);
+				padding-bottom: 2.5rem;
+			}
+			
+			.title-tag {
+				display: inline-block;
+				font-size: 13px;
+				line-height: 1;
+				margin: 0 auto 16px;
+				border: 1px solid var(--color-700);
+				border-radius: 36px;
+				padding: 8px 22px 4px;
+				color: var(--color-300);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			
+			.title {
+				font-size: 2.25rem;
+				font-weight: bold;
+				color: var(--color-100);
+				line-height: 1.3;
+				margin: 0.5rem auto;
+			}
+			
+			.proposal-content {
+				position: relative;
+				color: var(--color-200);
+				margin: 3rem 0 4rem;
+				font-size: 1.1rem;
+				line-height: 1.8;
+			}
+			
+			.proposal-content > * + * {
+				margin-top: 1.5rem;
+			}
+			
+			.proposal-content h1,
+			.proposal-content h2,
+			.proposal-content h3 {
+				margin: 2em 0 1em;
+				color: var(--color-100);
+			}
+
+			.proposal-content h1 {
+				font-size: 1.75rem;
+			}
+
+			.proposal-content h2 {
+				font-size: 1.5rem;
+			}
+
+			.proposal-content h3 {
+				font-size: 1.25rem;
+			}
+			
+			.proposal-content p {
+				margin: 16px 0;
+			}
+			
+			.proposal-content a {
+				color: var(--color-blue);
+			}
+			
+			.proposal-content a:hover {
+				text-decoration: underline;
+			}
+
+			.proposal-content ul {
+				padding-left: 2em;
+				margin: 1.5em 0;
+			}
+
+			.proposal-content li {
+				margin: 0.5em 0;
+			}
+		</style>
+	</body>
+</html>

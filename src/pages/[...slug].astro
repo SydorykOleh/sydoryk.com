@@ -1,0 +1,28 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import ProposalLayout from '../layouts/ProposalLayout.astro';
+
+interface Props {
+	entry: CollectionEntry<'proposals'>;
+}
+
+export async function getStaticPaths() {
+	const proposals = await getCollection('proposals');
+	return proposals.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<ProposalLayout 
+	title={entry.data.title} 
+	company={entry.data.company}
+	role={entry.data.role}
+	description={`Job Proposal for ${entry.data.company}`}
+>
+	<Content />
+</ProposalLayout>
