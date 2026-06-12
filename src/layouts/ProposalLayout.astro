@@ -35,16 +35,17 @@ const { title, description, company, role } = Astro.props;
 									Applying for <strong>{role}</strong> at <strong>{company}</strong>
 								</p>
 							)}
-							<div style="margin-top: 2rem;">
-								<CallToAction href="/assets/resume_SydorykOleh.pdf" target="_blank" download="SydorykOleh_Resume.pdf">
-									Download Resume
-								</CallToAction>
-							</div>
 						</div>
 						
 						<section class="proposal-content">
 							<slot />
 						</section>
+						
+						<div class="text-center" style="margin-top: 3rem; margin-bottom: 2rem;">
+							<CallToAction href="/assets/resume_SydorykOleh.pdf" target="_blank" download="SydorykOleh_Resume.pdf">
+								Download Resume
+							</CallToAction>
+						</div>
 					</main>
 				</div>
 			</div>
