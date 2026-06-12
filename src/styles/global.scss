@@ -309,8 +309,16 @@ p {
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: none;
+    color: var(--color-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(73, 154, 213, 0.5);
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--color-primary-light);
+    text-decoration-color: var(--color-primary-light);
 }
 
 h1,

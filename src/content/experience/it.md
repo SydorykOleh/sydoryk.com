@@ -1,33 +1,34 @@
 ---
-title: "IT"
+title: "IT & Systems Specialist"
 ---
 
-Adaptable IT & Technical Professional with a strong background in automation scripting, network storage integration, local and cloud system administration, and AI tools integration. Experienced in Git workflow management, Python programming, and hardware/software troubleshooting.
+Adaptable IT and Systems Engineer specializing in infrastructure automation, robust network storage, and local systems administration. Adept at bridging traditional IT support with modern DevOps practices—leveraging Python automation, GitOps workflows, Docker containerization, and advanced AI integration to maximize operational efficiency and system reliability.
 
 ### IT Support & Systems Management
 
-* Set up, configured, and managed on-premise and cloud-based render farms, optimizing resource allocation, job flow, and troubleshooting various issues. (2016–2024)
-* Conducted hardware/software diagnostics, OS maintenance (Windows and Linux), and software deployment on artist workstations.
+* **Render Farm Administration:** Architected, configured, and managed multi-node on-premise render farms (2016–2024); optimized resource scheduling and job queues to eliminate processing bottlenecks and ensure 24/7 pipeline uptime.
+* **Workstation Lifecycle Management:** Directed hardware/software diagnostics, OS provisioning (Windows/Linux), and automated software deployment across high-performance artist workstations, minimizing creative downtime.
 
-### Self-Hosting & Homelab
+### Infrastructure & DevSecOps (Homelab & Production)
 
-* Designed and maintained a personal server infrastructure utilizing Docker and GitOps workflows to deploy self-hosted services, successfully replacing the Google ecosystem.
-* Configured Cloudflare Tunnels (Zero Trust) for secure remote access, implemented a robust 3-2-1 backup strategy for network-attached SSD storage.
-* Deployed Uptime Kuma for continuous system monitoring and automated alerting.
+* **GitOps & Containerization:** Designed and maintained a highly available personal server infrastructure using Docker and GitOps workflows, successfully migrating core services away from proprietary cloud ecosystems to self-hosted alternatives.
+* **Security & Network Storage:** Engineered secure, zero-trust remote access utilizing Cloudflare Tunnels; implemented a strict 3-2-1 backup strategy for network-attached storage.
+* **Observability:** Deployed Uptime Kuma to establish continuous infrastructure monitoring, configuring real-time automated alerting to proactively mitigate system degradation.
 
 ### Programming & Automation
 
-* Automated directory synchronization and file validation pipelines using Python, allowing seamless data transfers across network storage systems.
-* Developed Python scripts to batch-update files, validate path references, and handle large asset libraries across project paths.
-* Created robust Git-based version control workflows and automated testing procedures to ensure repository cleanliness and prevent regression errors.
+* **Data Pipelines:** Engineered custom Python automation pipelines for real-time directory synchronization and cross-network file validation, ensuring data integrity across distributed storage systems.
+* **Asset Management Automation:** Developed Python utilities to batch-process files, programmatically validate legacy path references, and manage large-scale asset libraries across complex project directories.
+* **Version Control & CI/CD:** Established Git-based version control workflows, with proper usage of Gihub Secrets to keep secrets safe.
 
-### AI Technologies & Integration
+### AI Engineering & Integration
 
-* Integrated and experimented with frontier LLMs (Claude, Antigravity AI) and local LLMs (Deepseek, Qwen) for coding assistance and workflow automation, including designing custom AI skills.
-* Acquired deep knowledge of planning vs. execution behaviors in AI models, choosing optimal strategies depending on the task complexity.
+* **LLM Implementation:** Architected workflows integrating frontier models (Claude, Gemini, GPT) and local open-weight LLMs (DeepSeek, Qwen) for intelligent coding assistance, automated code review, and workflow acceleration.
+* **Custom AI Tooling:** Designed and deployed custom AI skills and agentic frameworks, strategically balancing model "planning vs. execution" behaviors to optimize cost, latency, and accuracy based on task complexity.
 
-### Skills
+### Technical Skills
 
-* Programming & Scripting: Python, Git, Shell Scripting, Command-line utilities
-* AI & Systems: Local LLM deployment, Custom skill design, Prompt Engineering
-* OS & Networks: Windows, Linux, Docker, Network Attached Storage (NAS), Render Farm configuration
+* **Programming & Automation:** Python, Shell Scripting (Bash/PowerShell), Git, CI/CD Workflows, Command-line utilities
+* **DevOps & Infrastructure:** Docker, GitOps, Cloudflare Zero Trust, Network Attached Storage (NAS), Render Farm Infrastructure
+* **Operating Systems:** Linux, Windows / Windows Server
+* **AI & Intelligent Systems:** Local LLM Deployment, Prompt Engineering, Agentic Workflow Design, Custom Skill Integration
