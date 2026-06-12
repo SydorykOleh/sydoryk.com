@@ -1,0 +1,51 @@
+---
+// src/pages/gallery.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import GalleryFilter from '../components/GalleryFilter.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { pageTag, pageDescription, galleryTdk } from '../data/content';
+---
+
+<BaseLayout
+  title={galleryTdk.title || 'Gallery'}
+  description={galleryTdk.description || ''}
+  keywords={galleryTdk.keywords || ''}
+>
+  <div class="section gallery-page">
+    <div class="container">
+      <SectionHeader
+        tag={pageTag.gallery}
+        description={pageDescription.gallery}
+      />
+      
+      <!-- Multi-layered Filters -->
+      <GalleryFilter />
+      
+      <!-- Masonry Grid -->
+      <GalleryGrid />
+      
+      <!-- Interactive Lightbox -->
+      <Lightbox />
+    </div>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+.gallery-page {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    
+    @media (max-width: 768px) {
+      padding: 0 1rem;
+    }
+  }
+}
+</style>

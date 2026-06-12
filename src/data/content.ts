@@ -19,6 +19,7 @@ export const nav: Nav = {
 	avatar:'/assets/author.jpg',
     items: [
         { label: 'Portfolio', href: '/', target: '_self' }, // target is '_blank' to open a new link
+        //{ label: 'Gallery', href: '/gallery', target: '_self' },
         //{ label: 'Work', href: '/project', target: '_self' },
         //{ label: 'Blog', href: '/blog', target: '_self' },
         { label: 'Experience', href: '/experience', target: '_self' },
@@ -60,6 +61,11 @@ export const experienceTdk: SeoTdk = {
 	description: 'Some of my projects',
 	keywords: 'Sydoryk Oleh, blog, project'
 }
+export const galleryTdk: SeoTdk = {
+	title: 'Sydoryk Oleh Gallery',
+	description: '3D renderings and animations by Sydoryk Oleh',
+	keywords: 'Sydoryk Oleh, gallery, 3d, animation'
+}
 export const termsTdk: SeoTdk = {
 	title: 'Terms and Conditions',
 	description: 'Terms and Conditions',
@@ -83,6 +89,7 @@ interface PageTag {
 	project: string
 	contact: string
 	experience: string
+	gallery: string
 	terms: string
 }
 export const pageTag: PageTag = {
@@ -92,6 +99,7 @@ export const pageTag: PageTag = {
 	project: 'PROJECT',
 	contact: 'CONTACT',
 	experience: 'EXPERIENCE',
+	gallery: 'GALLERY',
 	terms: 'Fairplay'
 }
 
@@ -104,6 +112,7 @@ interface PageDescription {
 	about?: string
 	experience?: string
 	contact?: string
+	gallery?: string
 	terms?: string
 }
 export const pageDescription: PageDescription = {
@@ -112,6 +121,7 @@ export const pageDescription: PageDescription = {
 	about: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can read more about me here",
 	blog: 'My personal notes and thoughts',
 	experience: 'My Journey so far',
+	gallery: 'Discover a collection of my 3D designs, assets, and animations.',
 	terms: 'Friendly legal stuff that protects your vision and my craft.',
 	contact: 'Constacts',
 }

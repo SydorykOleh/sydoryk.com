@@ -1,0 +1,164 @@
+---
+// GalleryFilter.astro
+---
+<div class="gallery-filters section">
+  <div class="filters-container">
+    <!-- Row 1: Project Type -->
+    <div class="filter-row border-bottom">
+      <div class="filter-row-inner">
+        <span class="filter-label">PROJECT TYPE</span>
+        <div class="filter-options-wrapper">
+          <ul class="flex filter-list filter-options" data-filter-group="projectType">
+            <button class="filter-item filter-tag active" data-value="all">ALL</button>
+            <button class="filter-item filter-tag" data-value="industrial">Industrial</button>
+            <button class="filter-item filter-tag" data-value="jewelry">Jewelry</button>
+            <button class="filter-item filter-tag" data-value="furniture">Furniture</button>
+            <button class="filter-item filter-tag" data-value="tech product">Tech Product</button>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Media Type -->
+    <div class="filter-row border-bottom">
+      <div class="filter-row-inner">
+        <span class="filter-label">MEDIA TYPE</span>
+        <div class="filter-options-wrapper">
+          <ul class="flex filter-list filter-options" data-filter-group="media">
+            <button class="filter-item filter-tag active" data-value="all">ALL</button>
+            <button class="filter-item filter-tag" data-value="still image">Still Image</button>
+            <button class="filter-item filter-tag" data-value="video">Video</button>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Artistic Style -->
+    <div class="filter-row">
+      <div class="filter-row-inner">
+        <span class="filter-label">STYLE</span>
+        <div class="filter-options-wrapper">
+          <ul class="flex filter-list filter-options" data-filter-group="style">
+            <button class="filter-item filter-tag active" data-value="all">ALL</button>
+            <button class="filter-item filter-tag" data-value="realistic">Realistic</button>
+            <button class="filter-item filter-tag" data-value="for collection">For Collection</button>
+            <button class="filter-item filter-tag" data-value="artsy">Artsy</button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+:root {
+  --filter-bg: #fff;
+  --filter-bg-active: #0a0a0a;
+  --filter-bg-hover: rgba(10, 10, 10, 0.08);
+  --filter-color: #101010;
+  --filter-color-active: #f4f3f0;
+  --filter-border: 1px solid #d0d0d0;
+}
+
+:root.theme-dark {
+  --filter-bg: #19191b;
+  --filter-color: #d6d5d4;
+  --filter-color-active: #19191b;
+  --filter-border: 1px solid #696765;
+  --filter-bg-active: #f4f3f0;
+  --filter-bg-hover: rgba(243, 244, 247, 0.08);
+}
+
+.gallery-filters {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-row {
+  padding: 0.75rem 0;
+  
+  &.border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+:root.theme-dark .filter-row.border-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filter-row-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.filter-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--color-300);
+  min-width: 130px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    min-width: auto;
+  }
+}
+
+.filter-options-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: none; /* Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+  }
+}
+
+.filter-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  padding: 4px 0;
+}
+
+.filter-tag {
+  border-radius: 32px;
+  background-color: var(--filter-bg);
+  padding: 8px 18px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  border: var(--filter-border);
+  line-height: 1;
+  letter-spacing: 0.25px;
+  color: var(--filter-color);
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+  &:hover {
+    background-color: var(--filter-bg-hover);
+    color: var(--filter-color);
+  }
+  
+  &.active {
+    font-weight: 500;
+    background: var(--filter-bg-active);
+    color: var(--filter-color-active);
+  }
+}
+</style>

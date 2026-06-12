@@ -1,0 +1,410 @@
+---
+// src/components/GalleryGrid.astro
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import homeData from '../data/home.json';
+
+// Eagerly import all media files from the static and source directories
+const publicGallery = import.meta.glob('/public/assets/gallery/**/*.{webp,mp4}', { eager: true });
+const publicProjects = import.meta.glob('/public/assets/projects/**/*.{webp,png,jpg,jpeg,mp4}', { eager: true });
+const srcProjects = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/**/*.{webp,png,jpg,jpeg}', { eager: true });
+
+// Helper to calculate a deterministic hash for sorting (shuffling)
+function hashString(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+// Helper to format clean, readable titles from filenames
+function formatTitle(filename: string): string {
+  const base = filename.substring(0, filename.lastIndexOf('.')) || filename;
+  let title = base.replace(/[-_]+/g, ' ');
+  title = title.replace(/\b(v\d+|\d+k|static|preview|angle\d+|floating|main|still|closeup\d*|web|720p|540p|00\d+)\b/gi, '');
+  title = title.replace(/\s+/g, ' ').trim();
+  return title.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+// Helper to match paths to project details from home.json
+const projectLinkMap = new Map<string, string>();
+homeData.forEach(item => {
+  if (item.detail) {
+    const parts = item.detail.split('/');
+    const folderName = parts[parts.length - 1] || parts[parts.length - 2];
+    if (folderName) {
+      projectLinkMap.set(folderName.toLowerCase(), item.detail);
+    }
+  }
+});
+
+function getProjectLink(filePath: string): string {
+  const pathLower = filePath.toLowerCase();
+  for (const [folderName, detailLink] of projectLinkMap.entries()) {
+    if (pathLower.includes(`/${folderName}/`) || pathLower.includes(`/${folderName}`)) {
+      return detailLink;
+    }
+  }
+  return '';
+}
+
+// Tag categorization mapping based on directory names and file names
+function getProjectType(filePath: string): string {
+  const norm = filePath.toLowerCase();
+  if (norm.includes('/jewelry/') || norm.includes('/rings/') || norm.includes('ring') || norm.includes('pendant') || norm.includes('necklace') || norm.includes('bracelet')) {
+    return 'jewelry';
+  }
+  if (norm.includes('/industrial/') || norm.includes('/industrial-') || norm.includes('equipment') || norm.includes('gluer') || norm.includes('conveyor') || norm.includes('vessel') || norm.includes('valve') || norm.includes('danfoss') || norm.includes('conservatory')) {
+    return 'industrial';
+  }
+  if (norm.includes('/furniture/') || norm.includes('/sofas/') || norm.includes('sofa') || norm.includes('chair') || norm.includes('sunbed') || norm.includes('table') || norm.includes('apartment')) {
+    return 'furniture';
+  }
+  if (norm.includes('/packaging/') || norm.includes('/apparel/') || norm.includes('earplug') || norm.includes('hotsause') || norm.includes('microphone') || norm.includes('headphone') || norm.includes('config') || norm.includes('mic') || norm.includes('bulb') || norm.includes('balaclava') || norm.includes('hat') || norm.includes('jacket') || norm.includes('tea')) {
+    return 'tech product';
+  }
+  return 'tech product';
+}
+
+function getStyleType(filename: string): string {
+  const norm = filename.toLowerCase();
+  if (norm.includes('artsy') || norm.includes('creative') || norm.includes('idea') || norm.includes('macro') || norm.includes('molecule') || norm.includes('harlow') || norm.includes('jacket') || norm.includes('balaclava') || norm.includes('hat') || norm.includes('transition')) {
+    return 'artsy';
+  }
+  if (norm.includes('collection') || norm.includes('config') || norm.includes('pack')) {
+    return 'for collection';
+  }
+  return 'realistic';
+}
+
+function isExcluded(filePath: string): boolean {
+  const norm = filePath.toLowerCase().replace(/\\/g, '/');
+  const exclusions = [
+    '/icons/',
+    '/cropped/',
+    '/projects/mic/',
+    '/project/mic/',
+    '/projects/rings/',
+    '/project/rings/',
+    '/projects/solarpanels/',
+    '/project/solarpanels/',
+    '/projects/headphones/',
+    '/project/headphones/',
+    '/mic/',
+    '/rings/',
+    '/solarpanels/',
+    '/headphones/'
+  ];
+  return exclusions.some(exclude => norm.includes(exclude));
+}
+
+// Process and consolidate all media items
+const items: any[] = [];
+
+// 1. Process public/assets/gallery/
+Object.keys(publicGallery).forEach(key => {
+  if (isExcluded(key)) return;
+  
+  const webPath = key.replace('/public', '');
+  const filename = key.split('/').pop() || '';
+  const title = formatTitle(filename);
+  const isVideo = key.endsWith('.mp4');
+  
+  items.push({
+    id: `g-${hashString(webPath)}`,
+    title,
+    url: webPath,
+    type: isVideo ? 'video' : 'image',
+    isSrcAsset: false,
+    filters: {
+      projectType: getProjectType(key),
+      media: isVideo ? 'video' : 'still image',
+      style: getStyleType(filename)
+    },
+    projectLink: getProjectLink(key),
+    altText: `${title} render`
+  });
+});
+
+// 2. Process public/assets/projects/
+Object.keys(publicProjects).forEach(key => {
+  if (isExcluded(key)) return;
+  
+  const webPath = key.replace('/public', '');
+  const filename = key.split('/').pop() || '';
+  const title = formatTitle(filename);
+  const isVideo = key.endsWith('.mp4');
+  
+  items.push({
+    id: `pp-${hashString(webPath)}`,
+    title,
+    url: webPath,
+    type: isVideo ? 'video' : 'image',
+    isSrcAsset: false,
+    filters: {
+      projectType: getProjectType(key),
+      media: isVideo ? 'video' : 'still image',
+      style: getStyleType(filename)
+    },
+    projectLink: getProjectLink(key),
+    altText: `${title} render`
+  });
+});
+
+// 3. Process src/assets/projects/
+Object.keys(srcProjects).forEach(key => {
+  if (isExcluded(key)) return;
+  
+  const filename = key.split('/').pop() || '';
+  const title = formatTitle(filename);
+  
+  items.push({
+    id: `sp-${hashString(key)}`,
+    title,
+    url: key,
+    type: 'image',
+    isSrcAsset: true,
+    srcMetadata: (srcProjects[key] as any).default,
+    filters: {
+      projectType: getProjectType(key),
+      media: 'still image',
+      style: getStyleType(filename)
+    },
+    projectLink: getProjectLink(key),
+    altText: `${title} render`
+  });
+});
+
+// Deterministic shuffling: sort by hash of url/path
+const sortedItems = items.sort((a, b) => hashString(a.url) - hashString(b.url));
+---
+
+<div class="gallery-container">
+  <div class="gallery-grid" id="gallery-grid">
+    {sortedItems.map((item) => (
+      <div 
+        class="gallery-item" 
+        data-id={item.id}
+        data-project-type={item.filters.projectType}
+        data-media={item.filters.media}
+        data-style={item.filters.style}
+        data-title={item.title}
+        data-url={item.url}
+        data-type={item.type}
+        data-is-src-asset={item.isSrcAsset ? 'true' : 'false'}
+        data-project-link={item.projectLink}
+      >
+        <div class="gallery-media-wrapper">
+          {item.isSrcAsset ? (
+            <Image 
+              class="gallery-media gallery-image" 
+              src={item.srcMetadata} 
+              alt={item.altText} 
+              width={600}
+              quality={85}
+              loading="lazy"
+            />
+          ) : item.type === 'video' ? (
+            <video class="gallery-media gallery-video" width="100%" autoplay loop muted playsinline>
+              <source src={item.url} type="video/mp4" />
+            </video>
+          ) : (
+            <img class="gallery-media gallery-image" src={item.url} alt={item.altText} loading="lazy" />
+          )}
+          
+          <div class="gallery-overlay">
+            <div class="overlay-content">
+              <span class="overlay-tag">{item.filters.projectType} • {item.filters.style}</span>
+              <h3 class="overlay-title">{item.title}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+
+    const items = grid.querySelectorAll('.gallery-item') as NodeListOf<HTMLElement>;
+    const filterButtons = document.querySelectorAll('.gallery-filters .filter-tag');
+
+    const activeFilters = {
+      projectType: 'all',
+      media: 'all',
+      style: 'all'
+    };
+
+    // Safely trigger play on video assets
+    const videos = grid.querySelectorAll('.gallery-video') as NodeListOf<HTMLVideoElement>;
+    videos.forEach(video => {
+      video.play().catch(e => console.log('Video play prevented:', e));
+    });
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const btn = e.currentTarget as HTMLElement;
+        const group = btn.parentElement?.getAttribute('data-filter-group') as keyof typeof activeFilters;
+        const value = btn.getAttribute('data-value') || 'all';
+
+        if (!group) return;
+
+        const rowButtons = btn.parentElement?.querySelectorAll('.filter-tag');
+        rowButtons?.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        activeFilters[group] = value;
+        filterGrid();
+      });
+    });
+
+    function filterGrid() {
+      items.forEach(item => {
+        const itemType = item.getAttribute('data-project-type');
+        const itemMedia = item.getAttribute('data-media');
+        const itemStyle = item.getAttribute('data-style');
+
+        const matchType = activeFilters.projectType === 'all' || itemType === activeFilters.projectType;
+        const matchMedia = activeFilters.media === 'all' || itemMedia === activeFilters.media;
+        const matchStyle = activeFilters.style === 'all' || itemStyle === activeFilters.style;
+
+        if (matchType && matchMedia && matchStyle) {
+          item.classList.remove('filtered-out');
+          item.style.animation = 'none';
+          void item.offsetWidth; 
+          item.style.animation = '';
+        } else {
+          item.classList.add('filtered-out');
+        }
+      });
+    }
+  });
+</script>
+
+<style lang="scss">
+.gallery-container {
+  width: 100%;
+}
+
+.gallery-grid {
+  column-count: 2;
+  column-gap: 16px;
+  width: 100%;
+  
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius, 12px);
+  border: 1px solid var(--border);
+  background-color: rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.filtered-out {
+    display: none;
+  }
+  
+  &:hover {
+    .gallery-media {
+      transform: scale(1.03);
+    }
+    
+    .gallery-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes galleryItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.gallery-item:not(.filtered-out) {
+  animation: galleryItemFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.gallery-media-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  font-size: 0;
+}
+
+.gallery-media {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  pointer-events: none;
+  
+  @media (max-width: 768px) {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 80%);
+    padding: 0.75rem;
+  }
+}
+
+.overlay-content {
+  color: #ffffff;
+}
+
+.overlay-tag {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.overlay-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.25px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+</style>

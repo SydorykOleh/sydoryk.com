@@ -1,0 +1,1042 @@
+[
+  {
+    "id": "1",
+    "title": "Hush Earplug Packaging",
+    "url": "/assets/cover/hush_earplug.jpg",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Hush Earplug packaging visualization"
+  },
+  {
+    "id": "2",
+    "title": "Sofa Fabric Replacement",
+    "url": "/assets/cover/BubbleTransition_v10_540p.mp4",
+    "type": "video",
+    "projectLink": "/detail/Sofas",
+    "filters": {
+      "projectType": "furniture",
+      "media": "video",
+      "style": "for collection"
+    },
+    "altText": "Product animation showing fabric transition on sofa"
+  },
+  {
+    "id": "3",
+    "title": "Sofas and Chairs",
+    "url": "/assets/cover/Sofas.jpg",
+    "type": "image",
+    "projectLink": "/detail/Sofas",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Minimalist render of sofas and chairs in a showroom"
+  },
+  {
+    "id": "4",
+    "title": "Earplug Packaging Animation",
+    "url": "/assets/cover/EarPlugs_540p.mp4",
+    "type": "video",
+    "projectLink": "/detail/EarPlugs",
+    "filters": {
+      "projectType": "tech product",
+      "media": "video",
+      "style": "realistic"
+    },
+    "altText": "Commercial product animation for earplug packaging"
+  },
+  {
+    "id": "5",
+    "title": "Earplug Packaging",
+    "url": "/assets/cover/EarPlugs.jpg",
+    "type": "image",
+    "projectLink": "/detail/EarPlugs",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Detail render of earplug packaging"
+  },
+  {
+    "id": "6",
+    "title": "Hot Sauce Rendering",
+    "url": "/assets/cover/HotSause.jpg",
+    "type": "image",
+    "projectLink": "/detail/HotSause",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "Artsy render of a hot sauce bottle"
+  },
+  {
+    "id": "7",
+    "title": "Hot Sauce Animation",
+    "url": "/assets/cover/hotSause_540p.mp4",
+    "type": "video",
+    "projectLink": "/detail/HotSause",
+    "filters": {
+      "projectType": "tech product",
+      "media": "video",
+      "style": "artsy"
+    },
+    "altText": "Dynamic product animation for a hot sauce commercial"
+  },
+  {
+    "id": "8",
+    "title": "Microphone Studio Rendering",
+    "url": "/assets/cover/Microphone.jpg",
+    "type": "image",
+    "projectLink": "/detail/Microphone",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Detailed studio render of a professional microphone"
+  },
+  {
+    "id": "9",
+    "title": "Microphone Dynamics",
+    "url": "/assets/cover/microphone_with_cloth.mp4",
+    "type": "video",
+    "projectLink": "/detail/Microphone",
+    "filters": {
+      "projectType": "tech product",
+      "media": "video",
+      "style": "artsy"
+    },
+    "altText": "Product animation of a microphone interacting with falling cloth"
+  },
+  {
+    "id": "10",
+    "title": "Industrial Equipment Close-up",
+    "url": "/assets/cover/IndustrialEquipment.jpg",
+    "type": "image",
+    "projectLink": "/detail/IndustrialEquipment",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Close-up rendering of mechanical industrial equipment"
+  },
+  {
+    "id": "11",
+    "title": "Tea Ad Animation",
+    "url": "/assets/cover/adtea_720p.mp4",
+    "type": "video",
+    "projectLink": "/detail/adtea",
+    "filters": {
+      "projectType": "tech product",
+      "media": "video",
+      "style": "artsy"
+    },
+    "altText": "Commercial product animation for tea brand"
+  },
+  {
+    "id": "12",
+    "title": "Conservatory Environment",
+    "url": "/assets/cover/conservatory_v006_540_square.mp4",
+    "type": "video",
+    "projectLink": "/detail/Conservatory",
+    "filters": {
+      "projectType": "industrial",
+      "media": "video",
+      "style": "realistic"
+    },
+    "altText": "Architectural animation of a steel frame conservatory"
+  },
+  {
+    "id": "13",
+    "title": "Headphones Configurator",
+    "url": "/assets/cover/headphoneConfig.jpg",
+    "type": "image",
+    "projectLink": "/detail/Headphones",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "for collection"
+    },
+    "altText": "Configurator display of headphones"
+  },
+  {
+    "id": "14",
+    "title": "Headphones Motion",
+    "url": "/assets/cover/headphones_720p.mp4",
+    "type": "video",
+    "projectLink": "/detail/Headphones",
+    "filters": {
+      "projectType": "tech product",
+      "media": "video",
+      "style": "realistic"
+    },
+    "altText": "Dynamic video highlight of headphone design"
+  },
+  {
+    "id": "17",
+    "title": "Apartment Front 0001",
+    "url": "/assets/gallery/apartment_preview_v004_static_front_0001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Apartment Front 0001 render"
+  },
+  {
+    "id": "18",
+    "title": "Apartment Top 0001",
+    "url": "/assets/gallery/apartment_preview_v004_static_top_0001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Apartment Top 0001 render"
+  },
+  {
+    "id": "19",
+    "title": "Molecule",
+    "url": "/assets/gallery/creative/molecule_v001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "Molecule render"
+  },
+  {
+    "id": "20",
+    "title": "Shot04 TheMacro",
+    "url": "/assets/gallery/creative/Shot04-TheMacro_v004.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "Shot04 TheMacro render"
+  },
+  {
+    "id": "21",
+    "title": "TrigAI IdeaA WhiteTheme Combined",
+    "url": "/assets/gallery/creative/TrigAI_IdeaA_v009_whiteTheme_combined.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "TrigAI IdeaA WhiteTheme Combined render"
+  },
+  {
+    "id": "22",
+    "title": "TrigAI IdeaA WhiteTheme LinesOnly",
+    "url": "/assets/gallery/creative/TrigAI_IdeaA_v009_whiteTheme_LinesOnly.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "TrigAI IdeaA WhiteTheme LinesOnly render"
+  },
+  {
+    "id": "23",
+    "title": "TrigAI IdeaA WhiteTheme NoLines MoreRandom",
+    "url": "/assets/gallery/creative/TrigAI_IdeaA_v009_whiteTheme_noLines_moreRandom.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "TrigAI IdeaA WhiteTheme NoLines MoreRandom render"
+  },
+  {
+    "id": "24",
+    "title": "Amaya Sofa LongFront",
+    "url": "/assets/gallery/furniture/Amaya_Sofa_LongFront.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Amaya Sofa LongFront render"
+  },
+  {
+    "id": "25",
+    "title": "ChairCoco SandLinen Side",
+    "url": "/assets/gallery/furniture/ChairCoco_sandLinen_v003_Side_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairCoco SandLinen Side render"
+  },
+  {
+    "id": "26",
+    "title": "ChairLadyBird Boucle Angle",
+    "url": "/assets/gallery/furniture/ChairLadyBird_boucle_v003_Angle_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairLadyBird Boucle Angle render"
+  },
+  {
+    "id": "27",
+    "title": "ChairLara Nabuck Front",
+    "url": "/assets/gallery/furniture/ChairLara_nabuck_v002_Front_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairLara Nabuck Front render"
+  },
+  {
+    "id": "28",
+    "title": "ChairLily Mohair",
+    "url": "/assets/gallery/furniture/ChairLily_mohair_v010_Closeup_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairLily Mohair render"
+  },
+  {
+    "id": "29",
+    "title": "ChairLily Mohair Top",
+    "url": "/assets/gallery/furniture/ChairLily_mohair_v010_Top_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairLily Mohair Top render"
+  },
+  {
+    "id": "30",
+    "title": "ChairMona Leather Angle",
+    "url": "/assets/gallery/furniture/ChairMona_leather_v001_Angle_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "ChairMona Leather Angle render"
+  },
+  {
+    "id": "31",
+    "title": "MistChair SandLinen Bronze Angle",
+    "url": "/assets/gallery/furniture/MistChair_sandLinen_bronze_v006_Angle_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MistChair SandLinen Bronze Angle render"
+  },
+  {
+    "id": "32",
+    "title": "MistDiningChair SandLinen Bronze Angle",
+    "url": "/assets/gallery/furniture/MistDiningChair_sandLinen_bronze_v004_Angle_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MistDiningChair SandLinen Bronze Angle render"
+  },
+  {
+    "id": "33",
+    "title": "MistSunBed SandLinen Bronze",
+    "url": "/assets/gallery/furniture/MistSunBed_sandLinen_bronze_v003_Angle2_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MistSunBed SandLinen Bronze render"
+  },
+  {
+    "id": "34",
+    "title": "SofaLara Nabuck Angle",
+    "url": "/assets/gallery/furniture/SofaLara_nabuck_v002_Angle_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "furniture",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "SofaLara Nabuck Angle render"
+  },
+  {
+    "id": "35",
+    "title": "001 CustomHydraulicRollboxAssembly",
+    "url": "/assets/gallery/industrial/001-CustomHydraulicRollboxAssembly_v003_angle4_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "001 CustomHydraulicRollboxAssembly render"
+  },
+  {
+    "id": "36",
+    "title": "005 SideSeamGluer Wire",
+    "url": "/assets/gallery/industrial/005-SideSeamGluer_v003_angle1_4k_wire.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "005 SideSeamGluer Wire render"
+  },
+  {
+    "id": "37",
+    "title": "005 SideSeamGluer",
+    "url": "/assets/gallery/industrial/005-SideSeamGluer_v003_angle4_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "005 SideSeamGluer render"
+  },
+  {
+    "id": "38",
+    "title": "010 SpiralConveyorElevator",
+    "url": "/assets/gallery/industrial/010-SpiralConveyorElevator_v003_angle1_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "010 SpiralConveyorElevator render"
+  },
+  {
+    "id": "39",
+    "title": "012 CustomPackagingSolutions",
+    "url": "/assets/gallery/industrial/012-CustomPackagingSolutions_v002_angle3_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "012 CustomPackagingSolutions render"
+  },
+  {
+    "id": "40",
+    "title": "013 ReverseEngineeringRebuildingMachines",
+    "url": "/assets/gallery/industrial/013-ReverseEngineeringRebuildingMachines_v002_angle4_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "013 ReverseEngineeringRebuildingMachines render"
+  },
+  {
+    "id": "41",
+    "title": "016 SheetingAssemblyProcessLine",
+    "url": "/assets/gallery/industrial/016-SheetingAssemblyProcessLine_v004_angle2_4k.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "016 SheetingAssemblyProcessLine render"
+  },
+  {
+    "id": "45",
+    "title": "Dispenser Gray",
+    "url": "/assets/gallery/industrial/dispenser_main_gray.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Dispenser Gray render"
+  },
+  {
+    "id": "46",
+    "title": "MEV2601 006 System SideB",
+    "url": "/assets/gallery/industrial/MEV2601-006_system_sideB.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MEV2601 006 System SideB render"
+  },
+  {
+    "id": "47",
+    "title": "MEV2601 006 Vessel NoCage SideB",
+    "url": "/assets/gallery/industrial/MEV2601-006_vessel-noCage_sideB.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MEV2601 006 Vessel NoCage SideB render"
+  },
+  {
+    "id": "48",
+    "title": "MEV2601 006 Vessel SideB",
+    "url": "/assets/gallery/industrial/MEV2601-006_vessel_sideB.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "MEV2601 006 Vessel SideB render"
+  },
+  {
+    "id": "49",
+    "title": "Mic Back MultiColor",
+    "url": "/assets/gallery/industrial/mic_static_back_multiColor.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "industrial",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Mic Back MultiColor render"
+  },
+  {
+    "id": "56",
+    "title": "Jack Harlow Jacket 0018",
+    "url": "/assets/gallery/Jack_Harlow_Jacket_0018.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "Jack Harlow Jacket 0018 render"
+  },
+  {
+    "id": "57",
+    "title": "Box Cross Gold",
+    "url": "/assets/gallery/jewelry/Box-Cross_floating_closeup_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Box Cross Gold render"
+  },
+  {
+    "id": "58",
+    "title": "Box Cross Gold",
+    "url": "/assets/gallery/jewelry/Box-Cross_floating_main_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Box Cross Gold render"
+  },
+  {
+    "id": "59",
+    "title": "Bracelet Sanctum Gold",
+    "url": "/assets/gallery/jewelry/Bracelet-Sanctum_floating_main_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Bracelet Sanctum Gold render"
+  },
+  {
+    "id": "60",
+    "title": "Cross Rock Silver",
+    "url": "/assets/gallery/jewelry/cross_rock-closeup_silver.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Cross Rock Silver render"
+  },
+  {
+    "id": "61",
+    "title": "Cross Rock Front Silver",
+    "url": "/assets/gallery/jewelry/cross_rock-front_silver.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Cross Rock Front Silver render"
+  },
+  {
+    "id": "62",
+    "title": "Malgari Front Tilt 375 Diamond",
+    "url": "/assets/gallery/jewelry/Malgari_front-tilt_375_diamond.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Malgari Front Tilt 375 Diamond render"
+  },
+  {
+    "id": "63",
+    "title": "Malgari Front Tilt 925 Sapphire Oxidised",
+    "url": "/assets/gallery/jewelry/Malgari_front-tilt_925_sapphire_oxidised.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Malgari Front Tilt 925 Sapphire Oxidised render"
+  },
+  {
+    "id": "64",
+    "title": "Malgari Front Diamond",
+    "url": "/assets/gallery/jewelry/Malgari_front_diamond.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Malgari Front Diamond render"
+  },
+  {
+    "id": "65",
+    "title": "Malgari Side Tilt 375 Emerald",
+    "url": "/assets/gallery/jewelry/Malgari_side-tilt_375_emerald.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Malgari Side Tilt 375 Emerald render"
+  },
+  {
+    "id": "66",
+    "title": "Necklace CrossRotated Angle No Blur Gold",
+    "url": "/assets/gallery/jewelry/Necklace-CrossRotated_floating_angle_no-blur_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Necklace CrossRotated Angle No Blur Gold render"
+  },
+  {
+    "id": "67",
+    "title": "Prince Front",
+    "url": "/assets/gallery/jewelry/Prince_front.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Prince Front render"
+  },
+  {
+    "id": "68",
+    "title": "Ring Dragon Silver",
+    "url": "/assets/gallery/jewelry/Ring-Dragon_floating_main_Silver.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Ring Dragon Silver render"
+  },
+  {
+    "id": "69",
+    "title": "Ring Flip Angle No Blur Silver",
+    "url": "/assets/gallery/jewelry/Ring-Flip_floating_angle_no-blur_Silver.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Ring Flip Angle No Blur Silver render"
+  },
+  {
+    "id": "70",
+    "title": "Ring Flip No Blur Gold",
+    "url": "/assets/gallery/jewelry/Ring-Flip_floating_main_no-blur_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Ring Flip No Blur Gold render"
+  },
+  {
+    "id": "71",
+    "title": "Ring Moon No Blur Gold",
+    "url": "/assets/gallery/jewelry/Ring-Moon_floating_main_no-blur_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Ring Moon No Blur Gold render"
+  },
+  {
+    "id": "72",
+    "title": "Ring Redstone Angle Gold",
+    "url": "/assets/gallery/jewelry/Ring-Redstone_floating_angle_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "jewelry",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Ring Redstone Angle Gold render"
+  },
+  {
+    "id": "73",
+    "title": "JP207 TechPack Balaclava 0026",
+    "url": "/assets/gallery/JP207_TechPack_Balaclava_0026.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "JP207 TechPack Balaclava 0026 render"
+  },
+  {
+    "id": "74",
+    "title": "JPEGMAFIA TruckerHat 0028",
+    "url": "/assets/gallery/JPEGMAFIA_TruckerHat_0028.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "artsy"
+    },
+    "altText": "JPEGMAFIA TruckerHat 0028 render"
+  },
+  {
+    "id": "75",
+    "title": "Nolt Bulb01 On",
+    "url": "/assets/gallery/nolt_bulb01_on.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Nolt Bulb01 On render"
+  },
+  {
+    "id": "76",
+    "title": "AudioFeel Normal Black 1 1",
+    "url": "/assets/gallery/packaging/AudioFeel_still_normal_black_1-1_v006.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "AudioFeel Normal Black 1 1 render"
+  },
+  {
+    "id": "77",
+    "title": "AudioFeel Normal Gray 1 1",
+    "url": "/assets/gallery/packaging/AudioFeel_still_normal_gray_1-1_v006.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "AudioFeel Normal Gray 1 1 render"
+  },
+  {
+    "id": "78",
+    "title": "AudioFeel Normal White 1 1",
+    "url": "/assets/gallery/packaging/AudioFeel_still_normal_white_1-1_v006.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "AudioFeel Normal White 1 1 render"
+  },
+  {
+    "id": "79",
+    "title": "BlankStandUpPouchMylarBag 3x4 Corner Round Palette Dark Finish Matte",
+    "url": "/assets/gallery/packaging/BlankStandUpPouchMylarBag_3x4_corner-round_palette-dark_finish-matte.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "BlankStandUpPouchMylarBag 3x4 Corner Round Palette Dark Finish Matte render"
+  },
+  {
+    "id": "80",
+    "title": "BlankStandUpPouchMylarBag 3x4 Corner Round Palette White Finish Matte",
+    "url": "/assets/gallery/packaging/BlankStandUpPouchMylarBag_3x4_corner-round_palette-white_finish-matte.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "BlankStandUpPouchMylarBag 3x4 Corner Round Palette White Finish Matte render"
+  },
+  {
+    "id": "81",
+    "title": "Box Cross Gold",
+    "url": "/assets/gallery/packaging/Box-Cross_floating_closeup_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Box Cross Gold render"
+  },
+  {
+    "id": "82",
+    "title": "Box Cross Gold",
+    "url": "/assets/gallery/packaging/Box-Cross_floating_main_Gold.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Box Cross Gold render"
+  },
+  {
+    "id": "83",
+    "title": "EarPlug General SILVER",
+    "url": "/assets/gallery/packaging/EarPlug_general_still_v005_preview_SILVER.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "EarPlug General SILVER render"
+  },
+  {
+    "id": "84",
+    "title": "EmberWellnes BodySculpting Packaging Sun Neutral",
+    "url": "/assets/gallery/packaging/EmberWellnes_BodySculpting_packaging_sun_v010_neutral.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "EmberWellnes BodySculpting Packaging Sun Neutral render"
+  },
+  {
+    "id": "85",
+    "title": "EmberWellnes BodySculpting Products Sun Neutral",
+    "url": "/assets/gallery/packaging/EmberWellnes_BodySculpting_products_sun_v010_neutral.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "EmberWellnes BodySculpting Products Sun Neutral render"
+  },
+  {
+    "id": "86",
+    "title": "EmberWellnes FaceStarter Products Sun Neutral",
+    "url": "/assets/gallery/packaging/EmberWellnes_FaceStarter_products_sun_v002_neutral.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "EmberWellnes FaceStarter Products Sun Neutral render"
+  },
+  {
+    "id": "87",
+    "title": "Hotsause Presentbox",
+    "url": "/assets/gallery/packaging/hotsause_presentbox_v001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Hotsause Presentbox render"
+  },
+  {
+    "id": "88",
+    "title": "KetroCalmBox Angle",
+    "url": "/assets/gallery/packaging/KetroCalmBox_Angle_v001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "KetroCalmBox Angle render"
+  },
+  {
+    "id": "89",
+    "title": "KetroJar100mlBox Angle",
+    "url": "/assets/gallery/packaging/KetroJar100mlBox_Angle_v001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "KetroJar100mlBox Angle render"
+  },
+  {
+    "id": "90",
+    "title": "KetroPlasticTube150mlBox Angle",
+    "url": "/assets/gallery/packaging/KetroPlasticTube150mlBox_Angle_v001.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "KetroPlasticTube150mlBox Angle render"
+  },
+  {
+    "id": "91",
+    "title": "Shot01 TheFullKit",
+    "url": "/assets/gallery/packaging/Shot01-TheFullKit_v007.webp",
+    "type": "image",
+    "projectLink": "",
+    "filters": {
+      "projectType": "tech product",
+      "media": "still image",
+      "style": "realistic"
+    },
+    "altText": "Shot01 TheFullKit render"
+  }
+]
