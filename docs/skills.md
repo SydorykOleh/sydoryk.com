@@ -57,3 +57,21 @@ This master document details my comprehensive skill set, including specific tool
 - Managed a team of lighting artists and mentored junior staff from start to finish on projects.
 - Acted as the go-to technical expert, diving into documentation to troubleshoot scene crashes, lighting anomalies, and rendering errors.
 - Collaborated closely with Technical Directors (TDs) to build essential tools and automations using Python scripting.
+
+## 8. Software & Tools
+
+### 3D & Creative
+- **Software:** Autodesk Maya, SideFX Houdini, Unreal Engine 5 (Niagara, PCG), Foundry Nuke, SpeedTree, EmberGen
+- **Renderers:** Redshift, Arnold
+
+### Code & Infrastructure
+- **Languages:** Python, VEX, JavaScript, TypeScript, HTML/CSS, Sass
+- **Frameworks & Tools:** Astro.js, Git, Perforce, Docker, Node.js/Yarn
+
+## 9. Additional Technical Skills & Projects
+
+- **Web Development:** Built and maintain a personal portfolio website from scratch using Astro and TypeScript.
+- **Version Control:** Strong experience working with industry-standard version control systems including Git and Perforce.
+- **Pipeline & Exporting:** Built custom exporting solutions and automation tools utilizing Python, VEX, and JavaScript to optimize team workflows.
+- **Homelab Administration:** Built and actively maintain a personal server infrastructure using Docker. Implemented a robust data protection strategy utilizing a proper 3-2-1 backup solution.
+- **MultiCast (Automation App):** Developed an application for automated content publishing and scheduling. It features tailored title and description generation and supports publishing directly to YouTube, TikTok, Facebook, and Instagram.
