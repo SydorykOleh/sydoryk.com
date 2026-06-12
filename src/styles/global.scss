@@ -44,9 +44,7 @@
     }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
 
 .special-elite-regular {
     font-family: "Special Elite", system-ui;
@@ -296,9 +294,6 @@ img {
     max-width: 100%;
     border: none;
     height: auto;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
 }
 
 ul,
@@ -352,7 +347,7 @@ h5 {
     font-size: var(--text-xl);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
 
 .content pre {
     padding: 1em 1em;
@@ -408,9 +403,6 @@ button {
 
 img {
     max-width: 100%;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
 }
 
 p {
