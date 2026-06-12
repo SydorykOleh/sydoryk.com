@@ -103,9 +103,11 @@ const { Content: ITContent } = await itEntry.render();
 	</div>
 </BlogPostLayout>
 
-<script is:inline>
-	(function() {
+<script>
+	document.addEventListener('astro:page-load', () => {
 		const buttons = document.querySelectorAll(".filter-tag[data-tab]");
+		if (buttons.length === 0) return;
+
 		const contents = document.querySelectorAll(".resume-tab-content");
 		const pdfButton = document.getElementById("pdf-download-btn");
 		const filterContainer = document.querySelector(".section.filter");
@@ -172,7 +174,7 @@ const { Content: ITContent } = await itEntry.render();
 				}
 			});
 		});
-	})();
+	});
 </script>
 
 <style lang="scss">
