@@ -13,7 +13,7 @@ const blogCollection =  defineCollection({
 		}),
 });
 
-const proposalsCollection = defineCollection({
+const coverletterCollection = defineCollection({
 		type: 'content',
 		schema: z.object({
 			title: z.string(),
@@ -48,7 +48,7 @@ const experienceCollection = defineCollection({
 
 export const collections = {
 	'blog': blogCollection,
-	'proposals': proposalsCollection,
+	'coverletter': coverletterCollection,
 	'projects': projectsCollection,
 	'experience': experienceCollection,
 };
