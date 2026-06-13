@@ -48,7 +48,8 @@ async function buildCoverLetter(sourceFile) {
         // Remove HTML cards from the markdown since they are for the web version only
         const contentWithoutCards = mdContent.replace(/<h3.*?>Relevant Portfolio Examples<\/h3>[\s\S]*?(?=<style|<\/body>|$)/gi, '');
         
-        const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [sydoryk.com/${basename}](https://sydoryk.com/${basename})\n\n`;
+        const slug = basename.toLowerCase();
+        const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [sydoryk.com/${slug}](https://sydoryk.com/${slug})\n\n`;
 
         const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
         const htmlContent = headerHtml + '\n' + marked.parse(linkMarkdown) + marked.parse(contentWithoutCards);
