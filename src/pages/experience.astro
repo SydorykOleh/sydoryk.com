@@ -262,4 +262,31 @@ const { Content: ITContent } = await itEntry.render();
 	a:link {
 		color: var(--color-blue);
 	}
+
+	/* Specific styles for resume content to prevent global leakages */
+	.resume-tab-content {
+		:global(h2) {
+			font-size: 1.5rem;
+			font-weight: 700;
+			margin-top: 2rem;
+			margin-bottom: 0.75rem;
+			border-bottom: 1px solid var(--border);
+			padding-bottom: 0.25rem;
+		}
+		:global(h3) {
+			font-size: 1.25rem;
+			font-weight: 600;
+			margin-top: 1.5rem;
+			margin-bottom: 0.5rem;
+			color: var(--color-100);
+		}
+		:global(ul) {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+			padding-left: 1.5rem;
+		}
+		:global(li) {
+			margin-bottom: 0.5rem;
+		}
+	}
 </style>

@@ -21,6 +21,7 @@ export const nav: Nav = {
 		{ label: 'Portfolio', href: '/', target: '_self' }, // target is '_blank' to open a new link
 		//{ label: 'Work', href: '/project', target: '_self' },
 		//{ label: 'Blog', href: '/blog', target: '_self' },
+		//{ label: 'Services', href: '/services', target: '_self' },
 		{ label: 'Experience', href: '/experience', target: '_self' },
 		{ label: 'About', href: '/about', target: '_self' },
 		//{ label: 'Contact', href: '/contact', target: '_self' },
@@ -70,6 +71,12 @@ export const termsTdk: SeoTdk = {
 	description: 'Terms and Conditions',
 	keywords: 'Sydoryk Oleh, Terms and Conditions'
 }
+// SEO TDK Services
+export const servicesTdk: SeoTdk = {
+	title: '3D Freelance Services & Pricing - Sydoryk Oleh',
+	description: 'Professional 3D services, pricing, and client testimonials. Specializing in hard-surface modeling, look development, and procedural workflows.',
+	keywords: 'Sydoryk Oleh, 3D freelance, 3D pricing, Houdini services, 3D artist hire'
+}
 // SEO TDK 404
 export const notFoundTdk: SeoTdk = {
 	title: '404 Not Found - There is nothing here',
@@ -90,6 +97,7 @@ interface PageTag {
 	experience: string
 	gallery: string
 	terms: string
+	services: string
 }
 export const pageTag: PageTag = {
 	index: 'PORTFOLIO',
@@ -99,7 +107,8 @@ export const pageTag: PageTag = {
 	contact: 'CONTACT',
 	experience: 'EXPERIENCE',
 	gallery: 'GALLERY',
-	terms: 'Fairplay'
+	terms: 'Fairplay',
+	services: 'SERVICES'
 }
 
 
@@ -113,6 +122,7 @@ interface PageDescription {
 	contact?: string
 	gallery?: string
 	terms?: string
+	services?: string
 }
 export const pageDescription: PageDescription = {
 	index: "I'm Sydoryk Oleh, a 3D artist. My works below:",
@@ -123,6 +133,7 @@ export const pageDescription: PageDescription = {
 	gallery: 'Discover a collection of my 3D designs, assets, and animations.',
 	terms: 'Friendly legal stuff that protects your vision and my craft.',
 	contact: 'Constacts',
+	services: 'Professional 3D freelance services, straightforward pricing, and client experiences.',
 }
 
 
