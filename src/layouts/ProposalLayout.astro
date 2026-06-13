@@ -9,9 +9,10 @@ interface Props {
 	description?: string | undefined;
 	company?: string | undefined;
 	role?: string | undefined;
+	tag?: string | undefined;
 }
 
-const { title, description, company, role } = Astro.props;
+const { title, description, company, role, tag = "Cover Letter" } = Astro.props;
 ---
 
 <html lang="en" class="theme-dark">
@@ -25,7 +26,7 @@ const { title, description, company, role } = Astro.props;
 				<div class="container">
 					<main class="post-wrapper article">
 						<div class="section-header text-center">
-							<div class="title-tag">Job Proposal</div>
+							<div class="title-tag">{tag}</div>
 							<h1 class="title">
 								{title}
 							</h1>

@@ -40,7 +40,10 @@ async function buildCoverLetter(sourceFile) {
         const markdown = fs.readFileSync(absoluteSource, 'utf8');
 
         // Remove frontmatter simply
-        const mdContent = markdown.replace(/^---[\s\S]*?---/, '').trim();
+        let mdContent = markdown.replace(/^---[\s\S]*?---/, '').trim();
+
+        // Remove markdown images from the PDF so they only appear on the web page
+        mdContent = mdContent.replace(/!\[.*?\]\(.*?\)/g, '');
 
         // Inject header for the PDF resumes
         const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 675`;

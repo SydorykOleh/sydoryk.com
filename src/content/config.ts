@@ -23,6 +23,16 @@ const coverletterCollection = defineCollection({
 		}),
 });
 
+const upworkCollection = defineCollection({
+		type: 'content',
+		schema: z.object({
+			title: z.string(),
+			company: z.string().optional(),
+			role: z.string().optional(),
+			date: z.coerce.date().optional(),
+		}),
+});
+
 const projectsCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
@@ -49,6 +59,7 @@ const experienceCollection = defineCollection({
 export const collections = {
 	'blog': blogCollection,
 	'coverletter': coverletterCollection,
+	'upwork': upworkCollection,
 	'projects': projectsCollection,
 	'experience': experienceCollection,
 };

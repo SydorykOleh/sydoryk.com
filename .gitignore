@@ -30,3 +30,5 @@ yarn.lock
 
 # Custom document folders
 .skills/
+
+tmp/
