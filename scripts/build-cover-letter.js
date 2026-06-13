@@ -90,7 +90,7 @@ async function buildCoverLetter(sourceFile) {
                 body { font-size: 12px; }
                 p { margin-bottom: 16px; }
                 .resume-header { margin-bottom: 48px; }
-                a { border-bottom: none !important; }
+                a { color: #0056b3 !important; text-decoration: underline !important; border-bottom: none !important; }
             </style>
         </head>
         <body>

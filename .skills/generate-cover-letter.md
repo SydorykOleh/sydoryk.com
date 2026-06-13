@@ -24,8 +24,9 @@ Analyze the job description to identify:
 Write a tailored cover letter that follows the structure of `template.md`:
 - **Template Usage**: `template.md` is now a master repository containing multiple variant paragraphs for different roles (Unreal, Lighting, Procedural, Product, IT). You must CHERRY-PICK only the 1-2 paragraphs that are highly relevant to the job description. Discard the rest. Do NOT copy the bracketed instructions (e.g., `[For Unreal Engine...]`).
 - **Tone**: Professional, conversational, and human. Make the text sound less "perfect" or robotic. Use a simple "Hi," to start. DO NOT use obvious AI buzzwords or phrases like "perfectly aligns with", "I specialize in", "utilizing", "delve into", "testament to", etc. Do NOT use em dashes (`—`) or en dashes (`–`). Keep it casual and direct. If there is a missing skill, mention it honestly but bridge it to existing experience.
+- **Resume Link for Justjoin.it**: If the user is applying for an IT job specifically from `justjoin.it` (mentioned in the prompt or job description), you MUST include a direct link to the IT resume at the top of the cover letter, right after the "Hi," greeting. Use this exact markdown: `You can view my full resume here: [Resume (PDF)](https://sydoryk.com/assets/resume_SydorykOleh_IT.pdf)`.
 - Highlight specific experiences from `src/content/experience/` md files that align directly with the job description's key requirements.
-- link specific examples in portfolio
+- **Portfolio & GitHub**: Link specific examples in your portfolio. For IT, DevOps, or Systems Administration roles, explicitly include links to your GitHub profile (e.g., `[GitHub](https://github.com/SydorykOleh)`) or relevant GitHub repositories within the text to showcase your technical code instead of visual portfolio examples.
 - **Location**: When relevant, mention that you are located in Krakow.
 - **Call to Action & Availability**: At the end of the cover letter (before the signature), mention that you are currently available and interested to discuss the position in more detail.
 - **Signature**: Always close with the following exact format:
@@ -43,7 +44,7 @@ Write a tailored cover letter that follows the structure of `template.md`:
   date: <current-date-YYYY-MM-DD>
   ---
   ```
-- **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-4 highly relevant portfolio items from `src/data/home.json` so the web page looks premium:
+- **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-4 highly relevant portfolio items from `src/data/home.json` so the web page looks premium. **CRITICAL:** Do NOT include the portfolio examples section if the user is applying for an IT, DevOps, or Systems Administration role.
   ```html
   <h3>Relevant Portfolio Examples</h3>
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
