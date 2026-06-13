@@ -108,18 +108,18 @@ const { Content: ITContent } = await itEntry.render();
 		const buttons = document.querySelectorAll(".filter-tag[data-tab]");
 		if (buttons.length === 0) return;
 
-		const contents = document.querySelectorAll(".resume-tab-content");
+		const contents = document.querySelectorAll<HTMLElement>(".resume-tab-content");
 		const pdfButton = document.getElementById("pdf-download-btn");
-		const filterContainer = document.querySelector(".section.filter");
-		const resumeSection = document.querySelector("section.border-top");
+		const filterContainer = document.querySelector<HTMLElement>(".section.filter");
+		const resumeSection = document.querySelector<HTMLElement>("section.border-top");
 
-		const pdfLinks = {
+		const pdfLinks: Record<string, string> = {
 			"lrc": "/assets/resume_SydorykOleh_LRC.pdf",
 			"technical": "/assets/resume_SydorykOleh_TA.pdf",
 			"it": "/assets/resume_SydorykOleh_IT.pdf",
 		};
 
-		function switchTab(tab) {
+		function switchTab(tab: string) {
 			buttons.forEach((btn) => {
 				if (btn.getAttribute("data-tab") === tab) {
 					btn.classList.add("active");
