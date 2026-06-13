@@ -40,11 +40,15 @@ async function buildPdfs() {
             const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
             const htmlContent = headerHtml + '\n' + marked.parse(mdContent);
 
+            const titleMatch = markdown.match(/^title:\s*(.+)$/m);
+            const docTitle = titleMatch ? titleMatch[1].replace(/['"]/g, '') + ' - Oleh Sydoryk' : 'Oleh Sydoryk - Resume';
+
             const finalHtml = `
             <!DOCTYPE html>
             <html>
             <head>
                 <meta charset="utf-8">
+                <title>${docTitle}</title>
                 <style>${css}</style>
             </head>
             <body>

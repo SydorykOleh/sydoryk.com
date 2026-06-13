@@ -45,26 +45,49 @@ async function buildCoverLetter(sourceFile) {
         // Inject header for the PDF resumes
         const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 675`;
         
-        // Remove HTML cards from the markdown since they are for the web version only
-        const contentWithoutCards = mdContent.replace(/<h3.*?>Relevant Portfolio Examples<\/h3>[\s\S]*?(?=<style|<\/body>|$)/gi, '');
-        
         const slug = basename.toLowerCase();
-        const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [sydoryk.com/${slug}](https://sydoryk.com/${slug})\n\n`;
+        const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [https://sydoryk.com/${slug}](https://sydoryk.com/${slug})\n\n`;
+
+        // Convert HTML portfolio cards into a simple text list for the PDF
+        let processedContent = mdContent.replace(/<h3.*?>Relevant Portfolio Examples<\/h3>[\s\S]*?(?=<style|<\/body>|$)/gi, (match) => {
+            const cardRegex = /<a[^>]*href="([^"]+)"[^>]*>[\s\S]*?<h4[^>]*>([\s\S]*?)<\/h4>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>[\s\S]*?<\/a>/gi;
+            let listMarkdown = '### Relevant Portfolio Examples\n\n';
+            let cardMatch;
+            while ((cardMatch = cardRegex.exec(match)) !== null) {
+                let link = cardMatch[1];
+                if (link.startsWith('/detail/')) {
+                    link = 'https://sydoryk.com' + link;
+                }
+                const title = cardMatch[2].trim();
+                listMarkdown += `- **[${title}](${link})**\n`;
+            }
+            return listMarkdown;
+        });
 
         const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
-        const htmlContent = headerHtml + '\n' + marked.parse(linkMarkdown) + marked.parse(contentWithoutCards);
+        const htmlContent = headerHtml + '\n' + marked.parse(linkMarkdown) + marked.parse(processedContent);
+
+        const titleMatch = markdown.match(/^title:\s*(.+)$/m);
+        const docTitle = titleMatch ? titleMatch[1].replace(/['"]/g, '') + ' - Oleh Sydoryk' : 'Oleh Sydoryk - Cover Letter';
 
         const finalHtml = `
         <!DOCTYPE html>
         <html>
         <head>
             <meta charset="utf-8">
+            <title>${docTitle}</title>
             <style>${css}</style>
             <style>
                 /* Additional cover letter specific styles */
+                :root {
+                    --color-100: #000000;
+                    --color-300: #444444;
+                    --color-700: #cccccc;
+                }
                 body { font-size: 12px; }
                 p { margin-bottom: 16px; }
                 .resume-header { margin-bottom: 48px; }
+                a { border-bottom: none !important; }
             </style>
         </head>
         <body>
