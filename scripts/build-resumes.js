@@ -30,23 +30,16 @@ async function buildPdfs() {
         try {
             console.log(`Converting ${resume.source} -> ${resume.output}`);
             const markdown = fs.readFileSync(resume.source, 'utf8');
-            
+
             // Remove frontmatter simply
             const mdContent = markdown.replace(/^---[\s\S]*?---/, '').trim();
-            
+
             // Inject header for the PDF resumes
-            const headerMarkdown = `
-<div class="resume-header">
-
-# Oleh Sydoryk
-Krakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 675 ❖ [sydoryk.com](https://sydoryk.com)
-
-</div>
-
-`;
+            const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 675`;
             
-            const htmlContent = marked.parse(headerMarkdown + mdContent);
-            
+            const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
+            const htmlContent = headerHtml + '\n' + marked.parse(mdContent);
+
             const finalHtml = `
             <!DOCTYPE html>
             <html>
@@ -62,21 +55,21 @@ Krakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 6
 
             const page = await browser.newPage();
             await page.setContent(finalHtml, { waitUntil: 'networkidle0' });
-            
-            await page.pdf({ 
-                path: resume.output, 
-                format: 'A4', 
-                margin: { top: '20mm', right: '20mm', bottom: '20mm', left: '20mm' },
-                printBackground: true 
+
+            await page.pdf({
+                path: resume.output,
+                format: 'A4',
+                margin: { top: '12mm', right: '20mm', bottom: '20mm', left: '20mm' },
+                printBackground: true
             });
-            
+
             await page.close();
             console.log(`Successfully generated ${resume.output}`);
         } catch (error) {
             console.error(`Error generating ${resume.output}:`, error);
         }
     }
-    
+
     await browser.close();
     console.log('Finished generating PDF resumes.');
 }
