@@ -15,6 +15,8 @@ While much of my recent work has focused on high-end product visualization and c
 
 I am currently based in Krakow and would love to discuss how my mix of 3D, motion, and graphic design skills can support GAZEX's ongoing projects.
 
+**Full Resume**: [https://sydoryk.com/resume](https://sydoryk.com/resume)
+
 Cheers,  
 Oleh
 
