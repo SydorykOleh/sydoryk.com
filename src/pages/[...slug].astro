@@ -9,7 +9,7 @@ interface Props {
 export async function getStaticPaths() {
 	const proposals = await getCollection('proposals');
 	return proposals.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: `proposals/${entry.slug}` },
 		props: { entry },
 	}));
 }
