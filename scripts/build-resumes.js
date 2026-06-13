@@ -4,7 +4,7 @@ import { marked } from 'marked';
 import puppeteer from 'puppeteer';
 
 const resumes = [
-    { source: 'src/content/experience/lrc.md', output: 'public/assets/resume_SydorykOleh.pdf' },
+    { source: 'src/content/experience/lrc.md', output: 'public/assets/resume_SydorykOleh_LRC.pdf' },
     { source: 'src/content/experience/technical.md', output: 'public/assets/resume_SydorykOleh_TA.pdf' },
     { source: 'src/content/experience/it.md', output: 'public/assets/resume_SydorykOleh_IT.pdf' }
 ];

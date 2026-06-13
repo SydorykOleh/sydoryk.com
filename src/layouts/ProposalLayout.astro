@@ -1,8 +1,8 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import CallToAction from '../components/CallToAction.astro';
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CallToAction from "../components/CallToAction.astro";
 
 interface Props {
 	title?: string | undefined;
@@ -13,36 +13,48 @@ interface Props {
 
 const { title, description, company, role } = Astro.props;
 ---
+
 <html lang="en" class="theme-dark">
 	<head>
 		<MainHead title={title} description={description} />
 	</head>
 	<body class="_body">
 		<div class="">
-			<Nav transition:persist/>
+			<Nav transition:persist />
 			<div class="section post">
 				<div class="container">
 					<main class="post-wrapper article">
 						<div class="section-header text-center">
-							<div class="title-tag">
-								Job Proposal
-							</div>
+							<div class="title-tag">Job Proposal</div>
 							<h1 class="title">
 								{title}
 							</h1>
-							{company && role && (
-								<p class="subtitle" style="color: var(--color-500); margin-top: 0.5rem; font-size: 1.1rem;">
-									Applying for <strong>{role}</strong> at <strong>{company}</strong>
-								</p>
-							)}
+							{
+								company && role && (
+									<p
+										class="subtitle"
+										style="color: var(--color-500); margin-top: 0.5rem; font-size: 1.1rem;"
+									>
+										Applying for <strong>{role}</strong> at{" "}
+										<strong>{company}</strong>
+									</p>
+								)
+							}
 						</div>
-						
+
 						<section class="proposal-content">
 							<slot />
 						</section>
-						
-						<div class="text-center" style="margin-top: 3rem; margin-bottom: 2rem;">
-							<CallToAction href="/assets/resume_SydorykOleh.pdf" target="_blank" download="SydorykOleh_Resume.pdf">
+
+						<div
+							class="text-center"
+							style="margin-top: 3rem; margin-bottom: 2rem;"
+						>
+							<CallToAction
+								href="/assets/resume_SydorykOleh_LRC.pdf"
+								target="_blank"
+								download="SydorykOleh_Resume_LRC.pdf"
+							>
 								Download Resume
 							</CallToAction>
 						</div>
@@ -61,20 +73,20 @@ const { title, description, company, role } = Astro.props;
 				--bg-svg-blend-mode: darken;
 				--bg-blend-mode: lighten;
 			}
-			
+
 			.post {
 				display: block;
 				max-width: 1400px;
 				width: 100%;
 				margin: 0 auto;
 			}
-			
+
 			.section-header {
 				margin: 3rem 0 2rem;
 				border-bottom: 1px dashed var(--color-700);
 				padding-bottom: 2.5rem;
 			}
-			
+
 			.title-tag {
 				display: inline-block;
 				font-size: 13px;
@@ -87,7 +99,7 @@ const { title, description, company, role } = Astro.props;
 				text-transform: uppercase;
 				letter-spacing: 1px;
 			}
-			
+
 			.title {
 				font-size: 2.25rem;
 				font-weight: bold;
@@ -95,7 +107,7 @@ const { title, description, company, role } = Astro.props;
 				line-height: 1.3;
 				margin: 0.5rem auto;
 			}
-			
+
 			.proposal-content {
 				position: relative;
 				color: var(--color-200);
@@ -103,11 +115,11 @@ const { title, description, company, role } = Astro.props;
 				font-size: 1.1rem;
 				line-height: 1.8;
 			}
-			
+
 			.proposal-content > * + * {
 				margin-top: 1.5rem;
 			}
-			
+
 			.proposal-content h1,
 			.proposal-content h2,
 			.proposal-content h3 {
@@ -126,15 +138,15 @@ const { title, description, company, role } = Astro.props;
 			.proposal-content h3 {
 				font-size: 1.25rem;
 			}
-			
+
 			.proposal-content p {
 				margin: 16px 0;
 			}
-			
+
 			.proposal-content a {
 				color: var(--color-blue);
 			}
-			
+
 			.proposal-content a:hover {
 				text-decoration: underline;
 			}
