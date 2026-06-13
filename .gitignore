@@ -28,7 +28,6 @@ pnpm-debug.log*
 .idea/
 yarn.lock
 
-# Custom document folders
-.skills/
+
 
 tmp/
