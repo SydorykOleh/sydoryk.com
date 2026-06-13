@@ -73,7 +73,7 @@ const count = cards.length;
     </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('astro:page-load', function() {
       // 检查是否存在带有类名 '.card-figure__video' 的元素
       const videos = document.querySelectorAll('.card-figure__video') as NodeListOf<HTMLVideoElement>;;
 
@@ -292,8 +292,11 @@ class Demo {
       return titleText.indexOf(searchText) !== -1;
     });
   }}
-document.addEventListener('DOMContentLoaded', () => {
-  window.demo = new Demo(document.getElementById('js-shuffle'));
+document.addEventListener('astro:page-load', () => {
+  const shuffleEl = document.getElementById('js-shuffle');
+  if (shuffleEl) {
+    window.demo = new Demo(shuffleEl);
+  }
 });
 
 </script>

@@ -1,31 +1,30 @@
 export const siteConfig = {
-    siteName: import.meta.env.PUBLIC_SITE_NAME,
-    siteUrl: import.meta.env.PUBLIC_SITE_URL,
+	siteName: import.meta.env.PUBLIC_SITE_NAME,
+	siteUrl: import.meta.env.PUBLIC_SITE_URL,
 }
 
 interface NavItem {
-    label: string;
-    href: string;
-    target?: string; // target is optional, defaults to _self or unspecified
+	label: string;
+	href: string;
+	target?: string; // target is optional, defaults to _self or unspecified
 }
 
 interface Nav {
-    avatar?: string;
-    items?: NavItem[]; // Use an array to store navigation items for more flexibility in adding or removing items
+	avatar?: string;
+	items?: NavItem[]; // Use an array to store navigation items for more flexibility in adding or removing items
 }
 
 // Defining navigation items
 export const nav: Nav = {
-	avatar:'/assets/author.jpg',
-    items: [
-        { label: 'Portfolio', href: '/', target: '_self' }, // target is '_blank' to open a new link
-        //{ label: 'Gallery', href: '/gallery', target: '_self' },
-        //{ label: 'Work', href: '/project', target: '_self' },
-        //{ label: 'Blog', href: '/blog', target: '_self' },
-        { label: 'Experience', href: '/experience', target: '_self' },
-        { label: 'About', href: '/about', target: '_self' },
-        //{ label: 'Contact', href: '/contact', target: '_self' },
-    ],
+	avatar: '/assets/author.webp',
+	items: [
+		{ label: 'Portfolio', href: '/', target: '_self' }, // target is '_blank' to open a new link
+		//{ label: 'Work', href: '/project', target: '_self' },
+		//{ label: 'Blog', href: '/blog', target: '_self' },
+		{ label: 'Experience', href: '/experience', target: '_self' },
+		{ label: 'About', href: '/about', target: '_self' },
+		//{ label: 'Contact', href: '/contact', target: '_self' },
+	],
 };
 
 // Footer

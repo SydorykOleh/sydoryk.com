@@ -1,0 +1,297 @@
+---
+import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
+---
+<ConfiguratorLayout
+    title="Headphones Configurator"
+    description="Interactive 3D Headphones Configurator with Full Control Panel"
+    keywords="Headphones, Product Visualization, Configurator, WebGL, Canvas"    
+    >
+    <div id="rotate-hint">
+        <span class="mouse-icon">🖱️</span>
+        <span class="hint-text">Click & Drag to Rotate</span>
+    </div>
+
+    <Fragment slot="controls">
+        <div class="control-body">
+            
+            <div class="control-section">
+                <h4>Frame (Metal)</h4>
+                <div class="swatch-grid">
+                    <button class="swatch selected" data-type="metal" data-value="black" style="background: #111;" title="Black"></button>
+                    <button class="swatch" data-type="metal" data-value="gray" style="background: #888;" title="Gray"></button>
+                    <button class="swatch" data-type="metal" data-value="white" style="background: #eee;" title="White"></button>
+                    <button class="swatch" data-type="metal" data-value="orange" style="background: orange;" title="Orange"></button>
+                    <button class="swatch" data-type="metal" data-value="blue" style="background: #1e90ff;" title="Blue"></button>
+                    <button class="swatch" data-type="metal" data-value="green" style="background: #2ecc71;" title="Green"></button>
+                    <button class="swatch" data-type="metal" data-value="red" style="background: #e74c3c;" title="Red"></button>
+                    <button class="swatch" data-type="metal" data-value="purple" style="background: #9b59b6;" title="Purple"></button>
+                    <button class="swatch" data-type="metal" data-value="gold" style="background: #ffd700;" title="Gold"></button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>Earpads</h4>
+                <div class="swatch-grid">
+                    <button class="swatch selected" data-type="earpads" data-value="black" style="background: #111;" title="Black"></button>
+                    <button class="swatch" data-type="earpads" data-value="gray" style="background: #888;" title="Gray"></button>
+                    <button class="swatch" data-type="earpads" data-value="white" style="background: #eee;" title="White"></button>
+                    <button class="swatch" data-type="earpads" data-value="orange" style="background: orange;" title="Orange"></button>
+                    <button class="swatch" data-type="earpads" data-value="blue" style="background: #1e90ff;" title="Blue"></button>
+                    <button class="swatch" data-type="earpads" data-value="green" style="background: #2ecc71;" title="Green"></button>
+                    <button class="swatch" data-type="earpads" data-value="red" style="background: #e74c3c;" title="Red"></button>
+                    <button class="swatch" data-type="earpads" data-value="purple" style="background: #9b59b6;" title="Purple"></button>
+                    <button class="swatch" data-type="earpads" data-value="gold" style="background: #ffd700;" title="Gold"></button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>Headpad</h4>
+                <div class="swatch-grid">
+                    <button class="swatch selected" data-type="headband" data-value="black" style="background: #111;" title="Black"></button>
+                    <button class="swatch" data-type="headband" data-value="gray" style="background: #888;" title="Gray"></button>
+                    <button class="swatch" data-type="headband" data-value="white" style="background: #eee;" title="White"></button>
+                    <button class="swatch" data-type="headband" data-value="orange" style="background: orange;" title="Orange"></button>
+                    <button class="swatch" data-type="headband" data-value="blue" style="background: #1e90ff;" title="Blue"></button>
+                    <button class="swatch" data-type="headband" data-value="green" style="background: #2ecc71;" title="Green"></button>
+                    <button class="swatch" data-type="headband" data-value="red" style="background: #e74c3c;" title="Red"></button>
+                    <button class="swatch" data-type="headband" data-value="purple" style="background: #9b59b6;" title="Purple"></button>
+                    <button class="swatch" data-type="headband" data-value="gold" style="background: #ffd700;" title="Gold"></button>
+                </div>
+            </div>
+
+        </div>
+    </Fragment>
+
+    <div class="canvas-wrapper">
+        <canvas id="configCanvas" width="1200" height="1200"></canvas>
+        <div id="loader">Loading...</div>
+    </div>
+    
+    <div class="loader-container">
+        <div class="progress-bar">
+            <div id="progress-fill" style="width: 0%"></div>
+        </div>
+        <div id="progress-text">Loading Assets... 0/0</div>
+    </div>
+    <Fragment slot="config-description">
+        <div class="content">
+            <div class="row desc">
+                <div class="col-1a">
+                    <div class="post-desc">
+                        <p>
+                            To overcome the constraints of static 2D product sheets and catalog renders, I built this interactive real-time product configurator to let clients preview any possible combination of materials and colors.
+                        </p>
+                        <p>
+                            The customization engine works by dynamically overlaying and compositing multi-layer assets—including separate renders for the metal frame, earpads, and headpad—directly in the browser. Each layer corresponds to a specific material type, color tone, and camera angle.
+                        </p>
+                        <p>
+                            The system processes and packages 1,008 unique render states into optimized WebP images, compressing the entire asset bundle to under 50MB. On load, the core imagery is displayed immediately, while a background pre-caching pipeline loads the remaining variants into active memory to enable responsive, fluid rotations and style switching.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Fragment>
+</ConfiguratorLayout>
+
+<style>
+    /* Layout Constants */
+    .canvas-wrapper {
+        position: relative;
+        width: 1200px;
+        height: 1200px;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: grab;
+    }
+    
+    canvas {
+        width: 1200px;
+        height: 1200px;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    #rotate-hint {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.7);
+        padding: 12px 24px; border-radius: 30px;
+        color: white; pointer-events: none;
+        transition: opacity 0.5s; z-index: 10;
+        display: flex; gap: 10px; align-items: center;
+    }
+
+    /* Control Groups */
+    .control-body { padding: 20px 0; }
+    .control-section { margin-bottom: 32px; }
+    .control-section h4 {
+        margin: 0 0 15px 0;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #888;
+    }
+
+    /* Swatches - 42px Circle Style */
+    .swatch-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .swatch {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid #444;
+        cursor: pointer;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+    .swatch:hover { transform: scale(1.1); }
+    .swatch.selected { 
+        border-color: #fff; 
+        outline: 2px solid #007bff; 
+        transform: scale(1.1); 
+    }
+
+    /* Loading UI */
+    .loader-container {
+        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+        width: 60%; max-width: 400px; text-align: center; background: rgba(0, 0, 0, 0.6);
+        padding: 10px 20px; border-radius: 20px; backdrop-filter: blur(5px); transition: opacity 0.5s;
+    }
+    .progress-bar { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.2); border-radius: 3px; overflow: hidden; }
+    #progress-fill { height: 100%; background: #007bff; transition: width 0.2s; }
+    #progress-text { font-size: 14px; color: #fff; margin-top: 5px; }
+    #loader { position: absolute; bottom: 10px; right: 10px; color: #666; font-size: 0.8rem; opacity: 0; }
+    #loader.visible { opacity: 1; }
+</style>
+
+<script>
+    const CONFIG = {
+        basePath: "/assets/projects/Headphones/",
+        angles: 36,
+    };
+
+    const state = {
+        angle: 0,
+        metal: 'black',
+        earpads: 'black',
+        headband: 'black'
+    };
+
+    const canvas = document.getElementById("configCanvas");
+    const ctx = canvas.getContext("2d");
+    const imageCache = {};
+
+    function getAssetPath(part, color, angle) {
+        if (part === 'shadow') return `${CONFIG.basePath}shadow/shadow_${angle}.webp`;
+        return `${CONFIG.basePath}${part}/${part}_${color}_${angle}.webp`;
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Render layers bottom-to-top
+        const layers = [
+            { p: 'shadow', c: '' },
+            { p: 'metal', c: state.metal },
+            { p: 'earpads', c: state.earpads },
+            { p: 'headband', c: state.headband }
+        ];
+
+        layers.forEach(l => {
+            const url = getAssetPath(l.p, l.c, state.angle);
+            if (imageCache[url]?.complete) {
+                ctx.drawImage(imageCache[url], 0, 0);
+            } else {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    imageCache[url] = img;
+                    render();
+                };
+            }
+        });
+    }
+
+    // Interaction logic
+    document.querySelectorAll('.swatch').forEach(btn => {
+        btn.addEventListener('click', () => {
+            state[btn.dataset.type] = btn.dataset.value;
+            btn.parentElement.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            btn.classList.add('selected');
+            render();
+        });
+    });
+
+    // Drag rotation
+    let isDragging = false;
+    let startX = 0;
+    canvas.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
+    window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 15) {
+            state.angle = (state.angle - Math.sign(-dx) + 36) % 36;
+            startX = e.clientX;
+            render();
+            document.getElementById('rotate-hint').style.opacity = 0;
+        }
+    });
+    window.addEventListener('mouseup', () => isDragging = false);
+
+    // Touch support for mobile devices
+    canvas.addEventListener('touchstart', e => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        // Do not prevent default to allow page scrolling unless touching canvas
+    }, {passive: true});
+    window.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        const dx = e.touches[0].clientX - startX;
+        if (Math.abs(dx) > 15) {
+            state.angle = (state.angle - Math.sign(-dx) + 36) % 36;
+            startX = e.touches[0].clientX;
+            render();
+            const hint = document.getElementById('rotate-hint');
+            if (hint) hint.style.opacity = '0';
+        }
+    }, {passive: true});
+    window.addEventListener('touchend', () => isDragging = false);
+
+    // Smart Background Preloader
+    function startPreload() {
+        const parts = ['metal', 'earpads', 'headband'];
+        const colors = ["black", "gray", "white", "orange", "blue", "green", "red", "purple", "gold"];
+        const queue = [];
+
+        // 1. Shadows first
+        for(let i=0; i<36; i++) queue.push(getAssetPath('shadow', '', i));
+        // 2. All other parts/colors
+        parts.forEach(p => colors.forEach(c => {
+            for(let i=0; i<36; i++) queue.push(getAssetPath(p, c, i));
+        }));
+
+        const total = queue.length;
+        let loaded = 0;
+
+        const processQueue = () => {
+            if (queue.length === 0) return;
+            const url = queue.shift();
+            const img = new Image();
+            img.src = url;
+            img.onload = img.onerror = () => {
+                imageCache[url] = img;
+                loaded++;
+                const pct = Math.round((loaded / total) * 100);
+                document.getElementById('progress-fill').style.width = `${pct}%`;
+                document.getElementById('progress-text').innerText = `Caching: ${loaded}/${total}`;
+                if (loaded === total) setTimeout(() => document.querySelector('.loader-container').style.opacity = 0, 1000);
+                processQueue();
+            };
+        };
+
+        for(let i=0; i<6; i++) processQueue();
+    }
+
+    render();
+    setTimeout(startPreload, 1500);
+</script>

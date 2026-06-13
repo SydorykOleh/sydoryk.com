@@ -1,0 +1,10 @@
+ffmpeg started on 2026-06-12 at 17:10:14
+Report written to "ffmpeg-20260612-171014.log"
+Log level: 48
+Command line:
+"C:\\Users\\sydor\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffmpeg.exe" -version
+Splitting the commandline.
+Reading option '-version' ... matched as option 'version' (show version) with argument '(null)'.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option version (show version) with argument (null).

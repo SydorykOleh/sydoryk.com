@@ -42,7 +42,7 @@ import {nav} from '../data/content';
 	<div class="m-nav-mask"></div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const toggle = () => {
       document.querySelector('.hamburger-toggle')?.classList.toggle('close-line');
       document.querySelector('.m-nav')?.classList.toggle('is-active');
