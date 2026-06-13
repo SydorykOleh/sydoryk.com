@@ -1,516 +1,112 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPostLayout from "../layouts/BlogPostLayout.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import CallToAction from "../components/CallToAction.astro";
 import { pageTag, pageDescription, servicesTdk } from "../data/content";
 
 const testimonials = [
-  "Oleh delivered high-quality 3D assets that met all technical specifications. His attention to material detail and lighting is excellent, and he followed the brief with precision. Professional, efficient, and highly recommended for technical design work.",
-  "It was a great experience working with Oleh. He has a broad range of knowledge, from rendering to modelling. He understood the brief very well and was always responsive and communicative throughout the process. He found creative solutions to the issues I was experiencing and delivered high-quality work.",
-  "Oleh has been very responsive, understand our needs, making our requested changes and providing quality results.",
-  "Oleh was great! Super proffesional and quick. Has relevant exprience and has provided amazing results. Will def work with him again. Very much recommended.",
-  "Oleh was very responsive and attentive to our brief! Would highly recommend for creative projects as well as high quality 3D modelling work.",
-  "Oleh was cooperative and communicative. I would use him for my render projects again in the future! I think we will have more coming down in the pipeline soon.",
-  "Oleh was easy to work with and was very prompt!"
+  { text: "Oleh delivered high-quality 3D assets that met all technical specifications. His attention to material detail and lighting is excellent, and he followed the brief with precision. Professional, efficient, and highly recommended for technical design work." },
+  { text: "It was a great experience working with Oleh. He has a broad range of knowledge, from rendering to modelling. He understood the brief very well and was always responsive and communicative throughout the process. He found creative solutions to the issues I was experiencing and delivered high-quality work." },
+  { text: "Oleh has been very responsive, understand our needs, making our requested changes and providing quality results." },
+  { text: "Oleh was great! Super proffesional and quick. Has relevant exprience and has provided amazing results. Will def work with him again. Very much recommended." },
+  { text: "Oleh was very responsive and attentive to our brief! Would highly recommend for creative projects as well as high quality 3D modelling work." },
+  { text: "Oleh was cooperative and communicative. I would use him for my render projects again in the future! I think we will have more coming down in the pipeline soon." },
+  { text: "Oleh was easy to work with and was very prompt!" }
 ];
 ---
 
-<BaseLayout
-  title={servicesTdk.title || ""}
-  description={servicesTdk.description || ""}
-  keywords={servicesTdk.keywords || ""}
+<BlogPostLayout
+	title={servicesTdk.title || ""}
+	description={servicesTdk.description || ""}
+	keywords={servicesTdk.keywords || ""}
 >
-  <div class="services-page">
-    <div class="container">
-      
-      <!-- HERO SECTION -->
-      <section class="hero-section text-center">
-        <SectionHeader
-          tag={pageTag.services}
-          description={pageDescription.services}
-        />
-        <div class="hero-content">
-          <h1 class="hero-title">Elevate Your Vision with Expert 3D Solutions</h1>
-          <p class="hero-subtitle">
-            Reliable, high-quality, and procedurally optimized 3D modeling and rendering services. 
-            Tailored for industrial, product, and architectural projects.
-          </p>
-          <div class="hero-cta">
-            <CallToAction href="https://www.upwork.com/freelancers/sydoryk" target="_blank">
-              Hire Me on Upwork
-            </CallToAction>
-          </div>
-        </div>
-      </section>
+	<div class="post">
+		<main class="post-wrapper about">
+			<SectionHeader
+				tag={pageTag.services}
+				description={pageDescription.services}
+			/>
 
-      <!-- PRICING SECTION -->
-      <section class="pricing-section">
-        <div class="section-title-wrap">
-          <h2 class="section-title">Transparent Pricing</h2>
-          <p class="section-desc">Clear rates tailored to project complexity, with no hidden fees.</p>
-        </div>
+			<section class="border-top" style="padding-top: 2rem;">
+				<div class="content">
+					<p>
+						I offer reliable, high-quality, and procedurally optimized 3D modeling and rendering services. My workflow is tailored specifically for industrial, product, and architectural projects where precision and technical excellence are paramount.
+					</p>
+					
+					<h3 class="post-title" style="margin-top: 2.5rem; margin-bottom: 1rem;">Pricing & Rates</h3>
+					<p>
+						I believe in clear, transparent rates tailored to project complexity, with no hidden fees.
+					</p>
+					<ul>
+						<li>
+							<strong>Hourly Rate ($50 / hr):</strong> Ideal for ongoing projects, consultations, pipeline development, or tasks with flexible scopes. This covers flexible hours, look development, and procedural automation.
+						</li>
+						<li>
+							<strong>Project Based (Custom):</strong> For well-defined scopes. Some real-world examples from past projects include:
+							<ul>
+								<li><strong>Industrial Equipment Visualization:</strong> $75 - $250 <em>(Average: $150 per machine)</em></li>
+								<li><strong>Furniture Model Rendering:</strong> $50 - $200 <em>(Per model render)</em></li>
+							</ul>
+						</li>
+					</ul>
 
-        <div class="pricing-grid">
-          
-          <div class="pricing-card hourly-rate">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <h3>Hourly Rate</h3>
-              <div class="price">
-                <span class="currency">$</span>
-                <span class="amount">50</span>
-                <span class="period">/ hr</span>
-              </div>
-              <p class="pricing-desc">
-                Ideal for ongoing projects, consultations, pipeline development, or tasks with flexible scopes.
-              </p>
-              <ul class="features-list">
-                <li><span class="check">✓</span> Flexible hours</li>
-                <li><span class="check">✓</span> Look Development</li>
-                <li><span class="check">✓</span> Procedural Automation</li>
-              </ul>
-            </div>
-          </div>
+					<h3 class="post-title" style="margin-top: 2.5rem; margin-bottom: 1rem;">Work Policies & Process</h3>
+					<p>How we ensure smooth collaboration and successful delivery:</p>
+					<ul>
+						<li>
+							<strong>Revisions:</strong> 2 rounds of revisions are included in every fixed-price project to ensure the final result perfectly matches your vision.
+						</li>
+						<li>
+							<strong>Payment Milestones:</strong> For fixed-price contracts, we utilize the Upwork Milestone Program. Payments are securely funded before work begins and released upon your approval of the deliverables.
+						</li>
+						<li>
+							<strong>Communication:</strong> Expect clear, responsive, and technical communication. I keep you updated at every major step of the pipeline so there are no surprises.
+						</li>
+					</ul>
 
-          <div class="pricing-card project-rate">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <h3>Project Based</h3>
-              <div class="price">
-                <span class="amount">Custom</span>
-              </div>
-              <p class="pricing-desc">
-                For well-defined scopes. Here are some real-world examples from past projects:
-              </p>
-              <ul class="features-list">
-                <li>
-                  <strong>Industrial Equipment Visualization:</strong><br/>
-                  <span class="price-range">$75 - $250</span> <em>(Average: $150 per machine)</em>
-                </li>
-                <li>
-                  <strong>Furniture Model Rendering:</strong><br/>
-                  <span class="price-range">$50 - $200</span> <em>(Per model render)</em>
-                </li>
-              </ul>
-            </div>
-          </div>
+					<h3 class="post-title" style="margin-top: 2.5rem; margin-bottom: 1rem;">Client Feedback</h3>
+					<p>Don't just take my word for it. Here is some feedback from past clients on Upwork:</p>
+					
+					{testimonials.map((quote) => (
+						<blockquote style="margin: 1.5rem 0; padding-left: 1.25rem; border-left: 4px solid var(--color-blue); font-style: italic; color: var(--color-300);">
+							"{quote.text}"
+						</blockquote>
+					))}
 
-        </div>
-      </section>
+					<p style="margin-top: 4rem; text-align: center;">
+						<CallToAction
+							href="https://www.upwork.com/freelancers/sydoryk"
+							target="_blank"
+						>
+							Let's Work Together
+						</CallToAction>
+					</p>
+				</div>
+			</section>
+		</main>
+	</div>
+</BlogPostLayout>
 
-      <!-- POLICIES SECTION -->
-      <section class="policies-section">
-        <div class="policy-container">
-          <div class="policy-header">
-            <h2>Work Policies & Process</h2>
-            <p>How we ensure smooth collaboration and successful delivery.</p>
-          </div>
-          <div class="policy-content">
-            <div class="policy-item">
-              <div class="icon">🔄</div>
-              <div>
-                <h4>Revisions</h4>
-                <p><strong>2 rounds of revisions</strong> are included in every fixed-price project to ensure the final result perfectly matches your vision.</p>
-              </div>
-            </div>
-            <div class="policy-item">
-              <div class="icon">🛡️</div>
-              <div>
-                <h4>Payment Milestones</h4>
-                <p>For fixed-price contracts, we utilize the <strong>Upwork Milestone Program</strong>. Payments are securely funded before work begins and released upon your approval of the deliverables.</p>
-              </div>
-            </div>
-            <div class="policy-item">
-              <div class="icon">💬</div>
-              <div>
-                <h4>Communication</h4>
-                <p>Clear, responsive, and technical communication. I keep you updated at every major step of the pipeline so there are no surprises.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TESTIMONIALS SECTION -->
-      <section class="testimonials-section">
-        <div class="section-title-wrap text-center">
-          <h2 class="section-title">Client Testimonials</h2>
-          <p class="section-desc">Feedback from past Upwork clients.</p>
-        </div>
-
-        <div class="masonry-grid">
-          {testimonials.map((quote) => (
-            <div class="testimonial-card">
-              <div class="quote-mark">"</div>
-              <p class="quote-text">{quote}</p>
-              <div class="client-info">
-                <div class="stars">★★★★★</div>
-                <div class="platform">Upwork Client</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- BOTTOM CTA -->
-      <section class="bottom-cta text-center">
-        <h2>Ready to start your next project?</h2>
-        <p>Let's discuss your technical requirements and creative goals.</p>
-        <div class="hero-cta" style="margin-top: 2rem;">
-          <CallToAction href="https://www.upwork.com/freelancers/sydoryk" target="_blank">
-            Let's Work Together
-          </CallToAction>
-        </div>
-      </section>
-
-    </div>
-  </div>
-</BaseLayout>
-
-<style lang="scss">
-  .services-page {
-    padding-bottom: 6rem;
-    color: var(--color-200);
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .section-title-wrap {
-    margin-bottom: 3rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    color: var(--color-100);
-    margin-bottom: 0.5rem;
-  }
-
-  .section-desc {
-    font-size: 1.1rem;
-    color: var(--color-300);
-  }
-
-  /* --- HERO --- */
-  .hero-section {
-    padding: 4rem 0 6rem;
-    position: relative;
-    border-bottom: 1px dashed var(--color-700);
-  }
-
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: -1rem; /* Adjusting for SectionHeader space */
-  }
-
-  .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: var(--color-100);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--color-100) 0%, var(--color-300) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-cta {
-    display: inline-block;
-  }
-
-  /* --- PRICING --- */
-  .pricing-section {
-    padding: 6rem 0;
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .pricing-card {
-    position: relative;
-    background: rgba(var(--color-999-rgb), 0.5);
-    border: 1px solid var(--color-700);
-    border-radius: 16px;
-    padding: 2.5rem;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    backdrop-filter: blur(10px);
-    
-    &:hover {
-      transform: translateY(-5px);
-      border-color: var(--color-blue);
-
-      .card-glow {
-        opacity: 0.15;
-      }
-    }
-  }
-
-  .card-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, var(--color-blue) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .card-content {
-    position: relative;
-    z-index: 1;
-
-    h3 {
-      font-size: 1.5rem;
-      color: var(--color-100);
-      margin-bottom: 1rem;
-    }
-
-    .price {
-      margin-bottom: 1.5rem;
-      color: var(--color-100);
-      display: flex;
-      align-items: baseline;
-      
-      .currency {
-        font-size: 1.5rem;
-        font-weight: 500;
-      }
-      .amount {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1;
-      }
-      .period {
-        font-size: 1rem;
-        color: var(--color-300);
-        margin-left: 0.5rem;
-      }
-    }
-
-    .pricing-desc {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      color: var(--color-200);
-      min-height: 3em;
-    }
-
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        
-        .check {
-          color: var(--color-blue);
-          margin-right: 0.5rem;
-          font-weight: bold;
-        }
-
-        strong {
-          color: var(--color-100);
-          display: block;
-          margin-bottom: 0.25rem;
-        }
-
-        .price-range {
-          color: var(--color-blue);
-          font-weight: 600;
-        }
-
-        em {
-          color: var(--color-300);
-          font-size: 0.85rem;
-        }
-      }
-    }
-  }
-
-  /* --- POLICIES --- */
-  .policies-section {
-    padding: 6rem 0;
-    border-top: 1px dashed var(--color-700);
-    border-bottom: 1px dashed var(--color-700);
-  }
-
-  .policy-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: start;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-
-  .policy-header {
-    h2 {
-      font-size: 2.5rem;
-      color: var(--color-100);
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    p {
-      font-size: 1.1rem;
-    }
-  }
-
-  .policy-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .policy-item {
-    display: flex;
-    gap: 1.5rem;
-    background: rgba(var(--color-999-rgb), 0.3);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid transparent;
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: var(--color-700);
-    }
-
-    .icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    h4 {
-      color: var(--color-100);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
-
-      strong {
-        color: var(--color-100);
-      }
-    }
-  }
-
-  /* --- TESTIMONIALS --- */
-  .testimonials-section {
-    padding: 6rem 0;
-  }
-
-  .masonry-grid {
-    column-count: 3;
-    column-gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @media (max-width: 1024px) {
-      column-count: 2;
-    }
-    @media (max-width: 640px) {
-      column-count: 1;
-    }
-  }
-
-  .testimonial-card {
-    break-inside: avoid;
-    background: rgba(var(--color-999-rgb), 0.5);
-    border: 1px solid var(--color-700);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: translateY(-3px);
-      border-color: var(--color-blue);
-    }
-
-    .quote-mark {
-      font-family: serif;
-      font-size: 4rem;
-      line-height: 0;
-      color: var(--color-blue);
-      opacity: 0.3;
-      position: absolute;
-      top: 2rem;
-      left: 1.5rem;
-    }
-
-    .quote-text {
-      position: relative;
-      z-index: 1;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--color-200);
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .client-info {
-      border-top: 1px solid var(--color-700);
-      padding-top: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .stars {
-        color: #ffb400; /* Gold for stars */
-        letter-spacing: 2px;
-        font-size: 0.9rem;
-      }
-
-      .platform {
-        font-size: 0.8rem;
-        color: var(--color-300);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-      }
-    }
-  }
-
-  /* --- BOTTOM CTA --- */
-  .bottom-cta {
-    padding: 4rem 0 2rem;
-    background: radial-gradient(ellipse at center, rgba(var(--color-blue-rgb), 0.05) 0%, transparent 70%);
-
-    h2 {
-      font-size: 2.5rem;
-      color: var(--color-100);
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-    }
-  }
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+	}
+	p {
+		margin: 0.75rem 0;
+		line-height: 1.6;
+	}
+	ul {
+		margin-top: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+	li {
+		margin-bottom: 0.75rem;
+		line-height: 1.6;
+	}
+	a,
+	a:link {
+		color: var(--color-blue);
+	}
 </style>
