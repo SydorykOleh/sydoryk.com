@@ -1,0 +1,90 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.resume-header h1 {
+    margin-bottom: 4px;
+}
+
+.resume-header p {
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 4px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+}
+
+strong {
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #000000;
+    margin: 24px 0;
+}
+
+/* Print optimizations */
+h2, h3 {
+    page-break-after: avoid;
+}
+
+li {
+    page-break-inside: avoid;
+}

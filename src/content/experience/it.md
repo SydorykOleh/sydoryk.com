@@ -21,6 +21,11 @@ Adaptable IT and Systems Engineer specializing in infrastructure automation, rob
 * **Asset Management Automation:** Developed Python utilities to batch-process files, programmatically validate legacy path references, and manage large-scale asset libraries across complex project directories.
 * **Version Control & CI/CD:** Established Git-based version control workflows, with proper usage of Gihub Secrets to keep secrets safe.
 
+### Web Development & Engineering
+
+* **Personal Portfolio Website:** Designed, built, and actively maintain a highly performant personal portfolio website (sydoryk.com) from scratch. Developed the complete front-end architecture using Astro.js and TypeScript, applying modern web standards and responsive design through HTML, CSS, and Sass to showcase professional projects and technical writing.
+* **Content Automation (MultiCast):** Developed a custom web application for automated content publishing and scheduling. Integrated tailored title and description generation capabilities, supporting seamless direct publishing to YouTube, TikTok, Facebook, and Instagram.
+
 ### AI Engineering & Integration
 
 * **LLM Implementation:** Architected workflows integrating frontier models (Claude, Gemini, GPT) and local open-weight LLMs (DeepSeek, Qwen) for intelligent coding assistance, automated code review, and workflow acceleration.
@@ -30,5 +35,6 @@ Adaptable IT and Systems Engineer specializing in infrastructure automation, rob
 
 * **Programming & Automation:** Python, Shell Scripting (Bash/PowerShell), Git, CI/CD Workflows, Command-line utilities
 * **DevOps & Infrastructure:** Docker, GitOps, Cloudflare Zero Trust, Network Attached Storage (NAS), Render Farm Infrastructure
+* **Web Technologies:** Astro.js, TypeScript, JavaScript, HTML5/CSS3, Sass, Node.js
 * **Operating Systems:** Linux, Windows / Windows Server
 * **AI & Intelligent Systems:** Local LLM Deployment, Prompt Engineering, Agentic Workflow Design, Custom Skill Integration

@@ -12,6 +12,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "build:resumes": "node scripts/build-resumes.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -28,6 +29,7 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "md-to-pdf": "^5.2.5",
     "vite-plugin-pwa": "^1.0.0"
   }
 }

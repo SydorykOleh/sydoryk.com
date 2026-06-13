@@ -6,9 +6,7 @@ Lighting & Compositing Artist with 9+ years of experience in CGI. Expert in rend
 
 ### Lighting & Compositing
 
-* **Designed and implemented** studio-wide lighting and compositing workflows at Attraktion! GmbH, supporting over 300 shots and multiple single-shot experiences. (2016–2024)
-* **Lit and rendered** over 300 production shots for large-scale media attractions; performed compositing tasks in Nuke for final delivery. (2016–2024)
-* **Contributed** to look development and lighting for ~130 shots at Dave and Ava, supporting rapid production schedules. (2015–2016)
+* **Lighting & Compositing Workflow:** Designed and implemented studio-wide lighting and compositing pipelines at Attraktion! GmbH. Authored master Nuke templates that standardized the look and streamlined rendering for over 300 production shots and multiple large-scale single-shot media attractions. (2016–2024)
 
 ### Look Development & Product Visualization
 
@@ -18,16 +16,20 @@ Lighting & Compositing Artist with 9+ years of experience in CGI. Expert in rend
 
 ### Unreal Engine
 
-* **Designed lighting** for complex environments and cinematic shots.
-* **Developed master materials** utilized across all movie assets, including stylized material effects and volumetric god rays.
-* **Authored complex FX** using Niagara to create [creative transitions between scenes](https://sydoryk.com/detail/SunnyBunny).
-* **Led environment creation** by generating terrains in Houdini, exporting them to Unreal Landscapes, and utilizing PCG (Procedural Content Generation) to scatter assets procedurally.
+* **Pipeline Integration** Pioneered the integration of Unreal Engine 5 into the production pipeline; co-developed workflow and pipeline automation alongside the TD and established core project structures. (2023–2024)
+* **Lighting** Crafted cinematic lighting and atmospheric effects to establish mood and visual depth across complex environments and individual shots. (2023–2024)
+* **Environment & Procedural Art** Led environment creation by generating terrains in Houdini, exporting them to Unreal Landscapes, and utilizing PCG (Procedural Content Generation) for procedural asset scattering. (2023–2024)
+* **Technical Art & Materials** Developed master materials utilized across all movie assets, including stylized material effects and volumetric god rays. (2023–2024)
+* [**Niagara FX**]((https://sydoryk.com/detail/SunnyBunny)) Used Niagara to create complex, stylized transitions between cinematic scenes. (2023–2024)
+* **Performance Optimization** Resolved complex engine performance bottlenecks, optimized lighting and rendering configurations, and authored standardized rendering templates and documentation. (2023–2024)
+
 
 ### Team Leadership
 
-* **Managed a team of lighting artists**, mentoring junior staff and establishing best practices to ensure high visual quality. (2020–2024)
+* **Lighting Team Management** Led a team of junior and mid-level lighting artists, providing technical direction and creative mentorship. Defined the visual baseline for the department, authored comprehensive documentation on pipeline standards, and conducted daily sequence reviews to ensure strict aesthetic consistency. (2020–2024)
 
 ### Skills
 
 * **Software:** Houdini, Nuke, Substance, Maya, Unreal Engine, Redshift, Arnold
 * **Core Areas:** Lighting, Lookdev, Compositing, Environment Building, Visual Direction
+* **Programming & Scripting:** Python, VEX
