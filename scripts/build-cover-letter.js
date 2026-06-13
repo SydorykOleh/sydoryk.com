@@ -20,8 +20,12 @@ async function buildCoverLetter(sourceFile) {
     // determine output path: same dir, but .pdf extension
     const dir = path.dirname(absoluteSource);
     const basename = path.basename(absoluteSource, '.md');
-    // Save the PDF to the public/assets directory so it can be downloaded/viewed easily
-    const output = path.resolve('public/assets', `${basename}.pdf`);
+    // Save the PDF to the public/assets/coverletter directory so it can be downloaded/viewed easily
+    const outputDir = path.resolve('public/assets/coverletter');
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+    const output = path.resolve(outputDir, `${basename}.pdf`);
 
     console.log(`Generating PDF cover letter using Puppeteer and Marked...`);
     const css = fs.readFileSync(cssPath, 'utf8');
@@ -43,9 +47,11 @@ async function buildCoverLetter(sourceFile) {
         
         // Remove HTML cards from the markdown since they are for the web version only
         const contentWithoutCards = mdContent.replace(/<h3.*?>Relevant Portfolio Examples<\/h3>[\s\S]*?(?=<style|<\/body>|$)/gi, '');
+        
+        const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [sydoryk.com/${basename}](https://sydoryk.com/${basename})\n\n`;
 
         const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
-        const htmlContent = headerHtml + '\n' + marked.parse(contentWithoutCards);
+        const htmlContent = headerHtml + '\n' + marked.parse(linkMarkdown) + marked.parse(contentWithoutCards);
 
         const finalHtml = `
         <!DOCTYPE html>
@@ -72,7 +78,7 @@ async function buildCoverLetter(sourceFile) {
         await page.pdf({
             path: output,
             format: 'A4',
-            margin: { top: '20mm', right: '20mm', bottom: '20mm', left: '20mm' },
+            margin: { top: '12mm', right: '20mm', bottom: '20mm', left: '20mm' },
             printBackground: true
         });
 

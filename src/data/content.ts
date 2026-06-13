@@ -22,7 +22,7 @@ export const nav: Nav = {
 		//{ label: 'Work', href: '/project', target: '_self' },
 		//{ label: 'Blog', href: '/blog', target: '_self' },
 		//{ label: 'Services', href: '/services', target: '_self' },
-		{ label: 'Experience', href: '/experience', target: '_self' },
+		{ label: 'Resume', href: '/resume', target: '_self' },
 		{ label: 'About', href: '/about', target: '_self' },
 		//{ label: 'Contact', href: '/contact', target: '_self' },
 	],
@@ -56,10 +56,10 @@ export const aboutTdk: SeoTdk = {
 	keywords: 'Sydoryk Oleh, blog'
 }
 // SEO TDK  项目
-export const experienceTdk: SeoTdk = {
-	title: 'Sydoryk Oleh Experience',
-	description: 'Some of my projects',
-	keywords: 'Sydoryk Oleh, blog, project'
+export const resumeTdk: SeoTdk = {
+	title: 'Sydoryk Oleh Resume',
+	description: 'Sydoryk Oleh Resume',
+	keywords: 'Sydoryk Oleh, resume, project'
 }
 export const galleryTdk: SeoTdk = {
 	title: 'Sydoryk Oleh Gallery',
@@ -94,7 +94,7 @@ interface PageTag {
 	blog: string
 	project: string
 	contact: string
-	experience: string
+	resume: string
 	gallery: string
 	terms: string
 	services: string
@@ -105,7 +105,7 @@ export const pageTag: PageTag = {
 	blog: 'BLOG',
 	project: 'PROJECT',
 	contact: 'CONTACT',
-	experience: 'EXPERIENCE',
+	resume: 'RESUME',
 	gallery: 'GALLERY',
 	terms: 'Fairplay',
 	services: 'SERVICES'
@@ -118,7 +118,7 @@ interface PageDescription {
 	project?: string
 	blog?: string
 	about?: string
-	experience?: string
+	resume?: string
 	contact?: string
 	gallery?: string
 	terms?: string
@@ -129,7 +129,7 @@ export const pageDescription: PageDescription = {
 	project: "Some of my projects are shown here",
 	about: "I'm Sydoryk Oleh, a creative 3D artist with more than 9 years of experience. You can read more about me here",
 	blog: 'My personal notes and thoughts',
-	experience: 'My Journey so far',
+	resume: 'My Journey so far',
 	gallery: 'Discover a collection of my 3D designs, assets, and animations.',
 	terms: 'Friendly legal stuff that protects your vision and my craft.',
 	contact: 'Constacts',

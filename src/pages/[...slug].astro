@@ -9,7 +9,7 @@ interface Props {
 export async function getStaticPaths() {
 	const coverletters = await getCollection('coverletter');
 	return coverletters.map((entry) => ({
-		params: { slug: `coverletter/${entry.slug}` },
+		params: { slug: entry.slug },
 		props: { entry },
 	}));
 }

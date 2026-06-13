@@ -26,7 +26,7 @@ Here are a few relevant examples of my past product visualizations:
 
 I am currently available and interested to discuss your project in more detail. 
 
-Interested in my complete production background and technical skills? [View My Full Experience](https://sydoryk.com/experience)
+Interested in my complete production background and technical skills? [View My Full Resume](https://sydoryk.com/resume)
 
 Best regards,  
 Sydoryk Oleh  
