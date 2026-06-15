@@ -6,7 +6,7 @@ import DetailHeader from '../../components/DetailHeader.astro';
 // Import custom configurators
 import MicConfigurator from '../../components/configurators/MicConfigurator.astro';
 import Headphones from '../../components/configurators/Headphones.astro';
-import ringInteractive from '../../components/configurators/ringInteractive.astro';
+import JewelryConfigurator from '../../components/configurators/JewelryConfigurator.astro';
 import SolarPanels from '../../components/configurators/SolarPanels.astro';
 import HaulerImports from '../../components/configurators/HaulerImports.astro';
 
@@ -27,7 +27,7 @@ const { Content } = await entry.render();
 const configurators: Record<string, any> = {
   'MicConfigurator': MicConfigurator,
   'Headphones': Headphones,
-  'ringInteractive': ringInteractive,
+  'JewelryConfigurator': JewelryConfigurator,
   'SolarPanels': SolarPanels,
   'HaulerImports': HaulerImports
 };

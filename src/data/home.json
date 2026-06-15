@@ -290,12 +290,22 @@
 	},
 	{
 		"id": "26",
-		"cover": "/assets/cover/solarpanels.webp",
+		"cover": "/assets/cover/solarpanels_animated.webp",
 		"title": "Solar Panels Configurator",
 		"desc": "Interactive Product Visualization",
 		"detail": "/detail/SolarPanels",
 		"category": "still, general, configurator",
 		"tag": "Lighting, Compositing, Interactive",
 		"date": "2026-06-15"
+	},
+	{
+		"id": "27",
+		"cover": "/assets/cover/jewelry_animated.webp",
+		"title": "Jewelry Visualization",
+		"desc": "Interactive Jewelry Configurator",
+		"detail": "/detail/jewelryConfigurator",
+		"category": "still, general, configurator",
+		"tag": "Modeling, Shading, Lighting, Interactive",
+		"date": "2026-06-16"
 	}
 ]

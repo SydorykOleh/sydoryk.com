@@ -1,0 +1,697 @@
+---
+import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
+---
+
+<ConfiguratorLayout title="Jewelry Visualization">
+    <div id="rotate-hint">
+        <span class="mouse-icon">🖱️</span>
+        <span class="hint-text">Select options to update</span>
+    </div>
+
+    <Fragment slot="controls">
+        <div class="control-body">
+            <section class="control-section">
+                <h4>Collection</h4>
+                <div class="view-grid">
+                    {
+                        ["Fernweh", "Bellevue", "Malgari", "Prince"].map(
+                            (p) => (
+                                <button
+                                    class="view-btn"
+                                    data-type="product"
+                                    data-value={p}
+                                >
+                                    {p}
+                                </button>
+                            ),
+                        )
+                    }
+                </div>
+            </section>
+
+            <section class="control-section" id="stone-section">
+                <h4>Stone Selection</h4>
+                <div class="swatch-grid">
+                    <button
+                        class="swatch"
+                        data-type="stone"
+                        data-value="Diamond"
+                        style="background: radial-gradient(circle, #fff, #b9d8e3);"
+                        title="Diamond"></button>
+                    <button
+                        class="swatch"
+                        data-type="stone"
+                        data-value="Emerald"
+                        style="background: #2e8b57;"
+                        title="Emerald"></button>
+                    <button
+                        class="swatch"
+                        data-type="stone"
+                        data-value="Sapphire"
+                        style="background: #191970;"
+                        title="Sapphire"></button>
+                </div>
+            </section>
+
+            <section class="control-section" id="stamp-section">
+                <h4>Hallmark</h4>
+                <div class="view-grid hallmark-grid">
+                    {
+                        ["95", "375", "750", "925"].map((s) => (
+                            <button
+                                class="view-btn"
+                                data-type="stamp"
+                                data-value={s}
+                            >
+                                {s}
+                            </button>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <div class="slider-group control-section">
+                <div class="label-row">
+                    <h4>Oxidation</h4>
+                    <span id="val-oxidised">50%</span>
+                </div>
+                <input
+                    type="range"
+                    id="slider-oxidised"
+                    min="0"
+                    max="100"
+                    value="50"
+                    class="config-slider"
+                />
+
+                <div class="label-row" style="margin-top: 15px;">
+                    <h4>Dirt / Scratches</h4>
+                    <span id="val-dirt">80%</span>
+                </div>
+                <input
+                    type="range"
+                    id="slider-dirt"
+                    min="0"
+                    max="100"
+                    value="80"
+                    class="config-slider"
+                />
+            </div>
+
+            <section class="control-section">
+                <h4>Camera</h4>
+                <div class="view-grid camera-grid">
+                    {
+                        [
+                            "front",
+                            "front-tilt",
+                            "side",
+                            "side-tilt",
+                            "closeup-front",
+                            "closeup-stamp",
+                        ].map((c) => (
+                            <button
+                                class="view-btn"
+                                data-type="camera"
+                                data-value={c}
+                            >
+                                {c.replace("-", " ")}
+                            </button>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+    </Fragment>
+
+    <div class="canvas-wrapper">
+        <canvas id="configCanvas" width="1200" height="1200"></canvas>
+        <div id="loader">Loading...</div>
+    </div>
+
+    <div class="loader-container">
+        <div class="progress-bar">
+            <div id="progress-fill" style="width: 0%"></div>
+        </div>
+        <div id="progress-text">Initializing assets...</div>
+    </div>
+
+    <Fragment slot="config-description">
+        <div class="content">
+            <div class="row desc">
+                <div class="col-1a">
+                    <div class="post-desc">
+                        <p>
+                            This project involved a wide variety of pieces, from
+                            simple rings to complex necklaces. For some pieces,
+                            I created 3D models from scratch based on reference
+                            images, while for others I utilized and optimized
+                            existing CAD (STP) files. All assets were prepared
+                            for fast web delivery and high-quality real-time
+                            compositing.
+                        </p>
+                    </div>
+
+                    <h3
+                        style="margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; color: #fff;"
+                    >
+                        Examples
+                    </h3>
+                    <div class="image-grid">
+                        <img src="/assets/projects/jewelry/Ring-Redstone_floating_angle_Gold.webp" alt="Gold Redstone Ring" loading="lazy" />
+                        <img src="/assets/projects/jewelry/cross_rock-front_silver.webp" alt="Silver Cross on Rock" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Ring-Moon_floating_main_no-blur_Gold.webp" alt="Gold Moon Ring" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Box-Cross_floating_closeup_Gold.webp" alt="Gold Cross Closeup" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Ring-Flip_floating_angle_no-blur_Silver.webp" alt="Silver Flip Ring" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Necklace-CrossRotated_floating_angle_no-blur_Gold.webp" alt="Gold Cross Necklace" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Bracelet-Sanctum_floating_main_Gold.webp" alt="Gold Sanctum Bracelet" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Ring-Dragon_floating_main_Silver.webp" alt="Silver Dragon Ring" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Box-Cross_floating_main_Gold.webp" alt="Gold Cross Main" loading="lazy" />
+                        <img src="/assets/projects/jewelry/Ring-Flip_floating_main_no-blur_Gold.webp" alt="Gold Flip Ring" loading="lazy" />
+                        <img src="/assets/projects/jewelry/cross_rock-closeup_silver.webp" alt="Silver Cross on Rock Closeup" loading="lazy" />
+                    </div>
+
+                    <div class="post-desc" style="margin-top: 3rem;">
+                        <p>
+                            Interactive jewelry configurator demonstrating
+                            dynamic multipass rendering in the browser.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Fragment>
+</ConfiguratorLayout>
+
+<style is:global>
+    /* Override ConfiguratorLayout grid to move the configurator to the bottom */
+    .configurator-wrapper .config-description {
+        grid-row: 1 !important;
+        padding-top: 0 !important;
+        padding-bottom: 2rem;
+    }
+    .configurator-wrapper .controls-sidebar {
+        grid-row: 2 !important;
+        margin-top: 0 !important;
+    }
+    .configurator-wrapper .canvas-container {
+        grid-row: 2 !important;
+    }
+
+    @media (max-width: 768px) {
+        .configurator-wrapper .config-description {
+            order: 1;
+        }
+        .configurator-wrapper .canvas-container {
+            order: 2;
+        }
+        .configurator-wrapper .controls-sidebar {
+            order: 3;
+        }
+    }
+</style>
+
+<style>
+    /* Canvas & Layout */
+    .canvas-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Hints */
+    #rotate-hint {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        padding: 12px 24px;
+        border-radius: 30px;
+        color: white;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        z-index: 10;
+        display: none; /* Flex when active if needed */
+        gap: 10px;
+        align-items: center;
+    }
+    #rotate-hint.fade-out {
+        opacity: 0;
+    }
+
+    #loader {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: #666;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    #loader.visible {
+        opacity: 1;
+    }
+
+    /* Controls Styling */
+    .control-body {
+        padding: 0;
+    }
+
+    .control-section {
+        margin-bottom: 24px;
+    }
+
+    .control-section h4 {
+        margin: 0 0 10px 0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+    }
+
+    /* Swatches */
+    .swatch-grid {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .swatch {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid #444;
+        cursor: pointer;
+        transition:
+            transform 0.2s,
+            border-color 0.2s;
+    }
+
+    .swatch:hover {
+        transform: scale(1.1);
+    }
+    .swatch.active {
+        border-color: #fff;
+        outline: 2px solid #007bff;
+        transform: scale(1.1);
+    }
+
+    .view-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    .hallmark-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .camera-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .view-btn {
+        background: #222;
+        border: 1px solid #444;
+        color: #ccc;
+        padding: 8px 4px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-transform: uppercase;
+    }
+
+    .view-btn:hover {
+        background: #333;
+    }
+
+    .view-btn.active {
+        background: #eee;
+        color: #111;
+        border-color: #fff;
+        font-weight: bold;
+    }
+
+    /* Sliders */
+    .slider-group {
+        background: #151515;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #222;
+    }
+    .label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    .label-row h4 {
+        margin: 0;
+    }
+    .label-row span {
+        font-size: 0.85rem;
+        color: #fff;
+        font-family: monospace;
+    }
+    .config-slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 2px;
+        background: #333;
+        outline: none;
+        margin: 10px 0;
+    }
+    .config-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        background: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 4px solid #0f0f0f;
+    }
+
+    .disabled {
+        opacity: 0.15;
+        pointer-events: none;
+        filter: grayscale(1);
+        transition: opacity 0.3s;
+    }
+
+    /* Loader */
+    .loader-container {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        width: 60%;
+        max-width: 400px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px 20px;
+        border-radius: 20px;
+        backdrop-filter: blur(5px);
+        transition: opacity 0.5s;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
+
+    #progress-fill {
+        height: 100%;
+        background: #007bff;
+        transition: width 0.2s;
+    }
+
+    #progress-text {
+        font-size: 14px;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    /* Image Grid for Extra Renders */
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 1rem;
+    }
+    .image-grid img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #333;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+    }
+    .image-grid img:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+<script>
+    const CONFIG = {
+        basePath: "/assets/projects/rings/",
+        options: {
+            products: ["Fernweh", "Bellevue", "Malgari", "Prince"],
+            stones: ["Diamond", "Emerald", "Sapphire"],
+            stamps: ["95", "375", "750", "925"],
+            cameras: [
+                "front",
+                "front-tilt",
+                "side",
+                "side-tilt",
+                "closeup-front",
+                "closeup-stamp",
+            ],
+        },
+    };
+
+    let state = {
+        product: "Malgari",
+        stone: "Sapphire",
+        stamp: "750",
+        camera: "front-tilt",
+        oxidised: 50,
+        dirt: 80,
+    };
+
+    const canvas = document.getElementById("configCanvas");
+    const ctx = canvas.getContext("2d");
+    const imageCache = {};
+
+    const bufferCanvas = document.createElement("canvas");
+    bufferCanvas.width = 1200;
+    bufferCanvas.height = 1200;
+    const bCtx = bufferCanvas.getContext("2d");
+
+    const tempCanvas = document.createElement("canvas");
+    tempCanvas.width = 1200;
+    tempCanvas.height = 1200;
+    const tCtx = tempCanvas.getContext("2d");
+
+    const shouldShowLayer = (layer) => {
+        if (layer === "stone")
+            return (
+                state.product !== "Prince" && state.camera !== "closeup-stamp"
+            );
+        if (layer === "stamp") return state.camera !== "front";
+        return true;
+    };
+
+    function getPath(layer, d, o) {
+        if (layer === "bg") return `${CONFIG.basePath}BG_${state.camera}.webp`;
+        if (!shouldShowLayer(layer)) return undefined;
+
+        const { product, stone, stamp, camera } = state;
+        const sL = stone.toLowerCase();
+        let f;
+        switch (layer) {
+            case "main":
+                f = `main_${product}_${camera}_${d}_corr-${o}.webp`;
+                break;
+            case "stone":
+                f = `stone_${product}_${sL}_${camera}_${d}_corr-${o}.webp`;
+                break;
+            case "stamp":
+                f = `stamp_${product}_${stamp}_${camera}_${d}_corr-${o}.webp`;
+                break;
+        }
+        return `${CONFIG.basePath}${product}/${f}`;
+    }
+
+    function checkReady(url) {
+        if (!url) return true;
+        const img = imageCache[url];
+        if (img && img.complete && img.naturalWidth > 0) return true;
+        if (!img) {
+            const n = new Image();
+            n.src = url;
+            imageCache[url] = n;
+            n.onload = () => render();
+        }
+        return false;
+    }
+
+    function render() {
+        const dFac = state.dirt / 100;
+        const oFac = state.oxidised / 100;
+
+        bCtx.clearRect(0, 0, 1200, 1200);
+
+        const layers = [
+            { id: "bg", blend: "source-over", dynamic: false },
+            { id: "main", blend: "source-over", dynamic: true },
+            { id: "stamp", blend: "screen", dynamic: true },
+            { id: "stone", blend: "screen", dynamic: true },
+        ];
+
+        let allImagesReady = true;
+
+        layers.forEach((l) => {
+            if (!shouldShowLayer(l.id)) return;
+
+            if (!l.dynamic) {
+                const path = getPath(l.id, "clean", "no");
+                if (!checkReady(path)) allImagesReady = false;
+
+                bCtx.globalCompositeOperation = "source-over";
+                const img = imageCache[path];
+                if (img) bCtx.drawImage(img, 0, 0);
+            } else {
+                const paths = [
+                    getPath(l.id, "clean", "no"),
+                    getPath(l.id, "dirty", "no"),
+                    getPath(l.id, "clean", "yes"),
+                    getPath(l.id, "dirty", "yes"),
+                ];
+
+                if (!paths.every(checkReady)) {
+                    allImagesReady = false;
+                    return;
+                }
+
+                tCtx.clearRect(0, 0, 1200, 1200);
+                tCtx.globalCompositeOperation = "source-over";
+
+                tCtx.globalAlpha = 1.0;
+                tCtx.drawImage(imageCache[paths[0]], 0, 0);
+
+                tCtx.globalAlpha = dFac;
+                tCtx.drawImage(imageCache[paths[1]], 0, 0);
+
+                tCtx.globalAlpha = oFac * (1 - dFac);
+                tCtx.drawImage(imageCache[paths[2]], 0, 0);
+
+                tCtx.globalAlpha = oFac * dFac;
+                tCtx.drawImage(imageCache[paths[3]], 0, 0);
+
+                bCtx.globalCompositeOperation = l.blend;
+                bCtx.globalAlpha = 1.0;
+                bCtx.drawImage(tempCanvas, 0, 0);
+            }
+        });
+
+        if (allImagesReady) {
+            ctx.clearRect(0, 0, 1200, 1200);
+            ctx.drawImage(bufferCanvas, 0, 0);
+        }
+    }
+
+    document.querySelectorAll("[data-type]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state[btn.dataset.type] = btn.dataset.value;
+            syncUI();
+            render();
+        });
+    });
+
+    document
+        .getElementById("slider-oxidised")
+        .addEventListener("input", (e) => {
+            state.oxidised = parseInt(e.target.value);
+            document.getElementById("val-oxidised").innerText =
+                `${state.oxidised}%`;
+            render();
+        });
+
+    document.getElementById("slider-dirt").addEventListener("input", (e) => {
+        state.dirt = parseInt(e.target.value);
+        document.getElementById("val-dirt").innerText = `${state.dirt}%`;
+        render();
+    });
+
+    function syncUI() {
+        document.querySelectorAll("[data-type]").forEach((el) => {
+            el.classList.toggle(
+                "active",
+                state[el.dataset.type] === el.dataset.value,
+            );
+        });
+        document
+            .getElementById("stone-section")
+            .classList.toggle("disabled", !shouldShowLayer("stone"));
+        document
+            .getElementById("stamp-section")
+            .classList.toggle("disabled", !shouldShowLayer("stamp"));
+    }
+
+    function initPreload() {
+        const list = [];
+        CONFIG.options.products.forEach((p) => {
+            CONFIG.options.cameras.forEach((c) => {
+                ["clean", "dirty"].forEach((d) => {
+                    ["no", "yes"].forEach((o) => {
+                        list.push(
+                            `${CONFIG.basePath}${p}/main_${p}_${c}_${d}_corr-${o}.webp`,
+                        );
+                        if (c !== "front")
+                            list.push(
+                                `${CONFIG.basePath}${p}/stamp_${p}_375_${c}_${d}_corr-${o}.webp`,
+                            );
+                        if (p !== "Prince" && c !== "closeup-stamp") {
+                            CONFIG.options.stones.forEach((s) => {
+                                list.push(
+                                    `${CONFIG.basePath}${p}/stone_${p}_${s.toLowerCase()}_${c}_${d}_corr-${o}.webp`,
+                                );
+                            });
+                        }
+                    });
+                });
+            });
+        });
+
+        const unique = [...new Set(list)];
+        let loaded = 0;
+        const total = unique.length;
+
+        function loadBatch() {
+            if (unique.length === 0) return;
+            const url = unique.shift();
+            const img = new Image();
+            img.src = url;
+            img.onload = img.onerror = () => {
+                imageCache[url] = img;
+                loaded++;
+                const fill = document.getElementById("progress-fill");
+                if (fill) fill.style.width = (loaded / total) * 100 + "%";
+                if (loaded === total) {
+                    const container =
+                        document.querySelector(".loader-container");
+                    if (container) {
+                        setTimeout(() => (container.style.opacity = "0"), 800);
+                        setTimeout(
+                            () => (container.style.display = "none"),
+                            1300,
+                        );
+                    }
+                }
+                loadBatch();
+                render();
+            };
+        }
+        for (let i = 0; i < 8; i++) loadBatch();
+    }
+
+    syncUI();
+    render();
+    window.addEventListener("load", initPreload);
+</script>
