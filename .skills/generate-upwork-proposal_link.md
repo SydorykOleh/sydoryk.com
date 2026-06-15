@@ -16,6 +16,7 @@ Take a previously generated plain-text Upwork proposal (e.g. from the `generate-
 ### 2. Create the Web Page File
 Generate the markdown file to be saved in `src/content/upwork/`. 
 - Determine the filename using the format `<client-or-project>.md`. Convert it to lowercase and replace spaces with hyphens.
+- **CRITICAL:** Do NOT overwrite any existing files in the directory. If a file with the chosen name already exists, adjust the name by choosing new words or appending a number (e.g., `<client-or-project>-2.md`) to ensure it's unique.
 - Include proper frontmatter:
   ```markdown
   ---
