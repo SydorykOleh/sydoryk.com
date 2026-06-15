@@ -287,5 +287,15 @@
 		"category": "still, general, configurator",
 		"tag": "Animation, Lighting, Compositing",
 		"date": "2026-01-05"
+	},
+	{
+		"id": "26",
+		"cover": "/assets/cover/solarpanels.webp",
+		"title": "Solar Panels Configurator",
+		"desc": "Interactive Product Visualization",
+		"detail": "/detail/SolarPanels",
+		"category": "still, general, configurator",
+		"tag": "Lighting, Compositing, Interactive",
+		"date": "2026-06-15"
 	}
 ]

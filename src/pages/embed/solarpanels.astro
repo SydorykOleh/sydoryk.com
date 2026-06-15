@@ -1,0 +1,276 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Panels Embed</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .embed-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .canvas-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vmin;
+            height: 100vmin;
+            max-width: 1200px;
+            max-height: 1200px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .control-body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 8px;
+            justify-content: center;
+            position: absolute;
+            bottom: 20px;
+            z-index: 10;
+            border: 1px solid #333;
+            backdrop-filter: blur(4px);
+        }
+
+        .control-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .control-section h4 {
+            margin: 0 0 10px 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .swatch-grid { display: flex; gap: 8px; }
+        .swatch {
+            width: 32px; height: 32px;
+            border-radius: 50%; border: 2px solid #444;
+            cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 9px; color: #fff; font-weight: bold;
+        }
+        .swatch.selected { border-color: #fff; outline: 2px solid #007bff; transform: scale(1.1); }
+
+        .view-grid { display: flex; gap: 6px; }
+        .view-btn {
+            background: #222; border: 1px solid #444;
+            color: #ccc; padding: 6px 12px; border-radius: 4px;
+            font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+        }
+        .view-btn.active { background: #eee; color: #111; border-color: #fff; font-weight: bold; }
+
+        .loader-container {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); z-index: 20;
+            width: 60%; max-width: 400px; text-align: center;
+            background: rgba(0, 0, 0, 0.8); padding: 15px 25px;
+            border-radius: 20px; backdrop-filter: blur(5px);
+            transition: opacity 0.5s;
+        }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.2); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+        #progress-fill { height: 100%; background: #007bff; transition: width 0.2s; }
+        #progress-text { font-size: 14px; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="embed-container">
+        <div class="canvas-wrapper">
+            <canvas id="configCanvas" width="1200" height="1200"></canvas>
+            
+            <div class="loader-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div id="progress-text">Caching setup... 0/0</div>
+            </div>
+        </div>
+
+        <div class="control-body">
+            <div class="control-section">
+                <h4>Scene</h4>
+                <div class="view-grid">
+                    <button class="view-btn active" data-type="scene" data-value="balcony">Balcony</button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>Angle</h4>
+                <div class="view-grid">
+                    <button class="view-btn" data-type="angle" data-value="front">Front</button>
+                    <button class="view-btn active" data-type="angle" data-value="angle1">Angle 1</button>
+                    <button class="view-btn" data-type="angle" data-value="angle2">Angle 2</button>
+                    <button class="view-btn" data-type="angle" data-value="angle3">Angle 3</button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>Panel Type</h4>
+                <div class="swatch-grid">
+                    <button class="swatch selected" data-type="panelType" data-value="basic" style="background: #333;" title="Basic">Bas</button>
+                    <button class="swatch" data-type="panelType" data-value="max" style="background: #111;" title="Max">Max</button>
+                    <button class="swatch" data-type="panelType" data-value="premium" style="background: linear-gradient(45deg, #111, #444);" title="Premium">Pre</button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>Count</h4>
+                <div class="view-grid">
+                    <button class="view-btn active" data-type="count" data-value="2-vertical">2</button>
+                    <button class="view-btn" data-type="count" data-value="4-vertical">4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            basePath: "/assets/projects/SolarPanels/",
+        };
+
+        const state = {
+            scene: 'balcony',
+            angle: 'angle1',
+            panelType: 'basic',
+            count: '2-vertical'
+        };
+
+        const canvas = document.getElementById("configCanvas");
+        const ctx = canvas.getContext("2d");
+        const imageCache = {};
+
+        function getAssetPath(layer) {
+            const suffix = ".webp";
+            if (layer === 'BG') {
+                return `${CONFIG.basePath}${state.scene}_${state.angle}_BG_${state.count}${suffix}`;
+            } else {
+                return `${CONFIG.basePath}${state.scene}_${state.angle}_panel_${state.panelType}_${state.count}${suffix}`;
+            }
+        }
+
+        function render() {
+            const bgUrl = getAssetPath('BG');
+            const panelUrl = getAssetPath('panels');
+
+            const drawLayer = (url, isFirst) => {
+                if (imageCache[url] && imageCache[url].complete) {
+                    if (isFirst) ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(imageCache[url], 0, 0);
+                } else {
+                    const img = new Image();
+                    img.src = url;
+                    img.onload = () => {
+                        imageCache[url] = img;
+                        render();
+                    };
+                }
+            };
+
+            drawLayer(bgUrl, true);
+            drawLayer(panelUrl, false);
+        }
+
+        document.querySelectorAll('.swatch, .view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                const value = btn.dataset.value;
+                if (!type || !value) return;
+
+                state[type] = value;
+
+                const group = btn.parentElement.querySelectorAll('.swatch, .view-btn');
+                group.forEach(b => b.classList.remove('selected', 'active'));
+                btn.classList.add(btn.classList.contains('swatch') ? 'selected' : 'active');
+
+                render();
+            });
+        });
+
+        function startPreload() {
+            const scenes = ['balcony'];
+            const angles = ['front', 'angle1', 'angle2', 'angle3'];
+            const types = ['basic', 'max', 'premium'];
+            const counts = ['2-vertical', '4-vertical'];
+            
+            const queue = [];
+
+            scenes.forEach(s => {
+                angles.forEach(a => {
+                    counts.forEach(c => {
+                        queue.push(`${CONFIG.basePath}${s}_${a}_BG_${c}.webp`);
+                        types.forEach(t => {
+                            queue.push(`${CONFIG.basePath}${s}_${a}_panel_${t}_${c}.webp`);
+                        });
+                    });
+                });
+            });
+
+            const total = queue.length;
+            let loaded = 0;
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+
+            const loadNext = () => {
+                if (queue.length === 0) return;
+                const url = queue.shift();
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    imageCache[url] = img;
+                    loaded++;
+                    if (progressFill) progressFill.style.width = `${(loaded/total)*100}%`;
+                    if (progressText) progressText.innerText = `Caching assets... ${loaded}/${total}`;
+                    if (loaded === total) {
+                        setTimeout(() => document.querySelector('.loader-container').style.opacity = 0, 2000);
+                    }
+                    loadNext();
+                };
+                img.onerror = loadNext;
+            };
+
+            for(let i=0; i<4; i++) loadNext();
+        }
+
+        render();
+        setTimeout(startPreload, 1000);
+    </script>
+</body>
+</html>
