@@ -1,0 +1,253 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hauler Imports 3D Embed</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: sans-serif;
+        }
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #252525 0%, #000000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #three-canvas-container {
+            width: 100%;
+            height: 100%;
+            display: block;
+            outline: none;
+        }
+        #three-canvas-container canvas {
+            display: block;
+            outline: none;
+        }
+        .three-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-family: monospace;
+            pointer-events: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+        .color-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            backdrop-filter: blur(4px);
+        }
+        .color-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #777;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+        .color-btn:hover {
+            background: #2a2a2a;
+            color: #aaa;
+        }
+        .color-btn.selected {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-wrapper" id="viewport-threejs">
+        <div id="three-canvas-container"></div>
+        <div class="three-loader" id="three-loader">Initializing Three.js Engine...</div>
+        
+        <div class="color-controls" id="color-controls">
+            <button class="color-btn selected" data-color="#3F1919">Red</button>
+            <button class="color-btn" data-color="#193F1D">Green</button>
+            <button class="color-btn" data-color="#192A3F">Blue</button>
+        </div>
+    </div>
+
+    <script>
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+        import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+
+        let currentColor = '#3F1919';
+        
+        let threeScene, threeCamera, threeRenderer, threeControls;
+        let threeModel, threeMaterial;
+        let threeInitialized = false;
+        let threeRenderId;
+
+        // Color Logic
+        const colorButtons = document.querySelectorAll('.color-btn');
+        document.querySelector('#color-controls')?.addEventListener('click', (event) => {
+            const target = event.target as HTMLElement;
+            if (!target.classList.contains('color-btn')) return;
+            
+            currentColor = target.dataset.color || '#ffffff';
+
+            if (threeMaterial) {
+                threeMaterial.color.set(currentColor);
+            }
+
+            colorButtons.forEach(btn => btn.classList.remove('selected'));
+            target.classList.add('selected');
+        });
+
+        function initThreeJS() {
+            threeInitialized = true;
+            const container = document.getElementById('three-canvas-container');
+            if (!container) return;
+            
+            threeScene = new THREE.Scene();
+            threeCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+            
+            threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            threeRenderer.setSize(container.clientWidth, container.clientHeight);
+            threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+            threeRenderer.toneMappingExposure = 1.1; 
+            threeRenderer.shadowMap.enabled = true;
+            threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(threeRenderer.domElement);
+
+            threeControls = new OrbitControls(threeCamera, threeRenderer.domElement);
+            threeControls.enableDamping = true;
+            threeControls.dampingFactor = 0.05;
+            threeControls.autoRotate = true;
+            threeControls.autoRotateSpeed = 2.0;
+
+            threeControls.addEventListener('start', () => {
+                threeControls.autoRotate = false;
+            });
+            
+            new RGBELoader().load('/assets/3d/lightroom_14b.hdr', function(texture) {
+                texture.mapping = THREE.EquirectangularReflectionMapping;
+                threeScene.environment = texture;
+                
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+                threeScene.add(ambientLight);
+
+                const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+                dirLight.position.set(5, 10, 5);
+                dirLight.castShadow = true;
+                dirLight.shadow.mapSize.width = 1024;
+                dirLight.shadow.mapSize.height = 1024;
+                dirLight.shadow.bias = -0.0001;
+                dirLight.shadow.camera.near = 0.1;
+                dirLight.shadow.camera.far = 50;
+                threeScene.add(dirLight);
+
+                loadModel();
+            });
+
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function loadModel() {
+            const loader = new GLTFLoader();
+            loader.load('/assets/3d/test.glb', (gltf) => {
+                threeModel = gltf.scene;
+                
+                const box = new THREE.Box3().setFromObject(threeModel);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 2 / maxDim; 
+                
+                threeModel.scale.set(scale, scale, scale);
+                threeModel.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
+                
+                threeModel.traverse((child) => {
+                    if ((child as THREE.Mesh).isMesh) {
+                        child.castShadow = true;
+                        child.receiveShadow = true;
+                        if (!threeMaterial && (child as THREE.Mesh).material) {
+                            threeMaterial = (child as THREE.Mesh).material as THREE.MeshStandardMaterial;
+                            threeMaterial.color.set(currentColor);
+                        }
+                    }
+                });
+
+                const pivot = new THREE.Group();
+                pivot.add(threeModel);
+                
+                const finalBox = new THREE.Box3().setFromObject(pivot);
+                const floorY = finalBox.min.y;
+
+                const planeGeo = new THREE.PlaneGeometry(100, 100);
+                const planeMat = new THREE.ShadowMaterial({ opacity: 0.6 });
+                const plane = new THREE.Mesh(planeGeo, planeMat);
+                plane.rotation.x = -Math.PI / 2;
+                plane.receiveShadow = true;
+                plane.position.y = floorY - 0.05; 
+                threeScene.add(plane);
+
+                threeScene.add(pivot);
+
+                threeCamera.position.set(0, 1, 4);
+                threeControls.target.set(0, (finalBox.max.y + finalBox.min.y) / 2, 0);
+                threeControls.update();
+                
+                const loaderEl = document.getElementById('three-loader');
+                if(loaderEl) loaderEl.style.display = 'none';
+
+                startThreeJSRender();
+            });
+        }
+
+        function onWindowResize() {
+            if (!threeInitialized) return;
+            const container = document.getElementById('three-canvas-container');
+            if (!container) return;
+            threeCamera.aspect = container.clientWidth / container.clientHeight;
+            threeCamera.updateProjectionMatrix();
+            threeRenderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        function startThreeJSRender() {
+            if (threeRenderId) return;
+            const animate = function () {
+                threeRenderId = requestAnimationFrame(animate);
+                if (threeControls) threeControls.update();
+                if (threeRenderer && threeScene && threeCamera) {
+                    threeRenderer.render(threeScene, threeCamera);
+                }
+            };
+            animate();
+        }
+
+        initThreeJS();
+    </script>
+</body>
+</html>

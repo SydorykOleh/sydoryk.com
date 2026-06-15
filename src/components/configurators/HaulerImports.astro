@@ -2,8 +2,6 @@
 import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 ---
 
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-
 <ConfiguratorLayout
     title="Hauler Imports 3D Demo"
     description="Interactive 3D model demo for Hauler Imports"
@@ -22,8 +20,11 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         </div>
     </Fragment>
 
-    <div class="canvas-wrapper">
-        <model-viewer id="color" alt="Interactive 3D Demo" src="/assets/3d/test.glb" ar environment-image="/assets/3d/lightroom_14b.hdr" shadow-intensity="1.5" shadow-softness="0.8" exposure="1.1" camera-controls auto-rotate rotation-per-second="15deg" touch-action="pan-y" interaction-prompt="none"></model-viewer>
+    <div class="viewports-container">
+        <div class="canvas-wrapper active" id="viewport-threejs">
+            <div id="three-canvas-container"></div>
+            <div class="three-loader" id="three-loader">Initializing Three.js Engine...</div>
+        </div>
     </div>
 
     <Fragment slot="config-description">
@@ -32,13 +33,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 <div class="col-1a">
                     <div class="post-desc">
                         <p>This is an interactive 3D model demo originally created for Hauler Imports. You can rotate the model and change its colors in real-time right in your browser.</p>
-                        
-                        <h3>Check out my other 3D Model Examples:</h3>
-                        <ul>
-                            <li><a href="/detail/Headphones">Headphones Configurator (Interactive)</a></li>
-                            <li><a href="/detail/MicConfigurator">Microphone Configurator (Interactive)</a></li>
-                            <li><a href="/detail/IndustrialEquipment">Industrial Equipment Visualization</a></li>
-                        </ul>
+                        <p><strong>Rendering Engine:</strong> This uses a highly customized <code>Three.js</code> implementation featuring ACES Filmic tone mapping, HDRI environment lighting, and soft shadows.</p>
                     </div>
                 </div>
             </div>
@@ -47,29 +42,57 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 </ConfiguratorLayout>
 
 <style>
+    .viewports-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+
     .canvas-wrapper {
         position: relative;
         width: 100%;
-        max-width: 1200px;
         height: 70vh;
         min-height: 500px;
-        margin: 0 auto;
         border-radius: 16px;
         overflow: hidden;
         background: radial-gradient(circle at center, #252525 0%, #000000 100%);
         box-shadow: inset 0 0 100px rgba(0,0,0,0.8), 0 10px 40px rgba(0,0,0,0.5);
         border: 1px solid #222;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
     }
+
+    .canvas-wrapper.active {
+        display: flex;
+    }
     
-    model-viewer {
+    #three-canvas-container {
         width: 100%;
         height: 100%;
         display: block;
         background-color: transparent;
         outline: none;
+    }
+
+    #three-canvas-container canvas {
+        display: block;
+        outline: none;
+    }
+
+    .three-loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-family: monospace;
+        pointer-events: none;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.7;
     }
 
     .control-body { padding: 20px 0; }
@@ -122,24 +145,179 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 </style>
 
 <script>
-    const modelViewerColor = document.querySelector("model-viewer#color");
-    const buttons = document.querySelectorAll('.color-btn');
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
-    document.querySelector('#color-controls').addEventListener('click', (event) => {
-        if (!event.target.classList.contains('color-btn')) return;
+    let currentColor = '#3F1919';
+    
+    // Three.js State
+    let threeScene, threeCamera, threeRenderer, threeControls;
+    let threeModel, threeMaterial;
+    let threeInitialized = false;
+    let threeRenderId;
+
+    // --- Color Changing Logic ---
+    const colorButtons = document.querySelectorAll('.color-btn');
+    document.querySelector('#color-controls')?.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        if (!target.classList.contains('color-btn')) return;
         
-        const colorString = event.target.dataset.color;
-        
-        // Wait for the model to be fully loaded before setting materials
-        if (modelViewerColor && modelViewerColor.model) {
-            const materials = modelViewerColor.model.materials;
-            if (materials && materials.length > 0) {
-                const material = materials[0];
-                material.pbrMetallicRoughness.setBaseColorFactor(colorString);
-            }
+        currentColor = target.dataset.color || '#ffffff';
+
+        // Update Three.js
+        if (threeMaterial) {
+            threeMaterial.color.set(currentColor);
         }
 
-        buttons.forEach(btn => btn.classList.remove('selected'));
-        event.target.classList.add('selected');
+        // Update Buttons
+        colorButtons.forEach(btn => btn.classList.remove('selected'));
+        target.classList.add('selected');
     });
+
+    // --- Three.js Implementation ---
+    function initThreeJS() {
+        threeInitialized = true;
+        const container = document.getElementById('three-canvas-container');
+        if (!container) return;
+        
+        // Scene setup
+        threeScene = new THREE.Scene();
+        
+        // Camera setup
+        threeCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+        
+        // Renderer setup
+        threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        threeRenderer.setSize(container.clientWidth, container.clientHeight);
+        threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+        threeRenderer.toneMappingExposure = 1.1; 
+        threeRenderer.shadowMap.enabled = true;
+        threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        container.appendChild(threeRenderer.domElement);
+
+        // Controls setup
+        threeControls = new OrbitControls(threeCamera, threeRenderer.domElement);
+        threeControls.enableDamping = true;
+        threeControls.dampingFactor = 0.05;
+        threeControls.autoRotate = true;
+        threeControls.autoRotateSpeed = 2.0;
+
+        // Stop auto-rotation when user interacts with the canvas
+        threeControls.addEventListener('start', () => {
+            threeControls.autoRotate = false;
+        });
+        
+        // Environment & Lighting
+        new RGBELoader().load('/assets/3d/lightroom_14b.hdr', function(texture) {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            threeScene.environment = texture;
+            
+            // Add a subtle ambient light and a directional light for soft shadows
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            threeScene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            dirLight.position.set(5, 10, 5);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 1024;
+            dirLight.shadow.mapSize.height = 1024;
+            dirLight.shadow.bias = -0.0001;
+            dirLight.shadow.camera.near = 0.1;
+            dirLight.shadow.camera.far = 50;
+            threeScene.add(dirLight);
+
+            loadModel();
+        });
+
+        // Window resize handling
+        window.addEventListener('resize', onWindowResize);
+    }
+
+    function loadModel() {
+        const loader = new GLTFLoader();
+        loader.load('/assets/3d/test.glb', (gltf) => {
+            threeModel = gltf.scene;
+            
+            // Center and scale to fit view
+            const box = new THREE.Box3().setFromObject(threeModel);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 2 / maxDim; // Normalize scale to roughly fit screen
+            
+            threeModel.scale.set(scale, scale, scale);
+            threeModel.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
+            
+            // Apply materials and shadows
+            threeModel.traverse((child) => {
+                if ((child as THREE.Mesh).isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                    // Grab the first mesh material to change its color dynamically
+                    if (!threeMaterial && (child as THREE.Mesh).material) {
+                        threeMaterial = (child as THREE.Mesh).material as THREE.MeshStandardMaterial;
+                        // Initial sync with active color
+                        threeMaterial.color.set(currentColor);
+                    }
+                }
+            });
+
+            // Wrap in a pivot group
+            const pivot = new THREE.Group();
+            pivot.add(threeModel);
+            
+            // Determine floor position
+            const finalBox = new THREE.Box3().setFromObject(pivot);
+            const floorY = finalBox.min.y;
+
+            // Add soft shadow catcher plane
+            const planeGeo = new THREE.PlaneGeometry(100, 100);
+            const planeMat = new THREE.ShadowMaterial({ opacity: 0.6 });
+            const plane = new THREE.Mesh(planeGeo, planeMat);
+            plane.rotation.x = -Math.PI / 2;
+            plane.receiveShadow = true;
+            plane.position.y = floorY - 0.05; // slightly below model
+            threeScene.add(plane);
+
+            threeScene.add(pivot);
+
+            // Set camera distance based on bounding box
+            threeCamera.position.set(0, 1, 4);
+            threeControls.target.set(0, (finalBox.max.y + finalBox.min.y) / 2, 0);
+            threeControls.update();
+            
+            // Hide loader
+            const loaderEl = document.getElementById('three-loader');
+            if(loaderEl) loaderEl.style.display = 'none';
+
+            startThreeJSRender();
+        });
+    }
+
+    function onWindowResize() {
+        if (!threeInitialized) return;
+        const container = document.getElementById('three-canvas-container');
+        if (!container) return;
+        threeCamera.aspect = container.clientWidth / container.clientHeight;
+        threeCamera.updateProjectionMatrix();
+        threeRenderer.setSize(container.clientWidth, container.clientHeight);
+    }
+
+    function startThreeJSRender() {
+        if (threeRenderId) return;
+        const animate = function () {
+            threeRenderId = requestAnimationFrame(animate);
+            if (threeControls) threeControls.update();
+            if (threeRenderer && threeScene && threeCamera) {
+                threeRenderer.render(threeScene, threeCamera);
+            }
+        };
+        animate();
+    }
+
+    // Initialize immediately
+    initThreeJS();
 </script>

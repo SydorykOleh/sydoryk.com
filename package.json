@@ -26,6 +26,7 @@
     "@fontsource/special-elite": "^5.2.8",
     "astro": "5.7.5",
     "sass": "^1.79.4",
+    "three": "^0.184.0",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
