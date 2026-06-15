@@ -9,7 +9,7 @@ keywords: "3D, Product Visualization, Industrial, CAD"
 ---
 
 ### Project Overview
-A US-based manufacturing client, F.N. Smith, required production-ready marketing visualizations of their industrial food processing equipment line, developed from raw CAD files.
+A US-based manufacturing client, [F.N. Smith](https://fnsmithcorp.com), required production-ready marketing visualizations of their industrial food processing equipment line, developed from raw CAD files.
 
 ### Technical Execution
 * **Geometry Processing:** Transformed highly detailed engineering STEP files into clean, optimized polygonal geometry using Moi3D and Houdini.

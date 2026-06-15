@@ -46,7 +46,7 @@ async function buildCoverLetter(sourceFile) {
         mdContent = mdContent.replace(/!\[.*?\]\(.*?\)/g, '');
 
         // Inject header for the PDF resumes
-        const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland`;
+        const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ oleh@sydoryk.com ❖ +48 793 198 675`;
         
         const slug = basename.toLowerCase();
         const linkMarkdown = `**Interactive Cover Letter & Portfolio**: [https://sydoryk.com/${slug}](https://sydoryk.com/${slug})\n\n`;

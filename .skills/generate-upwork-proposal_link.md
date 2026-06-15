@@ -15,11 +15,11 @@ Take a previously generated plain-text Upwork proposal (e.g. from the `generate-
 
 ### 2. Create the Web Page File
 Generate the markdown file to be saved in `src/content/upwork/`. 
-- Determine the filename using the format `<client-or-project>_upwork.md`. Convert it to lowercase and replace spaces with hyphens.
+- Determine the filename using the format `<client-or-project>.md`. Convert it to lowercase and replace spaces with hyphens.
 - Include proper frontmatter:
   ```markdown
   ---
-  title: Application for <position>
+  title: Project Proposal for <client or project name>
   company: <client or Upwork Client>
   role: <position>
   date: <YYYY-MM-DD>
@@ -43,8 +43,8 @@ Generate the markdown file to be saved in `src/content/upwork/`.
 
 ### 3. Respond to the User
 When outputting your response in the chat:
-1. Provide a clickable link to the generated markdown file and tell them the custom webpage will be available at `https://sydoryk.com/upwork/<client>_upwork`. Additionally, provide a local preview link `http://localhost:4321/upwork/<client>_upwork` so the user can review it immediately.
+1. Provide a clickable link to the generated markdown file and tell them the custom webpage will be available at `https://sydoryk.com/upwork/<client>`. Additionally, provide a local preview link `http://localhost:4321/upwork/<client>` so the user can review it immediately.
 2. Provide a **Short Upwork Hook**. This is a short, highly-optimized snippet that the user will paste into Upwork *instead* of the full proposal text (since the full text is now on the webpage). This hook MUST NOT contain generic introductions. It must immediately address the client's problem and provide a direct link to the custom webpage to funnel the client there.
    - Example Hook: 
-     "I have extensive experience converting SolidWorks CAD files into photorealistic renders, which perfectly aligns with your project needs. Since you already have detailed CAD files, we can jump straight into production efficiently. I've prepared a custom proposal detailing my exact workflow, pricing, and relevant portfolio examples specifically for your project. You can view it here: https://sydoryk.com/upwork/<client>_upwork"
+     "I have extensive experience converting SolidWorks CAD files into photorealistic renders, which perfectly aligns with your project needs. Since you already have detailed CAD files, we can jump straight into production efficiently. I've prepared a custom proposal detailing my exact workflow, pricing, and relevant portfolio examples specifically for your project. You can view it here: https://sydoryk.com/upwork/<client>"
 3. Ask the user if they would like to refine the hook, the webpage content, or the portfolio links selected.
