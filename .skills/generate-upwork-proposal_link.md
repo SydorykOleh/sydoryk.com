@@ -9,8 +9,8 @@ Take a previously generated plain-text Upwork proposal (e.g. from the `generate-
 
 ## Process
 
-### 1. Gather Context
-- The user will provide the previously generated Upwork proposal text and the client/job name.
+### 1. Generate Proposal & Gather Context
+- First, use the `generate-upwork-proposal` skill to generate the initial plain-text proposal based on the client's job description.
 - Identify the key skills and requirements mentioned in the proposal to select the best portfolio items.
 
 ### 2. Create the Web Page File
@@ -25,7 +25,13 @@ Generate the markdown file to be saved in `src/content/upwork/`.
   date: <YYYY-MM-DD>
   ---
   ```
-- **Format the Proposal Text**: Since the input proposal is likely plain text, format it for the web. Add markdown headings (like `### Proposed Workflow`), bullet points, and bold text where appropriate to make it highly readable and professional.
+- **Format the Proposal Text**: Adjust the generated proposal text accordingly to publish on the website. Add markdown headings (like `### Proposed Workflow`), bullet points, and bold text where appropriate to make it highly readable and professional.
+- **Remove Website Link**: From the signature at the end of the proposal text, remove the website link so it reads exactly as:
+  ```text
+  Best regards,  
+  Sydoryk Oleh  
+  3D Visualization / 3D Animation
+  ```
 - **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-4 highly relevant portfolio items from `src/data/home.json` so the web page looks premium:
   ```html
   <h3>Relevant Portfolio Examples</h3>
@@ -43,7 +49,7 @@ Generate the markdown file to be saved in `src/content/upwork/`.
 
 ### 3. Respond to the User
 When outputting your response in the chat:
-1. Provide a clickable link to the generated markdown file and tell them the custom webpage will be available at `https://sydoryk.com/upwork/<client>`. Additionally, provide a local preview link `http://localhost:4321/upwork/<client>` so the user can review it immediately.
+1. Provide a clickable link to the local preview `http://localhost:4321/upwork/<client>` so the user can review it immediately, and mention the custom webpage will be available at `https://sydoryk.com/upwork/<client>`. Provide a clickable link to the generated markdown file.
 2. Provide a **Short Upwork Hook**. This is a short, highly-optimized snippet that the user will paste into Upwork *instead* of the full proposal text (since the full text is now on the webpage). This hook MUST NOT contain generic introductions. It must immediately address the client's problem and provide a direct link to the custom webpage to funnel the client there.
    - Example Hook: 
      "I have extensive experience converting SolidWorks CAD files into photorealistic renders, which perfectly aligns with your project needs. Since you already have detailed CAD files, we can jump straight into production efficiently. I've prepared a custom proposal detailing my exact workflow, pricing, and relevant portfolio examples specifically for your project. You can view it here: https://sydoryk.com/upwork/<client>"
