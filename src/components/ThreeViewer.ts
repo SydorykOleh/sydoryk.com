@@ -43,6 +43,8 @@ export function initFabricViewer() {
     const resetCameraBtn = document.getElementById('reset-camera-btn');
     const hdriRotationSlider = document.getElementById('hdri-rotation-slider') as HTMLInputElement;
     const hdriRotationValue = document.getElementById('hdri-rotation-value');
+    const hdriIntensitySlider = document.getElementById('hdri-intensity-slider') as HTMLInputElement;
+    const hdriIntensityValue = document.getElementById('hdri-intensity-value');
     const lightIntensitySlider = document.getElementById('light-intensity-slider') as HTMLInputElement;
     const lightIntensityValue = document.getElementById('light-intensity-value');
     const lightRotationSlider = document.getElementById('light-rotation-slider') as HTMLInputElement;
@@ -61,11 +63,12 @@ export function initFabricViewer() {
     let currentMode: 'baked' | 'normal' = 'baked';
     let sliderStates = {
         baked: { pbrGain: 1.75, pbrGamma: 1.25, normalStrength: 1.8, specularAmount: 1.0 },
-        normal: { pbrGain: 1.75, pbrGamma: 1.25, normalStrength: 1.8, specularAmount: 1.0 }
+        normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0 }
     };
-    let globalHdriRotation = 0;
+    let globalHdriRotation = 270;
+    let globalHdriIntensity = 0.8;
     let globalLightIntensity = 1.0;
-    let globalLightRotation = 0;
+    let globalLightRotation = 270;
     let currentYOffset = -0.70; // Global state for tracking object height
     let activeRenders: string[] = [];
     let currentModelScene: THREE.Group | null = null;
@@ -199,6 +202,16 @@ export function initFabricViewer() {
         });
     }
 
+    if (hdriIntensitySlider && hdriIntensityValue) {
+        hdriIntensitySlider.addEventListener('input', (e) => {
+            globalHdriIntensity = parseFloat((e.target as HTMLInputElement).value);
+            hdriIntensityValue.textContent = globalHdriIntensity.toFixed(2);
+            if (currentMode === 'normal') {
+                scene.environmentIntensity = globalHdriIntensity;
+            }
+        });
+    }
+
     if (lightIntensitySlider && lightIntensityValue) {
         lightIntensitySlider.addEventListener('input', (e) => {
             globalLightIntensity = parseFloat((e.target as HTMLInputElement).value);
@@ -249,6 +262,8 @@ export function initFabricViewer() {
         pmremEnvMap = pmremGenerator.fromEquirectangular(texture).texture;
         if (currentMode === 'normal') {
             scene.environment = pmremEnvMap;
+            scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
+            scene.environmentIntensity = globalHdriIntensity;
         }
         texture.dispose();
     });
@@ -293,7 +308,9 @@ export function initFabricViewer() {
         
         // Update baked textures for the new angle
         if (typeof fabricMaterial !== 'undefined' && fabricMaterial) {
-            fabricMaterial.lightMap = bakedFabricMaps[index];
+            if (currentMode === 'baked') {
+                fabricMaterial.lightMap = bakedFabricMaps[index];
+            }
             fabricMaterial.needsUpdate = true;
         }
         if (typeof neutralMaterial !== 'undefined' && neutralMaterial) {
@@ -610,6 +627,11 @@ export function initFabricViewer() {
 
     // Default position
     applyAngle(currentAngle);
+    
+    // Initial camera reset
+    camera.position.copy(defaultCamera.pos);
+    controls.target.copy(defaultCamera.target);
+    controls.update();
 
     // Load initial model
     loadModel(currentModel);
@@ -675,42 +697,33 @@ export function initFabricViewer() {
 
     // Mode Toggles
     function updateModeState() {
-        const controlsGroups = document.querySelectorAll('.control-group');
-        controlsGroups.forEach(group => {
-            const mode = (group as HTMLElement).dataset.mode;
-            if (mode) {
-                (group as HTMLElement).style.display = mode === currentMode ? 'flex' : 'none';
-            }
-        });
-
         updateSliderDisplays();
 
         if (currentMode === 'normal') {
             scene.environment = pmremEnvMap;
+            scene.environmentIntensity = globalHdriIntensity;
             normalDirLight.intensity = globalLightIntensity;
+            
+            ambientLight.intensity = 0;
+            dirLight.intensity = 0;
             
             fabricMaterial.lightMap = null;
             fabricMaterial.envMapIntensity = 1.0;
-            if (neutralMaterial.map) {
-                neutralMaterial.map = null; // Maybe keep the color but remove bake map
-            }
-            if (bakedFloorScene) bakedFloorScene.visible = false;
             
             // Recompile without lightmap
             fabricMaterial.needsUpdate = true;
-            neutralMaterial.needsUpdate = true;
         } else {
             scene.environment = null;
             normalDirLight.intensity = 0;
             
+            ambientLight.intensity = 0.4;
+            dirLight.intensity = 0.8;
+            
             fabricMaterial.lightMap = bakedFabricMaps[currentAngle];
             fabricMaterial.envMapIntensity = 0.0;
-            neutralMaterial.map = bakedExtraMaps[currentAngle];
-            if (bakedFloorScene) bakedFloorScene.visible = true;
             
             // Recompile with lightmap
             fabricMaterial.needsUpdate = true;
-            neutralMaterial.needsUpdate = true;
         }
     }
 
