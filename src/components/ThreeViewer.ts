@@ -59,10 +59,10 @@ export function initFabricViewer() {
     let currentRepeat = 12;
     let globalTextureBlend = 1.0;
     let globalLmGain = 1.0;
-    let globalLmGamma = 1.6;
+    let globalLmGamma = 1.4;
     let currentMode: 'baked' | 'normal' = 'baked';
     let sliderStates = {
-        baked: { pbrGain: 1.75, pbrGamma: 1.25, normalStrength: 1.8, specularAmount: 1.0 },
+        baked: { pbrGain: 1.55, pbrGamma: 1.25, normalStrength: 2.2, specularAmount: 1.0 },
         normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0 }
     };
     let globalHdriRotation = 270;
@@ -206,9 +206,7 @@ export function initFabricViewer() {
         hdriIntensitySlider.addEventListener('input', (e) => {
             globalHdriIntensity = parseFloat((e.target as HTMLInputElement).value);
             hdriIntensityValue.textContent = globalHdriIntensity.toFixed(2);
-            if (currentMode === 'normal') {
-                scene.environmentIntensity = globalHdriIntensity;
-            }
+            scene.environmentIntensity = globalHdriIntensity;
         });
     }
 
@@ -216,9 +214,7 @@ export function initFabricViewer() {
         lightIntensitySlider.addEventListener('input', (e) => {
             globalLightIntensity = parseFloat((e.target as HTMLInputElement).value);
             lightIntensityValue.textContent = globalLightIntensity.toFixed(2);
-            if (currentMode === 'normal') {
-                normalDirLight.intensity = globalLightIntensity;
-            }
+            normalDirLight.intensity = globalLightIntensity;
         });
     }
 
@@ -260,11 +256,11 @@ export function initFabricViewer() {
     let pmremEnvMap: THREE.Texture | null = null;
     exrLoader.load('/assets/configurator/textures/HDRI_fabric_scene.exr', (texture) => {
         pmremEnvMap = pmremGenerator.fromEquirectangular(texture).texture;
-        if (currentMode === 'normal') {
-            scene.environment = pmremEnvMap;
-            scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
-            scene.environmentIntensity = globalHdriIntensity;
-        }
+        // Always apply environment
+        scene.environment = pmremEnvMap;
+        scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
+        scene.environmentIntensity = globalHdriIntensity;
+        
         texture.dispose();
     });
 
@@ -699,32 +695,24 @@ export function initFabricViewer() {
     function updateModeState() {
         updateSliderDisplays();
 
+        // Apply lighting unconditionally for both modes
+        scene.environment = pmremEnvMap;
+        scene.environmentIntensity = globalHdriIntensity;
+        scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
+        normalDirLight.intensity = globalLightIntensity;
+        
+        ambientLight.intensity = 0;
+        dirLight.intensity = 0;
+
         if (currentMode === 'normal') {
-            scene.environment = pmremEnvMap;
-            scene.environmentIntensity = globalHdriIntensity;
-            normalDirLight.intensity = globalLightIntensity;
-            
-            ambientLight.intensity = 0;
-            dirLight.intensity = 0;
-            
             fabricMaterial.lightMap = null;
             fabricMaterial.envMapIntensity = 1.0;
-            
-            // Recompile without lightmap
-            fabricMaterial.needsUpdate = true;
         } else {
-            scene.environment = null;
-            normalDirLight.intensity = 0;
-            
-            ambientLight.intensity = 0.4;
-            dirLight.intensity = 0.8;
-            
             fabricMaterial.lightMap = bakedFabricMaps[currentAngle];
-            fabricMaterial.envMapIntensity = 0.0;
-            
-            // Recompile with lightmap
-            fabricMaterial.needsUpdate = true;
+            fabricMaterial.envMapIntensity = 1.0;
         }
+        
+        fabricMaterial.needsUpdate = true;
     }
 
     modeBtns.forEach(btn => {
