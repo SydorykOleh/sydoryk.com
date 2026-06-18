@@ -11,10 +11,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "build:resumes": "node scripts/build-resumes.js",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update-houdini-assets": "powershell -ExecutionPolicy Bypass -File ./scripts/update-houdini-assets.ps1"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
@@ -30,7 +31,9 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "csv-parser": "^3.2.1",
     "md-to-pdf": "^5.2.5",
+    "sharp": "^0.35.1",
     "vite-plugin-pwa": "^1.0.0"
   }
 }

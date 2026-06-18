@@ -38,7 +38,15 @@ export function initFabricViewer() {
     const specularAmountValue = document.getElementById('specular-amount-value');
     const renderImage = document.getElementById('render-image') as HTMLImageElement;
     const renderEmpty = document.getElementById('render-empty');
-    // Removed duplicate declarations
+    
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const resetCameraBtn = document.getElementById('reset-camera-btn');
+    const hdriRotationSlider = document.getElementById('hdri-rotation-slider') as HTMLInputElement;
+    const hdriRotationValue = document.getElementById('hdri-rotation-value');
+    const lightIntensitySlider = document.getElementById('light-intensity-slider') as HTMLInputElement;
+    const lightIntensityValue = document.getElementById('light-intensity-value');
+    const lightRotationSlider = document.getElementById('light-rotation-slider') as HTMLInputElement;
+    const lightRotationValue = document.getElementById('light-rotation-value');
 
     // State
     let currentModel = 'chair_bake.gltf';
@@ -50,10 +58,14 @@ export function initFabricViewer() {
     let globalTextureBlend = 1.0;
     let globalLmGain = 1.0;
     let globalLmGamma = 1.6;
-    let globalPbrGain = 1.75;
-    let globalPbrGamma = 1.25;
-    let globalNormalStrength = 1.8;
-    let globalSpecularAmount = 1.0;
+    let currentMode: 'baked' | 'normal' = 'baked';
+    let sliderStates = {
+        baked: { pbrGain: 1.75, pbrGamma: 1.25, normalStrength: 1.8, specularAmount: 1.0 },
+        normal: { pbrGain: 1.75, pbrGamma: 1.25, normalStrength: 1.8, specularAmount: 1.0 }
+    };
+    let globalHdriRotation = 0;
+    let globalLightIntensity = 1.0;
+    let globalLightRotation = 0;
     let currentYOffset = -0.70; // Global state for tracking object height
     let activeRenders: string[] = [];
     let currentModelScene: THREE.Group | null = null;
@@ -105,41 +117,103 @@ export function initFabricViewer() {
         });
     }
 
+    function updateSliderDisplays() {
+        const state = sliderStates[currentMode];
+        if (pbrGainSlider && pbrGainValue) {
+            pbrGainSlider.value = state.pbrGain.toString();
+            pbrGainValue.textContent = state.pbrGain.toFixed(2);
+        }
+        if (pbrGammaSlider && pbrGammaValue) {
+            pbrGammaSlider.value = state.pbrGamma.toString();
+            pbrGammaValue.textContent = state.pbrGamma.toFixed(2);
+        }
+        if (normalStrengthSlider && normalStrengthValue) {
+            normalStrengthSlider.value = state.normalStrength.toString();
+            normalStrengthValue.textContent = state.normalStrength.toFixed(2);
+        }
+        if (specularAmountSlider && specularAmountValue) {
+            specularAmountSlider.value = state.specularAmount.toString();
+            specularAmountValue.textContent = state.specularAmount.toFixed(2);
+        }
+        
+        // Update materials
+        if (fabricMaterial.userData.shader) {
+            fabricMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
+            fabricMaterial.userData.shader.uniforms.uPbrGamma.value = state.pbrGamma;
+        }
+        fabricMaterial.normalScale.set(state.normalStrength, state.normalStrength);
+        // @ts-ignore
+        fabricMaterial.specularIntensity = state.specularAmount;
+        fabricMaterial.needsUpdate = true;
+    }
+
     if (pbrGainSlider && pbrGainValue) {
         pbrGainSlider.addEventListener('input', (e) => {
-            globalPbrGain = parseFloat((e.target as HTMLInputElement).value);
-            pbrGainValue.textContent = globalPbrGain.toFixed(2);
-            if (fabricMaterial.userData.shader) {
-                fabricMaterial.userData.shader.uniforms.uPbrGain.value = globalPbrGain;
-            }
+            const val = parseFloat((e.target as HTMLInputElement).value);
+            sliderStates[currentMode].pbrGain = val;
+            pbrGainValue.textContent = val.toFixed(2);
+            if (fabricMaterial.userData.shader) fabricMaterial.userData.shader.uniforms.uPbrGain.value = val;
         });
     }
 
     if (pbrGammaSlider && pbrGammaValue) {
         pbrGammaSlider.addEventListener('input', (e) => {
-            globalPbrGamma = parseFloat((e.target as HTMLInputElement).value);
-            pbrGammaValue.textContent = globalPbrGamma.toFixed(2);
-            if (fabricMaterial.userData.shader) {
-                fabricMaterial.userData.shader.uniforms.uPbrGamma.value = globalPbrGamma;
-            }
+            const val = parseFloat((e.target as HTMLInputElement).value);
+            sliderStates[currentMode].pbrGamma = val;
+            pbrGammaValue.textContent = val.toFixed(2);
+            if (fabricMaterial.userData.shader) fabricMaterial.userData.shader.uniforms.uPbrGamma.value = val;
         });
     }
 
     if (normalStrengthSlider && normalStrengthValue) {
         normalStrengthSlider.addEventListener('input', (e) => {
-            globalNormalStrength = parseFloat((e.target as HTMLInputElement).value);
-            normalStrengthValue.textContent = globalNormalStrength.toFixed(2);
-            fabricMaterial.normalScale.set(globalNormalStrength, globalNormalStrength);
+            const val = parseFloat((e.target as HTMLInputElement).value);
+            sliderStates[currentMode].normalStrength = val;
+            normalStrengthValue.textContent = val.toFixed(2);
+            fabricMaterial.normalScale.set(val, val);
         });
     }
 
     if (specularAmountSlider && specularAmountValue) {
         specularAmountSlider.addEventListener('input', (e) => {
-            globalSpecularAmount = parseFloat((e.target as HTMLInputElement).value);
-            specularAmountValue.textContent = globalSpecularAmount.toFixed(2);
-            // @ts-ignore - Some older TS definitions for ThreeJS might lack specularIntensity
-            fabricMaterial.specularIntensity = globalSpecularAmount;
+            const val = parseFloat((e.target as HTMLInputElement).value);
+            sliderStates[currentMode].specularAmount = val;
+            specularAmountValue.textContent = val.toFixed(2);
+            // @ts-ignore
+            fabricMaterial.specularIntensity = val;
             fabricMaterial.needsUpdate = true;
+        });
+    }
+
+    function updateLightRotation() {
+        const rad = THREE.MathUtils.degToRad(globalLightRotation);
+        // Distance 5 for the light
+        normalDirLight.position.set(Math.sin(rad) * 5, 5, Math.cos(rad) * 5);
+    }
+
+    if (hdriRotationSlider && hdriRotationValue) {
+        hdriRotationSlider.addEventListener('input', (e) => {
+            globalHdriRotation = parseFloat((e.target as HTMLInputElement).value);
+            hdriRotationValue.textContent = globalHdriRotation.toString();
+            scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
+        });
+    }
+
+    if (lightIntensitySlider && lightIntensityValue) {
+        lightIntensitySlider.addEventListener('input', (e) => {
+            globalLightIntensity = parseFloat((e.target as HTMLInputElement).value);
+            lightIntensityValue.textContent = globalLightIntensity.toFixed(2);
+            if (currentMode === 'normal') {
+                normalDirLight.intensity = globalLightIntensity;
+            }
+        });
+    }
+
+    if (lightRotationSlider && lightRotationValue) {
+        lightRotationSlider.addEventListener('input', (e) => {
+            globalLightRotation = parseFloat((e.target as HTMLInputElement).value);
+            lightRotationValue.textContent = globalLightRotation.toString();
+            updateLightRotation();
         });
     }
 
@@ -148,6 +222,7 @@ export function initFabricViewer() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
     container.appendChild(renderer.domElement);
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
@@ -163,6 +238,20 @@ export function initFabricViewer() {
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dirLight.position.set(2, 5, 3);
     scene.add(dirLight);
+
+    const normalDirLight = new THREE.DirectionalLight(0xffffff, 0.0); // Hidden initially
+    updateLightRotation();
+    scene.add(normalDirLight);
+
+    const exrLoader = new EXRLoader();
+    let pmremEnvMap: THREE.Texture | null = null;
+    exrLoader.load('/assets/configurator/textures/HDRI_fabric_scene.exr', (texture) => {
+        pmremEnvMap = pmremGenerator.fromEquirectangular(texture).texture;
+        if (currentMode === 'normal') {
+            scene.environment = pmremEnvMap;
+        }
+        texture.dispose();
+    });
 
     // Create camera and set Houdini match settings
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
@@ -193,11 +282,6 @@ export function initFabricViewer() {
     const modelRotations = [60, 20, -60];
 
     function applyAngle(index: number) {
-        // Reset camera to default static position
-        camera.position.copy(defaultCamera.pos);
-        controls.target.copy(defaultCamera.target);
-        controls.update();
-
         // Rotate the model itself
         if (currentModelScene) {
             const angleDeg = modelRotations[index] || 0;
@@ -304,8 +388,8 @@ export function initFabricViewer() {
         shader.uniforms.uTextureBlend = { value: globalTextureBlend };
         shader.uniforms.uLmGain = { value: globalLmGain };
         shader.uniforms.uLmGamma = { value: globalLmGamma };
-        shader.uniforms.uPbrGain = { value: globalPbrGain };
-        shader.uniforms.uPbrGamma = { value: globalPbrGamma };
+        shader.uniforms.uPbrGain = { value: sliderStates[currentMode].pbrGain };
+        shader.uniforms.uPbrGamma = { value: sliderStates[currentMode].pbrGamma };
         
         material.userData.shader = shader;
         
@@ -351,6 +435,11 @@ export function initFabricViewer() {
                 vec4 finalColor = mix(mix01, fullyLit, clamp(uTextureBlend - 1.0, 0.0, 1.0));
                 
                 gl_FragColor = finalColor;
+            #else
+                // In Normal mode, just apply PBR Gain/Gamma to standard physical output
+                vec4 fullyLit = gl_FragColor;
+                fullyLit.rgb = pow(fullyLit.rgb * uPbrGain, vec3(1.0 / uPbrGamma));
+                gl_FragColor = fullyLit;
             #endif
             `
         );
@@ -364,9 +453,9 @@ export function initFabricViewer() {
         envMapIntensity: 0.0,
         lightMap: bakedFabricMaps[currentAngle],
         lightMapIntensity: 1.0,
-        normalScale: new THREE.Vector2(globalNormalStrength, globalNormalStrength),
+        normalScale: new THREE.Vector2(sliderStates[currentMode].normalStrength, sliderStates[currentMode].normalStrength),
         // @ts-ignore
-        specularIntensity: globalSpecularAmount
+        specularIntensity: sliderStates[currentMode].specularAmount
     });
     fabricMaterial.onBeforeCompile = (shader) => shaderOverride(shader, fabricMaterial);
 
@@ -583,6 +672,66 @@ export function initFabricViewer() {
     }
 
     // UI Listeners
+
+    // Mode Toggles
+    function updateModeState() {
+        const controlsGroups = document.querySelectorAll('.control-group');
+        controlsGroups.forEach(group => {
+            const mode = (group as HTMLElement).dataset.mode;
+            if (mode) {
+                (group as HTMLElement).style.display = mode === currentMode ? 'flex' : 'none';
+            }
+        });
+
+        updateSliderDisplays();
+
+        if (currentMode === 'normal') {
+            scene.environment = pmremEnvMap;
+            normalDirLight.intensity = globalLightIntensity;
+            
+            fabricMaterial.lightMap = null;
+            fabricMaterial.envMapIntensity = 1.0;
+            if (neutralMaterial.map) {
+                neutralMaterial.map = null; // Maybe keep the color but remove bake map
+            }
+            if (bakedFloorScene) bakedFloorScene.visible = false;
+            
+            // Recompile without lightmap
+            fabricMaterial.needsUpdate = true;
+            neutralMaterial.needsUpdate = true;
+        } else {
+            scene.environment = null;
+            normalDirLight.intensity = 0;
+            
+            fabricMaterial.lightMap = bakedFabricMaps[currentAngle];
+            fabricMaterial.envMapIntensity = 0.0;
+            neutralMaterial.map = bakedExtraMaps[currentAngle];
+            if (bakedFloorScene) bakedFloorScene.visible = true;
+            
+            // Recompile with lightmap
+            fabricMaterial.needsUpdate = true;
+            neutralMaterial.needsUpdate = true;
+        }
+    }
+
+    modeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            modeBtns.forEach(b => b.classList.remove('active'));
+            const target = e.currentTarget as HTMLButtonElement;
+            target.classList.add('active');
+            
+            currentMode = target.dataset.mode as 'baked' | 'normal';
+            updateModeState();
+        });
+    });
+
+    if (resetCameraBtn) {
+        resetCameraBtn.addEventListener('click', () => {
+            camera.position.copy(defaultCamera.pos);
+            controls.target.copy(defaultCamera.target);
+            controls.update();
+        });
+    }
 
     // Angle Selection
     angleBtns.forEach(btn => {

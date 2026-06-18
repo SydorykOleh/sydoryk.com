@@ -63,7 +63,7 @@ try {
             </div>
 
             <div class="controls-row secondary-controls compact-controls">
-                <div class="control-group full-width">
+                <div class="control-group full-width" data-mode="baked">
                     <h3>Texture Blend</h3>
                     <div class="slider-container">
                         <input type="range" id="texture-blend-slider" min="0" max="2" step="0.01" value="1.0" />
@@ -71,7 +71,7 @@ try {
                     </div>
                 </div>
 
-                <div class="control-group">
+                <div class="control-group" data-mode="baked">
                     <h3>LM Gain</h3>
                     <div class="slider-container">
                         <input type="range" id="lm-gain-slider" min="0" max="5" step="0.05" value="1.0" />
@@ -79,7 +79,7 @@ try {
                     </div>
                 </div>
 
-                <div class="control-group">
+                <div class="control-group" data-mode="baked">
                     <h3>LM Gamma</h3>
                     <div class="slider-container">
                         <input type="range" id="lm-gamma-slider" min="0.1" max="5" step="0.05" value="1.6" />
@@ -118,6 +118,30 @@ try {
                         <span id="specular-amount-value">1.00</span>
                     </div>
                 </div>
+
+                <div class="control-group full-width" data-mode="normal" style="display: none;">
+                    <h3>HDRI Rot</h3>
+                    <div class="slider-container">
+                        <input type="range" id="hdri-rotation-slider" min="0" max="360" step="1" value="0" />
+                        <span id="hdri-rotation-value">0</span>
+                    </div>
+                </div>
+
+                <div class="control-group" data-mode="normal" style="display: none;">
+                    <h3>Light Int</h3>
+                    <div class="slider-container">
+                        <input type="range" id="light-intensity-slider" min="0" max="5" step="0.1" value="1.0" />
+                        <span id="light-intensity-value">1.00</span>
+                    </div>
+                </div>
+
+                <div class="control-group" data-mode="normal" style="display: none;">
+                    <h3>Light Rot</h3>
+                    <div class="slider-container">
+                        <input type="range" id="light-rotation-slider" min="0" max="360" step="1" value="0" />
+                        <span id="light-rotation-value">0</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -133,6 +157,13 @@ try {
         <div class="viewer-split">
             <!-- 3D Canvas -->
             <div class="viewer-3d">
+                <div class="viewer-overlay-controls">
+                    <div class="button-group mode-toggles">
+                        <button class="mode-btn active" data-mode="baked">Baked</button>
+                        <button class="mode-btn" data-mode="normal">Normal</button>
+                    </div>
+                    <button class="reset-camera-btn" id="reset-camera-btn">Reset Camera</button>
+                </div>
                 <div id="three-container"></div>
                 <div class="loading-overlay" id="loading-overlay">
                     <div class="spinner"></div>
@@ -443,6 +474,39 @@ try {
         justify-content: center;
         width: 100%;
         margin-bottom: -1rem; /* Pull it slightly closer to the views */
+    }
+
+    .viewer-overlay-controls {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        z-index: 5;
+        pointer-events: none;
+
+        & > * {
+            pointer-events: all;
+        }
+
+        .reset-camera-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            font-weight: 500;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.6);
+                border-color: rgba(255, 255, 255, 0.4);
+            }
+        }
     }
 
     .loading-overlay {
