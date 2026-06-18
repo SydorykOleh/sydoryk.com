@@ -1,0 +1,511 @@
+---
+import ConfiguratorLayout from '../layouts/ConfiguratorLayout.astro';
+import fs from 'fs';
+import path from 'path';
+
+const title = "3D Fabric Configurator | Sydoryk Oleh";
+const description = "Interactive 3D configurator for premium fabric textures with real-time sheen and PBR rendering.";
+
+// Read manifest
+const manifestPath = path.join(process.cwd(), 'public/assets/configurator/manifest.json');
+let manifest = { collections: [], textures: [] };
+try {
+    if (fs.existsSync(manifestPath)) {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    }
+} catch (e) {
+    console.error("Error parsing manifest:", e);
+}
+---
+
+<ConfiguratorLayout title={title} description={description}>
+    <div class="configurator-full-layout">
+        <!-- Top Controls -->
+        <div class="top-controls">
+            <div class="controls-row primary-controls">
+                <div class="control-group">
+                    <h3>Texture Scale</h3>
+                    <div class="slider-container">
+                        <input type="range" id="texture-scale-slider" min="1" max="20" step="0.5" value="12" />
+                        <span id="texture-scale-value">12.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>Collection</h3>
+                <div class="collection-buttons" id="collection-buttons">
+                    {manifest.collections.map(col => (
+                        <button class="collection-btn" data-collection={col}>{col}</button>
+                    ))}
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Select Texture</h3>
+                <div class="texture-grid" id="texture-grid">
+                    {manifest.textures.map(tex => (
+                        <button 
+                            class="texture-btn" 
+                            data-id={tex.id} 
+                            data-collection={tex.collection}
+                            data-renders={tex.renders ? tex.renders.join(',') : ''}
+                            title={tex.name}
+                        >
+                            <img src={`/assets/configurator/textures/${tex.id}_2k/color.webp`} alt={tex.name} loading="lazy"/>
+                            <div class="tex-info">
+                                <span class="tex-code">{tex.id}</span>
+                                <span class="tex-name">{tex.name}</span>
+                            </div>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div class="controls-row secondary-controls compact-controls">
+                <div class="control-group full-width">
+                    <h3>Texture Blend</h3>
+                    <div class="slider-container">
+                        <input type="range" id="texture-blend-slider" min="0" max="2" step="0.01" value="1.0" />
+                        <span id="texture-blend-value">1.00</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>LM Gain</h3>
+                    <div class="slider-container">
+                        <input type="range" id="lm-gain-slider" min="0" max="5" step="0.05" value="1.0" />
+                        <span id="lm-gain-value">1.00</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>LM Gamma</h3>
+                    <div class="slider-container">
+                        <input type="range" id="lm-gamma-slider" min="0.1" max="5" step="0.05" value="1.6" />
+                        <span id="lm-gamma-value">1.60</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>PBR Gain</h3>
+                    <div class="slider-container">
+                        <input type="range" id="pbr-gain-slider" min="0" max="5" step="0.05" value="1.75" />
+                        <span id="pbr-gain-value">1.75</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>PBR Gamma</h3>
+                    <div class="slider-container">
+                        <input type="range" id="pbr-gamma-slider" min="0.1" max="5" step="0.05" value="1.25" />
+                        <span id="pbr-gamma-value">1.25</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Normal Str</h3>
+                    <div class="slider-container">
+                        <input type="range" id="normal-strength-slider" min="0" max="3" step="0.05" value="1.8" />
+                        <span id="normal-strength-value">1.80</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Specular</h3>
+                    <div class="slider-container">
+                        <input type="range" id="specular-amount-slider" min="0" max="2" step="0.05" value="1.0" />
+                        <span id="specular-amount-value">1.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="angle-controls-container">
+            <div class="button-group angle-selectors" id="angle-selectors">
+                <button class="active" data-angle="0">Angle 1</button>
+                <button data-angle="1">Angle 2</button>
+                <button data-angle="2">Angle 3</button>
+            </div>
+        </div>
+
+        <!-- Canvas Area (Split) -->
+        <div class="viewer-split">
+            <!-- 3D Canvas -->
+            <div class="viewer-3d">
+                <div id="three-container"></div>
+                <div class="loading-overlay" id="loading-overlay">
+                    <div class="spinner"></div>
+                    <span>Loading Assets...</span>
+                </div>
+            </div>
+
+            <!-- Render Preview -->
+            <div class="viewer-render">
+                <div class="render-image-container">
+                    <img id="render-image" src="" alt="Render Preview" />
+                    <div class="empty-state" id="render-empty">
+                        <span>No render available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ConfiguratorLayout>
+
+<style lang="scss">
+    .configurator-full-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .top-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        color: var(--color-100);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem;
+    }
+
+    .controls-row.primary-controls {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        .control-group {
+            min-width: 250px;
+        }
+    }
+
+    .controls-row.compact-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+        .control-group {
+            gap: 0.2rem;
+            min-width: 0; /* allows shrinking */
+
+            &.full-width {
+                grid-column: 1 / -1;
+                margin-bottom: 0.5rem;
+            }
+
+            h3 {
+                font-size: 0.75rem;
+                color: var(--color-500);
+            }
+        }
+
+        .slider-container {
+            padding: 0.3rem 0.6rem;
+            gap: 6px;
+            
+            span {
+                font-size: 0.75rem;
+                min-width: 28px;
+            }
+        }
+    }
+
+    .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-400);
+            margin: 0;
+        }
+    }
+
+    .button-group {
+        display: inline-flex;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px;
+        border-radius: 8px;
+
+        button {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--color-300);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+
+            &.active {
+                background: rgba(255, 255, 255, 0.15);
+                color: var(--color-100);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+
+            &:hover:not(.active) {
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+    }
+
+    .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        height: 100%;
+
+        input[type=range] {
+            flex: 1;
+            accent-color: var(--color-100);
+            cursor: pointer;
+        }
+
+        span {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--color-300);
+            min-width: 32px;
+            text-align: right;
+            font-weight: 600;
+        }
+    }
+
+    .collection-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .collection-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-300);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+
+            &.active {
+                background: var(--color-100);
+                color: #000;
+                border-color: var(--color-100);
+            }
+
+            &:hover:not(.active) {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.3);
+                color: #fff;
+            }
+        }
+    }
+
+    .texture-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 0.5rem;
+
+        .texture-btn {
+            width: 120px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 0;
+            cursor: pointer;
+            overflow: hidden;
+            display: none; /* Hidden by default, toggled by JS */
+            flex-direction: column;
+            transition: all 0.2s ease;
+            text-align: left;
+
+            &.visible {
+                display: flex;
+            }
+
+            img {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .tex-info {
+                padding: 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .tex-code {
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--color-100);
+            }
+
+            .tex-name {
+                font-size: 0.65rem;
+                color: var(--color-400);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                background: rgba(255, 255, 255, 0.08);
+            }
+
+            &.active {
+                border-color: #fff;
+                box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
+            }
+        }
+    }
+
+    /* Split Viewer - PERFECT SQUARES */
+    .viewer-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .viewer-3d, .viewer-render {
+        background: rgb(207, 207, 207);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        aspect-ratio: 1 / 1; /* PERFECT SQUARE */
+    }
+
+    #three-container {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        display: block;
+        flex: 1;
+    }
+
+    /* Force override any global canvas rules from layouts */
+    #three-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        display: block !important;
+    }
+
+    .render-image-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: rgb(207, 207, 207);
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the square perfectly */
+            display: none;
+        }
+
+        .empty-state {
+            color: var(--color-500);
+            font-size: 1rem;
+        }
+    }
+
+    .angle-controls-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: -1rem; /* Pull it slightly closer to the views */
+    }
+
+    .loading-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        color: #fff;
+        font-weight: 500;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+
+        &.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1024px) {
+        .viewer-split {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>
+
+<script>
+    import { initFabricViewer } from '../components/ThreeViewer';
+    
+    let cleanup: (() => void) | undefined | void;
+
+    document.addEventListener('astro:page-load', () => {
+        // Only initialize if the container is on the page
+        if (document.getElementById('three-container')) {
+            if (cleanup) cleanup();
+            cleanup = initFabricViewer();
+        }
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+        if (cleanup) {
+            cleanup();
+            cleanup = undefined;
+        }
+    });
+</script>
