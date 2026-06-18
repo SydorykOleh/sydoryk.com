@@ -62,7 +62,7 @@ export function initFabricViewer() {
     let globalLmGamma = 1.4;
     let currentMode: 'baked' | 'normal' = 'baked';
     let sliderStates = {
-        baked: { pbrGain: 1.55, pbrGamma: 1.25, normalStrength: 2.2, specularAmount: 1.0 },
+        baked: { pbrGain: 1.2, pbrGamma: 1.25, normalStrength: 2.0, specularAmount: 1.0 },
         normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0 }
     };
     let globalHdriRotation = 270;
@@ -240,15 +240,8 @@ export function initFabricViewer() {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color().setRGB(0.81141, 0.81141, 0.81141, THREE.SRGBColorSpace);
 
-    // Basic lighting for PBR normals and roughness to react to
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-    scene.add(ambientLight);
-    
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight.position.set(2, 5, 3);
-    scene.add(dirLight);
-
-    const normalDirLight = new THREE.DirectionalLight(0xffffff, 0.0); // Hidden initially
+    // Removed fake ambient and directional lights that were previously used for Baked mode
+    const normalDirLight = new THREE.DirectionalLight(0xffffff, globalLightIntensity); 
     updateLightRotation();
     scene.add(normalDirLight);
 
@@ -430,8 +423,8 @@ export function initFabricViewer() {
             
             #ifdef USE_LIGHTMAP
                 vec4 rawBake = texture2D( lightMap, vLightMapUv );
-                // Apply LM Gain and Gamma
-                rawBake.rgb = pow(rawBake.rgb * uLmGain, vec3(1.0 / uLmGamma));
+                // Apply LM Gain and Gamma, then clamp to 1.0
+                rawBake.rgb = clamp(pow(rawBake.rgb * uLmGain, vec3(1.0 / uLmGamma)), 0.0, 1.0);
                 
                 // fullyLit is the standard PBR output (no lightmap added yet)
                 vec4 fullyLit = gl_FragColor;
@@ -465,7 +458,7 @@ export function initFabricViewer() {
         metalness: 0.0,
         envMapIntensity: 0.0,
         lightMap: bakedFabricMaps[currentAngle],
-        lightMapIntensity: 1.0,
+        lightMapIntensity: 0.0, // Set to 0 to completely disable native additive lighting
         normalScale: new THREE.Vector2(sliderStates[currentMode].normalStrength, sliderStates[currentMode].normalStrength),
         // @ts-ignore
         specularIntensity: sliderStates[currentMode].specularAmount
@@ -700,9 +693,6 @@ export function initFabricViewer() {
         scene.environmentIntensity = globalHdriIntensity;
         scene.environmentRotation.y = THREE.MathUtils.degToRad(globalHdriRotation);
         normalDirLight.intensity = globalLightIntensity;
-        
-        ambientLight.intensity = 0;
-        dirLight.intensity = 0;
 
         if (currentMode === 'normal') {
             fabricMaterial.lightMap = null;
