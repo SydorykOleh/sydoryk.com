@@ -461,5 +461,8 @@ export class FabricUI {
         } else if (textureBtns.length > 0) {
             (textureBtns[0] as HTMLButtonElement).click();
         }
+
+        // Apply initial state
+        updateModeState();
     }
 }

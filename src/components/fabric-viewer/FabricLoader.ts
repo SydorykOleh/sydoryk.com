@@ -52,6 +52,7 @@ export class FabricLoader {
         const loadBake = (filename: string, flipY: boolean = false) => {
             const tex = this.textureLoader.load(`/assets/configurator/textures/bakes/${filename}`);
             tex.flipY = flipY;
+            tex.colorSpace = THREE.SRGBColorSpace;
             return tex;
         };
 

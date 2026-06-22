@@ -15,7 +15,6 @@ export class FabricMaterials {
             color: 0xffffff,
             roughness: 1.0,
             metalness: 0.0,
-            envMapIntensity: 0.0,
             lightMap: null, // Initialized dynamically
             lightMapIntensity: 0.0,
             normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),
@@ -28,7 +27,6 @@ export class FabricMaterials {
             color: 0xffffff,
             roughness: 1.0,
             metalness: 0.0,
-            envMapIntensity: 0.0,
             lightMap: null,
             lightMapIntensity: 0.0,
             normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),

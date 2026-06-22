@@ -29,7 +29,7 @@ export class FabricState {
     };
     
     globalHdriRotation = 270;
-    globalHdriIntensity = 1.5;
+    globalHdriIntensity = 0.8;
     globalLightIntensity = 0.5;
     globalLightRotation = 270;
     globalFillIntensity = 1.0;

@@ -78,7 +78,7 @@ export class FabricScene {
 
     loadEnvironment() {
         const exrLoader = new EXRLoader();
-        exrLoader.load('/assets/configurator/env/studio.exr', (texture: any) => {
+        exrLoader.load('/assets/configurator/HDRI_fabric_scene.exr', (texture: any) => {
             const envMap = this.pmremGenerator.fromEquirectangular(texture).texture;
             this.pmremEnvMap = envMap;
             this.scene.environment = envMap;
@@ -86,6 +86,10 @@ export class FabricScene {
             this.scene.environmentRotation.y = THREE.MathUtils.degToRad(this.state.globalHdriRotation);
             texture.dispose();
             this.pmremGenerator.dispose();
+            
+            if (this.state.onStateChange) {
+                this.state.onStateChange();
+            }
         });
     }
 
