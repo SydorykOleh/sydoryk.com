@@ -22,15 +22,7 @@ try {
     <div class="configurator-full-layout">
         <!-- Top Controls -->
         <div class="top-controls">
-            <div class="controls-row primary-controls">
-                <div class="control-group">
-                    <h3>Texture Scale</h3>
-                    <div class="slider-container">
-                        <input type="range" id="texture-scale-slider" min="1" max="20" step="0.5" value="12" />
-                        <span id="texture-scale-value">12.0</span>
-                    </div>
-                </div>
-            </div>
+
             
             <div class="control-group">
                 <h3>Collection</h3>
@@ -82,24 +74,24 @@ try {
                 <div class="control-group" data-mode="baked">
                     <h3>LM Gamma</h3>
                     <div class="slider-container">
-                        <input type="range" id="lm-gamma-slider" min="0" max="2" step="0.05" value="1.4" />
-                        <span id="lm-gamma-value">1.40</span>
+                        <input type="range" id="lm-gamma-slider" min="0" max="3" step="0.05" value="1.3" />
+                        <span id="lm-gamma-value">1.30</span>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <h3>PBR Gain</h3>
                     <div class="slider-container">
-                        <input type="range" id="pbr-gain-slider" min="0" max="2" step="0.05" value="1.2" />
-                        <span id="pbr-gain-value">1.20</span>
+                        <input type="range" id="pbr-gain-slider" min="0" max="2" step="0.05" value="1.1" />
+                        <span id="pbr-gain-value">1.10</span>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <h3>PBR Gamma</h3>
                     <div class="slider-container">
-                        <input type="range" id="pbr-gamma-slider" min="0" max="2" step="0.05" value="1.25" />
-                        <span id="pbr-gamma-value">1.25</span>
+                        <input type="range" id="pbr-gamma-slider" min="0" max="2" step="0.05" value="1.05" />
+                        <span id="pbr-gamma-value">1.05</span>
                     </div>
                 </div>
 
@@ -133,16 +125,16 @@ try {
                 <div class="control-group" data-mode="normal">
                     <h3>HDRI Int</h3>
                     <div class="slider-container">
-                        <input type="range" id="hdri-intensity-slider" min="0" max="5" step="0.1" value="0.8" />
-                        <span id="hdri-intensity-value">0.80</span>
+                        <input type="range" id="hdri-intensity-slider" min="0" max="5" step="0.1" value="1.5" />
+                        <span id="hdri-intensity-value">1.50</span>
                     </div>
                 </div>
 
                 <div class="control-group" data-mode="normal">
                     <h3>Light Int</h3>
                     <div class="slider-container">
-                        <input type="range" id="light-intensity-slider" min="0" max="5" step="0.1" value="1.0" />
-                        <span id="light-intensity-value">1.00</span>
+                        <input type="range" id="light-intensity-slider" min="0" max="5" step="0.1" value="0.5" />
+                        <span id="light-intensity-value">0.50</span>
                     </div>
                 </div>
 
@@ -153,9 +145,40 @@ try {
                         <span id="light-rotation-value">270</span>
                     </div>
                 </div>
+
+                <div class="control-group" data-mode="normal">
+                    <h3>Fill Int</h3>
+                    <div class="slider-container">
+                        <input type="range" id="fill-intensity-slider" min="0" max="5" step="0.1" value="1.0" />
+                        <span id="fill-intensity-value">1.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Velvet specific controls, hidden by default -->
+            <div class="controls-row secondary-controls compact-controls velvet-controls" style="display: none;">
+                <div class="control-group">
+                    <h3>Sheen Int</h3>
+                    <div class="slider-container">
+                        <input type="range" id="sheen-intensity-slider" min="0" max="2" step="0.05" value="1.0" />
+                        <span id="sheen-intensity-value">1.00</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h3>Sheen Rgh</h3>
+                    <div class="slider-container">
+                        <input type="range" id="sheen-roughness-slider" min="0" max="1" step="0.05" value="0.5" />
+                        <span id="sheen-roughness-value">0.50</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <h3>Sheen Color</h3>
+                    <div class="slider-container" style="justify-content: center;">
+                        <input type="color" id="sheen-color-picker" value="#ffffff" style="width: 100%; height: 24px; cursor: pointer; border: none; background: transparent; padding: 0;" />
+                    </div>
+                </div>
             </div>
         </div>
-
         <div class="angle-controls-container">
             <div class="button-group angle-selectors" id="angle-selectors">
                 <button class="active" data-angle="0">Angle 1</button>
@@ -169,11 +192,31 @@ try {
             <!-- 3D Canvas -->
             <div class="viewer-3d">
                 <div class="viewer-overlay-controls">
-                    <div class="button-group mode-toggles">
-                        <button class="mode-btn active" data-mode="baked">Baked</button>
-                        <button class="mode-btn" data-mode="normal">Normal</button>
+                    <div class="overlay-group">
+                        <span class="overlay-label">Material</span>
+                        <div class="button-group material-toggles" id="material-toggles">
+                            <button class="material-btn active" data-material="default">Fabric</button>
+                            <button class="material-btn" data-material="velvet">Velvet</button>
+                        </div>
                     </div>
-                    <button class="reset-camera-btn" id="reset-camera-btn">Reset Camera</button>
+                    <div class="overlay-group">
+                        <span class="overlay-label">Lighting</span>
+                        <div class="button-group mode-toggles">
+                            <button class="mode-btn active" data-mode="baked">Studio (Baked)</button>
+                            <button class="mode-btn" data-mode="normal">Realtime HDRI</button>
+                        </div>
+                    </div>
+                    <div class="overlay-group">
+                        <span class="overlay-label" style="opacity: 0;">Camera</span>
+                        <button class="reset-camera-btn" id="reset-camera-btn">Reset Camera</button>
+                    </div>
+                </div>
+                <div class="viewer-overlay-bottom-controls">
+                    <div class="slider-container">
+                        <span class="slider-label">Scale</span>
+                        <input type="range" id="texture-scale-slider" min="1" max="20" step="0.5" value="12" />
+                        <span id="texture-scale-value">12.0</span>
+                    </div>
                 </div>
                 <div id="three-container"></div>
                 <div class="loading-overlay" id="loading-overlay">
@@ -510,7 +553,22 @@ try {
             pointer-events: all;
         }
 
-        .button-group.mode-toggles {
+        .overlay-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+
+            .overlay-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .button-group {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -543,6 +601,49 @@ try {
             &:hover {
                 background: rgba(0, 0, 0, 0.6);
                 border-color: rgba(255, 255, 255, 0.4);
+            }
+        }
+    }
+
+    .viewer-overlay-bottom-controls {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        display: flex;
+        justify-content: center;
+        z-index: 5;
+        pointer-events: none;
+
+        & > * {
+            pointer-events: all;
+        }
+
+        .slider-container {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 350px;
+            max-width: 90vw;
+            box-sizing: border-box;
+            height: auto;
+
+            .slider-label {
+                font-family: inherit;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: rgba(255, 255, 255, 0.8);
+                min-width: max-content;
+                text-align: left;
+            }
+            
+            input[type=range] {
+                min-width: 100px;
+            }
+            
+            #texture-scale-value {
+                color: #fff;
             }
         }
     }
@@ -592,7 +693,7 @@ try {
 </style>
 
 <script>
-    import { initFabricViewer } from '../components/ThreeViewer';
+    import { initFabricViewer } from '../components/fabric-viewer';
     
     let cleanup: (() => void) | undefined | void;
 

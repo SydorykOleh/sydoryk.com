@@ -1,0 +1,47 @@
+import * as THREE from 'three';
+
+export interface SliderState {
+    pbrGain: number;
+    pbrGamma: number;
+    normalStrength: number;
+    specularAmount: number;
+    lightInt: number;
+    fillInt: number;
+}
+
+export class FabricState {
+    currentModel = 'chair_bake.gltf';
+    currentPreset = 'normal';
+    currentTextureId = 'VEN-01';
+    currentCollection = '';
+    currentAngle = 0; // 0, 1, 2
+    currentRepeat = 12;
+    
+    globalTextureBlend = 1.0;
+    globalLmGain = 1.0;
+    globalLmGamma = 1.3;
+    
+    currentMode: 'baked' | 'normal' = 'baked';
+    
+    sliderStates: Record<'baked' | 'normal', SliderState> = {
+        baked: { pbrGain: 1.1, pbrGamma: 1.05, normalStrength: 2.0, specularAmount: 1.0, lightInt: 0.5, fillInt: 1.0 },
+        normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0, lightInt: 1.0, fillInt: 0.5 }
+    };
+    
+    globalHdriRotation = 270;
+    globalHdriIntensity = 1.5;
+    globalLightIntensity = 0.5;
+    globalLightRotation = 270;
+    globalFillIntensity = 1.0;
+    currentYOffset = -0.70;
+    
+    activeRenders: string[] = [];
+    
+    currentMaterialType: 'default' | 'velvet' = 'default';
+    globalSheenIntensity = 1.0;
+    globalSheenRoughness = 0.5;
+    globalSheenColor = new THREE.Color(0xffffff);
+    
+    // Callbacks to trigger UI or Scene updates when state changes via code
+    onStateChange: () => void = () => {};
+}
