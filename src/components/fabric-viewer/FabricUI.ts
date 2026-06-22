@@ -125,6 +125,14 @@ export class FabricUI {
                 fillIntensityValue.textContent = state.fillInt.toFixed(2);
                 this.state.globalFillIntensity = state.fillInt;
             }
+
+            if (hdriIntensitySlider && hdriIntensityValue) {
+                hdriIntensitySlider.value = state.hdriInt.toString();
+                hdriIntensityValue.textContent = state.hdriInt.toFixed(2);
+                this.state.globalHdriIntensity = state.hdriInt;
+            }
+
+
             
             if (m.fabricMaterial.userData.shader) {
                 m.fabricMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
@@ -279,6 +287,7 @@ export class FabricUI {
         if (hdriIntensitySlider && hdriIntensityValue) {
             hdriIntensitySlider.addEventListener('input', (e) => {
                 this.state.globalHdriIntensity = parseFloat((e.target as HTMLInputElement).value);
+                this.state.sliderStates[this.state.currentMode].hdriInt = this.state.globalHdriIntensity;
                 hdriIntensityValue.textContent = this.state.globalHdriIntensity.toFixed(2);
                 this.sceneManager.scene.environmentIntensity = this.state.globalHdriIntensity;
             });
@@ -390,6 +399,14 @@ export class FabricUI {
             if (autoClickFirst && firstVisibleTextureBtn) {
                 (firstVisibleTextureBtn as HTMLButtonElement).click();
             }
+
+            if (["ADO", "BOS", "DAR"].includes(collectionId)) {
+                const velvetBtn = document.querySelector('.material-btn[data-material="velvet"]') as HTMLButtonElement;
+                if (velvetBtn) velvetBtn.click();
+            } else {
+                const fabricBtn = document.querySelector('.material-btn[data-material="default"]') as HTMLButtonElement;
+                if (fabricBtn) fabricBtn.click();
+            }
         };
 
         collectionBtns.forEach(btn => {
@@ -408,11 +425,6 @@ export class FabricUI {
                 const target = e.currentTarget as HTMLButtonElement;
                 target.classList.add('active');
                 this.state.currentMaterialType = target.dataset.material as 'default' | 'velvet';
-                
-                const velvetControls = document.querySelector('.velvet-controls');
-                if (velvetControls) {
-                    (velvetControls as HTMLElement).style.display = this.state.currentMaterialType === 'velvet' ? 'grid' : 'none';
-                }
 
                 this.loader.updateActiveMaterial();
                 updateModeState();

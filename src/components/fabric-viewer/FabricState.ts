@@ -7,6 +7,7 @@ export interface SliderState {
     specularAmount: number;
     lightInt: number;
     fillInt: number;
+    hdriInt: number;
 }
 
 export class FabricState {
@@ -24,8 +25,8 @@ export class FabricState {
     currentMode: 'baked' | 'normal' = 'baked';
     
     sliderStates: Record<'baked' | 'normal', SliderState> = {
-        baked: { pbrGain: 1.1, pbrGamma: 1.05, normalStrength: 2.0, specularAmount: 1.0, lightInt: 0.5, fillInt: 1.0 },
-        normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0, lightInt: 1.0, fillInt: 0.5 }
+        baked: { pbrGain: 1.1, pbrGamma: 1.05, normalStrength: 2.0, specularAmount: 1.0, lightInt: 0.9, fillInt: 2.0, hdriInt: 0.4 },
+        normal: { pbrGain: 1.0, pbrGamma: 1.0, normalStrength: 1.8, specularAmount: 1.0, lightInt: 1.0, fillInt: 0.5, hdriInt: 0.6 }
     };
     
     globalHdriRotation = 270;
