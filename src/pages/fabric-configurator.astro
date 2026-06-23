@@ -57,7 +57,7 @@ const SHOW_DEBUG_CONTROLS = true;
             </div>
 
             {SHOW_DEBUG_CONTROLS && (
-                <details class="debug-panel">
+                <details class="debug-panel" id="debug-panel" style="display: none;">
                     <summary>Debug Controls</summary>
                     <div class="controls-row secondary-controls compact-controls">
                         <div class="control-group" data-mode="baked">
@@ -161,27 +161,7 @@ const SHOW_DEBUG_CONTROLS = true;
                     </div>
 
                     <div class="controls-row secondary-controls compact-controls velvet-controls">
-                        <div class="control-group">
-                            <h3>Sheen Int</h3>
-                            <div class="slider-container">
-                                <input type="range" id="sheen-intensity-slider" min="0" max="10" step="0.05" value="1.0" />
-                                <span id="sheen-intensity-value">1.00</span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <h3>Sheen Rgh</h3>
-                            <div class="slider-container">
-                                <input type="range" id="sheen-roughness-slider" min="0" max="1" step="0.05" value="0.55" />
-                                <span id="sheen-roughness-value">0.55</span>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <h3>Sheen Nrm Str</h3>
-                            <div class="slider-container">
-                                <input type="range" id="sheen-normal-strength-slider" min="0" max="5" step="0.1" value="0.7" />
-                                <span id="sheen-normal-strength-value">0.70</span>
-                            </div>
-                        </div>
+
                         <div class="control-group">
                             <h3>Sheen Nrm Rep</h3>
                             <div class="slider-container">
@@ -252,6 +232,23 @@ const SHOW_DEBUG_CONTROLS = true;
                     <div class="overlay-group camera-group">
                         <span class="overlay-label" style="opacity: 0;">Camera</span>
                         <button class="reset-camera-btn" id="reset-camera-btn">Reset Camera</button>
+                    </div>
+                </div>
+                <div class="viewer-overlay-bottom-left">
+                    <div class="slider-container velvet-slider">
+                        <span class="slider-label">Intensity</span>
+                        <input type="range" id="sheen-intensity-slider" min="0.1" max="2" step="0.05" value="1.0" />
+                        <span id="sheen-intensity-value">1.00</span>
+                    </div>
+                    <div class="slider-container velvet-slider">
+                        <span class="slider-label">Roughness</span>
+                        <input type="range" id="sheen-roughness-slider" min="0" max="1" step="0.05" value="0.55" />
+                        <span id="sheen-roughness-value">0.55</span>
+                    </div>
+                    <div class="slider-container velvet-slider">
+                        <span class="slider-label">Detail Str</span>
+                        <input type="range" id="sheen-normal-strength-slider" min="0" max="5" step="0.1" value="0.7" />
+                        <span id="sheen-normal-strength-value">0.70</span>
                     </div>
                 </div>
                 <div class="viewer-overlay-bottom-controls">
@@ -749,6 +746,64 @@ const SHOW_DEBUG_CONTROLS = true;
         }
     }
 
+    .viewer-overlay-bottom-left {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: 5;
+        pointer-events: none;
+
+        & > * {
+            pointer-events: all;
+        }
+
+        .slider-container {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            width: 280px;
+            
+            /* Hidden by default unless velvet is active */
+            &.velvet-slider {
+                display: none;
+                &.visible {
+                    display: flex;
+                }
+            }
+
+            .slider-label {
+                font-family: inherit;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: rgba(255, 255, 255, 0.8);
+                width: 90px;
+                text-align: left;
+            }
+            
+            input[type=range] {
+                width: 100px;
+                flex: none;
+            }
+            
+            span:last-child {
+                color: #fff;
+                font-size: 0.65rem;
+                width: 30px;
+                text-align: right;
+            }
+        }
+    }
+
     .loading-overlay {
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -803,6 +858,45 @@ const SHOW_DEBUG_CONTROLS = true;
         if (document.getElementById('three-container')) {
             if (cleanup) cleanup();
             cleanup = initFabricViewer();
+            
+            // Setup debug toggle
+            window.addEventListener('keydown', (e) => {
+                if (e.altKey && e.key.toLowerCase() === 'd') {
+                    e.preventDefault();
+                    const debugPanel = document.getElementById('debug-panel');
+                    if (debugPanel) {
+                        debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+                    }
+                }
+            });
+
+            // Setup velvet toggle
+            const materialToggles = document.getElementById('material-toggles');
+            function updateVelvetSliders(isVelvet) {
+                const velvetSliders = document.querySelectorAll('.velvet-slider');
+                velvetSliders.forEach(el => {
+                    if (isVelvet) {
+                        el.classList.add('visible');
+                    } else {
+                        el.classList.remove('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            const initVelvetBtn = document.querySelector('.material-btn[data-material="velvet"]');
+            if (initVelvetBtn && initVelvetBtn.classList.contains('active')) {
+                updateVelvetSliders(true);
+            }
+            
+            if (materialToggles) {
+                materialToggles.addEventListener('click', (e) => {
+                    const btn = (e.target).closest('.material-btn');
+                    if (!btn) return;
+                    const matType = btn.getAttribute('data-material');
+                    updateVelvetSliders(matType === 'velvet');
+                });
+            }
         }
     });
 

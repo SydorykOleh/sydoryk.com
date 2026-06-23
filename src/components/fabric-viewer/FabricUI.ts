@@ -135,7 +135,24 @@ export class FabricUI {
                 this.state.globalHdriIntensity = state.hdriInt;
             }
 
-
+            if (document.getElementById('sheen-intensity-slider')) {
+                const s = document.getElementById('sheen-intensity-slider') as HTMLInputElement;
+                const v = document.getElementById('sheen-intensity-value');
+                s.value = this.state.globalSheenIntensity.toString();
+                if (v) v.textContent = this.state.globalSheenIntensity.toFixed(2);
+            }
+            if (document.getElementById('sheen-roughness-slider')) {
+                const s = document.getElementById('sheen-roughness-slider') as HTMLInputElement;
+                const v = document.getElementById('sheen-roughness-value');
+                s.value = this.state.globalSheenRoughness.toString();
+                if (v) v.textContent = this.state.globalSheenRoughness.toFixed(2);
+            }
+            if (document.getElementById('sheen-normal-strength-slider')) {
+                const s = document.getElementById('sheen-normal-strength-slider') as HTMLInputElement;
+                const v = document.getElementById('sheen-normal-strength-value');
+                s.value = this.state.globalSheenNormalStrength.toString();
+                if (v) v.textContent = this.state.globalSheenNormalStrength.toFixed(2);
+            }
             
             if (m.fabricMaterial.userData.shader) {
                 m.fabricMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
