@@ -58,7 +58,7 @@ export class FabricLoader {
             return tex;
         };
 
-        this.sheenNormalMap = this.textureLoader.load('/assets/configurator/textures/sheen_normal.png');
+        this.sheenNormalMap = this.textureLoader.load('/assets/configurator/textures/sheen_normal.webp');
         this.sheenNormalMap.wrapS = this.sheenNormalMap.wrapT = THREE.RepeatWrapping;
         
         // Pass it to velvet material
