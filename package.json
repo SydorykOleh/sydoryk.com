@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "npm install sharp --no-save && astro build",
     "build:resumes": "node scripts/build-resumes.js",
     "preview": "astro preview",
     "astro": "astro",
