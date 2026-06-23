@@ -24,6 +24,8 @@ export class FabricLoader {
     bakedExtraMaps: THREE.Texture[] = [];
     bakedFloorMaps: THREE.Texture[] = [];
 
+    sheenNormalMap: THREE.Texture | null = null;
+
     modelRotations = [60, 20, -60];
     modelOffsets: Record<string, number> = {
         'JUVO.glb': -0.35,
@@ -55,6 +57,15 @@ export class FabricLoader {
             tex.colorSpace = THREE.SRGBColorSpace;
             return tex;
         };
+
+        this.sheenNormalMap = this.textureLoader.load('/assets/configurator/textures/sheen_normal.png');
+        this.sheenNormalMap.wrapS = this.sheenNormalMap.wrapT = THREE.RepeatWrapping;
+        
+        // Pass it to velvet material
+        this.materialManager.velvetMaterial.userData.uSheenNormalMap = this.sheenNormalMap;
+        if (this.materialManager.velvetMaterial.userData.shader) {
+            this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalMap.value = this.sheenNormalMap;
+        }
 
         this.bakedFabricMaps = [
             loadBake('angle1_fabric.webp'),
@@ -120,9 +131,9 @@ export class FabricLoader {
                 meshes.forEach((mesh) => {
                     if (mesh.geometry.attributes.uv) {
                         mesh.geometry.setAttribute('uv2', mesh.geometry.attributes.uv);
-                        if (!mesh.geometry.attributes.tangent) {
-                            mesh.geometry.computeTangents();
-                        }
+                    }
+                    if (mesh.geometry.attributes.tangent) {
+                        mesh.geometry.deleteAttribute('tangent');
                     }
 
                     const meshName = mesh.name.toLowerCase();
@@ -182,9 +193,9 @@ export class FabricLoader {
 
                         if (mesh.geometry.attributes.uv) {
                             mesh.geometry.setAttribute('uv2', mesh.geometry.attributes.uv);
-                            if (!mesh.geometry.attributes.tangent) {
-                                mesh.geometry.computeTangents();
-                            }
+                        }
+                        if (mesh.geometry.attributes.tangent) {
+                            mesh.geometry.deleteAttribute('tangent');
                         }
                     }
                 });

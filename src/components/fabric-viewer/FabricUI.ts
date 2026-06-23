@@ -63,7 +63,10 @@ export class FabricUI {
         const sheenIntensityValue = document.getElementById('sheen-intensity-value');
         const sheenRoughnessSlider = document.getElementById('sheen-roughness-slider') as HTMLInputElement;
         const sheenRoughnessValue = document.getElementById('sheen-roughness-value');
-        const sheenColorPicker = document.getElementById('sheen-color-picker') as HTMLInputElement;
+        const sheenNormalStrengthSlider = document.getElementById('sheen-normal-strength-slider') as HTMLInputElement;
+        const sheenNormalStrengthValue = document.getElementById('sheen-normal-strength-value');
+        const sheenNormalRepeatSlider = document.getElementById('sheen-normal-repeat-slider') as HTMLInputElement;
+        const sheenNormalRepeatValue = document.getElementById('sheen-normal-repeat-value');
 
         this.loader.onLoadingChange = (isLoading) => {
             if (loadingOverlay) {
@@ -195,6 +198,9 @@ export class FabricUI {
                     if (mat.roughnessMap) mat.roughnessMap.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
                     if (mat.aoMap) mat.aoMap.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
                 });
+                if (m.velvetMaterial.userData.shader) {
+                    m.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
+                }
             });
         }
 
@@ -449,11 +455,93 @@ export class FabricUI {
             });
         }
 
-        if (sheenColorPicker) {
-            sheenColorPicker.addEventListener('input', (e) => {
-                this.state.globalSheenColor.set((e.target as HTMLInputElement).value);
-                this.materialManager.velvetMaterial.sheenColor = this.state.globalSheenColor;
-                this.materialManager.velvetMaterial.needsUpdate = true;
+        if (sheenNormalStrengthSlider && sheenNormalStrengthValue) {
+            sheenNormalStrengthSlider.addEventListener('input', (e) => {
+                this.state.globalSheenNormalStrength = parseFloat((e.target as HTMLInputElement).value);
+                sheenNormalStrengthValue.textContent = this.state.globalSheenNormalStrength.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalStrength.value = this.state.globalSheenNormalStrength;
+                }
+            });
+        }
+
+        if (sheenNormalRepeatSlider && sheenNormalRepeatValue) {
+            sheenNormalRepeatSlider.addEventListener('input', (e) => {
+                this.state.globalSheenNormalRepeat = parseFloat((e.target as HTMLInputElement).value);
+                sheenNormalRepeatValue.textContent = this.state.globalSheenNormalRepeat.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
+                }
+            });
+        }
+
+        const debugModeSelect = document.getElementById('debug-mode-select') as HTMLSelectElement;
+        if (debugModeSelect) {
+            debugModeSelect.addEventListener('change', (e) => {
+                this.state.globalDebugMode = parseInt((e.target as HTMLSelectElement).value);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uDebugMode.value = this.state.globalDebugMode;
+                }
+            });
+        }
+
+        const sheenColorGammaSlider = document.getElementById('sheen-color-gamma-slider') as HTMLInputElement;
+        const sheenColorGammaValue = document.getElementById('sheen-color-gamma-value');
+        if (sheenColorGammaSlider && sheenColorGammaValue) {
+            sheenColorGammaSlider.addEventListener('input', (e) => {
+                this.state.globalSheenColorGamma = parseFloat((e.target as HTMLInputElement).value);
+                sheenColorGammaValue.textContent = this.state.globalSheenColorGamma.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenColorGamma.value = this.state.globalSheenColorGamma;
+                }
+            });
+        }
+
+        const sheenDesaturationSlider = document.getElementById('sheen-desaturation-slider') as HTMLInputElement;
+        const sheenDesaturationValue = document.getElementById('sheen-desaturation-value');
+        if (sheenDesaturationSlider && sheenDesaturationValue) {
+            sheenDesaturationSlider.addEventListener('input', (e) => {
+                this.state.globalSheenDesaturation = parseFloat((e.target as HTMLInputElement).value);
+                sheenDesaturationValue.textContent = this.state.globalSheenDesaturation.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenDesaturation.value = this.state.globalSheenDesaturation;
+                }
+            });
+        }
+
+        const sheenDirLightSlider = document.getElementById('sheen-dir-light-slider') as HTMLInputElement;
+        const sheenDirLightValue = document.getElementById('sheen-dir-light-value');
+        if (sheenDirLightSlider && sheenDirLightValue) {
+            sheenDirLightSlider.addEventListener('input', (e) => {
+                this.state.globalSheenDirLight = parseFloat((e.target as HTMLInputElement).value);
+                sheenDirLightValue.textContent = this.state.globalSheenDirLight.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenDirLight.value = this.state.globalSheenDirLight;
+                }
+            });
+        }
+
+        const sheenFillLightSlider = document.getElementById('sheen-fill-light-slider') as HTMLInputElement;
+        const sheenFillLightValue = document.getElementById('sheen-fill-light-value');
+        if (sheenFillLightSlider && sheenFillLightValue) {
+            sheenFillLightSlider.addEventListener('input', (e) => {
+                this.state.globalSheenFillLight = parseFloat((e.target as HTMLInputElement).value);
+                sheenFillLightValue.textContent = this.state.globalSheenFillLight.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenFillLight.value = this.state.globalSheenFillLight;
+                }
+            });
+        }
+
+        const sheenHdriSlider = document.getElementById('sheen-hdri-slider') as HTMLInputElement;
+        const sheenHdriValue = document.getElementById('sheen-hdri-value');
+        if (sheenHdriSlider && sheenHdriValue) {
+            sheenHdriSlider.addEventListener('input', (e) => {
+                this.state.globalSheenHdri = parseFloat((e.target as HTMLInputElement).value);
+                sheenHdriValue.textContent = this.state.globalSheenHdri.toFixed(2);
+                if (this.materialManager.velvetMaterial.userData.shader) {
+                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenHdri.value = this.state.globalSheenHdri;
+                }
             });
         }
 

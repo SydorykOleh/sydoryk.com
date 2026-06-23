@@ -40,8 +40,15 @@ export class FabricState {
     
     currentMaterialType: 'default' | 'velvet' = 'default';
     globalSheenIntensity = 1.0;
-    globalSheenRoughness = 0.5;
-    globalSheenColor = new THREE.Color(0xffffff);
+    globalSheenRoughness = 0.55;
+    globalSheenNormalStrength = 0.7;
+    globalSheenNormalRepeat = 1.0;
+    globalSheenColorGamma = 2.5;
+    globalSheenDesaturation = 0.5;
+    globalSheenDirLight = 1.0;
+    globalSheenFillLight = 1.0;
+    globalSheenHdri = 1.0;
+    globalDebugMode = 0;
     
     // Callbacks to trigger UI or Scene updates when state changes via code
     onStateChange: () => void = () => {};
