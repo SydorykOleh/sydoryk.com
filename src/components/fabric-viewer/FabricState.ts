@@ -13,7 +13,7 @@ export interface SliderState {
 export class FabricState {
     currentModel = 'chair_bake.gltf';
     currentPreset = 'normal';
-    currentTextureId = 'VEN-01';
+    currentTextureId = 'BOS-03';
     currentCollection = '';
     currentAngle = 0; // 0, 1, 2
     currentRepeat = 12;
@@ -42,7 +42,7 @@ export class FabricState {
     globalSheenIntensity = 1.0;
     globalSheenRoughness = 0.55;
     globalSheenNormalStrength = 0.7;
-    globalSheenNormalRepeat = 1.0;
+    globalSheenNormalRepeat = 1.5;
     globalSheenColorGamma = 2.5;
     globalSheenDesaturation = 0.5;
     globalSheenDirLight = 1.0;

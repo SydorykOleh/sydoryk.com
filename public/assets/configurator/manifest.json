@@ -1,10 +1,18 @@
 {
   "collections": [
+    "ADO",
+    "BAB",
     "BE",
     "BER",
+    "BOS",
+    "CAN",
     "CHL",
     "CR",
     "CRUZ",
+    "DAR",
+    "EMI",
+    "EV",
+    "FREY",
     "HEL",
     "HIM",
     "PAD",
@@ -27,7 +35,8 @@
         "BER-01_angle1.jpeg",
         "BER-01_angle2.jpeg",
         "BER-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "BER-09",
@@ -38,7 +47,8 @@
         "BER-09_angle1.jpeg",
         "BER-09_angle2.jpeg",
         "BER-09_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "BER-04",
@@ -49,35 +59,40 @@
         "BER-04_angle1.jpeg",
         "BER-04_angle2.jpeg",
         "BER-04_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "PEK-04",
       "name": "G1000-367142",
       "collection": "PEK",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PEK-02",
       "name": "G1916-367151",
       "collection": "PEK",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PEK-03",
       "name": "G1916-367153",
       "collection": "PEK",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PEK-01",
       "name": "G1916-367148",
       "collection": "PEK",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "HIM-01",
@@ -88,7 +103,8 @@
         "HIM-01_angle1.jpeg",
         "HIM-01_angle2.jpeg",
         "HIM-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "HIM-06",
@@ -99,7 +115,8 @@
         "HIM-06_angle1.jpeg",
         "HIM-06_angle2.jpeg",
         "HIM-06_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "HIM-05",
@@ -110,7 +127,8 @@
         "HIM-05_angle1.jpeg",
         "HIM-05_angle2.jpeg",
         "HIM-05_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "PH-01",
@@ -121,7 +139,8 @@
         "PH-01_angle1.jpeg",
         "PH-01_angle2.jpeg",
         "PH-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "PH-02",
@@ -132,35 +151,40 @@
         "PH-02_angle1.jpeg",
         "PH-02_angle2.jpeg",
         "PH-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "PAD-07",
       "name": "PADOVA CREAM",
       "collection": "PAD",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PAD-06",
       "name": "PADOVA BEIGE",
       "collection": "PAD",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PAD-03",
       "name": "PADOVA ORANGE",
       "collection": "PAD",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "PAD-04",
       "name": "PADOVA CAPPUCCINO",
       "collection": "PAD",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "BE-03",
@@ -171,7 +195,8 @@
         "BE-03_angle1.jpeg",
         "BE-03_angle2.jpeg",
         "BE-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "BE-02",
@@ -182,7 +207,8 @@
         "BE-02_angle1.jpeg",
         "BE-02_angle2.jpeg",
         "BE-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "BE-04",
@@ -193,7 +219,44 @@
         "BE-04_angle1.jpeg",
         "BE-04_angle2.jpeg",
         "BE-04_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
+    },
+    {
+      "id": "EV-03",
+      "name": "EVEREST 900",
+      "collection": "EV",
+      "mapsReady": true,
+      "renders": [
+        "EV-03_angle1.jpeg",
+        "EV-03_angle2.jpeg",
+        "EV-03_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "EV-04",
+      "name": "EVEREST 902",
+      "collection": "EV",
+      "mapsReady": true,
+      "renders": [
+        "EV-04_angle1.jpeg",
+        "EV-04_angle2.jpeg",
+        "EV-04_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "EV-02",
+      "name": "EVEREST 101",
+      "collection": "EV",
+      "mapsReady": true,
+      "renders": [
+        "EV-02_angle1.jpeg",
+        "EV-02_angle2.jpeg",
+        "EV-02_angle3.jpeg"
+      ],
+      "batch": "Batch04"
     },
     {
       "id": "TAM-01",
@@ -204,7 +267,8 @@
         "TAM-01_angle1.jpeg",
         "TAM-01_angle2.jpeg",
         "TAM-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "CR-05",
@@ -215,7 +279,8 @@
         "CR-05_angle1.jpeg",
         "CR-05_angle2.jpeg",
         "CR-05_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "CR-04",
@@ -226,7 +291,8 @@
         "CR-04_angle1.jpeg",
         "CR-04_angle2.jpeg",
         "CR-04_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIL-01",
@@ -237,7 +303,8 @@
         "WIL-01_angle1.jpeg",
         "WIL-01_angle2.jpeg",
         "WIL-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIL-02",
@@ -248,7 +315,8 @@
         "WIL-02_angle1.jpeg",
         "WIL-02_angle2.jpeg",
         "WIL-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIL-04",
@@ -259,7 +327,8 @@
         "WIL-04_angle1.jpeg",
         "WIL-04_angle2.jpeg",
         "WIL-04_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "RD-01",
@@ -270,7 +339,8 @@
         "RD-01_angle1.jpeg",
         "RD-01_angle2.jpeg",
         "RD-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "RD-02",
@@ -281,7 +351,8 @@
         "RD-02_angle1.jpeg",
         "RD-02_angle2.jpeg",
         "RD-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "RD-03",
@@ -292,7 +363,8 @@
         "RD-03_angle1.jpeg",
         "RD-03_angle2.jpeg",
         "RD-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "RD-05",
@@ -303,7 +375,8 @@
         "RD-05_angle1.jpeg",
         "RD-05_angle2.jpeg",
         "RD-05_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "RD-06",
@@ -314,7 +387,8 @@
         "RD-06_angle1.jpeg",
         "RD-06_angle2.jpeg",
         "RD-06_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "CHL-01",
@@ -325,7 +399,8 @@
         "CHL-01_angle1.jpeg",
         "CHL-01_angle2.jpeg",
         "CHL-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "CHL-02",
@@ -336,7 +411,8 @@
         "CHL-02_angle1.jpeg",
         "CHL-02_angle2.jpeg",
         "CHL-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "CHL-03",
@@ -347,7 +423,8 @@
         "CHL-03_angle1.jpeg",
         "CHL-03_angle2.jpeg",
         "CHL-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIN-03",
@@ -358,7 +435,8 @@
         "WIN-03_angle1.jpeg",
         "WIN-03_angle2.jpeg",
         "WIN-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIN-04",
@@ -369,7 +447,8 @@
         "WIN-04_angle1.jpeg",
         "WIN-04_angle2.jpeg",
         "WIN-04_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIN-01",
@@ -380,7 +459,8 @@
         "WIN-01_angle1.jpeg",
         "WIN-01_angle2.jpeg",
         "WIN-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
     },
     {
       "id": "WIN-02",
@@ -391,7 +471,164 @@
         "WIN-02_angle1.jpeg",
         "WIN-02_angle2.jpeg",
         "WIN-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch03"
+    },
+    {
+      "id": "ADO-102",
+      "name": "MACAU PEARL",
+      "collection": "ADO",
+      "mapsReady": true,
+      "renders": [
+        "ADO-102_angle1.jpeg",
+        "ADO-102_angle2.jpeg",
+        "ADO-102_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "ADO-10",
+      "name": "MACAU SAND",
+      "collection": "ADO",
+      "mapsReady": true,
+      "renders": [
+        "ADO-10_angle1.jpeg",
+        "ADO-10_angle2.jpeg",
+        "ADO-10_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "ADO-132",
+      "name": "MACAU CUOIO",
+      "collection": "ADO",
+      "mapsReady": true,
+      "renders": [
+        "ADO-132_angle1.jpeg",
+        "ADO-132_angle2.jpeg",
+        "ADO-132_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "ADO-126",
+      "name": "MACAU TERRA",
+      "collection": "ADO",
+      "mapsReady": true,
+      "renders": [
+        "ADO-126_angle1.jpeg",
+        "ADO-126_angle2.jpeg",
+        "ADO-126_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "ADO-156",
+      "name": "MACAU FOREST",
+      "collection": "ADO",
+      "mapsReady": true,
+      "renders": [
+        "ADO-156_angle1.jpeg",
+        "ADO-156_angle2.jpeg",
+        "ADO-156_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "DAR-04",
+      "name": "DARWIN CREAM",
+      "collection": "DAR",
+      "mapsReady": true,
+      "renders": [
+        "DAR-04_angle1.jpeg",
+        "DAR-04_angle2.jpeg",
+        "DAR-04_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "DAR-03",
+      "name": "DARWIN TERRA",
+      "collection": "DAR",
+      "mapsReady": true,
+      "renders": [
+        "DAR-03_angle1.jpeg",
+        "DAR-03_angle2.jpeg",
+        "DAR-03_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "DAR-02",
+      "name": "DARWIN FOREST",
+      "collection": "DAR",
+      "mapsReady": true,
+      "renders": [
+        "DAR-02_angle1.jpeg",
+        "DAR-02_angle2.jpeg",
+        "DAR-02_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "BOS-03",
+      "name": "BOSTON TOFEE",
+      "collection": "BOS",
+      "mapsReady": true,
+      "renders": [
+        "BOS-03_angle1.jpeg",
+        "BOS-03_angle2.jpeg",
+        "BOS-03_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "BOS-07",
+      "name": "BOSTON  WATER GREEN",
+      "collection": "BOS",
+      "mapsReady": true,
+      "renders": [
+        "BOS-07_angle1.jpeg",
+        "BOS-07_angle2.jpeg",
+        "BOS-07_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "BOS-04",
+      "name": "BOSTON FOREST",
+      "collection": "BOS",
+      "mapsReady": true,
+      "renders": [
+        "BOS-04_angle1.jpeg",
+        "BOS-04_angle2.jpeg",
+        "BOS-04_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "BAB-05",
+      "name": "BABEL WHITE",
+      "collection": "BAB",
+      "mapsReady": true,
+      "renders": [
+        "BAB-05_angle1.jpeg",
+        "BAB-05_angle2.jpeg",
+        "BAB-05_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "BAB-06",
+      "name": "BABEL SAND",
+      "collection": "BAB",
+      "mapsReady": true,
+      "renders": [
+        "BAB-06_angle1.jpeg",
+        "BAB-06_angle2.jpeg",
+        "BAB-06_angle3.jpeg"
+      ],
+      "batch": "Batch04"
     },
     {
       "id": "HEL-03",
@@ -402,7 +639,8 @@
         "HEL-03_angle1.jpeg",
         "HEL-03_angle2.jpeg",
         "HEL-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "HEL-02",
@@ -413,7 +651,8 @@
         "HEL-02_angle1.jpeg",
         "HEL-02_angle2.jpeg",
         "HEL-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "HEL-01",
@@ -424,7 +663,8 @@
         "HEL-01_angle1.jpeg",
         "HEL-01_angle2.jpeg",
         "HEL-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "VEN-02",
@@ -435,7 +675,8 @@
         "VEN-02_angle1.jpeg",
         "VEN-02_angle2.jpeg",
         "VEN-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "VEN-01",
@@ -446,7 +687,8 @@
         "VEN-01_angle1.jpeg",
         "VEN-01_angle2.jpeg",
         "VEN-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "VEN-03",
@@ -457,28 +699,92 @@
         "VEN-03_angle1.jpeg",
         "VEN-03_angle2.jpeg",
         "VEN-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "ZKA-01",
       "name": "ZKAGNE TERRACOTTA",
       "collection": "ZKA",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "ZKA-02",
       "name": "ZKAGNE GREEN",
       "collection": "ZKA",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
     },
     {
       "id": "ZKA-03",
       "name": "ZKAGNE BEIGE",
       "collection": "ZKA",
       "mapsReady": true,
-      "renders": []
+      "renders": [],
+      "batch": "Batch01"
+    },
+    {
+      "id": "CAN-01",
+      "name": "CANYON NATA",
+      "collection": "CAN",
+      "mapsReady": true,
+      "renders": [
+        "CAN-01_angle1.jpeg",
+        "CAN-01_angle2.jpeg",
+        "CAN-01_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "CAN-05",
+      "name": "CANYON FOG",
+      "collection": "CAN",
+      "mapsReady": true,
+      "renders": [
+        "CAN-05_angle1.jpeg",
+        "CAN-05_angle2.jpeg",
+        "CAN-05_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "CAN-04",
+      "name": "CANYON TAUPE",
+      "collection": "CAN",
+      "mapsReady": true,
+      "renders": [
+        "CAN-04_angle1.jpeg",
+        "CAN-04_angle2.jpeg",
+        "CAN-04_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "CAN-03",
+      "name": "CANYON BRICK",
+      "collection": "CAN",
+      "mapsReady": true,
+      "renders": [
+        "CAN-03_angle1.jpeg",
+        "CAN-03_angle2.jpeg",
+        "CAN-03_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "CAN-02",
+      "name": "CANYON FOREST",
+      "collection": "CAN",
+      "mapsReady": true,
+      "renders": [
+        "CAN-02_angle1.jpeg",
+        "CAN-02_angle2.jpeg",
+        "CAN-02_angle3.jpeg"
+      ],
+      "batch": "Batch04"
     },
     {
       "id": "CRUZ-01",
@@ -489,7 +795,8 @@
         "CRUZ-01_angle1.jpeg",
         "CRUZ-01_angle2.jpeg",
         "CRUZ-01_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "CRUZ-02",
@@ -500,7 +807,8 @@
         "CRUZ-02_angle1.jpeg",
         "CRUZ-02_angle2.jpeg",
         "CRUZ-02_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
     },
     {
       "id": "CRUZ-03",
@@ -511,7 +819,74 @@
         "CRUZ-03_angle1.jpeg",
         "CRUZ-03_angle2.jpeg",
         "CRUZ-03_angle3.jpeg"
-      ]
+      ],
+      "batch": "Batch02"
+    },
+    {
+      "id": "EMI-02",
+      "name": "EMMI 20 PEARL",
+      "collection": "EMI",
+      "mapsReady": true,
+      "renders": [
+        "EMI-02_angle1.jpeg",
+        "EMI-02_angle2.jpeg",
+        "EMI-02_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "EMI-05",
+      "name": "EMMI 36 GREEN",
+      "collection": "EMI",
+      "mapsReady": true,
+      "renders": [
+        "EMI-05_angle1.jpeg",
+        "EMI-05_angle2.jpeg",
+        "EMI-05_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "FREY-01",
+      "name": "FREYA SHELL 196",
+      "collection": "FREY",
+      "mapsReady": true,
+      "renders": [
+        "FREY-01_angle1.jpeg",
+        "FREY-01_angle2.jpeg",
+        "FREY-01_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "FREY-02",
+      "name": "FREYA BEIGE 05",
+      "collection": "FREY",
+      "mapsReady": true,
+      "renders": [
+        "FREY-02_angle1.jpeg",
+        "FREY-02_angle2.jpeg",
+        "FREY-02_angle3.jpeg"
+      ],
+      "batch": "Batch04"
+    },
+    {
+      "id": "FREY-03",
+      "name": "FREYA SHITAKE 124",
+      "collection": "FREY",
+      "mapsReady": true,
+      "renders": [
+        "FREY-03_angle1.jpeg",
+        "FREY-03_angle2.jpeg",
+        "FREY-03_angle3.jpeg"
+      ],
+      "batch": "Batch04"
     }
+  ],
+  "batches": [
+    "Batch01",
+    "Batch02",
+    "Batch03",
+    "Batch04"
   ]
 }

@@ -24,7 +24,9 @@ export class FabricUI {
     init() {
         const loadingOverlay = document.getElementById('loading-overlay');
         const textureBtns = document.querySelectorAll('.texture-btn');
-        const collectionBtns = document.querySelectorAll('.collection-btn');
+        const batchBtns = document.querySelectorAll('.batch-btn');
+        const colBtns = document.querySelectorAll('.col-btn');
+        const collectionsGroup = document.getElementById('collections-group');
         const angleBtns = document.querySelectorAll('.angle-selectors button');
         const textureScaleSlider = document.getElementById('texture-scale-slider') as HTMLInputElement;
         const textureScaleValue = document.getElementById('texture-scale-value');
@@ -86,7 +88,7 @@ export class FabricUI {
             const renderToLoad = this.state.activeRenders.includes(targetRender) ? targetRender : this.state.activeRenders[0];
 
             if (renderToLoad && renderImage) {
-                renderImage.src = `/assets/configurator/renders/${renderToLoad}`;
+                renderImage.src = `/assets/configurator/renders/${renderToLoad}?v=1.1`;
                 renderImage.style.display = 'block';
                 if (renderEmpty) renderEmpty.style.display = 'none';
             } else {
@@ -392,12 +394,60 @@ export class FabricUI {
 
                 this.loader.updateFabricMaterial(this.state.currentTextureId); 
                 updateRenderPreview();
+
+                // Auto-select material based on texture prefix
+                const texPrefix = this.state.currentTextureId.split('-')[0];
+                if (["ADO", "BOS", "DAR"].includes(texPrefix)) {
+                    const velvetBtn = document.querySelector('.material-btn[data-material="velvet"]') as HTMLButtonElement;
+                    if (velvetBtn && !velvetBtn.classList.contains('active')) velvetBtn.click();
+                } else {
+                    const fabricBtn = document.querySelector('.material-btn[data-material="default"]') as HTMLButtonElement;
+                    if (fabricBtn && !fabricBtn.classList.contains('active')) fabricBtn.click();
+                }
             });
         });
 
+        const selectBatch = (batchId: string, autoClickFirst: boolean = true) => {
+            batchBtns.forEach(btn => {
+                if ((btn as HTMLButtonElement).dataset.batch === batchId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            if (collectionsGroup) collectionsGroup.style.display = 'block';
+
+            let firstVisibleColBtn: HTMLButtonElement | null = null;
+            const validCollectionsForBatch = new Set<string>();
+
+            textureBtns.forEach(btn => {
+                const b = btn as HTMLButtonElement;
+                if (b.dataset.batch === batchId) {
+                    const col = b.dataset.collection;
+                    if (col) validCollectionsForBatch.add(col);
+                }
+            });
+
+            colBtns.forEach(btn => {
+                const b = btn as HTMLButtonElement;
+                const colId = b.dataset.collection;
+                if (colId && validCollectionsForBatch.has(colId)) {
+                    b.style.display = 'block';
+                    if (!firstVisibleColBtn) firstVisibleColBtn = b;
+                } else {
+                    b.style.display = 'none';
+                }
+            });
+
+            if (autoClickFirst && firstVisibleColBtn) {
+                (firstVisibleColBtn as HTMLButtonElement).click();
+            }
+        };
+
         const selectCollection = (collectionId: string, autoClickFirst: boolean = true) => {
             this.state.currentCollection = collectionId;
-            collectionBtns.forEach(btn => {
+            colBtns.forEach(btn => {
                 if ((btn as HTMLButtonElement).dataset.collection === collectionId) {
                     btn.classList.add('active');
                 } else {
@@ -422,17 +472,19 @@ export class FabricUI {
             if (autoClickFirst && firstVisibleTextureBtn) {
                 (firstVisibleTextureBtn as HTMLButtonElement).click();
             }
-
-            if (["ADO", "BOS", "DAR"].includes(collectionId)) {
-                const velvetBtn = document.querySelector('.material-btn[data-material="velvet"]') as HTMLButtonElement;
-                if (velvetBtn) velvetBtn.click();
-            } else {
-                const fabricBtn = document.querySelector('.material-btn[data-material="default"]') as HTMLButtonElement;
-                if (fabricBtn) fabricBtn.click();
-            }
         };
 
-        collectionBtns.forEach(btn => {
+        batchBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                const batchId = target.dataset.batch;
+                if (batchId) {
+                    selectBatch(batchId);
+                }
+            });
+        });
+
+        colBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const target = e.currentTarget as HTMLButtonElement;
                 const colId = target.dataset.collection;
@@ -569,12 +621,14 @@ export class FabricUI {
         }) as HTMLButtonElement;
 
         if (defaultBtn) {
+            const batchId = defaultBtn.dataset.batch;
             const colId = defaultBtn.dataset.collection;
+            if (batchId) selectBatch(batchId, false);
             if (colId) selectCollection(colId, false);
             defaultBtn.click();
-        } else if (collectionBtns.length > 0) {
-            const firstColId = (collectionBtns[0] as HTMLButtonElement).dataset.collection;
-            if (firstColId) selectCollection(firstColId);
+        } else if (batchBtns.length > 0) {
+            const firstBatchId = (batchBtns[0] as HTMLButtonElement).dataset.batch;
+            if (firstBatchId) selectBatch(firstBatchId);
         } else if (textureBtns.length > 0) {
             (textureBtns[0] as HTMLButtonElement).click();
         }
