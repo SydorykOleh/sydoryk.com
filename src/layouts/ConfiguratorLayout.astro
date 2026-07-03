@@ -9,9 +9,10 @@ interface Props {
     title?: string;
     description?: string;
     keywords?: string;
+    fullWidth?: boolean;
 }
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, fullWidth = false } = Astro.props;
 ---
 
 <html lang="en" class="theme-dark">
@@ -22,7 +23,7 @@ const { title, description, keywords } = Astro.props;
         <Nav transition:persist />
 
         <main class="configurator-main">
-            <div class="configurator-wrapper">
+            <div class={`configurator-wrapper ${fullWidth ? 'full-width' : ''}`}>
                 <div class="controls-sidebar">
                     <button class="mobile-drawer-toggle" id="drawerToggle" aria-label="Toggle customization options">
                         <span class="handle-bar"></span>
@@ -62,6 +63,10 @@ const { title, description, keywords } = Astro.props;
                 max-width: 1600px;
                 margin: 0 auto;
                 min-height: 100vh;
+            }
+
+            .configurator-wrapper.full-width {
+                max-width: 100%;
             }
 
             .controls-sidebar {
