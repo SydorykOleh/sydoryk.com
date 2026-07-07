@@ -1,3 +1,4 @@
+// SYSTEM NOTE: See `docs/fabric-viewer-workflow.md` for architecture, workflows, and rules regarding the fabric configurator.
 import * as THREE from 'three';
 import type { FabricState } from './FabricState';
 
@@ -19,7 +20,10 @@ export class FabricMaterials {
             lightMapIntensity: 0.0,
             normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),
             // @ts-ignore
-            specularIntensity: state.sliderStates[state.currentMode].specularAmount
+            specularIntensity: state.sliderStates[state.currentMode].specularAmount,
+            sheen: 0.4,
+            sheenRoughness: 0.5,
+            sheenColor: new THREE.Color(0xffffff)
         });
         this.fabricMaterial.onBeforeCompile = (shader: any) => this.shaderOverride(shader, this.fabricMaterial);
 
@@ -32,8 +36,8 @@ export class FabricMaterials {
             normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),
             // @ts-ignore
             specularIntensity: state.sliderStates[state.currentMode].specularAmount,
-            sheen: state.globalSheenIntensity,
-            sheenRoughness: state.globalSheenRoughness,
+            sheen: 0.7,
+            sheenRoughness: 0.7,
             sheenColor: new THREE.Color(0xffffff)
         });
         this.velvetMaterial.onBeforeCompile = (shader: any) => this.shaderOverride(shader, this.velvetMaterial);
@@ -51,16 +55,11 @@ export class FabricMaterials {
         shader.uniforms.uPbrGain = { value: this.state.sliderStates[this.state.currentMode].pbrGain };
         shader.uniforms.uPbrGamma = { value: this.state.sliderStates[this.state.currentMode].pbrGamma };
         
-        if (material === this.velvetMaterial) {
-            shader.uniforms.uSheenNormalMap = { value: material.userData.uSheenNormalMap || null };
-            shader.uniforms.uSheenNormalStrength = { value: this.state.globalSheenNormalStrength };
-            shader.uniforms.uSheenNormalRepeat = { value: this.state.globalSheenNormalRepeat / this.state.currentRepeat };
-            shader.uniforms.uSheenColorGamma = { value: this.state.globalSheenColorGamma };
-            shader.uniforms.uSheenDesaturation = { value: this.state.globalSheenDesaturation };
-            shader.uniforms.uSheenDirLight = { value: this.state.globalSheenDirLight };
-            shader.uniforms.uSheenFillLight = { value: this.state.globalSheenFillLight };
-            shader.uniforms.uSheenHdri = { value: this.state.globalSheenHdri };
-        }
+        shader.uniforms.uSheenColorGamma = { value: this.state.globalSheenColorGamma };
+        shader.uniforms.uSheenDesaturation = { value: this.state.globalSheenDesaturation };
+        shader.uniforms.uSheenDirLight = { value: this.state.globalSheenDirLight };
+        shader.uniforms.uSheenFillLight = { value: this.state.globalSheenFillLight };
+        shader.uniforms.uSheenHdri = { value: this.state.globalSheenHdri };
         shader.uniforms.uDebugMode = { value: this.state.globalDebugMode };
         
         material.userData.shader = shader;
@@ -72,92 +71,48 @@ export class FabricMaterials {
             uniform float uPbrGain;
             uniform float uPbrGamma;
             uniform int uDebugMode;
-            ${material === this.velvetMaterial ? `
-            uniform sampler2D uSheenNormalMap;
-            uniform float uSheenNormalStrength;
-            uniform float uSheenNormalRepeat;
             uniform float uSheenColorGamma;
             uniform float uSheenDesaturation;
             uniform float uSheenDirLight;
             uniform float uSheenFillLight;
             uniform float uSheenHdri;
-            vec3 customSheenNormal;
-            vec3 debug_mapN_base;
-            vec3 debug_mapN_sheen;
-            vec3 debug_tangent;
-            vec3 debug_bitangent;
-            ` : ''}
             ${shader.fragmentShader}
         `;
 
-        if (material === this.velvetMaterial) {
-            // 1. Procedural Sheen Color
-            shader.fragmentShader = shader.fragmentShader.replace(
-                '#include <lights_physical_fragment>',
-                `
-                #include <lights_physical_fragment>
-                #ifdef USE_SHEEN
-                    #ifdef USE_MAP
-                        // We use sampledDiffuseColor which is in linear space. 
-                        // We apply a custom gamma curve to determine the procedural sheen color.
-                        vec3 sheenProcedural = clamp(pow(sampledDiffuseColor.rgb, vec3(1.0 / uSheenColorGamma)), 0.0, 1.0);
-                        // Desaturate the procedural sheen based on the slider
-                        float sheenLuma = dot(sheenProcedural, vec3(0.299, 0.587, 0.114));
-                        material.sheenColor = mix(sheenProcedural, vec3(sheenLuma), uSheenDesaturation) * sheenColor;
-                    #endif
+        // 1. Procedural Sheen Color
+        shader.fragmentShader = shader.fragmentShader.replace(
+            '#include <lights_physical_fragment>',
+            `
+            #include <lights_physical_fragment>
+            #ifdef USE_SHEEN
+                #ifdef USE_MAP
+                    // We use sampledDiffuseColor which is in linear space. 
+                    // We apply a custom gamma curve to determine the procedural sheen color.
+                    vec3 sheenProcedural = clamp(pow(sampledDiffuseColor.rgb, vec3(1.0 / uSheenColorGamma)), 0.0, 1.0);
+                    // Desaturate the procedural sheen based on the slider
+                    float sheenLuma = dot(sheenProcedural, vec3(0.299, 0.587, 0.114));
+                    material.sheenColor = mix(sheenProcedural, vec3(sheenLuma), uSheenDesaturation) * sheenColor;
                 #endif
-                `
-            );
+            #endif
+            `
+        );
 
-            // 2. Sheen Normal logic
-            shader.fragmentShader = shader.fragmentShader.replace(
-                '#include <normal_fragment_maps>',
-                `
-                #include <normal_fragment_maps>
-                customSheenNormal = normal;
-                #ifdef USE_NORMALMAP_TANGENTSPACE
-                    vec3 mapN_base = texture2D( normalMap, vNormalMapUv ).xyz * 2.0 - 1.0;
-                    mapN_base.xy *= normalScale;
-                    
-                    vec3 mapN_sheen = texture2D( uSheenNormalMap, vNormalMapUv * uSheenNormalRepeat ).xyz * 2.0 - 1.0;
-                    mapN_sheen.xy *= uSheenNormalStrength;
-                    
-                    // Reoriented Normal Mapping (RNM) blend
-                    vec3 t_rnm = mapN_base + vec3( 0.0, 0.0, 1.0 );
-                    vec3 u_rnm = mapN_sheen * vec3( -1.0, -1.0, 1.0 );
-                    vec3 rnm = t_rnm * dot( t_rnm, u_rnm ) / t_rnm.z - u_rnm;
-                    
-                    customSheenNormal = normalize( tbn * rnm );
-                    
-                    debug_mapN_base = mapN_base;
-                    debug_mapN_sheen = mapN_sheen;
-                    debug_tangent = tbn[0];
-                    debug_bitangent = tbn[1];
-                #endif
-                `
-            );
+        // 2. Sheen Normal logic - Removed as we now use standard geometryNormal
 
-            // 3. Replace normal used in Sheen BRDF calls (Direct and Indirect) by modifying the chunk
-            const parsChunk = THREE.ShaderChunk.lights_physical_pars_fragment;
-            const modifiedParsChunk = parsChunk.replace(
-                /BRDF_Sheen\(\s*directLight\.direction,\s*geometryViewDir,\s*geometryNormal/g,
-                'BRDF_Sheen( directLight.direction, geometryViewDir, customSheenNormal'
-            ).replace(
-                /IBLSheenBRDF\(\s*geometryNormal/g,
-                'IBLSheenBRDF( customSheenNormal'
-            ).replace(
-                'sheenSpecularDirect += irradiance * BRDF_Sheen( directLight.direction, geometryViewDir, customSheenNormal, material.sheenColor, material.sheenRoughness );',
-                'sheenSpecularDirect += irradiance * BRDF_Sheen( directLight.direction, geometryViewDir, customSheenNormal, material.sheenColor, material.sheenRoughness ) * uSheenDirLight;'
-            ).replace(
-                'sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( customSheenNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI;',
-                'sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( customSheenNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI * uSheenHdri;'
-            );
-            
-            shader.fragmentShader = shader.fragmentShader.replace(
-                '#include <lights_physical_pars_fragment>',
-                modifiedParsChunk
-            );
-        }
+        // 3. Apply custom sheen intensity multipliers (Direct and Indirect)
+        const parsChunk = THREE.ShaderChunk.lights_physical_pars_fragment;
+        const modifiedParsChunk = parsChunk.replace(
+            'sheenSpecularDirect += irradiance * BRDF_Sheen( directLight.direction, geometryViewDir, geometryNormal, material.sheenColor, material.sheenRoughness );',
+            'sheenSpecularDirect += irradiance * BRDF_Sheen( directLight.direction, geometryViewDir, geometryNormal, material.sheenColor, material.sheenRoughness ) * uSheenDirLight;'
+        ).replace(
+            'sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( geometryNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI;',
+            'sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( geometryNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI * uSheenHdri;'
+        );
+        
+        shader.fragmentShader = shader.fragmentShader.replace(
+            '#include <lights_physical_pars_fragment>',
+            modifiedParsChunk
+        );
         
         // Remove Three.js's native additive lightmap behavior
         shader.fragmentShader = shader.fragmentShader.replace(
@@ -199,10 +154,9 @@ export class FabricMaterials {
                 gl_FragColor = fullyLit;
             #endif
 
-            ${material === this.velvetMaterial ? `
             if (uDebugMode == 1) {
                 #ifdef USE_SHEEN
-                    gl_FragColor = vec4(customSheenNormal * 0.5 + 0.5, 1.0);
+                    gl_FragColor = vec4(geometryNormal * 0.5 + 0.5, 1.0);
                 #else
                     gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);
                 #endif
@@ -224,49 +178,34 @@ export class FabricMaterials {
                 #endif
             } else if (uDebugMode == 5) {
                 gl_FragColor = vec4(totalSpecular, 1.0);
-            } else if (uDebugMode == 6) {
-                #ifdef USE_NORMALMAP_TANGENTSPACE
-                    gl_FragColor = vec4(debug_tangent * 0.5 + 0.5, 1.0);
-                #endif
-            } else if (uDebugMode == 7) {
-                #ifdef USE_NORMALMAP_TANGENTSPACE
-                    gl_FragColor = vec4(debug_bitangent * 0.5 + 0.5, 1.0);
-                #endif
-            } else if (uDebugMode == 8) {
-                #ifdef USE_NORMALMAP_TANGENTSPACE
-                    gl_FragColor = vec4(debug_mapN_base * 0.5 + 0.5, 1.0);
-                #endif
-            } else if (uDebugMode == 9) {
-                #ifdef USE_NORMALMAP_TANGENTSPACE
-                    gl_FragColor = vec4(debug_mapN_sheen * 0.5 + 0.5, 1.0);
-                #endif
             }
-            ` : ''}
             `
         );
 
-        if (material === this.velvetMaterial) {
-            // Prevent sheen from darkening the base specular reflection, which causes the fabric to look darker
-            shader.fragmentShader = shader.fragmentShader.replace(
-                'indirectSpecular *= sheenEnergyComp;',
-                '// indirectSpecular *= sheenEnergyComp; // disabled to prevent darkening'
-            ).replace(
-                'reflectedLight.directSpecular += irradiance * BRDF_GGX_Multiscatter( directLight.direction, geometryViewDir, geometryNormal, material );',
-                `
+        // Prevent sheen from darkening the base specular reflection, which causes the fabric to look darker
+        shader.fragmentShader = shader.fragmentShader.replace(
+            'indirectSpecular *= sheenEnergyComp;',
+            '// indirectSpecular *= sheenEnergyComp; // disabled to prevent darkening'
+        ).replace(
+            'reflectedLight.directSpecular += irradiance * BRDF_GGX_Multiscatter( directLight.direction, geometryViewDir, geometryNormal, material );',
+            `
+            #ifdef USE_SHEEN
                 // Prevent direct specular from being overly darkened by sheen energy comp (which was multiplied into irradiance earlier)
                 reflectedLight.directSpecular += (irradiance / max(sheenEnergyComp, 0.01)) * BRDF_GGX_Multiscatter( directLight.direction, geometryViewDir, geometryNormal, material );
-                `
-            ).replace(
-                'reflectedLight.indirectDiffuse += diffuse;',
-                `
-                reflectedLight.indirectDiffuse += diffuse;
-                #ifdef USE_SHEEN
-                    // Fix: Three.js normally only applies sheen to IBL environment maps.
-                    // This adds sheen contribution from Ambient Lights (Fill Int) and Lightmaps!
-                    sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( customSheenNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI * uSheenFillLight;
-                #endif
-                `
-            );
-        }
+            #else
+                reflectedLight.directSpecular += irradiance * BRDF_GGX_Multiscatter( directLight.direction, geometryViewDir, geometryNormal, material );
+            #endif
+            `
+        ).replace(
+            'reflectedLight.indirectDiffuse += diffuse;',
+            `
+            reflectedLight.indirectDiffuse += diffuse;
+            #ifdef USE_SHEEN
+                // Fix: Three.js normally only applies sheen to IBL environment maps.
+                // This adds sheen contribution from Ambient Lights (Fill Int) and Lightmaps!
+                sheenSpecularIndirect += irradiance * material.sheenColor * IBLSheenBRDF( geometryNormal, geometryViewDir, material.sheenRoughness ) * RECIPROCAL_PI * uSheenFillLight;
+            #endif
+            `
+        );
     }
 }

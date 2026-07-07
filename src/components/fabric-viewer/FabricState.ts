@@ -41,14 +41,15 @@ export class FabricState {
     currentMaterialType: 'default' | 'velvet' = 'default';
     globalSheenIntensity = 1.0;
     globalSheenRoughness = 0.55;
-    globalSheenNormalStrength = 0.7;
-    globalSheenNormalRepeat = 1.5;
+    // globalSheenNormalStrength = 0.7;
+    // globalSheenNormalRepeat = 1.5;
     globalSheenColorGamma = 2.5;
     globalSheenDesaturation = 0.5;
     globalSheenDirLight = 1.0;
     globalSheenFillLight = 1.0;
     globalSheenHdri = 1.0;
     globalDebugMode = 0;
+    velvetNormalMode: 'combined' | 'raw' = 'combined';
     
     // Callbacks to trigger UI or Scene updates when state changes via code
     onStateChange: () => void = () => {};

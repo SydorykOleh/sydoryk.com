@@ -1,892 +1,928 @@
 {
-  "collections": [
-    "ADO",
-    "BAB",
-    "BE",
-    "BER",
-    "BOS",
-    "CAN",
-    "CHL",
-    "CR",
-    "CRUZ",
-    "DAR",
-    "EMI",
-    "EV",
-    "FREY",
-    "HEL",
-    "HIM",
-    "PAD",
-    "PEK",
-    "PH",
-    "RD",
-    "TAM",
-    "VEN",
-    "WIL",
-    "WIN",
-    "ZKA"
-  ],
-  "textures": [
-    {
-      "id": "BER-01",
-      "name": "BERGEN 900",
-      "collection": "BER",
-      "mapsReady": true,
-      "renders": [
-        "BER-01_angle1.jpeg",
-        "BER-01_angle2.jpeg",
-        "BER-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "BER-09",
-      "name": "BERGEN 902",
-      "collection": "BER",
-      "mapsReady": true,
-      "renders": [
-        "BER-09_angle1.jpeg",
-        "BER-09_angle2.jpeg",
-        "BER-09_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "BER-04",
-      "name": "BERGEN 503",
-      "collection": "BER",
-      "mapsReady": true,
-      "renders": [
-        "BER-04_angle1.jpeg",
-        "BER-04_angle2.jpeg",
-        "BER-04_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "PEK-04",
-      "name": "G1000-367142",
-      "collection": "PEK",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PEK-02",
-      "name": "G1916-367151",
-      "collection": "PEK",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PEK-03",
-      "name": "G1916-367153",
-      "collection": "PEK",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PEK-01",
-      "name": "G1916-367148",
-      "collection": "PEK",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "HIM-01",
-      "name": "HIMALAYA 904 (RECYCLED FABRICS)",
-      "collection": "HIM",
-      "mapsReady": true,
-      "renders": [
-        "HIM-01_angle1.jpeg",
-        "HIM-01_angle2.jpeg",
-        "HIM-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "HIM-06",
-      "name": "HIMALAYA 304",
-      "collection": "HIM",
-      "mapsReady": true,
-      "renders": [
-        "HIM-06_angle1.jpeg",
-        "HIM-06_angle2.jpeg",
-        "HIM-06_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "HIM-05",
-      "name": "HIMALAYA 303",
-      "collection": "HIM",
-      "mapsReady": true,
-      "renders": [
-        "HIM-05_angle1.jpeg",
-        "HIM-05_angle2.jpeg",
-        "HIM-05_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "PH-01",
-      "name": "PHAT SAND",
-      "collection": "PH",
-      "mapsReady": true,
-      "renders": [
-        "PH-01_angle1.jpeg",
-        "PH-01_angle2.jpeg",
-        "PH-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "PH-02",
-      "name": "PHAT CREAM",
-      "collection": "PH",
-      "mapsReady": true,
-      "renders": [
-        "PH-02_angle1.jpeg",
-        "PH-02_angle2.jpeg",
-        "PH-02_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "PAD-07",
-      "name": "PADOVA CREAM",
-      "collection": "PAD",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PAD-06",
-      "name": "PADOVA BEIGE",
-      "collection": "PAD",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PAD-03",
-      "name": "PADOVA ORANGE",
-      "collection": "PAD",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "PAD-04",
-      "name": "PADOVA CAPPUCCINO",
-      "collection": "PAD",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "BE-03",
-      "name": "BERGAMO CREAM",
-      "collection": "BE",
-      "mapsReady": true,
-      "renders": [
-        "BE-03_angle1.jpeg",
-        "BE-03_angle2.jpeg",
-        "BE-03_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "BE-02",
-      "name": "BERGAMO BEIGE",
-      "collection": "BE",
-      "mapsReady": true,
-      "renders": [
-        "BE-02_angle1.jpeg",
-        "BE-02_angle2.jpeg",
-        "BE-02_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "BE-04",
-      "name": "BERGAMO CEMENT",
-      "collection": "BE",
-      "mapsReady": true,
-      "renders": [
-        "BE-04_angle1.jpeg",
-        "BE-04_angle2.jpeg",
-        "BE-04_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "EV-03",
-      "name": "EVEREST 900",
-      "collection": "EV",
-      "mapsReady": true,
-      "renders": [
-        "EV-03_angle1.jpeg",
-        "EV-03_angle2.jpeg",
-        "EV-03_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "EV-04",
-      "name": "EVEREST 902",
-      "collection": "EV",
-      "mapsReady": true,
-      "renders": [
-        "EV-04_angle1.jpeg",
-        "EV-04_angle2.jpeg",
-        "EV-04_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "EV-02",
-      "name": "EVEREST 101",
-      "collection": "EV",
-      "mapsReady": true,
-      "renders": [
-        "EV-02_angle1.jpeg",
-        "EV-02_angle2.jpeg",
-        "EV-02_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "TAM-01",
-      "name": "TAMISA NATA",
-      "collection": "TAM",
-      "mapsReady": true,
-      "renders": [
-        "TAM-01_angle1.jpeg",
-        "TAM-01_angle2.jpeg",
-        "TAM-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "CR-05",
-      "name": "CRETA PEARL",
-      "collection": "CR",
-      "mapsReady": true,
-      "renders": [
-        "CR-05_angle1.jpeg",
-        "CR-05_angle2.jpeg",
-        "CR-05_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "CR-04",
-      "name": "CR-04",
-      "collection": "CR",
-      "mapsReady": true,
-      "renders": [
-        "CR-04_angle1.jpeg",
-        "CR-04_angle2.jpeg",
-        "CR-04_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIL-01",
-      "name": "02101-365228",
-      "collection": "WIL",
-      "mapsReady": true,
-      "renders": [
-        "WIL-01_angle1.jpeg",
-        "WIL-01_angle2.jpeg",
-        "WIL-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIL-02",
-      "name": "02101-369459",
-      "collection": "WIL",
-      "mapsReady": true,
-      "renders": [
-        "WIL-02_angle1.jpeg",
-        "WIL-02_angle2.jpeg",
-        "WIL-02_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIL-04",
-      "name": "02952-369471",
-      "collection": "WIL",
-      "mapsReady": true,
-      "renders": [
-        "WIL-04_angle1.jpeg",
-        "WIL-04_angle2.jpeg",
-        "WIL-04_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "RD-01",
-      "name": "17752-42",
-      "collection": "RD",
-      "mapsReady": true,
-      "renders": [
-        "RD-01_angle1.jpeg",
-        "RD-01_angle2.jpeg",
-        "RD-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "RD-02",
-      "name": "17752-32",
-      "collection": "RD",
-      "mapsReady": true,
-      "renders": [
-        "RD-02_angle1.jpeg",
-        "RD-02_angle2.jpeg",
-        "RD-02_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "RD-03",
-      "name": "17752-29",
-      "collection": "RD",
-      "mapsReady": true,
-      "renders": [
-        "RD-03_angle1.jpeg",
-        "RD-03_angle2.jpeg",
-        "RD-03_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "RD-05",
-      "name": "17752-101",
-      "collection": "RD",
-      "mapsReady": true,
-      "renders": [
-        "RD-05_angle1.jpeg",
-        "RD-05_angle2.jpeg",
-        "RD-05_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "RD-06",
-      "name": "17752-100",
-      "collection": "RD",
-      "mapsReady": true,
-      "renders": [
-        "RD-06_angle1.jpeg",
-        "RD-06_angle2.jpeg",
-        "RD-06_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "CHL-01",
-      "name": "CHLOE NATA",
-      "collection": "CHL",
-      "mapsReady": true,
-      "renders": [
-        "CHL-01_angle1.jpeg",
-        "CHL-01_angle2.jpeg",
-        "CHL-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "CHL-02",
-      "name": "CHLOE FOG",
-      "collection": "CHL",
-      "mapsReady": true,
-      "renders": [
-        "CHL-02_angle1.jpeg",
-        "CHL-02_angle2.jpeg",
-        "CHL-02_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "CHL-03",
-      "name": "CHLOE SHARK",
-      "collection": "CHL",
-      "mapsReady": true,
-      "renders": [
-        "CHL-03_angle1.jpeg",
-        "CHL-03_angle2.jpeg",
-        "CHL-03_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIN-03",
-      "name": "SORISOLE 02",
-      "collection": "WIN",
-      "mapsReady": true,
-      "renders": [
-        "WIN-03_angle1.jpeg",
-        "WIN-03_angle2.jpeg",
-        "WIN-03_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIN-04",
-      "name": "SORISOLE 13",
-      "collection": "WIN",
-      "mapsReady": true,
-      "renders": [
-        "WIN-04_angle1.jpeg",
-        "WIN-04_angle2.jpeg",
-        "WIN-04_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIN-01",
-      "name": "SORISOLE 11",
-      "collection": "WIN",
-      "mapsReady": true,
-      "renders": [
-        "WIN-01_angle1.jpeg",
-        "WIN-01_angle2.jpeg",
-        "WIN-01_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "WIN-02",
-      "name": "SORISOLE 07",
-      "collection": "WIN",
-      "mapsReady": true,
-      "renders": [
-        "WIN-02_angle1.jpeg",
-        "WIN-02_angle2.jpeg",
-        "WIN-02_angle3.jpeg"
-      ],
-      "batch": "Batch03"
-    },
-    {
-      "id": "ADO-102",
-      "name": "MACAU PEARL",
-      "collection": "ADO",
-      "mapsReady": true,
-      "renders": [
-        "ADO-102_angle1.jpeg",
-        "ADO-102_angle2.jpeg",
-        "ADO-102_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "ADO-10",
-      "name": "MACAU SAND",
-      "collection": "ADO",
-      "mapsReady": true,
-      "renders": [
-        "ADO-10_angle1.jpeg",
-        "ADO-10_angle2.jpeg",
-        "ADO-10_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "ADO-132",
-      "name": "MACAU CUOIO",
-      "collection": "ADO",
-      "mapsReady": true,
-      "renders": [
-        "ADO-132_angle1.jpeg",
-        "ADO-132_angle2.jpeg",
-        "ADO-132_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "ADO-126",
-      "name": "MACAU TERRA",
-      "collection": "ADO",
-      "mapsReady": true,
-      "renders": [
-        "ADO-126_angle1.jpeg",
-        "ADO-126_angle2.jpeg",
-        "ADO-126_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "ADO-156",
-      "name": "MACAU FOREST",
-      "collection": "ADO",
-      "mapsReady": true,
-      "renders": [
-        "ADO-156_angle1.jpeg",
-        "ADO-156_angle2.jpeg",
-        "ADO-156_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "DAR-04",
-      "name": "DARWIN CREAM",
-      "collection": "DAR",
-      "mapsReady": true,
-      "renders": [
-        "DAR-04_angle1.jpeg",
-        "DAR-04_angle2.jpeg",
-        "DAR-04_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "DAR-03",
-      "name": "DARWIN TERRA",
-      "collection": "DAR",
-      "mapsReady": true,
-      "renders": [
-        "DAR-03_angle1.jpeg",
-        "DAR-03_angle2.jpeg",
-        "DAR-03_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "DAR-02",
-      "name": "DARWIN FOREST",
-      "collection": "DAR",
-      "mapsReady": true,
-      "renders": [
-        "DAR-02_angle1.jpeg",
-        "DAR-02_angle2.jpeg",
-        "DAR-02_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "BOS-03",
-      "name": "BOSTON TOFEE",
-      "collection": "BOS",
-      "mapsReady": true,
-      "renders": [
-        "BOS-03_angle1.jpeg",
-        "BOS-03_angle2.jpeg",
-        "BOS-03_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "BOS-07",
-      "name": "BOSTON  WATER GREEN",
-      "collection": "BOS",
-      "mapsReady": true,
-      "renders": [
-        "BOS-07_angle1.jpeg",
-        "BOS-07_angle2.jpeg",
-        "BOS-07_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "BOS-04",
-      "name": "BOSTON FOREST",
-      "collection": "BOS",
-      "mapsReady": true,
-      "renders": [
-        "BOS-04_angle1.jpeg",
-        "BOS-04_angle2.jpeg",
-        "BOS-04_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "BAB-05",
-      "name": "BABEL WHITE",
-      "collection": "BAB",
-      "mapsReady": true,
-      "renders": [
-        "BAB-05_angle1.jpeg",
-        "BAB-05_angle2.jpeg",
-        "BAB-05_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "BAB-06",
-      "name": "BABEL SAND",
-      "collection": "BAB",
-      "mapsReady": true,
-      "renders": [
-        "BAB-06_angle1.jpeg",
-        "BAB-06_angle2.jpeg",
-        "BAB-06_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "HEL-03",
-      "name": "HELIOS 38/445",
-      "collection": "HEL",
-      "mapsReady": true,
-      "renders": [
-        "HEL-03_angle1.jpeg",
-        "HEL-03_angle2.jpeg",
-        "HEL-03_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "HEL-02",
-      "name": "HELIOS 100/930",
-      "collection": "HEL",
-      "mapsReady": true,
-      "renders": [
-        "HEL-02_angle1.jpeg",
-        "HEL-02_angle2.jpeg",
-        "HEL-02_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "HEL-01",
-      "name": "HELIOS 111/935",
-      "collection": "HEL",
-      "mapsReady": true,
-      "renders": [
-        "HEL-01_angle1.jpeg",
-        "HEL-01_angle2.jpeg",
-        "HEL-01_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "VEN-02",
-      "name": "VENLA 401/0103",
-      "collection": "VEN",
-      "mapsReady": true,
-      "renders": [
-        "VEN-02_angle1.jpeg",
-        "VEN-02_angle2.jpeg",
-        "VEN-02_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "VEN-01",
-      "name": "VENLA 401/0305",
-      "collection": "VEN",
-      "mapsReady": true,
-      "renders": [
-        "VEN-01_angle1.jpeg",
-        "VEN-01_angle2.jpeg",
-        "VEN-01_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "VEN-03",
-      "name": "VENLA 401/005",
-      "collection": "VEN",
-      "mapsReady": true,
-      "renders": [
-        "VEN-03_angle1.jpeg",
-        "VEN-03_angle2.jpeg",
-        "VEN-03_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "ZKA-01",
-      "name": "ZKAGNE TERRACOTTA",
-      "collection": "ZKA",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "ZKA-02",
-      "name": "ZKAGNE GREEN",
-      "collection": "ZKA",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "ZKA-03",
-      "name": "ZKAGNE BEIGE",
-      "collection": "ZKA",
-      "mapsReady": true,
-      "renders": [],
-      "batch": "Batch01"
-    },
-    {
-      "id": "CAN-01",
-      "name": "CANYON NATA",
-      "collection": "CAN",
-      "mapsReady": true,
-      "renders": [
-        "CAN-01_angle1.jpeg",
-        "CAN-01_angle2.jpeg",
-        "CAN-01_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "CAN-05",
-      "name": "CANYON FOG",
-      "collection": "CAN",
-      "mapsReady": true,
-      "renders": [
-        "CAN-05_angle1.jpeg",
-        "CAN-05_angle2.jpeg",
-        "CAN-05_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "CAN-04",
-      "name": "CANYON TAUPE",
-      "collection": "CAN",
-      "mapsReady": true,
-      "renders": [
-        "CAN-04_angle1.jpeg",
-        "CAN-04_angle2.jpeg",
-        "CAN-04_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "CAN-03",
-      "name": "CANYON BRICK",
-      "collection": "CAN",
-      "mapsReady": true,
-      "renders": [
-        "CAN-03_angle1.jpeg",
-        "CAN-03_angle2.jpeg",
-        "CAN-03_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "CAN-02",
-      "name": "CANYON FOREST",
-      "collection": "CAN",
-      "mapsReady": true,
-      "renders": [
-        "CAN-02_angle1.jpeg",
-        "CAN-02_angle2.jpeg",
-        "CAN-02_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "CRUZ-01",
-      "name": "SANTA CRUZ 900",
-      "collection": "CRUZ",
-      "mapsReady": true,
-      "renders": [
-        "CRUZ-01_angle1.jpeg",
-        "CRUZ-01_angle2.jpeg",
-        "CRUZ-01_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "CRUZ-02",
-      "name": "SANTA CRUZ 901",
-      "collection": "CRUZ",
-      "mapsReady": true,
-      "renders": [
-        "CRUZ-02_angle1.jpeg",
-        "CRUZ-02_angle2.jpeg",
-        "CRUZ-02_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "CRUZ-03",
-      "name": "SANTA CRUZ 700",
-      "collection": "CRUZ",
-      "mapsReady": true,
-      "renders": [
-        "CRUZ-03_angle1.jpeg",
-        "CRUZ-03_angle2.jpeg",
-        "CRUZ-03_angle3.jpeg"
-      ],
-      "batch": "Batch02"
-    },
-    {
-      "id": "EMI-02",
-      "name": "EMMI 20 PEARL",
-      "collection": "EMI",
-      "mapsReady": true,
-      "renders": [
-        "EMI-02_angle1.jpeg",
-        "EMI-02_angle2.jpeg",
-        "EMI-02_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "EMI-05",
-      "name": "EMMI 36 GREEN",
-      "collection": "EMI",
-      "mapsReady": true,
-      "renders": [
-        "EMI-05_angle1.jpeg",
-        "EMI-05_angle2.jpeg",
-        "EMI-05_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "FREY-01",
-      "name": "FREYA SHELL 196",
-      "collection": "FREY",
-      "mapsReady": true,
-      "renders": [
-        "FREY-01_angle1.jpeg",
-        "FREY-01_angle2.jpeg",
-        "FREY-01_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "FREY-02",
-      "name": "FREYA BEIGE 05",
-      "collection": "FREY",
-      "mapsReady": true,
-      "renders": [
-        "FREY-02_angle1.jpeg",
-        "FREY-02_angle2.jpeg",
-        "FREY-02_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    },
-    {
-      "id": "FREY-03",
-      "name": "FREYA SHITAKE 124",
-      "collection": "FREY",
-      "mapsReady": true,
-      "renders": [
-        "FREY-03_angle1.jpeg",
-        "FREY-03_angle2.jpeg",
-        "FREY-03_angle3.jpeg"
-      ],
-      "batch": "Batch04"
-    }
-  ],
-  "batches": [
-    "Batch01",
-    "Batch02",
-    "Batch03",
-    "Batch04"
-  ]
+    "collections": [
+        "ADO",
+        "BAB",
+        "BE",
+        "BER",
+        "BOS",
+        "CAN",
+        "CHL",
+        "CR",
+        "CRUZ",
+        "DAR",
+        "EMI",
+        "EV",
+        "FREY",
+        "HEL",
+        "HIM",
+        "PAD",
+        "PEK",
+        "PH",
+        "RD",
+        "TAM",
+        "VEN",
+        "WIL",
+        "WIN",
+        "ZKA"
+    ],
+    "textures": [
+        {
+            "id": "BER-01",
+            "name": "BERGEN 900",
+            "collection": "BER",
+            "mapsReady": true,
+            "renders": [
+                "BER-01_angle1.jpeg",
+                "BER-01_angle2.jpeg",
+                "BER-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "BER-09",
+            "name": "BERGEN 902",
+            "collection": "BER",
+            "mapsReady": true,
+            "renders": [
+                "BER-09_angle1.jpeg",
+                "BER-09_angle2.jpeg",
+                "BER-09_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "BER-04",
+            "name": "BERGEN 503",
+            "collection": "BER",
+            "mapsReady": true,
+            "renders": [
+                "BER-04_angle1.jpeg",
+                "BER-04_angle2.jpeg",
+                "BER-04_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "PEK-04",
+            "name": "G1000-367142",
+            "collection": "PEK",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PEK-02",
+            "name": "G1916-367151",
+            "collection": "PEK",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PEK-03",
+            "name": "G1916-367153",
+            "collection": "PEK",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PEK-01",
+            "name": "G1916-367148",
+            "collection": "PEK",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "HIM-01",
+            "name": "HIMALAYA 904 (RECYCLED FABRICS)",
+            "collection": "HIM",
+            "mapsReady": true,
+            "renders": [
+                "HIM-01_angle1.jpeg",
+                "HIM-01_angle2.jpeg",
+                "HIM-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "HIM-06",
+            "name": "HIMALAYA 304",
+            "collection": "HIM",
+            "mapsReady": true,
+            "renders": [
+                "HIM-06_angle1.jpeg",
+                "HIM-06_angle2.jpeg",
+                "HIM-06_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "HIM-05",
+            "name": "HIMALAYA 303",
+            "collection": "HIM",
+            "mapsReady": true,
+            "renders": [
+                "HIM-05_angle1.jpeg",
+                "HIM-05_angle2.jpeg",
+                "HIM-05_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "PH-01",
+            "name": "PHAT SAND",
+            "collection": "PH",
+            "mapsReady": true,
+            "renders": [
+                "PH-01_angle1.jpeg",
+                "PH-01_angle2.jpeg",
+                "PH-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "PH-02",
+            "name": "PHAT CREAM",
+            "collection": "PH",
+            "mapsReady": true,
+            "renders": [
+                "PH-02_angle1.jpeg",
+                "PH-02_angle2.jpeg",
+                "PH-02_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "PAD-07",
+            "name": "PADOVA CREAM",
+            "collection": "PAD",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PAD-06",
+            "name": "PADOVA BEIGE",
+            "collection": "PAD",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PAD-03",
+            "name": "PADOVA ORANGE",
+            "collection": "PAD",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "PAD-04",
+            "name": "PADOVA CAPPUCCINO",
+            "collection": "PAD",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "BE-03",
+            "name": "BERGAMO CREAM",
+            "collection": "BE",
+            "mapsReady": true,
+            "renders": [
+                "BE-03_angle1.jpeg",
+                "BE-03_angle2.jpeg",
+                "BE-03_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "BE-02",
+            "name": "BERGAMO BEIGE",
+            "collection": "BE",
+            "mapsReady": true,
+            "renders": [
+                "BE-02_angle1.jpeg",
+                "BE-02_angle2.jpeg",
+                "BE-02_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "BE-04",
+            "name": "BERGAMO CEMENT",
+            "collection": "BE",
+            "mapsReady": true,
+            "renders": [
+                "BE-04_angle1.jpeg",
+                "BE-04_angle2.jpeg",
+                "BE-04_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "EV-03",
+            "name": "EVEREST 900",
+            "collection": "EV",
+            "mapsReady": true,
+            "renders": [
+                "EV-03_angle1.jpeg",
+                "EV-03_angle2.jpeg",
+                "EV-03_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EV-04",
+            "name": "EVEREST 902",
+            "collection": "EV",
+            "mapsReady": true,
+            "renders": [
+                "EV-04_angle1.jpeg",
+                "EV-04_angle2.jpeg",
+                "EV-04_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EV-02",
+            "name": "EVEREST 101",
+            "collection": "EV",
+            "mapsReady": true,
+            "renders": [
+                "EV-02_angle1.jpeg",
+                "EV-02_angle2.jpeg",
+                "EV-02_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "TAM-01",
+            "name": "TAMISA NATA",
+            "collection": "TAM",
+            "mapsReady": true,
+            "renders": [
+                "TAM-01_angle1.jpeg",
+                "TAM-01_angle2.jpeg",
+                "TAM-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "CR-05",
+            "name": "CRETA PEARL",
+            "collection": "CR",
+            "mapsReady": true,
+            "renders": [
+                "CR-05_angle1.jpeg",
+                "CR-05_angle2.jpeg",
+                "CR-05_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "CR-04",
+            "name": "CR-04",
+            "collection": "CR",
+            "mapsReady": true,
+            "renders": [
+                "CR-04_angle1.jpeg",
+                "CR-04_angle2.jpeg",
+                "CR-04_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIL-01",
+            "name": "02101-365228",
+            "collection": "WIL",
+            "mapsReady": true,
+            "renders": [
+                "WIL-01_angle1.jpeg",
+                "WIL-01_angle2.jpeg",
+                "WIL-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIL-02",
+            "name": "02101-369459",
+            "collection": "WIL",
+            "mapsReady": true,
+            "renders": [
+                "WIL-02_angle1.jpeg",
+                "WIL-02_angle2.jpeg",
+                "WIL-02_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIL-04",
+            "name": "02952-369471",
+            "collection": "WIL",
+            "mapsReady": true,
+            "renders": [
+                "WIL-04_angle1.jpeg",
+                "WIL-04_angle2.jpeg",
+                "WIL-04_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "RD-01",
+            "name": "17752-42",
+            "collection": "RD",
+            "mapsReady": true,
+            "renders": [
+                "RD-01_angle1.jpeg",
+                "RD-01_angle2.jpeg",
+                "RD-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "RD-02",
+            "name": "17752-32",
+            "collection": "RD",
+            "mapsReady": true,
+            "renders": [
+                "RD-02_angle1.jpeg",
+                "RD-02_angle2.jpeg",
+                "RD-02_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "RD-03",
+            "name": "17752-29",
+            "collection": "RD",
+            "mapsReady": true,
+            "renders": [
+                "RD-03_angle1.jpeg",
+                "RD-03_angle2.jpeg",
+                "RD-03_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "RD-05",
+            "name": "17752-101",
+            "collection": "RD",
+            "mapsReady": true,
+            "renders": [
+                "RD-05_angle1.jpeg",
+                "RD-05_angle2.jpeg",
+                "RD-05_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "RD-06",
+            "name": "17752-100",
+            "collection": "RD",
+            "mapsReady": true,
+            "renders": [
+                "RD-06_angle1.jpeg",
+                "RD-06_angle2.jpeg",
+                "RD-06_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "CHL-01",
+            "name": "CHLOE NATA",
+            "collection": "CHL",
+            "mapsReady": true,
+            "renders": [
+                "CHL-01_angle1.jpeg",
+                "CHL-01_angle2.jpeg",
+                "CHL-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "CHL-02",
+            "name": "CHLOE FOG",
+            "collection": "CHL",
+            "mapsReady": true,
+            "renders": [
+                "CHL-02_angle1.jpeg",
+                "CHL-02_angle2.jpeg",
+                "CHL-02_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "CHL-03",
+            "name": "CHLOE SHARK",
+            "collection": "CHL",
+            "mapsReady": true,
+            "renders": [
+                "CHL-03_angle1.jpeg",
+                "CHL-03_angle2.jpeg",
+                "CHL-03_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIN-03",
+            "name": "SORISOLE 02",
+            "collection": "WIN",
+            "mapsReady": true,
+            "renders": [
+                "WIN-03_angle1.jpeg",
+                "WIN-03_angle2.jpeg",
+                "WIN-03_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIN-04",
+            "name": "SORISOLE 13",
+            "collection": "WIN",
+            "mapsReady": true,
+            "renders": [
+                "WIN-04_angle1.jpeg",
+                "WIN-04_angle2.jpeg",
+                "WIN-04_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIN-01",
+            "name": "SORISOLE 11",
+            "collection": "WIN",
+            "mapsReady": true,
+            "renders": [
+                "WIN-01_angle1.jpeg",
+                "WIN-01_angle2.jpeg",
+                "WIN-01_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "WIN-02",
+            "name": "SORISOLE 07",
+            "collection": "WIN",
+            "mapsReady": true,
+            "renders": [
+                "WIN-02_angle1.jpeg",
+                "WIN-02_angle2.jpeg",
+                "WIN-02_angle3.jpeg"
+            ],
+            "batch": "Batch03"
+        },
+        {
+            "id": "ADO-102",
+            "name": "MACAU PEARL",
+            "collection": "ADO",
+            "mapsReady": true,
+            "renders": [
+                "ADO-102_angle1.jpeg",
+                "ADO-102_angle2.jpeg",
+                "ADO-102_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "ADO-10",
+            "name": "MACAU SAND",
+            "collection": "ADO",
+            "mapsReady": true,
+            "renders": [
+                "ADO-10_angle1.jpeg",
+                "ADO-10_angle2.jpeg",
+                "ADO-10_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "ADO-132",
+            "name": "MACAU CUOIO",
+            "collection": "ADO",
+            "mapsReady": true,
+            "renders": [
+                "ADO-132_angle1.jpeg",
+                "ADO-132_angle2.jpeg",
+                "ADO-132_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "ADO-126",
+            "name": "MACAU TERRA",
+            "collection": "ADO",
+            "mapsReady": true,
+            "renders": [
+                "ADO-126_angle1.jpeg",
+                "ADO-126_angle2.jpeg",
+                "ADO-126_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "ADO-156",
+            "name": "MACAU FOREST",
+            "collection": "ADO",
+            "mapsReady": true,
+            "renders": [
+                "ADO-156_angle1.jpeg",
+                "ADO-156_angle2.jpeg",
+                "ADO-156_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "DAR-04",
+            "name": "DARWIN CREAM",
+            "collection": "DAR",
+            "mapsReady": true,
+            "renders": [
+                "DAR-04_angle1.jpeg",
+                "DAR-04_angle2.jpeg",
+                "DAR-04_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "DAR-03",
+            "name": "DARWIN TERRA",
+            "collection": "DAR",
+            "mapsReady": true,
+            "renders": [
+                "DAR-03_angle1.jpeg",
+                "DAR-03_angle2.jpeg",
+                "DAR-03_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "DAR-02",
+            "name": "DARWIN FOREST",
+            "collection": "DAR",
+            "mapsReady": true,
+            "renders": [
+                "DAR-02_angle1.jpeg",
+                "DAR-02_angle2.jpeg",
+                "DAR-02_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "BOS-03",
+            "name": "BOSTON TOFEE",
+            "collection": "BOS",
+            "mapsReady": true,
+            "renders": [
+                "BOS-03_angle1.jpeg",
+                "BOS-03_angle2.jpeg",
+                "BOS-03_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "BOS-07",
+            "name": "BOSTON  WATER GREEN",
+            "collection": "BOS",
+            "mapsReady": true,
+            "renders": [
+                "BOS-07_angle1.jpeg",
+                "BOS-07_angle2.jpeg",
+                "BOS-07_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "BOS-04",
+            "name": "BOSTON FOREST",
+            "collection": "BOS",
+            "mapsReady": true,
+            "renders": [
+                "BOS-04_angle1.jpeg",
+                "BOS-04_angle2.jpeg",
+                "BOS-04_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "BAB-05",
+            "name": "BABEL WHITE",
+            "collection": "BAB",
+            "mapsReady": true,
+            "renders": [
+                "BAB-05_angle1.jpeg",
+                "BAB-05_angle2.jpeg",
+                "BAB-05_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "BAB-06",
+            "name": "BABEL SAND",
+            "collection": "BAB",
+            "mapsReady": true,
+            "renders": [
+                "BAB-06_angle1.jpeg",
+                "BAB-06_angle2.jpeg",
+                "BAB-06_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "HEL-03",
+            "name": "HELIOS 38/445",
+            "collection": "HEL",
+            "mapsReady": true,
+            "renders": [
+                "HEL-03_angle1.jpeg",
+                "HEL-03_angle2.jpeg",
+                "HEL-03_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "HEL-02",
+            "name": "HELIOS 100/930",
+            "collection": "HEL",
+            "mapsReady": true,
+            "renders": [
+                "HEL-02_angle1.jpeg",
+                "HEL-02_angle2.jpeg",
+                "HEL-02_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "HEL-01",
+            "name": "HELIOS 111/935",
+            "collection": "HEL",
+            "mapsReady": true,
+            "renders": [
+                "HEL-01_angle1.jpeg",
+                "HEL-01_angle2.jpeg",
+                "HEL-01_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "VEN-02",
+            "name": "VENLA 401/0103",
+            "collection": "VEN",
+            "mapsReady": true,
+            "renders": [
+                "VEN-02_angle1.jpeg",
+                "VEN-02_angle2.jpeg",
+                "VEN-02_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "VEN-01",
+            "name": "VENLA 401/0305",
+            "collection": "VEN",
+            "mapsReady": true,
+            "renders": [
+                "VEN-01_angle1.jpeg",
+                "VEN-01_angle2.jpeg",
+                "VEN-01_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "VEN-03",
+            "name": "VENLA 401/005",
+            "collection": "VEN",
+            "mapsReady": true,
+            "renders": [
+                "VEN-03_angle1.jpeg",
+                "VEN-03_angle2.jpeg",
+                "VEN-03_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "ZKA-01",
+            "name": "ZKAGNE TERRACOTTA",
+            "collection": "ZKA",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "ZKA-02",
+            "name": "ZKAGNE GREEN",
+            "collection": "ZKA",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "ZKA-03",
+            "name": "ZKAGNE BEIGE",
+            "collection": "ZKA",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch01"
+        },
+        {
+            "id": "CAN-01",
+            "name": "CANYON NATA",
+            "collection": "CAN",
+            "mapsReady": true,
+            "renders": [
+                "CAN-01_angle1.jpeg",
+                "CAN-01_angle2.jpeg",
+                "CAN-01_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "CAN-05",
+            "name": "CANYON FOG",
+            "collection": "CAN",
+            "mapsReady": true,
+            "renders": [
+                "CAN-05_angle1.jpeg",
+                "CAN-05_angle2.jpeg",
+                "CAN-05_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "CAN-04",
+            "name": "CANYON TAUPE",
+            "collection": "CAN",
+            "mapsReady": true,
+            "renders": [
+                "CAN-04_angle1.jpeg",
+                "CAN-04_angle2.jpeg",
+                "CAN-04_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "CAN-03",
+            "name": "CANYON BRICK",
+            "collection": "CAN",
+            "mapsReady": true,
+            "renders": [
+                "CAN-03_angle1.jpeg",
+                "CAN-03_angle2.jpeg",
+                "CAN-03_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "CAN-02",
+            "name": "CANYON FOREST",
+            "collection": "CAN",
+            "mapsReady": true,
+            "renders": [
+                "CAN-02_angle1.jpeg",
+                "CAN-02_angle2.jpeg",
+                "CAN-02_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "CRUZ-01",
+            "name": "SANTA CRUZ 900",
+            "collection": "CRUZ",
+            "mapsReady": true,
+            "renders": [
+                "CRUZ-01_angle1.jpeg",
+                "CRUZ-01_angle2.jpeg",
+                "CRUZ-01_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "CRUZ-02",
+            "name": "SANTA CRUZ 901",
+            "collection": "CRUZ",
+            "mapsReady": true,
+            "renders": [
+                "CRUZ-02_angle1.jpeg",
+                "CRUZ-02_angle2.jpeg",
+                "CRUZ-02_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "CRUZ-03",
+            "name": "SANTA CRUZ 700",
+            "collection": "CRUZ",
+            "mapsReady": true,
+            "renders": [
+                "CRUZ-03_angle1.jpeg",
+                "CRUZ-03_angle2.jpeg",
+                "CRUZ-03_angle3.jpeg"
+            ],
+            "batch": "Batch02"
+        },
+        {
+            "id": "EMI-02",
+            "name": "EMMI 20 PEARL",
+            "collection": "EMI",
+            "mapsReady": true,
+            "renders": [
+                "EMI-02_angle1.jpeg",
+                "EMI-02_angle2.jpeg",
+                "EMI-02_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EMI-05",
+            "name": "EMMI 36 GREEN",
+            "collection": "EMI",
+            "mapsReady": true,
+            "renders": [
+                "EMI-05_angle1.jpeg",
+                "EMI-05_angle2.jpeg",
+                "EMI-05_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "FREY-01",
+            "name": "FREYA SHELL 196",
+            "collection": "FREY",
+            "mapsReady": true,
+            "renders": [
+                "FREY-01_angle1.jpeg",
+                "FREY-01_angle2.jpeg",
+                "FREY-01_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "FREY-02",
+            "name": "FREYA BEIGE 05",
+            "collection": "FREY",
+            "mapsReady": true,
+            "renders": [
+                "FREY-02_angle1.jpeg",
+                "FREY-02_angle2.jpeg",
+                "FREY-02_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "FREY-03",
+            "name": "FREYA SHITAKE 124",
+            "collection": "FREY",
+            "mapsReady": true,
+            "renders": [
+                "FREY-03_angle1.jpeg",
+                "FREY-03_angle2.jpeg",
+                "FREY-03_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EMI-13",
+            "name": "EMI-13",
+            "collection": "EMI",
+            "mapsReady": true,
+            "renders": [
+                "EMI-13_angle1.jpeg",
+                "EMI-13_angle2.jpeg",
+                "EMI-13_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EMI-20",
+            "name": "EMI-20",
+            "collection": "EMI",
+            "mapsReady": true,
+            "renders": [
+                "EMI-20_angle1.jpeg",
+                "EMI-20_angle2.jpeg",
+                "EMI-20_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        },
+        {
+            "id": "EMI-36",
+            "name": "EMI-36",
+            "collection": "EMI",
+            "mapsReady": true,
+            "renders": [
+                "EMI-36_angle1.jpeg",
+                "EMI-36_angle2.jpeg",
+                "EMI-36_angle3.jpeg"
+            ],
+            "batch": "Batch04"
+        }
+    ],
+    "batches": [
+        "Batch01",
+        "Batch02",
+        "Batch03",
+        "Batch04"
+    ]
 }

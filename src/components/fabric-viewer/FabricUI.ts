@@ -99,6 +99,39 @@ export class FabricUI {
 
         this.loader.onRenderPreviewNeeded = updateRenderPreview;
 
+        const updateCCPreview = () => {
+            const ccContainer = document.getElementById('cc-preview-container');
+            const ccImage = document.getElementById('cc-preview-image') as HTMLImageElement;
+            const ccEmpty = document.getElementById('cc-preview-empty');
+            
+            if (!ccContainer || !ccImage || !ccEmpty || !this.state.currentTextureId) return;
+
+            const activeBtn = document.querySelector(`.texture-btn[data-id="${this.state.currentTextureId}"]`);
+            const batchId = activeBtn?.getAttribute('data-batch') || '';
+            const isBatch04 = batchId.toLowerCase().includes('04');
+            
+            if (!isBatch04) {
+                ccContainer.style.display = 'none';
+                return;
+            }
+
+            ccContainer.style.display = 'flex';
+            
+            const imgUrl = `/assets/configurator/cc_previews/${this.state.currentTextureId}_CC_preview.jpg`;
+            
+            const tempImg = new Image();
+            tempImg.onload = () => {
+                ccImage.src = imgUrl;
+                ccImage.style.display = 'block';
+                ccEmpty.style.display = 'none';
+            };
+            tempImg.onerror = () => {
+                ccImage.style.display = 'none';
+                ccEmpty.style.display = 'block';
+            };
+            tempImg.src = imgUrl;
+        };
+
         const updateSliderDisplays = () => {
             const m = this.materialManager;
             const state = this.state.sliderStates[this.state.currentMode];
@@ -149,12 +182,12 @@ export class FabricUI {
                 s.value = this.state.globalSheenRoughness.toString();
                 if (v) v.textContent = this.state.globalSheenRoughness.toFixed(2);
             }
-            if (document.getElementById('sheen-normal-strength-slider')) {
-                const s = document.getElementById('sheen-normal-strength-slider') as HTMLInputElement;
-                const v = document.getElementById('sheen-normal-strength-value');
-                s.value = this.state.globalSheenNormalStrength.toString();
-                if (v) v.textContent = this.state.globalSheenNormalStrength.toFixed(2);
-            }
+            // if (document.getElementById('sheen-normal-strength-slider')) {
+            //     const s = document.getElementById('sheen-normal-strength-slider') as HTMLInputElement;
+            //     const v = document.getElementById('sheen-normal-strength-value');
+            //     s.value = this.state.globalSheenNormalStrength.toString();
+            //     if (v) v.textContent = this.state.globalSheenNormalStrength.toFixed(2);
+            // }
             
             if (m.fabricMaterial.userData.shader) {
                 m.fabricMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
@@ -199,6 +232,21 @@ export class FabricUI {
                 m.velvetMaterial.envMapIntensity = 1.0;
             }
             
+            // Sync debug UI sliders to the active material's sheen values
+            const targetMat = this.state.currentMaterialType === 'velvet' ? m.velvetMaterial : m.fabricMaterial;
+            const sheenIntensitySlider = document.getElementById('sheen-intensity-slider') as HTMLInputElement;
+            const sheenIntensityValue = document.getElementById('sheen-intensity-value');
+            if (sheenIntensitySlider && sheenIntensityValue) {
+                sheenIntensitySlider.value = targetMat.sheen.toString();
+                sheenIntensityValue.textContent = targetMat.sheen.toFixed(2);
+            }
+            const sheenRoughnessSlider = document.getElementById('sheen-roughness-slider') as HTMLInputElement;
+            const sheenRoughnessValue = document.getElementById('sheen-roughness-value');
+            if (sheenRoughnessSlider && sheenRoughnessValue) {
+                sheenRoughnessSlider.value = targetMat.sheenRoughness.toString();
+                sheenRoughnessValue.textContent = targetMat.sheenRoughness.toFixed(2);
+            }
+
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
         };
@@ -211,15 +259,10 @@ export class FabricUI {
                 this.state.currentRepeat = parseFloat((e.target as HTMLInputElement).value);
                 textureScaleValue.textContent = this.state.currentRepeat.toFixed(1);
                 const m = this.materialManager;
-                [m.fabricMaterial, m.velvetMaterial].forEach(mat => {
-                    if (mat.map) mat.map.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
-                    if (mat.normalMap) mat.normalMap.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
-                    if (mat.roughnessMap) mat.roughnessMap.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
-                    if (mat.aoMap) mat.aoMap.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
-                });
-                if (m.velvetMaterial.userData.shader) {
-                    m.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
-                }
+                this.loader.updateTextureRepeats();
+                // if (m.velvetMaterial.userData.shader) {
+                //     m.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
+                // }
             });
         }
 
@@ -394,6 +437,7 @@ export class FabricUI {
 
                 this.loader.updateFabricMaterial(this.state.currentTextureId); 
                 updateRenderPreview();
+                updateCCPreview();
 
                 // Auto-select material based on texture prefix
                 const texPrefix = this.state.currentTextureId.split('-')[0];
@@ -503,46 +547,63 @@ export class FabricUI {
 
                 this.loader.updateActiveMaterial();
                 updateModeState();
+                this.loader.updateTextureRepeats();
             });
         });
 
+        const normalMapToggles = document.getElementById('normal-map-toggles');
+        if (normalMapToggles) {
+            normalMapToggles.addEventListener('click', (e) => {
+                const btn = (e.target as HTMLElement).closest('.mode-btn');
+                if (!btn) return;
+                
+                normalMapToggles.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.state.velvetNormalMode = btn.getAttribute('data-normal') as 'combined' | 'raw';
+                this.loader.applyVelvetNormalMode();
+            });
+        }
+        
         if (sheenIntensitySlider && sheenIntensityValue) {
             sheenIntensitySlider.addEventListener('input', (e) => {
-                this.state.globalSheenIntensity = parseFloat((e.target as HTMLInputElement).value);
-                sheenIntensityValue.textContent = this.state.globalSheenIntensity.toFixed(2);
-                this.materialManager.velvetMaterial.sheen = this.state.globalSheenIntensity;
-                this.materialManager.velvetMaterial.needsUpdate = true;
+                const val = parseFloat((e.target as HTMLInputElement).value);
+                sheenIntensityValue.textContent = val.toFixed(2);
+                const targetMat = this.state.currentMaterialType === 'velvet' ? this.materialManager.velvetMaterial : this.materialManager.fabricMaterial;
+                targetMat.sheen = val;
+                targetMat.needsUpdate = true;
             });
         }
 
         if (sheenRoughnessSlider && sheenRoughnessValue) {
             sheenRoughnessSlider.addEventListener('input', (e) => {
-                this.state.globalSheenRoughness = parseFloat((e.target as HTMLInputElement).value);
-                sheenRoughnessValue.textContent = this.state.globalSheenRoughness.toFixed(2);
-                this.materialManager.velvetMaterial.sheenRoughness = this.state.globalSheenRoughness;
-                this.materialManager.velvetMaterial.needsUpdate = true;
+                const val = parseFloat((e.target as HTMLInputElement).value);
+                sheenRoughnessValue.textContent = val.toFixed(2);
+                const targetMat = this.state.currentMaterialType === 'velvet' ? this.materialManager.velvetMaterial : this.materialManager.fabricMaterial;
+                targetMat.sheenRoughness = val;
+                targetMat.needsUpdate = true;
             });
         }
 
-        if (sheenNormalStrengthSlider && sheenNormalStrengthValue) {
-            sheenNormalStrengthSlider.addEventListener('input', (e) => {
-                this.state.globalSheenNormalStrength = parseFloat((e.target as HTMLInputElement).value);
-                sheenNormalStrengthValue.textContent = this.state.globalSheenNormalStrength.toFixed(2);
-                if (this.materialManager.velvetMaterial.userData.shader) {
-                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalStrength.value = this.state.globalSheenNormalStrength;
-                }
-            });
-        }
+        // if (sheenNormalStrengthSlider && sheenNormalStrengthValue) {
+        //     sheenNormalStrengthSlider.addEventListener('input', (e) => {
+        //         this.state.globalSheenNormalStrength = parseFloat((e.target as HTMLInputElement).value);
+        //         sheenNormalStrengthValue.textContent = this.state.globalSheenNormalStrength.toFixed(2);
+        //         if (this.materialManager.velvetMaterial.userData.shader) {
+        //             this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalStrength.value = this.state.globalSheenNormalStrength;
+        //         }
+        //     });
+        // }
 
-        if (sheenNormalRepeatSlider && sheenNormalRepeatValue) {
-            sheenNormalRepeatSlider.addEventListener('input', (e) => {
-                this.state.globalSheenNormalRepeat = parseFloat((e.target as HTMLInputElement).value);
-                sheenNormalRepeatValue.textContent = this.state.globalSheenNormalRepeat.toFixed(2);
-                if (this.materialManager.velvetMaterial.userData.shader) {
-                    this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
-                }
-            });
-        }
+        // if (sheenNormalRepeatSlider && sheenNormalRepeatValue) {
+        //     sheenNormalRepeatSlider.addEventListener('input', (e) => {
+        //         this.state.globalSheenNormalRepeat = parseFloat((e.target as HTMLInputElement).value);
+        //         sheenNormalRepeatValue.textContent = this.state.globalSheenNormalRepeat.toFixed(2);
+        //         if (this.materialManager.velvetMaterial.userData.shader) {
+        //             this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalRepeat.value = this.state.globalSheenNormalRepeat / this.state.currentRepeat;
+        //         }
+        //     });
+        // }
 
         const debugModeSelect = document.getElementById('debug-mode-select') as HTMLSelectElement;
         if (debugModeSelect) {
@@ -550,6 +611,9 @@ export class FabricUI {
                 this.state.globalDebugMode = parseInt((e.target as HTMLSelectElement).value);
                 if (this.materialManager.velvetMaterial.userData.shader) {
                     this.materialManager.velvetMaterial.userData.shader.uniforms.uDebugMode.value = this.state.globalDebugMode;
+                }
+                if (this.materialManager.fabricMaterial.userData.shader) {
+                    this.materialManager.fabricMaterial.userData.shader.uniforms.uDebugMode.value = this.state.globalDebugMode;
                 }
             });
         }

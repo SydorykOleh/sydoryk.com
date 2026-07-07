@@ -58,14 +58,14 @@ export class FabricLoader {
             return tex;
         };
 
-        this.sheenNormalMap = this.textureLoader.load('/assets/configurator/textures/sheen_normal.webp');
-        this.sheenNormalMap.wrapS = this.sheenNormalMap.wrapT = THREE.RepeatWrapping;
+        // this.sheenNormalMap = this.textureLoader.load('/assets/configurator/textures/sheen_normal.webp');
+        // this.sheenNormalMap.wrapS = this.sheenNormalMap.wrapT = THREE.RepeatWrapping;
         
-        // Pass it to velvet material
-        this.materialManager.velvetMaterial.userData.uSheenNormalMap = this.sheenNormalMap;
-        if (this.materialManager.velvetMaterial.userData.shader) {
-            this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalMap.value = this.sheenNormalMap;
-        }
+        // // Pass it to velvet material
+        // this.materialManager.velvetMaterial.userData.uSheenNormalMap = this.sheenNormalMap;
+        // if (this.materialManager.velvetMaterial.userData.shader) {
+        //     this.materialManager.velvetMaterial.userData.shader.uniforms.uSheenNormalMap.value = this.sheenNormalMap;
+        // }
 
         this.bakedFabricMaps = [
             loadBake('angle1_fabric.webp'),
@@ -238,12 +238,22 @@ export class FabricLoader {
     }
 
     applyAngle(index: number) {
+        const angleDeg = this.modelRotations[index] || 0;
+        const staticAngle = this.modelRotations[0] || 0;
+
         if (this.currentModelScene) {
-            const angleDeg = this.modelRotations[index] || 0;
-            this.currentModelScene.rotation.y = THREE.MathUtils.degToRad(angleDeg);
+            // Keep model static at angle 0
+            this.currentModelScene.rotation.y = THREE.MathUtils.degToRad(staticAngle);
             if (this.shadowCasterScene) {
                 this.shadowCasterScene.rotation.y = this.currentModelScene.rotation.y;
             }
+        }
+
+        // Rotate the floor to rotate the shadow
+        if (this.bakedFloorScene) {
+            // To make the floor's shadow match the static chair, 
+            // we rotate the floor by the difference between the static angle and the original baked angle.
+            this.bakedFloorScene.rotation.y = THREE.MathUtils.degToRad(staticAngle - angleDeg);
         }
 
         const m = this.materialManager;
@@ -272,54 +282,126 @@ export class FabricLoader {
         }
     }
 
+    updateTextureRepeats() {
+        const texPrefix = this.state.currentTextureId.split('-')[0];
+        const isVelvetTexture = ["ADO", "BOS", "DAR"].includes(texPrefix);
+        
+        const effectiveRepeat = isVelvetTexture ? this.state.currentRepeat / 6 : this.state.currentRepeat;
+
+        const m = this.materialManager;
+        const updateTex = (tex: THREE.Texture | null) => {
+            if (tex) tex.repeat.set(effectiveRepeat, effectiveRepeat);
+        };
+
+        [m.fabricMaterial, m.velvetMaterial].forEach(mat => {
+            updateTex(mat.map);
+            updateTex(mat.normalMap);
+            updateTex(mat.roughnessMap);
+            updateTex(mat.aoMap);
+        });
+
+        // @ts-ignore
+        updateTex(m.fabricMaterial.userData.normalRaw);
+        // @ts-ignore
+        updateTex(m.fabricMaterial.userData.normalCombined);
+    }
+
+    applyVelvetNormalMode() {
+        const m = this.materialManager;
+        
+        // Fabric material ALWAYS uses normalRaw if it exists (which is true for velvet textures)
+        // @ts-ignore
+        m.fabricMaterial.normalMap = m.fabricMaterial.userData.normalRaw || m.fabricMaterial.userData.normalCombined;
+        m.fabricMaterial.needsUpdate = true;
+
+        // Velvet material uses the UI toggle
+        // @ts-ignore
+        if (this.state.velvetNormalMode === 'raw' && m.fabricMaterial.userData.normalRaw) {
+            // @ts-ignore
+            m.velvetMaterial.normalMap = m.fabricMaterial.userData.normalRaw;
+        // @ts-ignore
+        } else if (m.fabricMaterial.userData.normalCombined) {
+            // @ts-ignore
+            m.velvetMaterial.normalMap = m.fabricMaterial.userData.normalCombined;
+        }
+        m.velvetMaterial.needsUpdate = true;
+    }
+
     updateFabricMaterial(textureId: string) {
         if (!textureId) return;
         
         const isGltf = this.state.currentModel.endsWith('.gltf') || this.state.currentModel.endsWith('.glb');
         const applyFlipY = !isGltf;
         const basePath = `/assets/configurator/textures/${textureId}_2k/`;
+        const texPrefix = textureId.split('-')[0];
+        const isBatch04Velvet = ["ADO", "BOS", "DAR"].includes(texPrefix);
         
         const m = this.materialManager;
 
         this.textureLoader.load(`${basePath}color.webp`, (tex: any) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-            tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
+            // tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
             tex.flipY = applyFlipY;
             m.fabricMaterial.map = tex;
             m.velvetMaterial.map = tex;
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
+            this.updateTextureRepeats();
         });
 
         this.textureLoader.load(`${basePath}roughness.webp`, (tex: any) => {
             tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-            tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
+            // tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
             tex.flipY = applyFlipY;
             m.fabricMaterial.roughnessMap = tex;
             m.velvetMaterial.roughnessMap = tex;
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
+            this.updateTextureRepeats();
         });
 
         this.textureLoader.load(`${basePath}normal.webp`, (tex: any) => {
             tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-            tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
+            // tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
             tex.flipY = applyFlipY;
+            // @ts-ignore
+            m.fabricMaterial.userData.normalCombined = tex;
             m.fabricMaterial.normalMap = tex;
-            m.velvetMaterial.normalMap = tex;
             m.fabricMaterial.needsUpdate = true;
-            m.velvetMaterial.needsUpdate = true;
+            this.applyVelvetNormalMode();
+            this.updateTextureRepeats();
         });
+
+        if (isBatch04Velvet) {
+            this.textureLoader.load(`${basePath}normal_raw.webp`, (tex: any) => {
+                tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+                // tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
+                tex.flipY = applyFlipY;
+                // @ts-ignore
+                m.fabricMaterial.userData.normalRaw = tex;
+                this.applyVelvetNormalMode();
+                this.updateTextureRepeats();
+            }, undefined, (err) => {
+                // @ts-ignore
+                m.fabricMaterial.userData.normalRaw = null;
+                this.applyVelvetNormalMode();
+            });
+        } else {
+            // @ts-ignore
+            m.fabricMaterial.userData.normalRaw = null;
+            this.applyVelvetNormalMode();
+        }
 
         this.textureLoader.load(`${basePath}ao.webp`, (tex: any) => {
             tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-            tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
+            // tex.repeat.set(this.state.currentRepeat, this.state.currentRepeat);
             tex.flipY = applyFlipY;
             m.fabricMaterial.aoMap = tex;
             m.velvetMaterial.aoMap = tex;
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
+            this.updateTextureRepeats();
         });
     }
 
