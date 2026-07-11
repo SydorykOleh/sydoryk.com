@@ -108,9 +108,9 @@ export class FabricUI {
 
             const activeBtn = document.querySelector(`.texture-btn[data-id="${this.state.currentTextureId}"]`);
             const batchId = activeBtn?.getAttribute('data-batch') || '';
-            const isBatch04 = batchId.toLowerCase().includes('04');
+            const hasCCPreview = batchId.toLowerCase().includes('04') || batchId.toLowerCase().includes('05');
             
-            if (!isBatch04) {
+            if (!hasCCPreview) {
                 ccContainer.style.display = 'none';
                 return;
             }
@@ -435,7 +435,8 @@ export class FabricUI {
                     }
                 });
 
-                this.loader.updateFabricMaterial(this.state.currentTextureId); 
+                const batchId = target.dataset.batch || '';
+                this.loader.updateFabricMaterial(this.state.currentTextureId, batchId); 
                 updateRenderPreview();
                 updateCCPreview();
 

@@ -327,12 +327,13 @@ export class FabricLoader {
         m.velvetMaterial.needsUpdate = true;
     }
 
-    updateFabricMaterial(textureId: string) {
+    updateFabricMaterial(textureId: string, batchId: string = '') {
         if (!textureId) return;
         
         const isGltf = this.state.currentModel.endsWith('.gltf') || this.state.currentModel.endsWith('.glb');
         const applyFlipY = !isGltf;
-        const basePath = `/assets/configurator/textures/${textureId}_2k/`;
+        const res = batchId === 'Batch05' ? '4k' : '2k';
+        const basePath = `/assets/configurator/textures/${textureId}_${res}/`;
         const texPrefix = textureId.split('-')[0];
         const isBatch04Velvet = ["ADO", "BOS", "DAR"].includes(texPrefix);
         

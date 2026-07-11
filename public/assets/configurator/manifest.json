@@ -5,6 +5,7 @@
         "BE",
         "BER",
         "BOS",
+        "BT",
         "CAN",
         "CHL",
         "CR",
@@ -15,15 +16,22 @@
         "FREY",
         "HEL",
         "HIM",
+        "KIM",
+        "LAV",
+        "LEO",
+        "MOD",
         "PAD",
         "PEK",
         "PH",
         "RD",
+        "SOH",
         "TAM",
+        "TRE",
         "VEN",
         "WIL",
         "WIN",
-        "ZKA"
+        "ZKA",
+        "ZKG"
     ],
     "textures": [
         {
@@ -917,12 +925,181 @@
                 "EMI-36_angle3.jpeg"
             ],
             "batch": "Batch04"
+        },
+        {
+            "id": "BT-01",
+            "name": "BT-01",
+            "collection": "BT",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "BT-02",
+            "name": "BT-02",
+            "collection": "BT",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "BT-03",
+            "name": "BT-03",
+            "collection": "BT",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "KIM-01",
+            "name": "KIM-01",
+            "collection": "KIM",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "KIM-02",
+            "name": "KIM-02",
+            "collection": "KIM",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "KIM-03",
+            "name": "KIM-03",
+            "collection": "KIM",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "KIM-04",
+            "name": "KIM-04",
+            "collection": "KIM",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LAV-01",
+            "name": "LAV-01",
+            "collection": "LAV",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LAV-02",
+            "name": "LAV-02",
+            "collection": "LAV",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LAV-03",
+            "name": "LAV-03",
+            "collection": "LAV",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LEO-01",
+            "name": "LEO-01",
+            "collection": "LEO",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LEO-02",
+            "name": "LEO-02",
+            "collection": "LEO",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LEO-03",
+            "name": "LEO-03",
+            "collection": "LEO",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "LEO-04",
+            "name": "LEO-04",
+            "collection": "LEO",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "MOD-01",
+            "name": "MOD-01",
+            "collection": "MOD",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "SOH-02",
+            "name": "SOH-02",
+            "collection": "SOH",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "SOH-03",
+            "name": "SOH-03",
+            "collection": "SOH",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "TRE-06",
+            "name": "TRE-06",
+            "collection": "TRE",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "ZKG-01",
+            "name": "ZKG-01",
+            "collection": "ZKG",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "ZKG-02",
+            "name": "ZKG-02",
+            "collection": "ZKG",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
+        },
+        {
+            "id": "ZKG-03",
+            "name": "ZKG-03",
+            "collection": "ZKG",
+            "mapsReady": true,
+            "renders": [],
+            "batch": "Batch05"
         }
     ],
     "batches": [
         "Batch01",
         "Batch02",
         "Batch03",
-        "Batch04"
+        "Batch04",
+        "Batch05"
     ]
 }
