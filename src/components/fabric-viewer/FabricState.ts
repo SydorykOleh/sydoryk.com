@@ -13,7 +13,7 @@ export interface SliderState {
 export class FabricState {
     currentModel = 'chair_bake.gltf';
     currentPreset = 'normal';
-    currentTextureId = 'BOS-03';
+    currentTextureId = 'SOH-02';
     currentCollection = '';
     currentAngle = 0; // 0, 1, 2
     currentRepeat = 12;
