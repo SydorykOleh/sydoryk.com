@@ -46,7 +46,7 @@ export class FabricUI {
         const specularAmountValue = document.getElementById('specular-amount-value');
         const renderImage = document.getElementById('render-image') as HTMLImageElement;
         const renderEmpty = document.getElementById('render-empty');
-        
+
         const modeBtns = document.querySelectorAll('.mode-btn');
         const resetCameraBtn = document.getElementById('reset-camera-btn');
         const hdriRotationSlider = document.getElementById('hdri-rotation-slider') as HTMLInputElement;
@@ -59,7 +59,7 @@ export class FabricUI {
         const lightRotationValue = document.getElementById('light-rotation-value');
         const fillIntensitySlider = document.getElementById('fill-intensity-slider') as HTMLInputElement;
         const fillIntensityValue = document.getElementById('fill-intensity-value');
-        
+
         const materialBtns = document.querySelectorAll('.material-btn');
         const sheenIntensitySlider = document.getElementById('sheen-intensity-slider') as HTMLInputElement;
         const sheenIntensityValue = document.getElementById('sheen-intensity-value');
@@ -103,22 +103,22 @@ export class FabricUI {
             const ccContainer = document.getElementById('cc-preview-container');
             const ccImage = document.getElementById('cc-preview-image') as HTMLImageElement;
             const ccEmpty = document.getElementById('cc-preview-empty');
-            
+
             if (!ccContainer || !ccImage || !ccEmpty || !this.state.currentTextureId) return;
 
             const activeBtn = document.querySelector(`.texture-btn[data-id="${this.state.currentTextureId}"]`);
             const batchId = activeBtn?.getAttribute('data-batch') || '';
             const hasCCPreview = batchId.toLowerCase().includes('04') || batchId.toLowerCase().includes('05');
-            
+
             if (!hasCCPreview) {
                 ccContainer.style.display = 'none';
                 return;
             }
 
             ccContainer.style.display = 'flex';
-            
+
             const imgUrl = `/assets/configurator/cc_previews/${this.state.currentTextureId}_CC_preview.jpg`;
-            
+
             const tempImg = new Image();
             tempImg.onload = () => {
                 ccImage.src = imgUrl;
@@ -151,7 +151,7 @@ export class FabricUI {
                 specularAmountSlider.value = state.specularAmount.toString();
                 specularAmountValue.textContent = state.specularAmount.toFixed(2);
             }
-            
+
             if (lightIntensitySlider && lightIntensityValue) {
                 lightIntensitySlider.value = state.lightInt.toString();
                 lightIntensityValue.textContent = state.lightInt.toFixed(2);
@@ -188,7 +188,7 @@ export class FabricUI {
             //     s.value = this.state.globalSheenNormalStrength.toString();
             //     if (v) v.textContent = this.state.globalSheenNormalStrength.toFixed(2);
             // }
-            
+
             if (m.fabricMaterial.userData.shader) {
                 m.fabricMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
                 m.fabricMaterial.userData.shader.uniforms.uPbrGamma.value = state.pbrGamma;
@@ -197,13 +197,13 @@ export class FabricUI {
                 m.velvetMaterial.userData.shader.uniforms.uPbrGain.value = state.pbrGain;
                 m.velvetMaterial.userData.shader.uniforms.uPbrGamma.value = state.pbrGamma;
             }
-            m.fabricMaterial.normalScale.set(state.normalStrength, state.normalStrength);
-            m.velvetMaterial.normalScale.set(state.normalStrength, state.normalStrength);
+            m.fabricMaterial.normalScale.set(state.normalStrength, -state.normalStrength);
+            m.velvetMaterial.normalScale.set(state.normalStrength, -state.normalStrength);
             // @ts-ignore
             m.fabricMaterial.specularIntensity = state.specularAmount;
             // @ts-ignore
             m.velvetMaterial.specularIntensity = state.specularAmount;
-            
+
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
         };
@@ -231,7 +231,7 @@ export class FabricUI {
                 m.velvetMaterial.lightMap = this.loader.bakedFabricMaps[this.state.currentAngle];
                 m.velvetMaterial.envMapIntensity = 1.0;
             }
-            
+
             // Sync debug UI sliders to the active material's sheen values
             const targetMat = this.state.currentMaterialType === 'velvet' ? m.velvetMaterial : m.fabricMaterial;
             const sheenIntensitySlider = document.getElementById('sheen-intensity-slider') as HTMLInputElement;
@@ -250,7 +250,7 @@ export class FabricUI {
             m.fabricMaterial.needsUpdate = true;
             m.velvetMaterial.needsUpdate = true;
         };
-        
+
         // Expose state change callback
         this.state.onStateChange = updateModeState;
 
@@ -324,8 +324,8 @@ export class FabricUI {
                 this.state.sliderStates[this.state.currentMode].normalStrength = val;
                 normalStrengthValue.textContent = val.toFixed(2);
                 const m = this.materialManager;
-                m.fabricMaterial.normalScale.set(val, val);
-                m.velvetMaterial.normalScale.set(val, val);
+                m.fabricMaterial.normalScale.set(val, -val);
+                m.velvetMaterial.normalScale.set(val, -val);
             });
         }
 
@@ -392,7 +392,7 @@ export class FabricUI {
                 modeBtns.forEach(b => b.classList.remove('active'));
                 const target = e.currentTarget as HTMLButtonElement;
                 target.classList.add('active');
-                
+
                 this.state.currentMode = target.dataset.mode as 'baked' | 'normal';
                 updateModeState();
             });
@@ -420,13 +420,13 @@ export class FabricUI {
                 textureBtns.forEach(b => b.classList.remove('active'));
                 const target = e.currentTarget as HTMLButtonElement;
                 target.classList.add('active');
-                
+
                 const texCodeSpan = target.querySelector('.tex-code');
                 if (texCodeSpan) {
                     this.state.currentTextureId = texCodeSpan.textContent || '';
                 }
                 this.state.activeRenders = target.dataset.renders ? target.dataset.renders.split(',') : [];
-                
+
                 this.state.activeRenders.forEach(renderPath => {
                     if (!this.preloadedImages.has(renderPath)) {
                         const img = new Image();
@@ -436,7 +436,7 @@ export class FabricUI {
                 });
 
                 const batchId = target.dataset.batch || '';
-                this.loader.updateFabricMaterial(this.state.currentTextureId, batchId); 
+                this.loader.updateFabricMaterial(this.state.currentTextureId, batchId);
                 updateRenderPreview();
                 updateCCPreview();
 
@@ -557,15 +557,15 @@ export class FabricUI {
             normalMapToggles.addEventListener('click', (e) => {
                 const btn = (e.target as HTMLElement).closest('.mode-btn');
                 if (!btn) return;
-                
+
                 normalMapToggles.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 this.state.velvetNormalMode = btn.getAttribute('data-normal') as 'combined' | 'raw';
                 this.loader.applyVelvetNormalMode();
             });
         }
-        
+
         if (sheenIntensitySlider && sheenIntensityValue) {
             sheenIntensitySlider.addEventListener('input', (e) => {
                 const val = parseFloat((e.target as HTMLInputElement).value);

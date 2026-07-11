@@ -18,7 +18,7 @@ export class FabricMaterials {
             metalness: 0.0,
             lightMap: null, // Initialized dynamically
             lightMapIntensity: 0.0,
-            normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),
+            normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, -state.sliderStates[state.currentMode].normalStrength),
             // @ts-ignore
             specularIntensity: state.sliderStates[state.currentMode].specularAmount,
             sheen: 0.4,
@@ -33,7 +33,7 @@ export class FabricMaterials {
             metalness: 0.0,
             lightMap: null,
             lightMapIntensity: 0.0,
-            normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, state.sliderStates[state.currentMode].normalStrength),
+            normalScale: new THREE.Vector2(state.sliderStates[state.currentMode].normalStrength, -state.sliderStates[state.currentMode].normalStrength),
             // @ts-ignore
             specularIntensity: state.sliderStates[state.currentMode].specularAmount,
             sheen: 0.7,

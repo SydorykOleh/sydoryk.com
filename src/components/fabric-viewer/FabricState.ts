@@ -16,7 +16,7 @@ export class FabricState {
     currentTextureId = 'SOH-02';
     currentCollection = '';
     currentAngle = 0; // 0, 1, 2
-    currentRepeat = 12;
+    currentRepeat = 8;
     
     globalTextureBlend = 1.0;
     globalLmGain = 1.0;
