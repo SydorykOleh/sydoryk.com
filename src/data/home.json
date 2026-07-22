@@ -120,7 +120,7 @@
 	},
 	{
 		"id": "13",
-		"cover": "/assets/cover/NaturaVision.webp",
+		"cover": "/assets/cover/NaturaVision_cover.webp",
 		"title": "NaturaVision",
 		"desc": "Short movie for Loro Parque at Tenerife",
 		"detail": "/detail/NaturaVision",
@@ -140,7 +140,7 @@
 	},
 	{
 		"id": "14",
-		"cover": "/assets/cover/microphone_with_cloth.mp4",
+		"cover": "/assets/cover/microphone_with_cloth.webp",
 		"title": "Microphone",
 		"desc": "Product Animation",
 		"detail": "/detail/Microphone",
@@ -160,7 +160,7 @@
 	},
 	{
 		"id": "15",
-		"cover": "/assets/cover/hotSause_540p.mp4",
+		"cover": "/assets/cover/hotSause_540p.webp",
 		"title": "Hot Sause",
 		"desc": "Product Animation",
 		"detail": "/detail/HotSause",
@@ -180,7 +180,7 @@
 	},
 	{
 		"id": "16",
-		"cover": "/assets/cover/EarPlugs_540p.mp4",
+		"cover": "/assets/cover/EarPlugs_540p.webp",
 		"title": "Ear Plug packaging",
 		"desc": "Product Animation",
 		"detail": "/detail/EarPlugs",
@@ -200,7 +200,7 @@
 	},
 	{
 		"id": "17",
-		"cover": "/assets/cover/BubbleTransition_v10_540p.mp4",
+		"cover": "/assets/cover/BubbleTransition_v10_540p.webp",
 		"title": "Sofa fabric replacement",
 		"desc": "Product Animation",
 		"detail": "/detail/Sofas",
@@ -210,7 +210,7 @@
 	},
 	{
 		"id": "18",
-		"cover": "/assets/cover/fan_animation_540p.mp4",
+		"cover": "/assets/cover/fan_animation_540p.webp",
 		"title": "Fans",
 		"desc": "Product Animation",
 		"detail": "/detail/Fans",
@@ -220,7 +220,7 @@
 	},
 	{
 		"id": "19",
-		"cover": "/assets/cover/apparel_preview_540p.mp4",
+		"cover": "/assets/cover/apparel_preview_540p.webp",
 		"title": "Apparel",
 		"desc": "Product Animation",
 		"detail": "/detail/Apparel",
@@ -230,7 +230,7 @@
 	},
 	{
 		"id": "20",
-		"cover": "/assets/cover/ShowReel_2024_540p_web.mp4",
+		"cover": "/assets/cover/ShowReel_2024_540p_web.webp",
 		"title": "Showreel",
 		"desc": "Movies Showreel",
 		"detail": "/detail/Showreel",
@@ -240,7 +240,7 @@
 	},
 	{
 		"id": "21",
-		"cover": "/assets/cover/conservatory_v006_540_square.mp4",
+		"cover": "/assets/cover/conservatory_v006_540_square.webp",
 		"title": "Conservatory",
 		"desc": "Ad Animation",
 		"detail": "/detail/Conservatory",
@@ -260,7 +260,7 @@
 	},
 	{
 		"id": "23",
-		"cover": "/assets/cover/adtea_720p.mp4",
+		"cover": "/assets/cover/adtea_720p.webp",
 		"title": "Tea Ad",
 		"desc": "Ad Animation",
 		"detail": "/detail/adtea",

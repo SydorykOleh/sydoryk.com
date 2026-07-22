@@ -35,7 +35,7 @@ async function buildPdfs() {
             const mdContent = markdown.replace(/^---[\s\S]*?---/, '').trim();
 
             // Inject header for the PDF resumes
-            const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland`;
+            const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ [oleh@sydoryk.com](mailto:oleh@sydoryk.com) ❖ +48 793 198 675`;
             
             const headerHtml = `<div class="resume-header">\n${marked.parse(headerMarkdown)}</div>`;
             const htmlContent = headerHtml + '\n' + marked.parse(mdContent);
