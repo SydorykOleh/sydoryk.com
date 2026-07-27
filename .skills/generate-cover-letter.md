@@ -28,6 +28,7 @@ Write a tailored cover letter that follows the structure of `template.md`:
 - Highlight specific experiences from `src/content/experience/` md files that align directly with the job description's key requirements.
 - **Portfolio & GitHub**: Link specific examples in your portfolio. For IT, DevOps, or Systems Administration roles, explicitly include links to your GitHub profile (e.g., `[GitHub](https://github.com/SydorykOleh)`) or relevant GitHub repositories within the text to showcase your technical code instead of visual portfolio examples.
 - **Location**: When relevant, mention that you are located in Krakow.
+- **Unfinished Project**: If relevant to the role (e.g. Houdini, Procedural, Lookdev), you may include a link to my old unfinished project that I am proud of: `https://youtu.be/3gb4lI7_XRA`
 - **Call to Action & Availability**: At the end of the cover letter (before the signature), mention that you are currently available and interested to discuss the position in more detail.
 - **Signature**: Always close with the following exact format:
   ```text
