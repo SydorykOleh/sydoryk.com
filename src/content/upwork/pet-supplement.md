@@ -9,9 +9,15 @@ SUPERFOOD
 
 Hi,
 
-I specialize in photoreal packaging and product animation (Houdini/Nuke), and I can deliver the exact high-end, premium aesthetic you're looking for.
+I have extensive experience working with photorealistic packaging visualization and animation, and I'd love to help you create a premium, high-end 3D product reveal for your new pet supplement.
 
-I've worked on similar custom mailer box reveals—you can see a recent packaging assembly example and my Earplug packaging project below. I focus heavily on realistic textures (cardboard, foil, labels) and studio lighting to ensure your product looks like a top DTC supplement brand.
+My workflow utilizes **Houdini** and **Nuke** (industry standards for high-end commercial CGI), which gives me the absolute flexibility and control required to achieve the photorealistic, polished look seen in top DTC supplement brands. 
+
+### Why we are a great fit:
+- **Packaging & Unboxing Experience:** I have created similar product animations, such as the Earplug packaging project in my portfolio below, which specifically focuses on a clean mailer box presentation and realistic material properties.
+- **Photorealism:** Creating highly realistic textures (cardboard, foil, glossy/matte labels) and premium studio lighting setups is my specialty. Realism and quality are exactly what I focus on.
+- **Reliability:** I am used to delivering clean, high-resolution work on time for e-commerce clients.
+
 ### Rough Quote & Turnaround
 For a short (a few seconds) square hero animation featuring the custom mailer box opening to reveal the products, ending on a polished hero shot:
 - **Estimated Cost:** $450 - $700 (depending on the exact complexity of the packaging details and dynamics required).
@@ -24,7 +30,7 @@ Sydoryk Oleh
 3D Visualization / 3D Animation
 
 <div style="margin-top: 2rem; margin-bottom: 2rem;">
-  <p style="margin-bottom: 0.5rem; font-weight: bold; color: var(--color-100);">Recent Mailer Box Assembly Examples (WIP):</p>
+  <p style="margin-bottom: 0.5rem; font-weight: bold; color: var(--color-100);">Recent packaging assembly examples:</p>
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <video src="/assets/upwork/9367_PacoVerpakkingen_anim-assembly_animation-rotationA_v001.mp4" autoplay loop muted playsinline style="flex: 1; min-width: 250px; max-width: 600px; width: 100%; border-radius: 8px; border: 1px solid var(--color-700);"></video>
     <video src="/assets/upwork/10049_PacoVerpakkingen_anim-assembly_animation-rotationA_v001.mp4" autoplay loop muted playsinline style="flex: 1; min-width: 250px; max-width: 600px; width: 100%; border-radius: 8px; border: 1px solid var(--color-700);"></video>
