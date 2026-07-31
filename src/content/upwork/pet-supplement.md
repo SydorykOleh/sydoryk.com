@@ -46,11 +46,11 @@ Sydoryk Oleh
       <p style="margin: 0; font-size: 0.9rem; color: var(--color-300);">Product Animation & Packaging Reveal</p>
     </div>
   </a>
-  <a href="/detail/HotSause/" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
-    <img src="/assets/cover/hotSause_540p.webp" alt="Hot Sause" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--color-700);" />
+  <a href="/detail/Conservatory/" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
+    <img src="/assets/cover/conservatory_v006_540_square.webp" alt="Conservatory" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--color-700);" />
     <div style="padding: 1rem;">
-      <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--color-100);">Hot Sauce</h4>
-      <p style="margin: 0; font-size: 0.9rem; color: var(--color-300);">Photoreal Product Animation</p>
+      <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--color-100);">Conservatory</h4>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--color-300);">Ad Animation</p>
     </div>
   </a>
   <a href="/detail/Microphone/" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
