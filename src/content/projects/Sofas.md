@@ -1,5 +1,5 @@
 ---
-title: "Sofa"
+title: "Sofa Collections"
 desc: "Sofa Visualization"
 cover: "/assets/cover/Sofas.webp"
 category: "still, batch, general"
