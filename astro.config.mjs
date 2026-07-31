@@ -1,4 +1,5 @@
 // https://astro.build/config
+process.env.SHARP_CONCURRENCY = '1';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { VitePWA } from 'vite-plugin-pwa';
