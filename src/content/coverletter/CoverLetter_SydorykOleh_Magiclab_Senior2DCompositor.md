@@ -7,6 +7,8 @@ date: 2026-08-03
 
 Hi,
 
+You can view my full resume here: [Resume (PDF)](https://sydoryk.com/assets/resume_SydorykOleh_LRC.pdf)
+
 I have over 9 years of experience in CGI and visual effects production, lighting and compositing over 300 production shots across cinematic attractions, short films, and immersive experiences.
 
 I have extensive production experience with Nuke, handling everything from building complex scripts from scratch to multi-pass CG integration, deep compositing, 2D tracking, matte extraction, and final color grading. Seamlessly integrating 2D elements, 3D CGI passes, and live-action plates to high-end film standards is at the core of my daily work. I take pride in delivering photorealistic shots with a sharp eye for color balance, light interaction, and fine detail.
