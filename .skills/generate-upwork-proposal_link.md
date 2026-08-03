@@ -33,13 +33,13 @@ Generate the markdown file to be saved in `src/content/upwork/`.
   Sydoryk Oleh  
   3D Visualization / 3D Animation
   ```
-- **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-4 highly relevant portfolio items from `src/data/home.json` so the web page looks premium:
+- **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-6 highly relevant portfolio items from `src/data/home.json` or `public/assets/gallery/` (e.g. `public/assets/gallery/packaging/` for packaging and gift sets) so the web page looks premium. Use a minimum width of 300px per card:
   ```html
   <h3>Relevant Portfolio Examples</h3>
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-    <!-- Render each item as an <a> tag linking to its detail page. Use <img> or <video> based on the cover property -->
-    <a href="[DETAIL_PATH]" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
-      <img src="[COVER_PATH]" alt="[TITLE]" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--color-700);" />
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+    <!-- Render each item as an <a> tag linking to its detail page or asset URL. Use <img> with .webp (still or animated) or <video> based on the cover property -->
+    <a href="[DETAIL_PATH_OR_ASSET_URL]" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
+      <img src="[COVER_PATH]" alt="[TITLE]" style="width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--color-700);" />
       <div style="padding: 1rem;">
         <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--color-100);">[TITLE]</h4>
         <p style="margin: 0; font-size: 0.9rem; color: var(--color-300);">[DESC]</p>
