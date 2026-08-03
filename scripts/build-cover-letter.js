@@ -42,8 +42,10 @@ async function buildCoverLetter(sourceFile) {
         // Remove frontmatter simply
         let mdContent = markdown.replace(/^---[\s\S]*?---/, '').trim();
 
-        // Remove markdown images from the PDF so they only appear on the web page
+        // Remove markdown images and videos from the PDF so they only appear on the web page
         mdContent = mdContent.replace(/!\[.*?\]\(.*?\)/g, '');
+        mdContent = mdContent.replace(/<div[^>]*video-embed[^>]*>[\s\S]*?<\/div>/gi, '');
+        mdContent = mdContent.replace(/<video[\s\S]*?<\/video>/gi, '');
 
         // Inject header for the PDF resumes
         const headerMarkdown = `# Oleh Sydoryk\nKrakow, Poland ❖ oleh@sydoryk.com ❖ +48 793 198 675`;
