@@ -422,9 +422,13 @@ export class FabricUI {
                 target.classList.add('active');
 
                 const texCodeSpan = target.querySelector('.tex-code');
-                if (texCodeSpan) {
-                    this.state.currentTextureId = texCodeSpan.textContent || '';
+                this.state.currentTextureId = texCodeSpan?.textContent || target.dataset.id || '';
+
+                const activeNameElem = document.getElementById('active-tex-name');
+                if (activeNameElem) {
+                    activeNameElem.textContent = target.getAttribute('title') || this.state.currentTextureId;
                 }
+
                 this.state.activeRenders = target.dataset.renders ? target.dataset.renders.split(',') : [];
 
                 this.state.activeRenders.forEach(renderPath => {
@@ -444,10 +448,22 @@ export class FabricUI {
                 const texPrefix = this.state.currentTextureId.split('-')[0];
                 if (["ADO", "BOS", "DAR"].includes(texPrefix)) {
                     const velvetBtn = document.querySelector('.material-btn[data-material="velvet"]') as HTMLButtonElement;
-                    if (velvetBtn && !velvetBtn.classList.contains('active')) velvetBtn.click();
+                    if (velvetBtn && !velvetBtn.classList.contains('active')) {
+                        velvetBtn.click();
+                    } else if (!velvetBtn) {
+                        this.state.currentMaterialType = 'velvet';
+                        this.loader.updateActiveMaterial();
+                        updateModeState();
+                    }
                 } else {
                     const fabricBtn = document.querySelector('.material-btn[data-material="default"]') as HTMLButtonElement;
-                    if (fabricBtn && !fabricBtn.classList.contains('active')) fabricBtn.click();
+                    if (fabricBtn && !fabricBtn.classList.contains('active')) {
+                        fabricBtn.click();
+                    } else if (!fabricBtn) {
+                        this.state.currentMaterialType = 'default';
+                        this.loader.updateActiveMaterial();
+                        updateModeState();
+                    }
                 }
             });
         });
@@ -681,19 +697,27 @@ export class FabricUI {
 
         // Initialize default texture
         let defaultBtn = Array.from(textureBtns).find(btn => {
-            const codeSpan = btn.querySelector('.tex-code');
-            return codeSpan && codeSpan.textContent === this.state.currentTextureId;
+            const b = btn as HTMLElement;
+            const codeSpan = b.querySelector('.tex-code');
+            const id = codeSpan ? codeSpan.textContent : b.dataset.id;
+            return id === this.state.currentTextureId;
         }) as HTMLButtonElement;
+
+        if (colBtns.length === 0) {
+            textureBtns.forEach(btn => btn.classList.add('visible'));
+        }
 
         if (defaultBtn) {
             const batchId = defaultBtn.dataset.batch;
             const colId = defaultBtn.dataset.collection;
-            if (batchId) selectBatch(batchId, false);
-            if (colId) selectCollection(colId, false);
+            if (batchId && batchBtns.length > 0) selectBatch(batchId, false);
+            if (colId && colBtns.length > 0) selectCollection(colId, false);
             defaultBtn.click();
         } else if (batchBtns.length > 0) {
             const firstBatchId = (batchBtns[0] as HTMLButtonElement).dataset.batch;
             if (firstBatchId) selectBatch(firstBatchId);
+        } else if (colBtns.length > 0) {
+            (colBtns[0] as HTMLButtonElement).click();
         } else if (textureBtns.length > 0) {
             (textureBtns[0] as HTMLButtonElement).click();
         }

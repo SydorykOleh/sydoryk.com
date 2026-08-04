@@ -9,6 +9,7 @@ import Headphones from '../../components/configurators/Headphones.astro';
 import JewelryConfigurator from '../../components/configurators/JewelryConfigurator.astro';
 import SolarPanels from '../../components/configurators/SolarPanels.astro';
 import HaulerImports from '../../components/configurators/HaulerImports.astro';
+import FabricConfigurator from '../../components/configurators/FabricConfigurator.astro';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -29,7 +30,8 @@ const configurators: Record<string, any> = {
   'Headphones': Headphones,
   'JewelryConfigurator': JewelryConfigurator,
   'SolarPanels': SolarPanels,
-  'HaulerImports': HaulerImports
+  'HaulerImports': HaulerImports,
+  'FabricConfigurator': FabricConfigurator
 };
 
 const CustomComponent = entry.data.customComponent ? configurators[entry.data.customComponent] : null;

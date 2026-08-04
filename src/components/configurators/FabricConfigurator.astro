@@ -1,0 +1,347 @@
+---
+import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
+import fs from 'fs';
+import path from 'path';
+
+const title = "3D Fabric Configurator | Sydoryk Oleh";
+const description = "Interactive 3D configurator for premium upholstery fabric textures with real-time PBR rendering.";
+
+// Read manifest
+const manifestPath = path.join(process.cwd(), 'public/assets/configurator/manifest.json');
+let manifest = { batches: [], collections: [], textures: [] };
+try {
+    if (fs.existsSync(manifestPath)) {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    }
+} catch (e) {
+    console.error("Error parsing manifest:", e);
+}
+
+// Filter to display only specified batches (Batch04 and Batch05)
+const allowedBatches = ['batch04', 'batch05'];
+const textures = manifest.textures.filter(tex => 
+    allowedBatches.includes((tex.batch || '').toLowerCase())
+);
+---
+
+<ConfiguratorLayout
+    title={title}
+    description={description}
+    keywords="Fabric, Configurator, 3D, WebGL, Three.js, PBR, Upholstery"
+>
+    <Fragment slot="controls">
+        <div class="control-body">
+            <div class="control-section">
+                <h4>Select Fabric</h4>
+                <div class="texture-grid" id="texture-grid">
+                    {textures.map(tex => (
+                        <button 
+                            class="texture-btn swatch visible" 
+                            data-id={tex.id} 
+                            data-batch={tex.batch}
+                            data-collection={tex.collection}
+                            data-renders={tex.renders ? tex.renders.join(',') : ''}
+                            title={tex.id}
+                        >
+                            <img src={`/assets/configurator/thumbnails/${tex.id}.webp`} alt={tex.id} loading="lazy" />
+                            <span class="tex-code sr-only">{tex.id}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </Fragment>
+
+    <div class="viewer-3d-wrapper">
+        <div class="viewer-3d">
+            <div class="viewer-overlay-controls">
+                <div class="overlay-group angle-controls-group">
+                    <div class="button-group angle-selectors" id="angle-selectors">
+                        <button class="active" data-angle="0">Light 1</button>
+                        <button data-angle="1">Light 2</button>
+                        <button data-angle="2">Light 3</button>
+                    </div>
+                </div>
+                <div class="overlay-group camera-group">
+                    <button class="reset-camera-btn" id="reset-camera-btn">Reset Camera</button>
+                </div>
+            </div>
+            <div id="three-container"></div>
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <span>Loading Assets...</span>
+            </div>
+        </div>
+    </div>
+
+    <Fragment slot="config-description">
+        <div class="content">
+            <div class="row desc">
+                <div class="col-1a">
+                    <div class="post-desc">
+                        <p>
+                            An interactive, real-time 3D product configurator developed in Three.js and WebGL to showcase premium upholstery fabrics on commercial furniture models.
+                        </p>
+                        <p>
+                            The rendering engine utilizes a custom physical PBR shader pipeline featuring automated sheen distribution for micro-fiber velvets, calibrated normal response, and multi-angle baked studio lighting for instant, photorealistic material visualization directly in the browser.
+                        </p>
+                        <p>
+                            Textures and normal maps are dynamically loaded on demand, ensuring rapid initial page load times and zero-latency material inspection across desktop and mobile devices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Fragment>
+</ConfiguratorLayout>
+
+<style lang="scss">
+    .viewer-3d-wrapper {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .viewer-3d {
+        background: rgb(207, 207, 207);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    #three-container {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        display: block;
+        flex: 1;
+    }
+
+    #three-container :global(canvas) {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        display: block !important;
+    }
+
+    .control-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 320px;
+        max-width: 100%;
+    }
+
+    .control-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        h4 {
+            margin: 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-400, #888);
+            font-weight: 600;
+        }
+    }
+
+    .texture-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        max-height: 540px;
+        overflow-y: auto;
+        padding: 4px 6px 4px 0;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .texture-btn {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            height: auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 0;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+            img {
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                display: block;
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                border-color: rgba(255, 255, 255, 0.4);
+                z-index: 2;
+            }
+
+            &.active {
+                border-color: #fff;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+                transform: scale(1.08);
+                z-index: 3;
+            }
+        }
+    }
+
+    .viewer-overlay-controls {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 5;
+        pointer-events: none;
+
+        & > * {
+            pointer-events: all;
+        }
+
+        .overlay-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-group {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 4px;
+            display: inline-flex;
+            gap: 4px;
+
+            button {
+                background: transparent;
+                border: none;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.75rem;
+                padding: 0.35rem 0.8rem;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.2s ease;
+
+                &.active {
+                    background: rgba(255, 255, 255, 0.25);
+                    color: #fff;
+                }
+
+                &:hover:not(.active) {
+                    background: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+
+        .reset-camera-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            font-weight: 500;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.6);
+                border-color: rgba(255, 255, 255, 0.4);
+            }
+        }
+    }
+
+    .loading-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        color: #fff;
+        font-weight: 500;
+        z-index: 10;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+
+        &.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+</style>
+
+<script>
+    import { initFabricViewer } from '../fabric-viewer';
+    
+    let cleanup: (() => void) | undefined | void;
+
+    document.addEventListener('astro:page-load', () => {
+        if (document.getElementById('three-container')) {
+            if (cleanup) cleanup();
+            cleanup = initFabricViewer();
+        }
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+        if (cleanup) {
+            cleanup();
+            cleanup = undefined;
+        }
+    });
+</script>

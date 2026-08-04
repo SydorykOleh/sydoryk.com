@@ -307,5 +307,15 @@
 		"category": "still, general, configurator",
 		"tag": "Modeling, Shading, Lighting, Interactive",
 		"date": "2026-06-16"
+	},
+	{
+		"id": "28",
+		"cover": "/assets/cover/Sofas.webp",
+		"title": "3D Fabric Configurator",
+		"desc": "Interactive Fabric & Upholstery Configurator",
+		"detail": "/detail/FabricConfigurator",
+		"category": "still, general, configurator",
+		"tag": "Modeling, Shading, Lighting, Interactive",
+		"date": "2026-07-01"
 	}
 ]
