@@ -15,7 +15,7 @@
 		"cover": "/assets/cover/dave_and_ava.webp",
 		"title": "Dave and Ava",
 		"desc": "Animation series for kids youtube channel",
-		"category": "movies, general", 
+		"category": "movies, general",
 		"tag": "Junior Lighting Artist",
 		"date": "2016-01-01"
 	},
@@ -34,7 +34,7 @@
 		"title": "the Legend of the Lost Pearl",
 		"desc": "Short 3D Stereo movie for Yas Waterworld in Abu Dhabi",
 		"detail": "/detail/lostPearl/",
-		"category":  "movies, general",
+		"category": "movies, general",
 		"tag": "Lead Lighting and Compositing Artist",
 		"date": "2018-10-8"
 	},
@@ -199,7 +199,7 @@
 		"date": "2025-10-20"
 	},
 	{
-		"id": "17",
+		"id": "80",
 		"cover": "/assets/cover/BubbleTransition_v10_540p.webp",
 		"title": "Sofa fabric replacement",
 		"desc": "Product Animation",
@@ -239,7 +239,7 @@
 		"date": "2024-10-20"
 	},
 	{
-		"id": "21",
+		"id": "70",
 		"cover": "/assets/cover/conservatory_v006_540_square.webp",
 		"title": "Conservatory",
 		"desc": "Ad Animation",
@@ -249,7 +249,7 @@
 		"date": "2024-10-20"
 	},
 	{
-		"id": "22",
+		"id": "90",
 		"cover": "/assets/cover/IndustrialEquipment.webp",
 		"title": "Industrial Equipment",
 		"desc": "Product Visualization",
@@ -279,7 +279,7 @@
 		"date": "2026-01-05"
 	},
 	{
-		"id": "25",
+		"id": "100",
 		"cover": "/assets/cover/micConfig.jpg",
 		"title": "Configurator Microphone",
 		"desc": "Product Configurator",
@@ -310,7 +310,7 @@
 	},
 	{
 		"id": "28",
-		"cover": "/assets/cover/Sofas.webp",
+		"cover": "/assets/configurator/renders/BOS-04_angle1.jpeg",
 		"title": "3D Fabric Configurator",
 		"desc": "Interactive Fabric & Upholstery Configurator",
 		"detail": "/detail/FabricConfigurator",

@@ -7,31 +7,36 @@ const cardJsonString = '/assets/data/card.json';
 // 使用 JSON 数据
 // import cardData from '../components/card.json';
 import cardData from '../data/home.json';
-const cards = [];
-for (const [index,item] of cardData.entries()) {
-  const card = {
-    id: item.id || index,
-    title: item.title,
-    cover: item.cover || "",
-    description: item.desc || "",
-    url: item.url || "",
-    detail: item.detail || "",
-    category: item.category || "other",
-    tag: item.tag || "",
-    date: item.date || "",
-    mark: item.mark|| "",
-    index: index + 1,
-  };
-  cards.push(card);
-}
-//const cardFullData= JSON.stringify(cards);
+
+// Sort items by numeric id in descending order (highest ID first)
+const sortedData = [...cardData].sort((a, b) => {
+  const idA = Number(a.id) || 0;
+  const idB = Number(b.id) || 0;
+  return idB - idA;
+});
+
+const total = sortedData.length;
+const cards = sortedData.map((item, i) => ({
+  id: item.id,
+  title: item.title,
+  cover: item.cover || "",
+  description: item.desc || "",
+  url: item.url || "",
+  detail: item.detail || "",
+  category: item.category || "other",
+  tag: item.tag || "",
+  date: item.date || "",
+  mark: item.mark || "",
+  index: total - i,
+}));
+
 const count = cards.length;
 ---
 <Filter count={count} />
 <div class="section card">
     <div class="js-shuffle-sizer" >
         <div class="card-list my-shuffle-container" id="js-shuffle">
-            {cards.reverse().map((card) => (
+            {cards.map((card) => (
               <div class="card-item col-xs-1a col-md-2a col-lg-3a col-xxl-4a" data-groups={JSON.stringify(card.category)} data-date-created={card.date} data-title={card.title}>
                   <div class="card-header">
                       <div class="card-type type">

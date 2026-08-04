@@ -1,7 +1,7 @@
 ---
 title: '3D Fabric Configurator'
 desc: 'Interactive 3D Fabric & Upholstery Configurator'
-cover: '/assets/cover/Sofas.webp'
+cover: '/assets/configurator/renders/BOS-04_angle1.jpeg'
 category: 'still, general, configurator'
 tag: 'Modeling, Shading, Lighting, Interactive'
 date: '2026-07-01'
