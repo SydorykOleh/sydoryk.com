@@ -7,6 +7,8 @@ date: 2026-08-04
 
 Hi,
 
+You can view my full resume here: [Resume (PDF)](https://sydoryk.com/assets/resume_SydorykOleh_LRC.pdf)
+
 I have over 9 years of experience in 3D production, real-time engines, and procedural workflows, working across stylized family-friendly projects and high-fidelity CGI.
 
 In my recent work, I integrated Unreal Engine 5 into our production pipeline, building stylized scenes and assets from the ground up. I regularly handle everything from setting up prefabs, master materials, and custom shaders to crafting mood-driven lighting and Niagara VFX. I am very comfortable working with store assets from Unreal Marketplace and the Asset Store, integrating them cleanly with custom low-poly and high-poly models, UVs, and Substance texturing.
