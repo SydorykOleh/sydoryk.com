@@ -5,9 +5,9 @@ role: 3D Product Visualization Artist
 date: 2026-08-22
 ---
 
-I have extensive experience importing, tessellating, and converting .STEP and CAD files into clean 3D geometry for photorealistic product rendering. Taking raw engineering files and turning them into attractive, commercial-grade marketing visuals is a core part of my day-to-day workflow.
+I have experience converting .STEP and CAD files into clean 3D geometry for photorealistic product rendering. Taking raw engineering files and turning them into attractive, commercial-grade marketing visuals is a core part of my day-to-day workflow.
 
-Since you already have the .STEP files ready, we can jump straight into production. I can easily follow your creative direction for each shot to ensure the final imagery aligns with your marketing goals.
+Since you already have the .STEP files ready, we can jump straight into production. I can easily follow your creative direction for each step file to ensure the final imagery aligns with your marketing goals.
 
 ### Proposed Workflow
 
