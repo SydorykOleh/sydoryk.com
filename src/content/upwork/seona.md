@@ -44,7 +44,7 @@ By building a locked master studio rig in Houdini and Karma, I will establish ph
 3. **Production Capacity & Turnaround**:
    - Deliverable per SKU: 3 product stills + 1 on-ear image + 1 x 360° rotation video (both on #FFFFFF and #F8F8F8 backgrounds).
    - **Initial Lookdev & Master Rig Setup**: 3-5 business days to lock down the master scene, lighting, and first sample SKU for your review.
-   - **Variant Production Rate**: 2-5 completed SKU packages per business day once the master look is approved and established workflow.
+   - **Production Turnaround**: Turnaround depends on product complexity and variant counts, typically delivering **3–15 completed SKU packages per week** once the master workflow is established.
 
 4. **Availability**:
    - Readily available with 3+ hours of daily working overlap with US Eastern Time (ET) for real-time communication, daily check-ins, and rapid feedback implementation.
