@@ -2,12 +2,12 @@
 title: "IT & Systems Specialist"
 ---
 
-Adaptable IT and Systems Engineer specializing in infrastructure automation, network storage, and local systems administration. Adept at bridging traditional IT support with modern DevOps practices—leveraging Python automation, GitOps, Docker containerization, and advanced AI integration to maximize operational efficiency.
+Adaptable IT, Pipeline, and Systems Engineer specializing in hybrid render farm infrastructure (AWS Thinkbox Deadline), cross-platform pipeline automation (Linux/Windows), network storage, and local systems administration. Adept at bridging traditional IT support with modern DevOps practices—leveraging Python automation, GitOps, Docker containerization, and advanced AI integration to maximize operational efficiency.
 
 ### IT Support & Systems Management
 
-* **Render Farm Administration:** Architected, configured, and managed multi-node on-premise render farms (2016–2024); optimized scheduling and job queues to eliminate bottlenecks and ensure 24/7 pipeline uptime.
-* **Workstation Lifecycle Management:** Directed diagnostics, OS provisioning (Windows/Linux), and automated software deployment across high-performance artist workstations, minimizing creative downtime.
+* **Render Farm Administration:** Architected, configured, and managed multi-node on-premise and hybrid render farms (2016–2026); deployed AWS Thinkbox Deadline for Karma Husk and Nuke distributed rendering, custom submitters, and job scheduling to eliminate bottlenecks and ensure 24/7 pipeline uptime.
+* **Workstation & Environment Management:** Directed diagnostics, OS provisioning (Windows/Linux), and automated environment configuration across mixed OS artist workstations, implementing canonical root path mapping (`$PRISM_JOB`) to guarantee seamless cross-platform asset portability. (2016–2026)
 
 ### Infrastructure & DevSecOps
 
@@ -17,6 +17,7 @@ Adaptable IT and Systems Engineer specializing in infrastructure automation, net
 
 ### Programming & Automation
 
+* **Cloud & Farm Sync Verification:** Engineered automated pre-job verification daemons (`pre_job_verify.py`) and Linux kernel-level file locking sync wrappers (`fcntl.flock`) verifying 100% data integrity and file-size parity across distributed nodes before farm render execution. (2026)
 * **Workflow Automation:** Engineered custom Python pipelines for real-time directory synchronization, cross-network file validation, and automated path fixing across large asset libraries.
 * **Version Control & CI/CD:** Established Git-based version control workflows and integrated GitHub Secrets to ensure secure, automated credential and environment variable management.
 
@@ -32,8 +33,8 @@ Adaptable IT and Systems Engineer specializing in infrastructure automation, net
 
 ### Technical Skills
 
-* **Programming & Automation:** Python, Shell Scripting (Bash/PowerShell), Git, CI/CD Workflows
-* **DevOps & Infrastructure:** Docker, GitOps, Cloudflare Zero Trust, NAS, Render Farm Infrastructure
+* **Programming & Automation:** Python, OpenUSD, Shell Scripting (Bash/PowerShell), Git, CI/CD Workflows
+* **DevOps & Infrastructure:** AWS Thinkbox Deadline, Docker, GitOps, Cloudflare Zero Trust, NAS, Render Farm Infrastructure, Kitsu
 * **Web Technologies:** Astro.js, TypeScript, JavaScript, HTML5/CSS3, Sass, Node.js
-* **Operating Systems:** Linux (Ubuntu/Debian/RHEL), Windows / Windows Server
+* **Operating Systems:** Linux (Ubuntu/Debian/RHEL/Arch), Windows / Windows Server
 * **AI & Intelligent Systems:** Local LLM Deployment, Prompt Engineering, Agentic Workflows

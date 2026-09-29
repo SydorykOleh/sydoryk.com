@@ -2,13 +2,22 @@
 title: "Technical"
 ---
 
-Expert in workflow automation, Houdini procedural tools, Unreal Engine pipeline integration, and Python-based tool development for asset libraries and render management.
+Pipeline Technical Director and Technical Artist specializing in OpenUSD architecture, Houdini Solaris procedural systems, distributed render farm automation (AWS Thinkbox Deadline / Karma Husk), and cross-platform Python tool development.
 
-### Rendering & Lighting Pipelines
+### OpenUSD & Pipeline Architecture
 
-* **Pipeline Development:** Collaborated closely with TDs to establish robust rendering and lighting pipelines for Maya, Arnold, and Redshift, alongside creating custom tools for everyday production use. (2016–2024)
-* **Workflow Maintenance:** Designed and maintained studio-wide Redshift and Arnold rendering workflows tailored specifically for Maya environments. (2016–2024)
-* **Technical Troubleshooting:** Spearheaded the resolution of complex rendering and compositing bottlenecks, collaborating directly with development teams to debug deep pipeline issues. (2020–2024)
+* **USD Production Pipeline:** Architected and deployed an end-to-end OpenUSD shot assembly and caching pipeline for cinematic movie production across mixed Linux and Windows environments; structured shots using Assembly Master USDs, Asset Master USDs, and departmental delta USD caches (CFX, FX, Lighting). (2026)
+* **Automated Scene Builders:** Developed modular, headless Python scene builders (`assembly_builder`, `cfx_builder`, `comp_builder`) and Prism Pipeline hooks to automate shot ingestion, character instancing, USD stage exports, and one-click/headless reviews. (2026)
+* **Solaris Camera & Optical Automation:** Authored an OpenUSD Camera Focus Controller in Solaris evaluating animated UsdSkel joints in 3D world space with automated rack-focus interpolation, dynamic depth of field (`focusDistance`, `fStop`), and symmetrical USD shutter limit calculations (`shutter:open`, `shutter:close`). (2026)
+* **Algorithmic Graph Optimization:** Engineered an automated node layout engine (`pipeline.tidy`) using Reingold-Tilford tidy tree layout algorithms, zero-crossing wire routing, and automated geometric validation in Houdini. (2026)
+
+### Distributed Rendering & Farm Automation
+
+* **Deadline Farm Automation & Karma Husk:** Engineered custom AWS Thinkbox Deadline submission workflows and plugins for distributed Karma Husk (XPU/CPU) and Nuke compositing. (2026)
+* **Scout Frame Sampling Architecture:** Designed and implemented scout frame sampling (clamped between 2 frames and 35% of shot duration) to launch high-priority validation jobs alongside pre-queued suspended remaining frame jobs with USD stage staleness manifest detection (`manifest.json`), eliminating redundant USD re-exports. (2026)
+* **Review & Production Tracking Pipeline:** Integrated Kitsu production tracking via Gazu API and custom Qt dialogs, creating fire-and-forget multi-job dependency chains that trigger automated post-comp 1080p MP4 transcoding with 4-corner slate burn-in and instant review publishing. (2026)
+* **Legacy Pipeline Development:** Collaborated closely with TDs to establish robust rendering and lighting pipelines for Maya, Arnold, and Redshift, alongside creating custom tools for everyday production use. (2016–2024)
+* **Technical Troubleshooting:** Spearheaded the resolution of complex rendering and compositing bottlenecks, collaborating directly with development teams to debug deep pipeline issues. (2020–2026)
 
 ### Unreal Engine
 
@@ -26,11 +35,11 @@ Expert in workflow automation, Houdini procedural tools, Unreal Engine pipeline 
 
 ### IT Support & Systems Management
 
-* **Render Farm Administration:** Architected, configured, and managed multi-node on-premise render farms, optimizing resource scheduling and job queues to eliminate bottlenecks and ensure 24/7 uptime. (2016–2024)
-* **Workstation Lifecycle Management:** Directed hardware/software diagnostics, OS provisioning (Windows/Linux), and automated software deployment across high-performance artist workstations to minimize creative downtime. (2016–2024)
+* **Render Farm Administration:** Architected, configured, and managed multi-node on-premise and hybrid render farms (AWS Thinkbox Deadline, Karma Husk, Nuke), optimizing resource scheduling, job queues, and pre-job sync verifiers (`pre_job_verify.py`) to eliminate bottlenecks and ensure 24/7 uptime. (2016–2026)
+* **Cross-Platform Environment Management:** Directed hardware/software diagnostics, OS provisioning (Windows/Linux), and cross-platform path resolution (`$PRISM_JOB`) across artist workstations to ensure seamless asset portability and minimize downtime. (2016–2026)
 
 ### Skills
 
-* **Programming & Scripting:** Python, VEX, Shell Scripting, Git, JavaScript
-* **Software:** Houdini (Solaris), Maya, Unreal Engine, Nuke, Redshift, Arnold
-* **Core Areas:** Pipeline Automation, Procedural Asset Generation (PCG), Tools Development, Render Management
+* **Programming & Scripting:** Python, OpenUSD (pxr API), VEX, PySide / Qt, Shell Scripting (Bash/PowerShell), Git, JavaScript
+* **Software:** Houdini (Solaris, Karma XPU/CPU, KineFX, Vellum), OpenUSD, Nuke, AWS Thinkbox Deadline, Prism Pipeline, Kitsu (Gazu API), Unreal Engine 5, Maya, Redshift, Arnold
+* **Core Areas:** USD Pipeline Architecture, Pipeline Automation, Distributed Render Management, Solaris LOPs & Lighting, Tools Development, Procedural Asset Generation (PCG/TOPs)
