@@ -1,0 +1,903 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Games both own that received massive updates
+const revisits = [
+	{
+		title: "Enshrouded",
+		appid: "1203620",
+		status: "Both Own (0 ₴ • Cossack: 100.5h)",
+		lastPlayed: "Feb 2025",
+		majorUpdates: [
+			"Souls of the Frozen Frontier: High-altitude Mountain biome with snow, blizzards & thermal mechanics",
+			"Hollow Halls: Multi-tier endgame subterranean dungeons with bone weapons & necromancy gear",
+			"Melodies of the Mire: Blackmire swamp, treehouse architecture, musical instruments & daggers",
+			"Crucial Co-op Fix: Quests can now be completed per-player/per-world with quest-sharing toggles (no more missing progression!)",
+			"Farming & Livestock: Tame and breed farm animals (goats, yaks) and companion base pets",
+			"Level Cap increased past 35 with dual-class hybrid skill trees"
+		],
+		verdict: "Ready for an immediate high-level weekend revisit with zero download cost."
+	},
+	{
+		title: "V Rising",
+		appid: "1604030",
+		status: "Both Own (0 ₴ • Cossack: 73.2h)",
+		lastPlayed: "Dec 2023 (Pre-1.0)",
+		majorUpdates: [
+			"1.0 Full Launch: Massive final release overhaul of the entire game",
+			"Ruins of Mortium & Dracula: Endgame volcanic zone, roaming legions & direct climax fight against Lord Dracula",
+			"Castlevania Crossover: Simon Belmont roams the world as a dynamic wandering holy boss",
+			"Castle Relocation Engine: Pick up your entire multi-floor fortress and move it to a new plot instantly",
+			"New Weapon Class (Whips) & complete spell school redesign with legendary passive gems"
+		],
+		verdict: "Since you last played before 1.0, Vardoran has an entirely new endgame waiting for you."
+	},
+	{
+		title: "Valheim",
+		appid: "892970",
+		status: "Both Own in Library (0 ₴)",
+		lastPlayed: "Pre-Ashlands",
+		majorUpdates: [
+			"The Ashlands Expansion: Southern volcanic continent requiring reinforced Drakkar ships through boiling seas",
+			"Siege Warfare: Construct catapults, battering rams, and shield generators to breach Charred fortresses",
+			"Flametal Weapons & Elemental Magic: Fire, blood magic, and summoner necromancy staffs",
+			"World Modifiers: Official in-game sliders to toggle carrying metal through portals, raid frequency, and drop multipliers"
+		],
+		verdict: "The Ashlands expansion is the biggest combat leap the game has ever received."
+	},
+	{
+		title: "Satisfactory",
+		appid: "526870",
+		status: "Cossack Owns (740 ₴ • 1.0 Exited EA)",
+		lastPlayed: "Sept 2024",
+		majorUpdates: [
+			"Version 1.0 Launch: Complete Project Assembly story campaign with ADA narrative and Phase 5 finale",
+			"Dimensional Depots: Alien tech unlocks cloud storage—pull building materials directly from anywhere on the planet!",
+			"Quantum Portals: Instant player teleportation across factories without hypertube transit delays",
+			"Full pipeline physics rewrite on Unreal Engine 5.3"
+		],
+		verdict: "The definitive 3D factory builder is now complete and polished to perfection."
+	},
+	{
+		title: "Factorio: Space Age",
+		appid: "427520",
+		status: "Both Own Base (Base 300 ₴ • Cossack: 1,737h)",
+		lastPlayed: "Aug 2026",
+		majorUpdates: [
+			"Space Age Expansion (Oct 2024): Build orbiting space platforms catching asteroids for interplanetary logistics",
+			"4 Brand New Planets: Vulcanus (lava foundries), Fulgora (recycling ruins), Gleba (agriculture/spoilage), Aquilo (cryogenics/fusion)",
+			"Elevated Rails: Train bridges passing directly over rails and water",
+			"Quality System: Common to Legendary tiers for all buildings, equipment, and weapons"
+		],
+		verdict: "The pinnacle of automation expanded into an entire solar system."
+	}
+];
+
+// Curated Top 4
+const topRecs = [
+	{
+		rank: "01",
+		title: "Abiotic Factor",
+		tag: "Top Tactical Recommendation",
+		price: "700 ₴",
+		rating: "96% Overwhelmingly Positive",
+		steamUrl: "https://store.steampowered.com/app/427410/Abiotic_Factor/",
+		tagline: "Half-Life 1 meets SCP Foundation in a subterranean survival-craft RPG.",
+		features: [
+			"Fortify underground laboratories: run electrical wiring, connect battery banks, craft laser traps",
+			"Metroidvania facility exploration with tactical gadgets and environmental defense",
+			"Sector-by-sector progression cleanly compartmentalized for 2–4 hr weekend sessions",
+			"Native headless dedicated server support (SteamCMD/Docker) & direct P2P"
+		],
+		whyYou: "Synthesizes Cossack's wiring/logistics obsession with Gentleman's gritty atmosphere and survival tension."
+	},
+	{
+		rank: "02",
+		title: "Necesse",
+		tag: "Best Automation & Sandbox Value",
+		price: "249 ₴",
+		rating: "94% Very Positive",
+		steamUrl: "https://store.steampowered.com/app/1169040/Necesse/",
+		tagline: "Factorio logistics meets Terraria boss tiering and RimWorld settlement management.",
+		features: [
+			"Procedural cavern exploration with deep gear tiers and bullet-hell boss encounters",
+			"Recruit NPC settlers to automate farming, forestry, mining, and item crafting",
+			"Persistent settlement automation that supports recurring weekly check-ins",
+			"Full standalone dedicated server package"
+		],
+		whyYou: "Gentleman gets dungeon crawling and boss hunting; Cossack gets automated supply chains and villager management."
+	},
+	{
+		rank: "03",
+		title: "Void Crew",
+		tag: "Co-op Space Sorties",
+		price: "569 ₴",
+		rating: "90% Very Positive",
+		steamUrl: "https://store.steampowered.com/app/1063420/Void_Crew/",
+		tagline: "First-person tactical spaceship crew operations against an alien threat.",
+		features: [
+			"Asymmetrical roles: Pilot navigation vs Reactor tuning, ammo fabrication & EVA spacewalks",
+			"High-stress space dogfights leveraging your competitive communication",
+			"Discrete 30–60 min mission sorties with persistent ship and perk unlocks",
+			"Zero context loss between weekend play sessions"
+		],
+		whyYou: "High-adrenaline team coordination with zero chores or base upkeep when time is short."
+	},
+	{
+		rank: "04",
+		title: "Sons of the Forest",
+		tag: "Atmospheric Survival Horror",
+		price: "600 ₴",
+		rating: "86% Very Positive",
+		steamUrl: "https://store.steampowered.com/app/1326470/Sons_Of_The_Forest/",
+		tagline: "Next-gen wilderness construction, mutant cave delves, and psychological mystery.",
+		features: [
+			"Dynamic log compound construction with defensive traps and zip-line networks",
+			"Sprawling subterranean bunker exploration with modern tactical weapons",
+			"Direct evolution from Enshrouded and The Forest (already in Gentleman's library)",
+			"Dedicated server tool available directly via Steam"
+		],
+		whyYou: "Directly matches Gentleman's love for The Forest and Green Hell with modern graphics and compound defense."
+	}
+];
+
+// Expanded 50 titles with appids for direct Steam linking
+const catalogBranches = [
+	{
+		branch: "Branch 1: Base Building & Deep Survival-Crafting",
+		games: [
+			{ name: "Abiotic Factor", appid: "427410", price: "700 ₴", pros: "90s Half-Life lab aesthetic, electrical wiring, trap defense, Metroidvania sectors.", cons: "Indoor facility setting rather than open forest.", type: "Dedicated / P2P" },
+			{ name: "Valheim (Both Own)", appid: "892970", price: "0 ₴ (Both Own)", pros: "Ashlands expansion live, siege catapults, lava combat, portal world modifiers.", cons: "Sailing and corpse runs can eat up a 2-hour session.", type: "Dedicated / P2P" },
+			{ name: "Necesse", appid: "1169040", price: "249 ₴", pros: "Terraria bosses, RimWorld NPC settler automation, high replayability.", cons: "Top-down 2D pixel art perspective.", type: "Dedicated / P2P" },
+			{ name: "Sons of the Forest", appid: "1326470", price: "600 ₴", pros: "Stunning freeform log physics building, creepy mutant caves, zip-lines.", cons: "Intense horror vibes, higher GPU demands.", type: "Dedicated / P2P" },
+			{ name: "ICARUS (Gentleman Owns)", appid: "1149460", price: "700 ₴", pros: "Planetary drop missions, orbital tech tree, open-world base building, weather storms.", cons: "Punishing early game storms and resource grind.", type: "Dedicated / P2P" },
+			{ name: "Green Hell (Gentleman Owns)", appid: "815370", price: "36 ₴", pros: "Hyper-realistic Amazon survival (body inspection, leeches, sanity).", cons: "Extreme micro-management of macronutrients (carbs/fats/proteins).", type: "P2P / Online" },
+			{ name: "Enshrouded (Both Own)", appid: "1203620", price: "0 ₴ (Both Own)", pros: "Mountain biome, Hollow Halls, weather, fixed co-op quest sharing, level 35+.", cons: "Voxel construction can be a huge time sink.", type: "Dedicated / P2P" },
+			{ name: "V Rising (Both Own)", appid: "1604030", price: "0 ₴ (Both Own)", pros: "1.0 release, Lord Dracula boss, Castlevania Simon Belmont, castle relocation.", cons: "Daylight sunlight burning limits daylight exploration.", type: "Dedicated / P2P" },
+			{ name: "Grounded", appid: "962130", price: "479 ₴", pros: "Shrunk-in-backyard sandbox, superb insect combat, base building on koi ponds.", cons: "Arachnophobia warning (spiders are terrifying).", type: "Shared Cloud" },
+			{ name: "The Planet Crafter", appid: "1284190", price: "299 ₴", pros: "Chill terraforming loop, watch barren red planet turn into oceans and greenery.", cons: "Zero enemy threat or combat.", type: "P2P / Online" }
+		]
+	},
+	{
+		branch: "Branch 2: Automation, Logistics & Engineering",
+		games: [
+			{ name: "Satisfactory (Cossack Owns)", appid: "526870", price: "740 ₴", pros: "1.0 full story, Dimensional Depots (cloud storage), portals, gorgeous UE5 graphics.", cons: "Gentleman must buy a copy; mega-factories require context memory.", type: "Dedicated / P2P" },
+			{ name: "Factorio: Space Age (Both Own Base)", appid: "427520", price: "Base 300 ₴", pros: "4 new planets (Vulcanus, Fulgora, Gleba, Aquilo), space platforms, elevated trains.", cons: "Requires Space Age expansion purchase; highly addictive.", type: "Dedicated / P2P" },
+			{ name: "Astroneer", appid: "361420", price: "600 ₴", pros: "Deformable voxel terrain, modular rover engineering, multi-planet rocketry.", cons: "Automation is simpler than Factorio; rover physics quirks.", type: "Dedicated / P2P" },
+			{ name: "Scrap Mechanic (Both Own)", appid: "387990", price: "0 ₴ (Both Own)", pros: "Piston and sensor vehicle engineering, farm defense against red bots.", cons: "Survival update pacing is slow.", type: "P2P / Online" },
+			{ name: "Stationeers", appid: "544550", price: "700 ₴", pros: "Hyper-realistic gas mixtures, pipe pressure, logic gates, programmable IC10 chips.", cons: "Extremely steep learning curve; one loose pipe causes explosive decompression.", type: "Dedicated / P2P" },
+			{ name: "Techtonica", appid: "1457320", price: "180 ₴", pros: "Underground bioluminescent conveyor automation with destructible cavern walls.", cons: "Early access pacing; confined subterranean space.", type: "P2P / Online" },
+			{ name: "Eco (Both Own)", appid: "382310", price: "0 ₴ (Both Own)", pros: "Updates 10 & 11 added trade boats, settlement laws, and expanded electric grids.", cons: "Economy is designed for 10+ players; 2-player co-op requires boosted rates.", type: "Dedicated / P2P" },
+			{ name: "Hydroneer", appid: "1106840", price: "335 ₴", pros: "Physics gold mining, automated conveyor sluicing, hydraulic tools.", cons: "No native online co-op (relies on Steam Remote Play or mods).", type: "Remote Play" }
+		]
+	},
+	{
+		branch: "Branch 3: Tactical Sci-Fi, Vessel Operations & Extraction",
+		games: [
+			{ name: "Void Crew", appid: "1063420", price: "569 ₴", pros: "Asymmetrical roles (pilot vs engineer/gunner), 40-min sorties, persistent upgrades.", cons: "Requires high communication under panic.", type: "Online / P2P" },
+			{ name: "Barotrauma", appid: "602960", price: "499 ₴", pros: "Deep submarine simulator: nuclear reactor wiring, alien oceans, flooding repairs.", cons: "Complex controls; steep initial medical and wiring learning curve.", type: "Dedicated / P2P" },
+			{ name: "Deep Rock Galactic (Both Own)", appid: "548430", price: "0 ₴ (Both Own)", pros: "Season 5 live, 100% destructible caves, 30-min missions, zero base upkeep.", cons: "Modular mission loop rather than persistent open base.", type: "P2P / Online" },
+			{ name: "Helldivers 2", appid: "553850", price: "1,199 ₴", pros: "Unmatched cinematic galactic war, explosive stratagems, 40-min extractions.", cons: "High price point; requires third-party account linking.", type: "Dedicated Matchmaking" },
+			{ name: "GTFO", appid: "493520", price: "599 ₴", pros: "Hardcore stealth tactical shooter, terminal hacking, resource rationing.", cons: "Extremely punishing; one mistake wipes the 45-minute run.", type: "P2P / Online" },
+			{ name: "Hunt: Showdown 1896", appid: "594650", price: "539 ₴", pros: "1890s bayou monster hunting, binaural audio, tense PvPvE bounty extractions.", cons: "Permadeath on hunters; competitive PvP stress.", type: "Official Matchmaking" },
+			{ name: "Space Marine 2", appid: "2183900", price: "389 ₴", pros: "Spectacular Warhammer 40K campaign and 3-player Operations mode.", cons: "Short campaign length (10–12h).", type: "Online / P2P" },
+			{ name: "Left 4 Dead 2 (Gentleman Owns)", appid: "550", price: "240 ₴", pros: "The gold standard of zombie campaign pacing; thousands of workshop mods.", cons: "Linear mission runs with zero persistent gear progression.", type: "Dedicated / P2P" }
+		]
+	},
+	{
+		branch: "Branch 4: ARPG, Dungeon Crawling & Boss Hunting",
+		games: [
+			{ name: "Remnant II", appid: "1282100", price: "1,299 ₴", pros: "Dark Souls with guns, incredible bosses, dual archetypes, dynamic worlds.", cons: "Right at the top of the budget.", type: "P2P / Online" },
+			{ name: "Remnant: From the Ashes", appid: "612880", price: "699 ₴", pros: "Tightly balanced 2-player campaign, great boss fights, diverse weapon mods.", cons: "Less archetype variety than Remnant II.", type: "P2P / Online" },
+			{ name: "Core Keeper (Cossack Owns)", appid: "1621690", price: "249 ₴", pros: "1.0 launched late 2024; top-down mining, base building, farming, boss dungeons.", cons: "Gentleman must buy a copy; 2D pixel perspective.", type: "Dedicated / P2P" },
+			{ name: "Tribes of Midgard", appid: "858820", price: "69 ₴", pros: "Viking action RPG; defend Tree of Life; open-world Survival 2.0 mode.", cons: "Saga mode has countdown pressure; Survival mode is better for weekends.", type: "Official Servers" },
+			{ name: "Risk of Rain 2 (Cossack Owns)", appid: "632360", price: "108 ₴", pros: "3D roguelike third-person shooter; compounding crazy item synergies.", cons: "Runs can last 60–90 min with no mid-run saving.", type: "P2P / Online" },
+			{ name: "Grim Dawn", appid: "219990", price: "530 ₴", pros: "Deep isometric ARPG, dual-class mastery combos, grim dark fantasy world.", cons: "Older classic Diablo-style combat feel.", type: "P2P / Online" },
+			{ name: "Gunfire Reborn", appid: "1217060", price: "399 ₴", pros: "Fast FPS roguelite, animal heroes with talent trees and elemental combos.", cons: "Run-based rather than persistent world.", type: "P2P / Online" },
+			{ name: "Outward: Definitive Edition", appid: "794260", price: "53 ₴", pros: "Hardcore adventurer RPG (backpack drops, tents, illnesses, preparation).", cons: "Clunky combat; unforgiving long overland walking without fast travel.", type: "P2P / Split" }
+		]
+	},
+	{
+		branch: "Branch 5: Driving, Physics & Quirky Vehicle Co-op",
+		games: [
+			{ name: "Motor Town (Both Own)", appid: "1369670", price: "0 ₴ (Both Own)", pros: "Cozy open-world driving, heavy trucking, buses, police chases; steering wheel support.", cons: "Low-poly look; unstructured self-directed goals.", type: "Dedicated / P2P" },
+			{ name: "SnowRunner", appid: "1465360", price: "~600 ₴", pros: "The premier off-road terrain physics game; haul trailers through deep mud & snow.", cons: "Methodical and slow; flipping a truck costs 45 min of winch recovery.", type: "P2P / Online" },
+			{ name: "Trailmakers", appid: "585420", price: "329 ₴", pros: "Lego-style physics engineering; build rovers, planes, and subs for salvage exploration.", cons: "Complex contraptions can trigger physics glitches.", type: "P2P / Online" },
+			{ name: "BeamNG.drive (Both Own)", appid: "284160", price: "0 ₴ (Both Own)", pros: "World's most advanced vehicle soft-body crash physics; multiplayer via BeamMP.", cons: "Requires BeamMP mod setup; sandbox without structured missions.", type: "BeamMP Server" },
+			{ name: "PlateUp!", appid: "1599600", price: "41 ₴", pros: "Overcooked culinary chaos, but with persistent roguelite automation conveyors.", cons: "High cognitive stress during peak restaurant rush hours.", type: "P2P / Remote" },
+			{ name: "Overcooked! 2 (Both Own)", appid: "728880", price: "0 ₴ (Both Own)", pros: "Classic friendship-testing kitchen puzzle; bite-sized 5-minute levels.", cons: "Pure arcade with zero persistent world or character upgrades.", type: "P2P / Online" },
+			{ name: "Unrailed! (Both Own)", appid: "1016920", price: "0 ₴ (Both Own)", pros: "Fast track-laying procedural train survival; upgrade train wagons through biomes.", cons: "Relentless time stress; manual resource hacking.", type: "P2P / Online" },
+			{ name: "RV There Yet? (Both Own)", appid: "3949040", price: "0 ₴ (Both Own)", pros: "Comedy wilderness road-trip physics survival in an RV.", cons: "Lightweight indie physics with minor jank.", type: "P2P / Online" }
+		]
+	},
+	{
+		branch: "Branch 6: Roguelite Co-op & Modular Arena Sorties",
+		games: [
+			{ name: "Ship of Fools", appid: "1286580", price: "213 ₴", pros: "Dedicated 2-player seafaring roguelite; manage deck cannons, repel sea monsters.", cons: "Exclusively 1–2 players; strictly run-based.", type: "P2P / Online" },
+			{ name: "Roboquest", appid: "692890", price: "390 ₴", pros: "Blistering fast comic-book movement shooter; smooth sliding; base upgrades.", cons: "2-player maximum; requires high FPS twitch reflexes.", type: "P2P / Online" },
+			{ name: "Crab Champions", appid: "774801", price: "225 ₴", pros: "Third-person crab movement shooter; incredible fluidity, crazy stacking upgrades.", cons: "Pure arcade shooter; no story or base building.", type: "P2P / Online" },
+			{ name: "ROUNDS (Both Own)", appid: "1557740", price: "0 ₴ (Both Own)", pros: "1v1 duel roguelite where loser drafts game-breaking perk cards; instant fun.", cons: "1v1 competitive rather than co-op PvE.", type: "P2P / Online" },
+			{ name: "Lethal Company", appid: "1966720", price: "225 ₴", pros: "Hilarious proximity voice chat horror; scavenge derelict moons for corporate quota.", cons: "Harsh quota deadlines; jumpscare tension.", type: "P2P / Online" },
+			{ name: "Phasmophobia", appid: "739630", price: "389 ₴", pros: "Investigative ghost deduction; use EMF meters, spirit boxes, and UV lights.", cons: "Pacing slows down once ghost patterns are memorized.", type: "P2P / Dedicated" },
+			{ name: "Content Warning", appid: "2881650", price: "95 ₴", pros: "Film spooky videos with your friend and upload to SpookTube for ad revenue.", cons: "Best for comedy; light on deep progression.", type: "P2P / Online" },
+			{ name: "Escape Simulator (Both Own)", appid: "1435790", price: "0 ₴ (Both Own)", pros: "First-person escape room puzzles; thousands of community workshop rooms.", cons: "Puzzle solving only; zero combat or survival base loops.", type: "P2P / Online" }
+		]
+	}
+];
+---
+
+<BaseLayout
+	title="Co-op Operations Dossier // Cossack & Gentleman"
+	description="Comprehensive 50-title co-op recommendations, game update audit, and balanced library comparison with Ukrainian pricing."
+>
+	<div class="coop-page">
+		<!-- HERO SECTION -->
+		<header class="coop-hero">
+			<div class="container">
+				<div class="badge-row">
+					<span class="pill pill-primary">Strategic Dossier</span>
+					<span class="pill">Cossack × Gentleman</span>
+					<span class="pill pill-accent">50-Game Catalog</span>
+					<span class="pill pill-currency">Steam UA (₴)</span>
+				</div>
+				<h1 class="hero-title">Co-op Gaming Operations</h1>
+				<p class="hero-subtitle">
+					Balanced across <strong>Gentleman's survival & simulation library</strong> (166 games) and <strong>Cossack's automation & tactical history</strong>. Every game is directly linked to Steam with verified Ukrainian pricing (₴).
+				</p>
+			</div>
+		</header>
+
+		<main class="container">
+			<!-- SYMMETRY PROFILE -->
+			<section class="section-block">
+				<div class="symmetry-box">
+					<div class="sym-col">
+						<h3>Cossack's Core Anchors</h3>
+						<ul class="sym-list">
+							<li><strong>Factorio (1,737h)</strong> & <strong>Eco (112h)</strong>: Deep industrial logistics, power grids & automation.</li>
+							<li><strong>Dota 2 (6.9k h)</strong> & <strong>Deadlock (325h)</strong>: Competitive high-stress team coordination.</li>
+							<li><strong>Path of Exile (180h)</strong> & <strong>Enshrouded (101h)</strong>: ARPG progression, loot tiers & voxel construction.</li>
+						</ul>
+					</div>
+					<div class="sym-divider">
+						<span class="vs-badge">×</span>
+					</div>
+					<div class="sym-col">
+						<h3>Gentleman's Core Anchors</h3>
+						<ul class="sym-list">
+							<li><strong>The Forest, Green Hell & ICARUS</strong>: Hardcore atmospheric survival, shelter building & environmental hazards.</li>
+							<li><strong>Frostpunk (Badge) & Wall World</strong>: Resource crisis management, wall mining & turret defense.</li>
+							<li><strong>Motor Town, BeamNG & NFS</strong>: Strong interest in physics driving, logistics & vehicle customization.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="sweetspot-banner">
+					<strong>🎯 The Joint Sweet Spot:</strong> High-agency co-op survival with base engineering, electrical/power grids, emergent vehicle physics, and tactical combat that supports multi-week check-ins.
+				</div>
+			</section>
+
+			<!-- WHAT'S NEW AUDIT -->
+			<section class="section-block">
+				<div class="section-header">
+					<h2>🔄 What's New Since We Last Played</h2>
+					<p>Major expansions and 1.0 launches in games you already own in your library (0 ₴ extra cost):</p>
+				</div>
+
+				<div class="revisit-grid">
+					{revisits.map((item) => (
+						<article class="revisit-card">
+							<div class="revisit-top">
+								<h3 class="revisit-title">
+									<a
+										href={`https://store.steampowered.com/app/${item.appid}/`}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="title-link"
+									>
+										{item.title} ↗
+									</a>
+								</h3>
+								<span class="revisit-status">{item.status}</span>
+							</div>
+							<span class="last-played-tag">Last active: {item.lastPlayed}</span>
+
+							<ul class="update-list">
+								{item.majorUpdates.map((up) => (
+									<li>{up}</li>
+								))}
+							</ul>
+
+							<div class="verdict-bar">
+								<strong>Verdict:</strong> {item.verdict}
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<!-- TOP 4 SLATE -->
+			<section class="section-block">
+				<div class="section-header">
+					<h2>⭐ Top 4 Fresh Recommendations</h2>
+					<p>Unplayed by both players, zero spoilers, budget-friendly in Hryvnias (₴), and engineered for weekend co-op:</p>
+				</div>
+
+				<div class="rec-grid">
+					{topRecs.map((game) => (
+						<article class="rec-card">
+							<div class="rec-top">
+								<span class="rec-rank">{game.rank}</span>
+								<span class="pill pill-accent">{game.tag}</span>
+								<span class="rec-price">{game.price}</span>
+							</div>
+
+							<h3 class="rec-title">
+								<a
+									href={game.steamUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="title-link"
+								>
+									{game.title} ↗
+								</a>
+							</h3>
+							<p class="rec-tagline">{game.tagline}</p>
+
+							<div class="rec-body">
+								<h4 class="subhead">Operational Highlights:</h4>
+								<ul class="feature-list">
+									{game.features.map((feat) => (
+										<li>{feat}</li>
+									))}
+								</ul>
+
+								<div class="why-box">
+									<strong>Why it fits our chemistry:</strong> {game.whyYou}
+								</div>
+							</div>
+
+							<div class="rec-footer">
+								<span class="rating-badge">★ {game.rating}</span>
+								<a
+									href={game.steamUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="btn-steam"
+								>
+									View on Steam ↗
+								</a>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<!-- 50 TITLES EXPANDED CATALOG -->
+			<section class="section-block">
+				<div class="section-header">
+					<h2>📚 Full 50-Game Co-op Master Catalog</h2>
+					<p>Every title directly links to Steam. Grouped by gameplay branch with verified Ukrainian pricing (₴) and server types:</p>
+				</div>
+
+				<div class="branch-container">
+					{catalogBranches.map((cat) => (
+						<div class="branch-card">
+							<h3 class="branch-heading">{cat.branch}</h3>
+							<div class="table-wrapper">
+								<table class="catalog-table">
+									<thead>
+										<tr>
+											<th style="width: 25%;">Game</th>
+											<th style="width: 14%;">Price (UA ₴)</th>
+											<th style="width: 31%;">Pros</th>
+											<th style="width: 30%;">Cons</th>
+										</tr>
+									</thead>
+									<tbody>
+										{cat.games.map((g) => (
+											<tr>
+												<td class="game-cell">
+													<a
+														href={`https://store.steampowered.com/app/${g.appid}/`}
+														target="_blank"
+														rel="noopener noreferrer"
+														class="steam-link"
+													>
+														{g.name} ↗
+													</a>
+													<span class="server-tag">{g.type}</span>
+												</td>
+												<td class="price-cell">{g.price}</td>
+												<td class="pro-cell">{g.pros}</td>
+												<td class="con-cell">{g.cons}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+		</main>
+	</div>
+</BaseLayout>
+
+<style lang="scss">
+	.coop-page {
+		padding-bottom: 6rem;
+		color: var(--color-200);
+	}
+
+	.container {
+		max-width: 1160px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	.title-link {
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: #70b4ff;
+			text-decoration: underline;
+		}
+	}
+
+	.steam-link {
+		display: inline-block;
+		color: #fff;
+		font-weight: 700;
+		font-size: 0.95rem;
+		margin-bottom: 0.25rem;
+		text-decoration: none;
+		transition: color 0.2s ease;
+
+		&:hover {
+			color: #70b4ff;
+			text-decoration: underline;
+		}
+	}
+
+	.coop-hero {
+		padding: 4.5rem 0 2.5rem;
+		text-align: center;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		margin-bottom: 3.5rem;
+		background: radial-gradient(circle at 50% 20%, rgba(100, 160, 255, 0.09), transparent 70%);
+
+		.badge-row {
+			display: flex;
+			gap: 0.6rem;
+			justify-content: center;
+			margin-bottom: 1.25rem;
+			flex-wrap: wrap;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			font-weight: 800;
+			letter-spacing: -0.02em;
+			color: #fff;
+			margin: 0 0 1rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1.2rem;
+			max-width: 760px;
+			margin: 0 auto;
+			line-height: 1.6;
+			color: var(--color-400);
+
+			strong {
+				color: #fff;
+			}
+		}
+	}
+
+	.pill {
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 0.35rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--color-300);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+
+		&-primary {
+			background: rgba(64, 150, 255, 0.15);
+			color: #70b4ff;
+			border-color: rgba(64, 150, 255, 0.35);
+		}
+
+		&-accent {
+			background: rgba(140, 90, 255, 0.15);
+			color: #b794f6;
+			border-color: rgba(140, 90, 255, 0.3);
+		}
+
+		&-currency {
+			background: rgba(255, 215, 0, 0.1);
+			color: #ffd700;
+			border-color: rgba(255, 215, 0, 0.3);
+		}
+	}
+
+	.section-block {
+		margin-bottom: 5rem;
+
+		.section-header {
+			margin-bottom: 2rem;
+
+			h2 {
+				font-size: 1.95rem;
+				font-weight: 700;
+				color: #fff;
+				margin: 0 0 0.5rem;
+			}
+
+			p {
+				font-size: 1.05rem;
+				color: var(--color-400);
+				margin: 0;
+			}
+		}
+	}
+
+	.symmetry-box {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		background: rgba(20, 22, 28, 0.7);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 14px;
+		padding: 2.2rem;
+		gap: 2rem;
+		align-items: center;
+
+		@media (max-width: 860px) {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.sym-col {
+			h3 {
+				font-size: 1.35rem;
+				color: #fff;
+				margin: 0 0 1rem;
+			}
+
+			.sym-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+
+				li {
+					font-size: 0.95rem;
+					line-height: 1.55;
+					margin-bottom: 0.75rem;
+					color: var(--color-300);
+
+					strong {
+						color: #70b4ff;
+					}
+				}
+			}
+		}
+
+		.sym-divider {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.vs-badge {
+				background: rgba(255, 255, 255, 0.08);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 50%;
+				width: 44px;
+				height: 44px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: #fff;
+			}
+		}
+	}
+
+	.sweetspot-banner {
+		margin-top: 1.25rem;
+		background: rgba(140, 90, 255, 0.08);
+		border: 1px solid rgba(140, 90, 255, 0.25);
+		border-radius: 10px;
+		padding: 1.1rem 1.4rem;
+		font-size: 1rem;
+		line-height: 1.5;
+		color: #e2d9fc;
+
+		strong {
+			color: #fff;
+		}
+	}
+
+	.revisit-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.8rem;
+
+		@media (max-width: 860px) {
+			grid-template-columns: 1fr;
+		}
+
+		.revisit-card {
+			background: rgba(20, 22, 28, 0.85);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 12px;
+			padding: 1.8rem;
+			display: flex;
+			flex-direction: column;
+
+			.revisit-top {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 0.35rem;
+
+				.revisit-title {
+					font-size: 1.5rem;
+					font-weight: 800;
+					margin: 0;
+				}
+
+				.revisit-status {
+					font-size: 0.75rem;
+					font-weight: 700;
+					background: rgba(100, 200, 120, 0.15);
+					color: #7ce89f;
+					padding: 0.25rem 0.6rem;
+					border-radius: 4px;
+				}
+			}
+
+			.last-played-tag {
+				font-size: 0.82rem;
+				color: var(--color-500);
+				margin-bottom: 1.1rem;
+			}
+
+			.update-list {
+				flex: 1;
+				margin: 0 0 1.25rem;
+				padding-left: 1.25rem;
+
+				li {
+					font-size: 0.9rem;
+					line-height: 1.5;
+					margin-bottom: 0.5rem;
+					color: var(--color-300);
+				}
+			}
+
+			.verdict-bar {
+				background: rgba(255, 255, 255, 0.03);
+				border-left: 3px solid #70b4ff;
+				padding: 0.75rem 1rem;
+				border-radius: 0 6px 6px 0;
+				font-size: 0.88rem;
+				color: #d0e2ff;
+
+				strong {
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	.rec-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.8rem;
+
+		@media (max-width: 860px) {
+			grid-template-columns: 1fr;
+		}
+
+		.rec-card {
+			background: rgba(20, 22, 28, 0.85);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 14px;
+			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+
+			.rec-top {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 1rem;
+
+				.rec-rank {
+					font-size: 1.3rem;
+					font-weight: 800;
+					color: var(--color-500);
+					font-family: monospace;
+				}
+
+				.rec-price {
+					font-weight: 700;
+					font-size: 1.1rem;
+					color: #7ce89f;
+				}
+			}
+
+			.rec-title {
+				font-size: 1.65rem;
+				font-weight: 800;
+				margin: 0 0 0.4rem;
+			}
+
+			.rec-tagline {
+				font-size: 0.95rem;
+				color: var(--color-400);
+				margin: 0 0 1.5rem;
+				line-height: 1.45;
+			}
+
+			.rec-body {
+				flex: 1;
+
+				.subhead {
+					font-size: 0.8rem;
+					text-transform: uppercase;
+					letter-spacing: 0.06em;
+					color: var(--color-500);
+					margin: 0 0 0.75rem;
+				}
+
+				.feature-list {
+					margin: 0 0 1.5rem;
+					padding-left: 1.25rem;
+
+					li {
+						font-size: 0.9rem;
+						line-height: 1.5;
+						margin-bottom: 0.4rem;
+						color: var(--color-300);
+					}
+				}
+
+				.why-box {
+					background: rgba(64, 150, 255, 0.06);
+					border-left: 3px solid #70b4ff;
+					padding: 0.85rem 1rem;
+					border-radius: 0 8px 8px 0;
+					font-size: 0.88rem;
+					line-height: 1.45;
+					color: #d8e6ff;
+					margin-bottom: 1.5rem;
+
+					strong {
+						color: #fff;
+					}
+				}
+			}
+
+			.rec-footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-top: 1.2rem;
+				border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+				.rating-badge {
+					font-size: 0.85rem;
+					color: #9cb8dd;
+				}
+
+				.btn-steam {
+					display: inline-flex;
+					align-items: center;
+					background: #2a475e;
+					color: #fff;
+					font-weight: 600;
+					font-size: 0.85rem;
+					padding: 0.5rem 1rem;
+					border-radius: 6px;
+					text-decoration: none;
+					transition: background 0.2s ease;
+
+					&:hover {
+						background: #3a6282;
+					}
+				}
+			}
+		}
+	}
+
+	.branch-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+
+		.branch-card {
+			background: rgba(20, 22, 28, 0.6);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: 12px;
+			overflow: hidden;
+
+			.branch-heading {
+				background: rgba(255, 255, 255, 0.03);
+				padding: 1.1rem 1.4rem;
+				margin: 0;
+				font-size: 1.25rem;
+				color: #fff;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+			}
+		}
+	}
+
+	.table-wrapper {
+		overflow-x: auto;
+	}
+
+	.catalog-table {
+		width: 100%;
+		border-collapse: collapse;
+		text-align: left;
+		font-size: 0.88rem;
+
+		th {
+			padding: 0.85rem 1.1rem;
+			background: rgba(255, 255, 255, 0.02);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--color-500);
+		}
+
+		td {
+			padding: 0.85rem 1.1rem;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+			vertical-align: top;
+		}
+
+		tr:last-child td {
+			border-bottom: none;
+		}
+
+		.game-cell {
+			.server-tag {
+				display: block;
+				width: fit-content;
+				font-size: 0.72rem;
+				color: #70b4ff;
+				background: rgba(64, 150, 255, 0.08);
+				padding: 0.15rem 0.45rem;
+				border-radius: 3px;
+				margin-top: 0.2rem;
+			}
+		}
+
+		.price-cell {
+			font-weight: 700;
+			color: #7ce89f;
+			font-size: 0.9rem;
+			white-space: nowrap;
+		}
+
+		.pro-cell {
+			color: #cadbee;
+			line-height: 1.45;
+		}
+
+		.con-cell {
+			color: var(--color-400);
+			line-height: 1.45;
+		}
+	}
+</style>
