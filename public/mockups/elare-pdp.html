@@ -875,18 +875,24 @@
                 <span><b>Buy 2, Get 1 Free</b> • Applied automatically at checkout</span>
             </div>
 
-            <!-- Background Style Selector (Normal vs Dark) -->
+            <!-- Background Style Selector (4 Options) -->
             <div class="option-group">
                 <div class="option-header">
-                    <span>Background: <b id="selectedBgLabel">Normal (Floor Reflection)</b></span>
+                    <span>Background: <b id="selectedBgLabel">Default (Floor Reflection)</b></span>
                     <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
                 </div>
-                <div class="metal-pills">
-                    <button class="bg-style-btn active" data-product="Ring-Cracked17">
-                        <span>Normal (Floor Reflection)</span>
+                <div class="metal-pills" style="grid-template-columns: repeat(2, 1fr); gap: 6px;">
+                    <button class="bg-style-btn active" data-product="Ring-Cracked17-default">
+                        <span>Default (Floor)</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-dark">
-                        <span>Dark (Clean Cutout)</span>
+                        <span>Dark (Cutout)</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-dark-refl">
+                        <span>Dark + Refl</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-white">
+                        <span>White Studio</span>
                     </button>
                 </div>
             </div>
@@ -983,7 +989,7 @@
     <!-- Embedded Turntable Script Engine -->
     <script>
         // Resolve asset base path to guarantee local and online reliability
-        let currentProductId = "Ring-Cracked17";
+        let currentProductId = "Ring-Cracked17-default";
         function resolveProductBaseUrl(productId) {
             if (window.location.protocol === "file:") {
                 if (window.location.pathname.includes("elare_turntable_handoff")) {
@@ -1263,9 +1269,17 @@
             drawFrame();
         });
 
-        // Background Style Switcher (Normal vs Dark)
+        // Background Style Switcher (4 Variations)
+        const BG_NAMES = {
+            'Ring-Cracked17-default': 'Default (Floor Reflection)',
+            'Ring-Cracked17': 'Default (Floor Reflection)',
+            'Ring-Cracked17-dark': 'Dark (Clean Cutout)',
+            'Ring-Cracked17-dark-refl': 'Dark + Refl (Contact Floor)',
+            'Ring-Cracked17-white': 'White Studio'
+        };
         const bgBtns = document.querySelectorAll(".bg-style-btn");
         const selectedBgLabel = document.getElementById("selectedBgLabel");
+        const stageContainer = document.getElementById("turntableStage");
         bgBtns.forEach(btn => {
             btn.addEventListener("click", () => {
                 const prod = btn.dataset.product;
@@ -1275,9 +1289,10 @@
                 currentProductId = prod;
                 BASE_ASSET_URL = resolveProductBaseUrl(currentProductId);
                 if (selectedBgLabel) {
-                    selectedBgLabel.textContent = currentProductId.includes("dark")
-                        ? "Dark (Clean Cutout)"
-                        : "Normal (Floor Reflection)";
+                    selectedBgLabel.textContent = BG_NAMES[currentProductId] || currentProductId;
+                }
+                if (stageContainer) {
+                    stageContainer.style.background = currentProductId.includes("white") ? "#ffffff" : "#000000";
                 }
                 loadCurrentSequence();
                 updateEditorialGallery();

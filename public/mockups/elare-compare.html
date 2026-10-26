@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CRUSHED Ring • Normal vs Dark Turntable Comparison • Elaré</title>
+    <title>CRUSHED Ring • 4-Variation Turntable Comparison • Elaré</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
             --ink: #ffffff;
             --mute: #8e8e8e;
             --border: #222222;
-            --card-bg: #050505;
+            --card-bg: #080808;
             --btn-bg: #000000;
             --btn-border: #444444;
             --gold: #dfb15b;
@@ -196,7 +196,7 @@
         .compare-toolbar-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -254,7 +254,43 @@
             border-radius: 3px;
         }
 
-        /* 2-Column Product Grid (Matches elare.co 2-col layout) */
+        /* Quick Presets Bar */
+        .presets-row {
+            background: #080808;
+            border-bottom: 1px solid #181818;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .presets-label {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-right: 4px;
+        }
+
+        .btn-preset {
+            background: #141414;
+            border: 1px solid #282828;
+            color: #bbb;
+            padding: 3px 9px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-preset:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        /* 2-Column Product Comparison Grid */
         .catalog-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -277,35 +313,93 @@
         /* Product Card */
         .product-card {
             background: var(--card-bg);
-            border: 1px solid #1a1a1a;
-            border-radius: 6px;
+            border: 1px solid #1c1c1c;
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        .card-badge {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            z-index: 20;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 3px 7px;
-            border-radius: 3px;
-            pointer-events: none;
+        /* Card Variation Header Controls */
+        .card-view-header {
+            padding: 10px 12px;
+            background: #0d0d0d;
+            border-bottom: 1px solid #181818;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .badge-dark {
-            border-color: rgba(223, 177, 91, 0.4);
-            color: #f0f0f0;
+        .view-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .view-indicator {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .variation-select {
+            background: #161616;
+            color: #ffffff;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            outline: none;
+            flex-grow: 1;
+            max-width: 220px;
+        }
+
+        .variation-select:focus {
+            border-color: #ffffff;
+        }
+
+        /* Variation Pills */
+        .variation-pills {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .variation-pills::-webkit-scrollbar {
+            display: none;
+        }
+
+        .btn-var-pill {
+            background: #141414;
+            border: 1px solid #282828;
+            color: #888;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 3px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .btn-var-pill:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .btn-var-pill.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            font-weight: 700;
         }
 
         /* Turntable Canvas Stage */
@@ -317,6 +411,7 @@
             cursor: grab;
             user-select: none;
             touch-action: none;
+            transition: background 0.2s ease;
         }
 
         .canvas-stage:active {
@@ -592,7 +687,7 @@
         <div class="compare-toolbar-left">
             <label class="sync-label">
                 <input type="checkbox" id="syncRotation" checked>
-                <span>Synchronized 360° Rotation</span>
+                <span>Synchronized 360° Scrubbing</span>
             </label>
             <button class="btn-toolbar" id="btnAutoplayBoth">▶ Autoplay</button>
             <button class="btn-toolbar" id="btnResetBoth">↺ Front (0°)</button>
@@ -604,36 +699,61 @@
         </div>
     </div>
 
+    <!-- Quick Presets -->
+    <div class="presets-row">
+        <span class="presets-label">Compare Presets:</span>
+        <button class="btn-preset" data-left="Ring-Cracked17-default" data-right="Ring-Cracked17-dark">Default vs Dark</button>
+        <button class="btn-preset" data-left="Ring-Cracked17-dark" data-right="Ring-Cracked17-dark-refl">Dark vs Dark+Refl</button>
+        <button class="btn-preset" data-left="Ring-Cracked17-dark" data-right="Ring-Cracked17-white">Dark vs White</button>
+        <button class="btn-preset" data-left="Ring-Cracked17-default" data-right="Ring-Cracked17-white">Default vs White</button>
+    </div>
+
     <!-- 2-Column Product Comparison Grid -->
     <main class="catalog-container">
         <div class="products-grid">
 
-            <!-- Card 1: Normal Version (With Floor Reflection) -->
-            <article class="product-card" id="cardNormal">
-                <div class="card-badge">Normal • Floor Reflection</div>
+            <!-- Card 1: Left View -->
+            <article class="product-card" id="cardView1">
+                <div class="card-view-header">
+                    <div class="view-header-top">
+                        <span class="view-indicator">View 1:</span>
+                        <select class="variation-select" id="selectView1" data-view="view1">
+                            <option value="Ring-Cracked17-default" selected>Default (Floor Reflection)</option>
+                            <option value="Ring-Cracked17-dark">Dark (Clean Cutout)</option>
+                            <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
+                            <option value="Ring-Cracked17-white">White Studio</option>
+                        </select>
+                    </div>
+                    <div class="variation-pills" data-view="view1">
+                        <button class="btn-var-pill active" data-prod="Ring-Cracked17-default">Default</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-dark">Dark</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White</button>
+                    </div>
+                </div>
 
-                <div class="canvas-stage" id="stageNormal">
-                    <canvas class="turntable-canvas" id="canvasNormal" width="800" height="800"></canvas>
-                    <div class="stage-loader" id="loaderNormal">
+                <div class="canvas-stage" id="stageView1">
+                    <canvas class="turntable-canvas" id="canvasView1" width="800" height="800"></canvas>
+                    <div class="stage-loader" id="loaderView1">
                         <div class="spinner"></div>
-                        <span>Loading Normal...</span>
+                        <span>Loading View 1...</span>
                     </div>
                     <div class="drag-indicator">360° Drag</div>
                 </div>
 
                 <div class="product-meta">
                     <div class="product-title-row">
-                        <h2 class="product-title" id="titleNormal">CRUSHED Ring | Silver</h2>
+                        <h2 class="product-title" id="titleView1">CRUSHED Ring | Silver</h2>
                         <span class="product-price">$38</span>
                     </div>
                     <div class="product-offer">BUY 2, GET 1 FREE</div>
 
                     <div class="swatch-group">
-                        <button class="swatch-btn active" data-product="normal" data-variant="Silver">
+                        <button class="swatch-btn active" data-view="view1" data-variant="Silver">
                             <span class="swatch-dot swatch-silver"></span>
                             <span>Silver</span>
                         </button>
-                        <button class="swatch-btn" data-product="normal" data-variant="Gold">
+                        <button class="swatch-btn" data-view="view1" data-variant="Gold">
                             <span class="swatch-dot swatch-gold"></span>
                             <span>Gold</span>
                         </button>
@@ -643,32 +763,48 @@
                 </div>
             </article>
 
-            <!-- Card 2: Dark Version (Clean Alpha Cutout / Solid Black) -->
-            <article class="product-card" id="cardDark">
-                <div class="card-badge badge-dark">Dark • Clean Cutout</div>
+            <!-- Card 2: Right View -->
+            <article class="product-card" id="cardView2">
+                <div class="card-view-header">
+                    <div class="view-header-top">
+                        <span class="view-indicator">View 2:</span>
+                        <select class="variation-select" id="selectView2" data-view="view2">
+                            <option value="Ring-Cracked17-default">Default (Floor Reflection)</option>
+                            <option value="Ring-Cracked17-dark" selected>Dark (Clean Cutout)</option>
+                            <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
+                            <option value="Ring-Cracked17-white">White Studio</option>
+                        </select>
+                    </div>
+                    <div class="variation-pills" data-view="view2">
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-default">Default</button>
+                        <button class="btn-var-pill active" data-prod="Ring-Cracked17-dark">Dark</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White</button>
+                    </div>
+                </div>
 
-                <div class="canvas-stage" id="stageDark">
-                    <canvas class="turntable-canvas" id="canvasDark" width="800" height="800"></canvas>
-                    <div class="stage-loader" id="loaderDark">
+                <div class="canvas-stage" id="stageView2">
+                    <canvas class="turntable-canvas" id="canvasView2" width="800" height="800"></canvas>
+                    <div class="stage-loader" id="loaderView2">
                         <div class="spinner"></div>
-                        <span>Loading Dark...</span>
+                        <span>Loading View 2...</span>
                     </div>
                     <div class="drag-indicator">360° Drag</div>
                 </div>
 
                 <div class="product-meta">
                     <div class="product-title-row">
-                        <h2 class="product-title" id="titleDark">CRUSHED Ring | Silver</h2>
+                        <h2 class="product-title" id="titleView2">CRUSHED Ring | Silver</h2>
                         <span class="product-price">$38</span>
                     </div>
                     <div class="product-offer">BUY 2, GET 1 FREE</div>
 
                     <div class="swatch-group">
-                        <button class="swatch-btn active" data-product="dark" data-variant="Silver">
+                        <button class="swatch-btn active" data-view="view2" data-variant="Silver">
                             <span class="swatch-dot swatch-silver"></span>
                             <span>Silver</span>
                         </button>
-                        <button class="swatch-btn" data-product="dark" data-variant="Gold">
+                        <button class="swatch-btn" data-view="view2" data-variant="Gold">
                             <span class="swatch-dot swatch-gold"></span>
                             <span>Gold</span>
                         </button>
@@ -684,15 +820,21 @@
     <!-- Side-by-Side Review Details -->
     <section class="notes-section">
         <div class="notes-box">
-            <h4>Side-by-Side Turntable Evaluation</h4>
+            <h4>Side-by-Side Turntable Evaluation • 4 Variations</h4>
             <p>
-                <strong>Normal Version (Left):</strong> Features the studio floor ground reflection and contact shadow, grounding the ring in the physical studio environment.
+                <strong>Default:</strong> Grounded studio floor environment with soft reflection and contact shadow.
             </p>
             <p>
-                <strong>Dark Version (Right):</strong> Features an alpha-transparent clean cutout directly against pure black (<code>#000000</code>), isolating the precious metals for maximum contrast on dark mode e-commerce layouts.
+                <strong>Dark:</strong> Isolated alpha cutout on solid black (<code>#000000</code>), clean brutalist contrast.
             </p>
             <p>
-                <span class="pill-tag">Synchronized</span> Drag either viewer horizontally to rotate both simultaneously at the exact same 5° rotational increment.
+                <strong>Dark + Refl:</strong> Deep dark background with subtle floor contact shadow and reflection.
+            </p>
+            <p>
+                <strong>White:</strong> High-key clean white studio background with soft contact shadow.
+            </p>
+            <p>
+                <span class="pill-tag">Synchronized</span> Drag either viewer horizontally to scrub both models in synchronized 360° motion.
             </p>
         </div>
     </section>
@@ -709,13 +851,20 @@
             return `/assets/projects/elare/${productId}/`;
         }
 
+        const VARIATION_CONFIG = {
+            'Ring-Cracked17-default': { name: 'Default', bg: '#000000', label: 'CRUSHED Ring (Default)' },
+            'Ring-Cracked17-dark': { name: 'Dark', bg: '#000000', label: 'CRUSHED Ring (Dark)' },
+            'Ring-Cracked17-dark-refl': { name: 'Dark + Refl', bg: '#000000', label: 'CRUSHED Ring (Dark+Refl)' },
+            'Ring-Cracked17-white': { name: 'White', bg: '#ffffff', label: 'CRUSHED Ring (White)' },
+            // Backward compatibility alias
+            'Ring-Cracked17': { name: 'Default', bg: '#000000', label: 'CRUSHED Ring (Default)' }
+        };
+
         const CONFIG = {
-            normalId: 'Ring-Cracked17',
-            darkId: 'Ring-Cracked17-dark',
             frameCount: 72,
             dragSensitivity: 9, // 30% faster rotation response
             autoplayIntervalMs: 30, // 30% faster autoplay playback
-            grainAmount: 0.07 // 7% locked-in micro-grain
+            grainAmount: 0.07 // 7% micro-grain
         };
 
         const state = {
@@ -723,26 +872,30 @@
             sync: true,
             isAutoplaying: false,
             autoplayTimer: null,
-            normal: {
+            view1: {
+                productId: 'Ring-Cracked17-default',
                 variant: 'Silver',
                 angleIndex: 0,
-                basePath: getProductBasePath(CONFIG.normalId),
-                canvas: document.getElementById('canvasNormal'),
-                ctx: document.getElementById('canvasNormal').getContext('2d'),
-                loader: document.getElementById('loaderNormal'),
-                stage: document.getElementById('stageNormal'),
-                title: document.getElementById('titleNormal'),
+                basePath: getProductBasePath('Ring-Cracked17-default'),
+                canvas: document.getElementById('canvasView1'),
+                ctx: document.getElementById('canvasView1').getContext('2d'),
+                loader: document.getElementById('loaderView1'),
+                stage: document.getElementById('stageView1'),
+                title: document.getElementById('titleView1'),
+                select: document.getElementById('selectView1'),
                 cache: {}
             },
-            dark: {
+            view2: {
+                productId: 'Ring-Cracked17-dark',
                 variant: 'Silver',
                 angleIndex: 0,
-                basePath: getProductBasePath(CONFIG.darkId),
-                canvas: document.getElementById('canvasDark'),
-                ctx: document.getElementById('canvasDark').getContext('2d'),
-                loader: document.getElementById('loaderDark'),
-                stage: document.getElementById('stageDark'),
-                title: document.getElementById('titleDark'),
+                basePath: getProductBasePath('Ring-Cracked17-dark'),
+                canvas: document.getElementById('canvasView2'),
+                ctx: document.getElementById('canvasView2').getContext('2d'),
+                loader: document.getElementById('loaderView2'),
+                stage: document.getElementById('stageView2'),
+                title: document.getElementById('titleView2'),
+                select: document.getElementById('selectView2'),
                 cache: {}
             }
         };
@@ -785,44 +938,44 @@
             return pat;
         }
 
-        function getFrameUrl(productKey, variant, index) {
-            const prod = state[productKey];
+        function getFrameUrl(viewKey, variant, index) {
+            const v = state[viewKey];
             const pad = String(index).padStart(2, '0');
-            const cleanBase = prod.basePath.endsWith('/') ? prod.basePath : `${prod.basePath}/`;
+            const cleanBase = v.basePath.endsWith('/') ? v.basePath : `${v.basePath}/`;
             return `${cleanBase}${variant}/frame_${pad}.webp`;
         }
 
-        function loadImage(productKey, variant, index) {
-            const url = getFrameUrl(productKey, variant, index);
-            const prod = state[productKey];
-            if (prod.cache[url]) return Promise.resolve(prod.cache[url]);
+        function loadImage(viewKey, variant, index) {
+            const url = getFrameUrl(viewKey, variant, index);
+            const v = state[viewKey];
+            if (v.cache[url]) return Promise.resolve(v.cache[url]);
 
             return new Promise((resolve) => {
                 const img = new Image();
                 img.src = url;
                 img.onload = () => {
-                    prod.cache[url] = img;
+                    v.cache[url] = img;
                     resolve(img);
                 };
                 img.onerror = () => resolve(img);
             });
         }
 
-        function drawProductFrame(productKey) {
-            const prod = state[productKey];
-            const canvas = prod.canvas;
-            const ctx = prod.ctx;
-            const url = getFrameUrl(productKey, prod.variant, prod.angleIndex);
-            const img = prod.cache[url];
+        function drawViewFrame(viewKey) {
+            const v = state[viewKey];
+            const canvas = v.canvas;
+            const ctx = v.ctx;
+            const url = getFrameUrl(viewKey, v.variant, v.angleIndex);
+            const img = v.cache[url];
 
             if (img && img.complete && img.naturalWidth > 0) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.globalCompositeOperation = "source-over";
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-                // Grain overlay masked with destination-in so transparent backgrounds remain 100% clean
+                // Grain overlay with destination-in masking so alpha remains clean
                 if (CONFIG.grainAmount > 0) {
-                    const pat = getNoisePattern(ctx, prod.angleIndex, CONFIG.grainAmount);
+                    const pat = getNoisePattern(ctx, v.angleIndex, CONFIG.grainAmount);
                     if (pat) {
                         ctx.save();
                         ctx.globalCompositeOperation = "overlay";
@@ -833,8 +986,8 @@
                         ctx.restore();
                     }
                 }
-                prod.loader.style.opacity = "0";
-                setTimeout(() => { if (prod.loader.style.opacity === "0") prod.loader.style.display = "none"; }, 300);
+                v.loader.style.opacity = "0";
+                setTimeout(() => { if (v.loader.style.opacity === "0") v.loader.style.display = "none"; }, 300);
             }
         }
 
@@ -844,41 +997,45 @@
             document.getElementById('angleDisplay').textContent = `${deg}° (Frame ${pad}/${CONFIG.frameCount})`;
         }
 
-        function preloadProductSequence(productKey) {
-            const prod = state[productKey];
-            prod.loader.style.display = "flex";
-            prod.loader.style.opacity = "1";
+        function preloadViewSequence(viewKey) {
+            const v = state[viewKey];
+            v.loader.style.display = "flex";
+            v.loader.style.opacity = "1";
 
-            // Load first frame immediately
-            loadImage(productKey, prod.variant, prod.angleIndex).then(() => {
-                drawProductFrame(productKey);
+            // Update stage background color based on variation (e.g. White uses #ffffff)
+            const conf = VARIATION_CONFIG[v.productId] || { bg: '#000000' };
+            v.stage.style.background = conf.bg;
+
+            // Load current frame immediately
+            loadImage(viewKey, v.variant, v.angleIndex).then(() => {
+                drawViewFrame(viewKey);
             });
 
             // Preload remaining frames in background
             for (let i = 0; i < CONFIG.frameCount; i++) {
-                loadImage(productKey, prod.variant, i);
+                loadImage(viewKey, v.variant, i);
             }
         }
 
-        function setAngle(newAngle, originatingProductKey = null) {
+        function setAngle(newAngle, originatingViewKey = null) {
             const total = CONFIG.frameCount;
             state.angleIndex = ((newAngle % total) + total) % total;
 
-            if (state.sync || originatingProductKey === null) {
-                state.normal.angleIndex = state.angleIndex;
-                state.dark.angleIndex = state.angleIndex;
-                drawProductFrame('normal');
-                drawProductFrame('dark');
+            if (state.sync || originatingViewKey === null) {
+                state.view1.angleIndex = state.angleIndex;
+                state.view2.angleIndex = state.angleIndex;
+                drawViewFrame('view1');
+                drawViewFrame('view2');
             } else {
-                state[originatingProductKey].angleIndex = state.angleIndex;
-                drawProductFrame(originatingProductKey);
+                state[originatingViewKey].angleIndex = state.angleIndex;
+                drawViewFrame(originatingViewKey);
             }
             updateAngleReadout();
         }
 
-        // Attach Drag Events to a stage
-        function attachTurntableControls(productKey) {
-            const stage = state[productKey].stage;
+        // Attach Drag Events
+        function attachTurntableControls(viewKey) {
+            const stage = state[viewKey].stage;
             let isDragging = false;
             let startX = 0;
 
@@ -893,8 +1050,8 @@
                 const dx = clientX - startX;
                 if (Math.abs(dx) >= CONFIG.dragSensitivity) {
                     const steps = Math.floor(dx / CONFIG.dragSensitivity);
-                    const currentAngle = state.sync ? state.angleIndex : state[productKey].angleIndex;
-                    setAngle(currentAngle + steps, productKey);
+                    const currentAngle = state.sync ? state.angleIndex : state[viewKey].angleIndex;
+                    setAngle(currentAngle + steps, viewKey);
                     startX = clientX;
                 }
             }
@@ -943,37 +1100,85 @@
             else startAutoplay();
         }
 
-        // Variant Switching
-        function setVariant(productKey, variant) {
-            state[productKey].variant = variant;
-            state[productKey].title.textContent = `CRUSHED Ring | ${variant}`;
+        // Variant Switching (Silver / Gold)
+        function setMetalVariant(viewKey, variant) {
+            const v = state[viewKey];
+            v.variant = variant;
+            updateTitle(viewKey);
 
-            // Update button styles in that card
-            document.querySelectorAll(`.swatch-btn[data-product="${productKey}"]`).forEach(btn => {
+            document.querySelectorAll(`.swatch-btn[data-view="${viewKey}"]`).forEach(btn => {
                 if (btn.dataset.variant === variant) btn.classList.add('active');
                 else btn.classList.remove('active');
             });
 
-            preloadProductSequence(productKey);
+            preloadViewSequence(viewKey);
+        }
+
+        // Variation Switching (Default / Dark / Dark+Refl / White)
+        function setProductVariation(viewKey, productId) {
+            const v = state[viewKey];
+            v.productId = productId;
+            v.basePath = getProductBasePath(productId);
+            v.select.value = productId;
+
+            // Sync pills
+            document.querySelectorAll(`.variation-pills[data-view="${viewKey}"] .btn-var-pill`).forEach(pill => {
+                if (pill.dataset.prod === productId) pill.classList.add('active');
+                else pill.classList.remove('active');
+            });
+
+            updateTitle(viewKey);
+            preloadViewSequence(viewKey);
+        }
+
+        function updateTitle(viewKey) {
+            const v = state[viewKey];
+            const conf = VARIATION_CONFIG[v.productId] || { name: 'Custom' };
+            v.title.textContent = `CRUSHED Ring (${conf.name}) | ${v.variant}`;
         }
 
         // Setup Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
-            attachTurntableControls('normal');
-            attachTurntableControls('dark');
+            attachTurntableControls('view1');
+            attachTurntableControls('view2');
 
-            preloadProductSequence('normal');
-            preloadProductSequence('dark');
+            preloadViewSequence('view1');
+            preloadViewSequence('view2');
+
+            // Dropdown Selectors
+            document.querySelectorAll('.variation-select').forEach(sel => {
+                sel.addEventListener('change', (e) => {
+                    const viewKey = e.target.dataset.view;
+                    setProductVariation(viewKey, e.target.value);
+                });
+            });
+
+            // Variation Pills
+            document.querySelectorAll('.btn-var-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    const parent = pill.closest('.variation-pills');
+                    const viewKey = parent.dataset.view;
+                    setProductVariation(viewKey, pill.dataset.prod);
+                });
+            });
+
+            // Preset Buttons
+            document.querySelectorAll('.btn-preset').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setProductVariation('view1', btn.dataset.left);
+                    setProductVariation('view2', btn.dataset.right);
+                });
+            });
 
             // Sync toggle
             const syncCheckbox = document.getElementById('syncRotation');
             syncCheckbox.addEventListener('change', (e) => {
                 state.sync = e.target.checked;
                 if (state.sync) {
-                    state.normal.angleIndex = state.angleIndex;
-                    state.dark.angleIndex = state.angleIndex;
-                    drawProductFrame('normal');
-                    drawProductFrame('dark');
+                    state.view1.angleIndex = state.angleIndex;
+                    state.view2.angleIndex = state.angleIndex;
+                    drawViewFrame('view1');
+                    drawViewFrame('view2');
                 }
             });
 
@@ -985,27 +1190,27 @@
             });
 
             document.getElementById('btnBothSilver').addEventListener('click', () => {
-                setVariant('normal', 'Silver');
-                setVariant('dark', 'Silver');
+                setMetalVariant('view1', 'Silver');
+                setMetalVariant('view2', 'Silver');
             });
 
             document.getElementById('btnBothGold').addEventListener('click', () => {
-                setVariant('normal', 'Gold');
-                setVariant('dark', 'Gold');
+                setMetalVariant('view1', 'Gold');
+                setMetalVariant('view2', 'Gold');
             });
 
             // Individual Card Swatch Buttons
             document.querySelectorAll('.swatch-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const prodKey = btn.dataset.product;
+                    const viewKey = btn.dataset.view;
                     const variant = btn.dataset.variant;
-                    setVariant(prodKey, variant);
+                    setMetalVariant(viewKey, variant);
                 });
             });
 
             // Keyboard Spacebar to toggle autoplay
             window.addEventListener('keydown', (e) => {
-                if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
                     e.preventDefault();
                     toggleAutoplay();
                 }

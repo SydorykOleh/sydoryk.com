@@ -1,24 +1,10 @@
 {
   "version": "1.0",
-  "updatedAt": 1793046568.5543444,
+  "updatedAt": 1793048656.8834765,
   "categories": [
     "Ring"
   ],
   "products": [
-    {
-      "id": "Ring-Cracked17",
-      "category": "Ring",
-      "name": "Cracked17",
-      "displayName": "Crushed Ring (Normal)",
-      "variants": [
-        "Silver",
-        "Gold"
-      ],
-      "defaultVariant": "Silver",
-      "frameCount": 72,
-      "basePath": "/assets/projects/elare/Ring-Cracked17/",
-      "thumbnail": "/assets/projects/elare/Ring-Cracked17/thumbnail.webp"
-    },
     {
       "id": "Ring-Cracked17-dark",
       "category": "Ring",
@@ -32,6 +18,48 @@
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Cracked17-dark/",
       "thumbnail": "/assets/projects/elare/Ring-Cracked17-dark/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Cracked17-dark-refl",
+      "category": "Ring",
+      "name": "Cracked17-dark-refl",
+      "displayName": "Crushed Ring (Dark + Refl)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 72,
+      "basePath": "/assets/projects/elare/Ring-Cracked17-dark-refl/",
+      "thumbnail": "/assets/projects/elare/Ring-Cracked17-dark-refl/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Cracked17-default",
+      "category": "Ring",
+      "name": "Cracked17-default",
+      "displayName": "Crushed Ring (Default)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 72,
+      "basePath": "/assets/projects/elare/Ring-Cracked17-default/",
+      "thumbnail": "/assets/projects/elare/Ring-Cracked17-default/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Cracked17-white",
+      "category": "Ring",
+      "name": "Cracked17-white",
+      "displayName": "Crushed Ring (White)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 72,
+      "basePath": "/assets/projects/elare/Ring-Cracked17-white/",
+      "thumbnail": "/assets/projects/elare/Ring-Cracked17-white/thumbnail.webp"
     }
   ]
 }
