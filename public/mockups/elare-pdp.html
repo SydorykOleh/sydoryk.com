@@ -849,6 +849,22 @@
                 <span><b>Buy 2, Get 1 Free</b> • Applied automatically at checkout</span>
             </div>
 
+            <!-- Background Style Selector (Normal vs Dark) -->
+            <div class="option-group">
+                <div class="option-header">
+                    <span>Background: <b id="selectedBgLabel">Normal (Floor Reflection)</b></span>
+                    <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
+                </div>
+                <div class="metal-pills">
+                    <button class="metal-btn active bg-style-btn" data-product="Ring-Cracked17">
+                        <span>Normal (Floor Reflection)</span>
+                    </button>
+                    <button class="metal-btn bg-style-btn" data-product="Ring-Cracked17-dark">
+                        <span>Dark (Clean Cutout)</span>
+                    </button>
+                </div>
+            </div>
+
             <!-- Precious Metal Finish Selector -->
             <div class="option-group">
                 <div class="option-header">
@@ -941,16 +957,20 @@
     <!-- Embedded Turntable Script Engine -->
     <script>
         // Resolve asset base path to guarantee local and online reliability
-        let BASE_ASSET_URL = "/assets/projects/elare/Ring-Cracked17/";
-        if (window.location.protocol === "file:") {
-            if (window.location.pathname.includes("elare_turntable_handoff")) {
-                BASE_ASSET_URL = "./assets/Ring-Cracked17/";
-            } else if (window.location.pathname.includes("sydoryk.com")) {
-                BASE_ASSET_URL = "../assets/projects/elare/Ring-Cracked17/";
-            } else {
-                BASE_ASSET_URL = "https://sydoryk.com/assets/projects/elare/Ring-Cracked17/";
+        let currentProductId = "Ring-Cracked17";
+        function resolveProductBaseUrl(productId) {
+            if (window.location.protocol === "file:") {
+                if (window.location.pathname.includes("elare_turntable_handoff")) {
+                    return `./assets/${productId}/`;
+                } else if (window.location.pathname.includes("sydoryk.com")) {
+                    return `../assets/projects/elare/${productId}/`;
+                } else {
+                    return `https://sydoryk.com/assets/projects/elare/${productId}/`;
+                }
             }
+            return `/assets/projects/elare/${productId}/`;
         }
+        let BASE_ASSET_URL = resolveProductBaseUrl(currentProductId);
 
         // Cache buster guarantees ALL 72 new 800px frames reload fresh in the browser
         const CACHE_KEY = Date.now();
@@ -1075,6 +1095,8 @@
                         ctx.globalCompositeOperation = "overlay";
                         ctx.fillStyle = pat;
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.globalCompositeOperation = "destination-in";
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                         ctx.restore();
                     }
                 }
@@ -1213,6 +1235,23 @@
             stopAutoplay();
             state.angleIndex = 0;
             drawFrame();
+        });
+
+        // Background Style Switcher (Normal vs Dark)
+        const bgBtns = document.querySelectorAll(".bg-style-btn");
+        const selectedBgLabel = document.getElementById("selectedBgLabel");
+        bgBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                bgBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentProductId = btn.dataset.product;
+                BASE_ASSET_URL = resolveProductBaseUrl(currentProductId);
+                selectedBgLabel.textContent = currentProductId.includes("dark")
+                    ? "Dark (Clean Cutout)"
+                    : "Normal (Floor Reflection)";
+                loadCurrentSequence();
+                updateEditorialGallery();
+            });
         });
 
         // Metal Finish Switcher

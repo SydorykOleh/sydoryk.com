@@ -47,6 +47,14 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 <span id="product-count" class="badge">0 items</span>
             </div>
 
+            <!-- Side-by-Side Comparison Shortcut -->
+            <div class="compare-banner-box">
+                <a href="/mockups/elare-compare.html" target="_blank" class="compare-banner-link">
+                    <span>⇄ Compare Normal vs Dark (Side-by-Side)</span>
+                    <span style="font-size: 13px;">↗</span>
+                </a>
+            </div>
+
             <!-- Category Filter Tabs -->
             <section class="control-section">
                 <div class="category-tabs" id="categoryTabs">
@@ -403,7 +411,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
             // 2. Apply VFX Film Grain: Multiplied overlay centered exactly at 1.0 (neutral 128)
-            // Seeded per angle index so grain dynamically animates on rotation/autoplay
+            // Masked with destination-in so transparent backgrounds remain 100% transparent
             if (grainConfig.enabled && grainConfig.amount > 0) {
                 const pattern = getVFXGrainPattern(ctx, state.angleIndex, grainConfig.amount, grainConfig.pixelScale);
                 if (pattern) {
@@ -411,6 +419,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                     ctx.globalCompositeOperation = "overlay";
                     ctx.fillStyle = pattern;
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.globalCompositeOperation = "destination-in";
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                     ctx.restore();
                 }
             }
@@ -763,6 +773,32 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         width: 100% !important;
         display: block !important;
         margin: 0 auto !important;
+    }
+
+    .compare-banner-box {
+        margin: 0.75rem 0 1rem !important;
+    }
+
+    .compare-banner-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 8px 12px !important;
+        background: linear-gradient(90deg, #181818, #222222) !important;
+        border: 1px solid rgba(223, 177, 91, 0.4) !important;
+        border-radius: 6px !important;
+        color: #dfb15b !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.04em !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .compare-banner-link:hover {
+        background: #262626 !important;
+        border-color: #dfb15b !important;
+        color: #ffffff !important;
     }
 
     /* Category pills dark mode */

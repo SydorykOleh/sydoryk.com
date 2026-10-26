@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CRUSHED Ring • Normal vs Dark Turntable Comparison • Elaré</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --ink: #ffffff;
+            --mute: #8e8e8e;
+            --border: #222222;
+            --card-bg: #050505;
+            --btn-bg: #000000;
+            --btn-border: #444444;
+            --gold: #dfb15b;
+            --silver: #e0e0e0;
+            --ff: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--ff);
+            font-size: 13px;
+            line-height: 1.4;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Bar */
+        .top-banner {
+            background: #0d0d0d;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            padding: 7px 16px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ccc;
+        }
+
+        .top-banner strong {
+            color: #fff;
+        }
+
+        /* Elaré Main Store Header */
+        .elare-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 16px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hdr-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 6px;
+        }
+
+        .logo-text {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hdr-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Category Filter Row (Exact match to elare.co mobile screenshot) */
+        .collection-nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 12px 16px 8px;
+            border-bottom: 1px solid #161616;
+            display: flex;
+            gap: 18px;
+            scrollbar-width: none;
+        }
+
+        .collection-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            color: var(--mute);
+            font-size: 13px;
+            text-decoration: none;
+            text-transform: capitalize;
+            font-weight: 400;
+            transition: color 0.15s;
+        }
+
+        .nav-link.active {
+            color: #fff;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+        }
+
+        /* Grid View Bar */
+        .view-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-bottom: 1px solid #161616;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+
+        .view-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-btn {
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 1px solid transparent;
+            color: var(--mute);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .view-btn.active {
+            border-color: #fff;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Comparison Master Control Bar */
+        .compare-toolbar {
+            background: #0d0d0d;
+            border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .compare-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .sync-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            user-select: none;
+            color: #e0e0e0;
+        }
+
+        .sync-label input[type="checkbox"] {
+            accent-color: #ffffff;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+        }
+
+        .btn-toolbar {
+            background: #191919;
+            border: 1px solid #333333;
+            color: #fff;
+            padding: 5px 11px;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-toolbar:hover {
+            background: #252525;
+            border-color: #555;
+        }
+
+        .btn-toolbar.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            font-weight: 600;
+        }
+
+        .angle-readout {
+            font-family: monospace;
+            font-size: 11px;
+            color: #888;
+            padding: 4px 8px;
+            background: #141414;
+            border-radius: 3px;
+        }
+
+        /* 2-Column Product Grid (Matches elare.co 2-col layout) */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 10px 48px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (min-width: 840px) {
+            .products-grid {
+                gap: 20px;
+                padding: 10px;
+            }
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 7px;
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
+        .badge-dark {
+            border-color: rgba(223, 177, 91, 0.4);
+            color: #f0f0f0;
+        }
+
+        /* Turntable Canvas Stage */
+        .canvas-stage {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #000000;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .canvas-stage:active {
+            cursor: grabbing;
+        }
+
+        .turntable-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .stage-loader {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #aaa;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .spinner {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-bottom: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .drag-indicator {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            color: #bbb;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        /* Product Meta Details (Exact replica of elare.co typography) */
+        .product-meta {
+            padding: 12px 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .product-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-price {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .product-offer {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-bottom: 6px;
+        }
+
+        /* Material Swatch Switcher */
+        .swatch-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px 0 10px;
+        }
+
+        .swatch-btn {
+            background: #141414;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            color: #ccc;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+        }
+
+        .swatch-btn.active {
+            border-color: #ffffff;
+            color: #ffffff;
+            font-weight: 600;
+            background: #222222;
+        }
+
+        .swatch-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .swatch-silver { background: #dcdcdc; box-shadow: 0 0 3px rgba(255, 255, 255, 0.4); }
+        .swatch-gold { background: #dfb15b; box-shadow: 0 0 3px rgba(223, 177, 91, 0.4); }
+
+        /* Quick Add Button */
+        .btn-quick-add {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--btn-border);
+            color: #ffffff;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-quick-add:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        /* Comparison Notes Box */
+        .notes-section {
+            max-width: 1200px;
+            margin: 10px auto 40px;
+            padding: 0 10px;
+        }
+
+        .notes-box {
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .notes-box h4 {
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .notes-box p {
+            color: #aaa;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .notes-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .notes-box strong {
+            color: #eee;
+        }
+
+        .pill-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            background: #1c1c1c;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #ddd;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="top-banner">
+        <span>Complimentary Express Shipping on orders over $150 • <strong>Elaré 360 Review</strong></span>
+    </div>
+
+    <!-- Store Header -->
+    <header class="elare-header">
+        <div class="hdr-left">
+            <button class="icon-btn" aria-label="Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <a href="#" class="logo-text">ELARÉ</a>
+        </div>
+        <div class="hdr-right">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+            <button class="icon-btn" aria-label="Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Collection Categories Row (from Nathanael's screenshot) -->
+    <div class="collection-nav">
+        <a href="#" class="nav-link">All</a>
+        <a href="#" class="nav-link">New Releases</a>
+        <a href="#" class="nav-link active">Rings</a>
+        <a href="#" class="nav-link">Chains</a>
+        <a href="#" class="nav-link">Bracelets</a>
+        <a href="#" class="nav-link">Earrings</a>
+        <a href="#" class="nav-link">Gold</a>
+        <a href="#" class="nav-link">Silver</a>
+    </div>
+
+    <!-- View & Counter Bar (from Nathanael's screenshot) -->
+    <div class="view-bar">
+        <span>VIEW</span>
+        <div class="view-toggle">
+            <button class="view-btn">1</button>
+            <button class="view-btn active">2</button>
+            <button class="view-btn">3</button>
+            <button class="view-btn">4</button>
+        </div>
+    </div>
+
+    <!-- Comparison Master Control Toolbar -->
+    <div class="compare-toolbar">
+        <div class="compare-toolbar-left">
+            <label class="sync-label">
+                <input type="checkbox" id="syncRotation" checked>
+                <span>Synchronized 360° Rotation</span>
+            </label>
+            <button class="btn-toolbar" id="btnAutoplayBoth">▶ Autoplay</button>
+            <button class="btn-toolbar" id="btnResetBoth">↺ Front (0°)</button>
+        </div>
+        <div class="compare-toolbar-right" style="display: flex; align-items: center; gap: 8px;">
+            <button class="btn-toolbar" id="btnBothSilver">All Silver</button>
+            <button class="btn-toolbar" id="btnBothGold">All Gold</button>
+            <span class="angle-readout" id="angleDisplay">0° (Frame 00/72)</span>
+        </div>
+    </div>
+
+    <!-- 2-Column Product Comparison Grid -->
+    <main class="catalog-container">
+        <div class="products-grid">
+
+            <!-- Card 1: Normal Version (With Floor Reflection) -->
+            <article class="product-card" id="cardNormal">
+                <div class="card-badge">Normal • Floor Reflection</div>
+
+                <div class="canvas-stage" id="stageNormal">
+                    <canvas class="turntable-canvas" id="canvasNormal" width="800" height="800"></canvas>
+                    <div class="stage-loader" id="loaderNormal">
+                        <div class="spinner"></div>
+                        <span>Loading Normal...</span>
+                    </div>
+                    <div class="drag-indicator">360° Drag</div>
+                </div>
+
+                <div class="product-meta">
+                    <div class="product-title-row">
+                        <h2 class="product-title" id="titleNormal">CRUSHED Ring | Silver</h2>
+                        <span class="product-price">$38</span>
+                    </div>
+                    <div class="product-offer">BUY 2, GET 1 FREE</div>
+
+                    <div class="swatch-group">
+                        <button class="swatch-btn active" data-product="normal" data-variant="Silver">
+                            <span class="swatch-dot swatch-silver"></span>
+                            <span>Silver</span>
+                        </button>
+                        <button class="swatch-btn" data-product="normal" data-variant="Gold">
+                            <span class="swatch-dot swatch-gold"></span>
+                            <span>Gold</span>
+                        </button>
+                    </div>
+
+                    <button class="btn-quick-add">QUICK ADD</button>
+                </div>
+            </article>
+
+            <!-- Card 2: Dark Version (Clean Alpha Cutout / Solid Black) -->
+            <article class="product-card" id="cardDark">
+                <div class="card-badge badge-dark">Dark • Clean Cutout</div>
+
+                <div class="canvas-stage" id="stageDark">
+                    <canvas class="turntable-canvas" id="canvasDark" width="800" height="800"></canvas>
+                    <div class="stage-loader" id="loaderDark">
+                        <div class="spinner"></div>
+                        <span>Loading Dark...</span>
+                    </div>
+                    <div class="drag-indicator">360° Drag</div>
+                </div>
+
+                <div class="product-meta">
+                    <div class="product-title-row">
+                        <h2 class="product-title" id="titleDark">CRUSHED Ring | Silver</h2>
+                        <span class="product-price">$38</span>
+                    </div>
+                    <div class="product-offer">BUY 2, GET 1 FREE</div>
+
+                    <div class="swatch-group">
+                        <button class="swatch-btn active" data-product="dark" data-variant="Silver">
+                            <span class="swatch-dot swatch-silver"></span>
+                            <span>Silver</span>
+                        </button>
+                        <button class="swatch-btn" data-product="dark" data-variant="Gold">
+                            <span class="swatch-dot swatch-gold"></span>
+                            <span>Gold</span>
+                        </button>
+                    </div>
+
+                    <button class="btn-quick-add">QUICK ADD</button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Side-by-Side Review Details -->
+    <section class="notes-section">
+        <div class="notes-box">
+            <h4>Side-by-Side Turntable Evaluation</h4>
+            <p>
+                <strong>Normal Version (Left):</strong> Features the studio floor ground reflection and contact shadow, grounding the ring in the physical studio environment.
+            </p>
+            <p>
+                <strong>Dark Version (Right):</strong> Features an alpha-transparent clean cutout directly against pure black (<code>#000000</code>), isolating the precious metals for maximum contrast on dark mode e-commerce layouts.
+            </p>
+            <p>
+                <span class="pill-tag">Synchronized</span> Drag either viewer horizontally to rotate both simultaneously at the exact same 5° rotational increment.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Asset Path Resolver (Works both offline inside handoff zip and online on sydoryk.com)
+        function getProductBasePath(productId) {
+            if (window.location.protocol === "file:") {
+                if (window.location.pathname.includes("elare_turntable_handoff")) {
+                    return `./assets/${productId}/`;
+                }
+                return `../../tech/sydoryk.com/public/assets/projects/elare/${productId}/`;
+            }
+            return `/assets/projects/elare/${productId}/`;
+        }
+
+        const CONFIG = {
+            normalId: 'Ring-Cracked17',
+            darkId: 'Ring-Cracked17-dark',
+            frameCount: 72,
+            dragSensitivity: 9, // 30% faster rotation response
+            autoplayIntervalMs: 30, // 30% faster autoplay playback
+            grainAmount: 0.07 // 7% locked-in micro-grain
+        };
+
+        const state = {
+            angleIndex: 0,
+            sync: true,
+            isAutoplaying: false,
+            autoplayTimer: null,
+            normal: {
+                variant: 'Silver',
+                angleIndex: 0,
+                basePath: getProductBasePath(CONFIG.normalId),
+                canvas: document.getElementById('canvasNormal'),
+                ctx: document.getElementById('canvasNormal').getContext('2d'),
+                loader: document.getElementById('loaderNormal'),
+                stage: document.getElementById('stageNormal'),
+                title: document.getElementById('titleNormal'),
+                cache: {}
+            },
+            dark: {
+                variant: 'Silver',
+                angleIndex: 0,
+                basePath: getProductBasePath(CONFIG.darkId),
+                canvas: document.getElementById('canvasDark'),
+                ctx: document.getElementById('canvasDark').getContext('2d'),
+                loader: document.getElementById('loaderDark'),
+                stage: document.getElementById('stageDark'),
+                title: document.getElementById('titleDark'),
+                cache: {}
+            }
+        };
+
+        // Procedural Grain Pattern Cache
+        const noiseCache = {};
+        function getNoisePattern(context, frameIndex, amount) {
+            const key = `${frameIndex}_${amount}`;
+            if (noiseCache[key]) return noiseCache[key];
+
+            const size = 256;
+            const off = document.createElement("canvas");
+            off.width = size;
+            off.height = size;
+            const oCtx = off.getContext("2d");
+            if (!oCtx) return null;
+
+            const imgData = oCtx.createImageData(size, size);
+            const data = imgData.data;
+
+            let seed = ((frameIndex + 1) * 31337) ^ 0x5DEECE66D;
+            function rnd() {
+                seed = (seed * 1664525 + 1013904223) >>> 0;
+                return (seed & 0xFFFFFF) / 0xFFFFFF;
+            }
+
+            const amp = amount * 128;
+            for (let i = 0; i < data.length; i += 4) {
+                const n = (rnd() - 0.5) * 2 * amp;
+                const v = Math.min(255, Math.max(0, Math.round(128 + n)));
+                data[i] = v;
+                data[i + 1] = v;
+                data[i + 2] = v;
+                data[i + 3] = 255;
+            }
+
+            oCtx.putImageData(imgData, 0, 0);
+            const pat = context.createPattern(off, "repeat");
+            noiseCache[key] = pat;
+            return pat;
+        }
+
+        function getFrameUrl(productKey, variant, index) {
+            const prod = state[productKey];
+            const pad = String(index).padStart(2, '0');
+            const cleanBase = prod.basePath.endsWith('/') ? prod.basePath : `${prod.basePath}/`;
+            return `${cleanBase}${variant}/frame_${pad}.webp`;
+        }
+
+        function loadImage(productKey, variant, index) {
+            const url = getFrameUrl(productKey, variant, index);
+            const prod = state[productKey];
+            if (prod.cache[url]) return Promise.resolve(prod.cache[url]);
+
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    prod.cache[url] = img;
+                    resolve(img);
+                };
+                img.onerror = () => resolve(img);
+            });
+        }
+
+        function drawProductFrame(productKey) {
+            const prod = state[productKey];
+            const canvas = prod.canvas;
+            const ctx = prod.ctx;
+            const url = getFrameUrl(productKey, prod.variant, prod.angleIndex);
+            const img = prod.cache[url];
+
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.globalCompositeOperation = "source-over";
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                // Grain overlay masked with destination-in so transparent backgrounds remain 100% clean
+                if (CONFIG.grainAmount > 0) {
+                    const pat = getNoisePattern(ctx, prod.angleIndex, CONFIG.grainAmount);
+                    if (pat) {
+                        ctx.save();
+                        ctx.globalCompositeOperation = "overlay";
+                        ctx.fillStyle = pat;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.globalCompositeOperation = "destination-in";
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        ctx.restore();
+                    }
+                }
+                prod.loader.style.opacity = "0";
+                setTimeout(() => { if (prod.loader.style.opacity === "0") prod.loader.style.display = "none"; }, 300);
+            }
+        }
+
+        function updateAngleReadout() {
+            const deg = Math.round(state.angleIndex * (360 / CONFIG.frameCount));
+            const pad = String(state.angleIndex).padStart(2, '0');
+            document.getElementById('angleDisplay').textContent = `${deg}° (Frame ${pad}/${CONFIG.frameCount})`;
+        }
+
+        function preloadProductSequence(productKey) {
+            const prod = state[productKey];
+            prod.loader.style.display = "flex";
+            prod.loader.style.opacity = "1";
+
+            // Load first frame immediately
+            loadImage(productKey, prod.variant, prod.angleIndex).then(() => {
+                drawProductFrame(productKey);
+            });
+
+            // Preload remaining frames in background
+            for (let i = 0; i < CONFIG.frameCount; i++) {
+                loadImage(productKey, prod.variant, i);
+            }
+        }
+
+        function setAngle(newAngle, originatingProductKey = null) {
+            const total = CONFIG.frameCount;
+            state.angleIndex = ((newAngle % total) + total) % total;
+
+            if (state.sync || originatingProductKey === null) {
+                state.normal.angleIndex = state.angleIndex;
+                state.dark.angleIndex = state.angleIndex;
+                drawProductFrame('normal');
+                drawProductFrame('dark');
+            } else {
+                state[originatingProductKey].angleIndex = state.angleIndex;
+                drawProductFrame(originatingProductKey);
+            }
+            updateAngleReadout();
+        }
+
+        // Attach Drag Events to a stage
+        function attachTurntableControls(productKey) {
+            const stage = state[productKey].stage;
+            let isDragging = false;
+            let startX = 0;
+
+            function onPointerDown(clientX) {
+                isDragging = true;
+                startX = clientX;
+                stopAutoplay();
+            }
+
+            function onPointerMove(clientX) {
+                if (!isDragging) return;
+                const dx = clientX - startX;
+                if (Math.abs(dx) >= CONFIG.dragSensitivity) {
+                    const steps = Math.floor(dx / CONFIG.dragSensitivity);
+                    const currentAngle = state.sync ? state.angleIndex : state[productKey].angleIndex;
+                    setAngle(currentAngle + steps, productKey);
+                    startX = clientX;
+                }
+            }
+
+            function onPointerUp() {
+                isDragging = false;
+            }
+
+            stage.addEventListener('mousedown', (e) => onPointerDown(e.clientX));
+            window.addEventListener('mousemove', (e) => onPointerMove(e.clientX));
+            window.addEventListener('mouseup', onPointerUp);
+
+            stage.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) onPointerDown(e.touches[0].clientX);
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) onPointerMove(e.touches[0].clientX);
+            }, { passive: true });
+
+            window.addEventListener('touchend', onPointerUp);
+        }
+
+        // Autoplay Logic
+        function startAutoplay() {
+            state.isAutoplaying = true;
+            document.getElementById('btnAutoplayBoth').textContent = '⏸ Pause';
+            document.getElementById('btnAutoplayBoth').classList.add('active');
+            clearInterval(state.autoplayTimer);
+            state.autoplayTimer = setInterval(() => {
+                setAngle(state.angleIndex + 1);
+            }, CONFIG.autoplayIntervalMs);
+        }
+
+        function stopAutoplay() {
+            if (!state.isAutoplaying) return;
+            state.isAutoplaying = false;
+            document.getElementById('btnAutoplayBoth').textContent = '▶ Autoplay';
+            document.getElementById('btnAutoplayBoth').classList.remove('active');
+            clearInterval(state.autoplayTimer);
+            state.autoplayTimer = null;
+        }
+
+        function toggleAutoplay() {
+            if (state.isAutoplaying) stopAutoplay();
+            else startAutoplay();
+        }
+
+        // Variant Switching
+        function setVariant(productKey, variant) {
+            state[productKey].variant = variant;
+            state[productKey].title.textContent = `CRUSHED Ring | ${variant}`;
+
+            // Update button styles in that card
+            document.querySelectorAll(`.swatch-btn[data-product="${productKey}"]`).forEach(btn => {
+                if (btn.dataset.variant === variant) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            preloadProductSequence(productKey);
+        }
+
+        // Setup Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            attachTurntableControls('normal');
+            attachTurntableControls('dark');
+
+            preloadProductSequence('normal');
+            preloadProductSequence('dark');
+
+            // Sync toggle
+            const syncCheckbox = document.getElementById('syncRotation');
+            syncCheckbox.addEventListener('change', (e) => {
+                state.sync = e.target.checked;
+                if (state.sync) {
+                    state.normal.angleIndex = state.angleIndex;
+                    state.dark.angleIndex = state.angleIndex;
+                    drawProductFrame('normal');
+                    drawProductFrame('dark');
+                }
+            });
+
+            // Master Buttons
+            document.getElementById('btnAutoplayBoth').addEventListener('click', toggleAutoplay);
+            document.getElementById('btnResetBoth').addEventListener('click', () => {
+                stopAutoplay();
+                setAngle(0);
+            });
+
+            document.getElementById('btnBothSilver').addEventListener('click', () => {
+                setVariant('normal', 'Silver');
+                setVariant('dark', 'Silver');
+            });
+
+            document.getElementById('btnBothGold').addEventListener('click', () => {
+                setVariant('normal', 'Gold');
+                setVariant('dark', 'Gold');
+            });
+
+            // Individual Card Swatch Buttons
+            document.querySelectorAll('.swatch-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const prodKey = btn.dataset.product;
+                    const variant = btn.dataset.variant;
+                    setVariant(prodKey, variant);
+                });
+            });
+
+            // Keyboard Spacebar to toggle autoplay
+            window.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                    toggleAutoplay();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
