@@ -808,21 +808,21 @@
                 <button class="tool-btn" id="btnReset">↺ Front</button>
             </div>
 
-            <!-- Editorial Photos View (Hidden by default) -->
+            <!-- Editorial Photos View (Updated to new 800px renders) -->
             <div id="editorialGallery" class="editorial-gallery">
-                <img id="mainGalleryImg" src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=1200" alt="CRUSHED Ring editorial" class="gallery-main-img" onerror="this.src='/favicon.png'">
+                <img id="mainGalleryImg" src="/assets/projects/elare/Ring-Cracked17/Silver/frame_00.webp" alt="CRUSHED Ring editorial" class="gallery-main-img">
                 <div class="gallery-thumbs">
-                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=1200')">
-                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=300" alt="thumb 1">
+                    <div class="gallery-thumb" id="thumb0">
+                        <img id="thumbImg0" src="/assets/projects/elare/Ring-Cracked17/Silver/frame_00.webp" alt="Angle 0° Front">
                     </div>
-                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0655.jpg?width=1200')">
-                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0655.jpg?width=300" alt="thumb 2">
+                    <div class="gallery-thumb" id="thumb1">
+                        <img id="thumbImg1" src="/assets/projects/elare/Ring-Cracked17/Silver/frame_18.webp" alt="Angle 90° Profile">
                     </div>
-                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0656.jpg?width=1200')">
-                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0656.jpg?width=300" alt="thumb 3">
+                    <div class="gallery-thumb" id="thumb2">
+                        <img id="thumbImg2" src="/assets/projects/elare/Ring-Cracked17/Silver/frame_36.webp" alt="Angle 180° Back">
                     </div>
-                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0657.jpg?width=1200')">
-                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0657.jpg?width=300" alt="thumb 4">
+                    <div class="gallery-thumb" id="thumb3">
+                        <img id="thumbImg3" src="/assets/projects/elare/Ring-Cracked17/Silver/frame_54.webp" alt="Angle 270° Side">
                     </div>
                 </div>
             </div>
@@ -940,11 +940,20 @@
 
     <!-- Embedded Turntable Script Engine -->
     <script>
-        // Resolve asset base path (works whether opened directly via file://, local dev server, or live)
-        const isFileProtocol = window.location.protocol === "file:";
-        const BASE_ASSET_URL = isFileProtocol 
-            ? "https://sydoryk.com/assets/projects/elare/Ring-Cracked17/" 
-            : "/assets/projects/elare/Ring-Cracked17/";
+        // Resolve asset base path to guarantee local and online reliability
+        let BASE_ASSET_URL = "/assets/projects/elare/Ring-Cracked17/";
+        if (window.location.protocol === "file:") {
+            if (window.location.pathname.includes("elare_turntable_handoff")) {
+                BASE_ASSET_URL = "./assets/Ring-Cracked17/";
+            } else if (window.location.pathname.includes("sydoryk.com")) {
+                BASE_ASSET_URL = "../assets/projects/elare/Ring-Cracked17/";
+            } else {
+                BASE_ASSET_URL = "https://sydoryk.com/assets/projects/elare/Ring-Cracked17/";
+            }
+        }
+
+        // Cache buster guarantees ALL 72 new 800px frames reload fresh in the browser
+        const CACHE_KEY = Date.now();
 
         const state = {
             material: "Silver",
@@ -981,7 +990,7 @@
 
         function getFrameUrl(material, index) {
             const framePad = String(index).padStart(2, "0");
-            return `${BASE_ASSET_URL}${material}/frame_${framePad}.webp`;
+            return `${BASE_ASSET_URL}${material}/frame_${framePad}.webp?v=${CACHE_KEY}`;
         }
 
         function loadImage(url) {
@@ -994,6 +1003,24 @@
                     resolve(img);
                 };
                 img.onerror = () => resolve(img);
+            });
+        }
+
+        // Update editorial gallery photos with new render frames
+        function updateEditorialGallery() {
+            const angles = [0, 18, 36, 54]; // 0°, 90°, 180°, 270°
+            const mainImg = document.getElementById("mainGalleryImg");
+            if (mainImg) mainImg.src = getFrameUrl(state.material, 0);
+
+            angles.forEach((ang, idx) => {
+                const thumbImg = document.getElementById(`thumbImg${idx}`);
+                const thumbDiv = document.getElementById(`thumb${idx}`);
+                if (thumbImg) thumbImg.src = getFrameUrl(state.material, ang);
+                if (thumbDiv) {
+                    thumbDiv.onclick = () => {
+                        if (mainImg) mainImg.src = getFrameUrl(state.material, ang);
+                    };
+                }
             });
         }
 
@@ -1084,8 +1111,17 @@
                     if (loaded >= total) {
                         loader.style.display = "none";
                         drawFrame();
+                        preloadOtherVariant();
                     }
                 });
+            }
+        }
+
+        // Preload the alternate metal variant so switching is instant
+        function preloadOtherVariant() {
+            const other = state.material === "Silver" ? "Gold" : "Silver";
+            for (let i = 0; i < state.frameCount; i++) {
+                loadImage(getFrameUrl(other, i));
             }
         }
 
@@ -1188,6 +1224,7 @@
                 state.material = mat;
                 selectedMetalLabel.textContent = mat;
                 loadCurrentSequence();
+                updateEditorialGallery();
             });
         });
 
@@ -1222,14 +1259,16 @@
             turntableStage.style.display = "none";
             turntableToolbar.style.display = "none";
             editorialGallery.style.display = "flex";
+            updateEditorialGallery();
         });
 
         window.swapGallery = function(src) {
             document.getElementById("mainGalleryImg").src = src;
         };
 
-        // Initialize sequence
+        // Initialize sequence and editorial gallery
         loadCurrentSequence();
+        updateEditorialGallery();
     </script>
 </body>
 </html>
