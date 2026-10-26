@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "updatedAt": 1793028096.0252256,
+  "categories": [
+    "Ring"
+  ],
+  "products": [
+    {
+      "id": "Ring-Cracked17",
+      "category": "Ring",
+      "name": "Cracked17",
+      "displayName": "Ring Cracked17",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 36,
+      "basePath": "/assets/projects/elare/Ring-Cracked17/",
+      "thumbnail": "/assets/projects/elare/Ring-Cracked17/thumbnail.webp"
+    }
+  ]
+}
