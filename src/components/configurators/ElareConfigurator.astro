@@ -963,6 +963,50 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     }
 
     /* ========================================================
+       BACKGROUND VARIATION TOGGLES (Global for dynamically injected elements)
+       ======================================================== */
+    .variation-toggles {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.45rem !important;
+        width: 100% !important;
+    }
+
+    .var-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #141414 !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding: 0.55rem 0.8rem !important;
+        border-radius: 6px !important;
+        color: #ccc !important;
+        font-family: inherit !important;
+        font-size: 0.8rem !important;
+        cursor: pointer !important;
+        outline: none !important;
+        transition: all 0.15s ease !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+    }
+
+    .var-btn:hover {
+        background: #222 !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: #fff !important;
+    }
+
+    .var-btn.selected {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: #fff !important;
+        color: #fff !important;
+        font-weight: 600 !important;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* ========================================================
        MOBILE & TABLET RESPONSIVENESS (<= 860px)
        Natural stacked layout, touch-friendly, zero horizontal overflow
        ======================================================== */
