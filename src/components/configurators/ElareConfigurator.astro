@@ -112,34 +112,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                     </button>
                 </div>
             </section>
-
-            <!-- Live VFX Film Grain Controls -->
-            <section class="control-section grain-tuning-section">
-                <div class="section-label-row">
-                    <h4>Film Grain (VFX Tuner)</h4>
-                    <button id="toggleGrainBtn" class="badge-mini toggle-grain-btn active" title="Toggle grain overlay">On</button>
-                </div>
-                <div class="grain-controls-body">
-                    <div class="grain-slider-row">
-                        <div class="grain-slider-label">
-                            <span>Amount / Amplitude</span>
-                            <span id="grainAmountVal">7%</span>
-                        </div>
-                        <input type="range" id="grainAmountSlider" min="0" max="60" step="1" value="7" />
-                    </div>
-
-                    <div class="grain-slider-row">
-                        <div class="grain-slider-label">
-                            <span>Frequency (Micro-grain)</span>
-                            <span id="grainFreqVal">Fine (1px)</span>
-                        </div>
-                        <div class="freq-pills">
-                            <button class="freq-btn active" data-scale="1">Fine (1px)</button>
-                            <button class="freq-btn" data-scale="2">Medium (2px)</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </Fragment>
 
@@ -256,39 +228,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     const autoplayText = document.getElementById("autoplayText");
     const resetBtn = document.getElementById("resetBtn");
     const materialToggles = document.getElementById("materialToggles");
-
-    // Live Grain Controls
-    const grainAmountSlider = document.getElementById("grainAmountSlider") as HTMLInputElement;
-    const grainAmountVal = document.getElementById("grainAmountVal");
-    const toggleGrainBtn = document.getElementById("toggleGrainBtn");
-    const freqBtns = document.querySelectorAll(".freq-btn");
-
-    if (grainAmountSlider) {
-        grainAmountSlider.addEventListener("input", (e) => {
-            const val = parseInt((e.target as HTMLInputElement).value, 10);
-            grainConfig.amount = val / 100;
-            if (grainAmountVal) grainAmountVal.textContent = `${val}%`;
-            drawCurrentFrame();
-        });
-    }
-
-    if (toggleGrainBtn) {
-        toggleGrainBtn.addEventListener("click", () => {
-            grainConfig.enabled = !grainConfig.enabled;
-            toggleGrainBtn.textContent = grainConfig.enabled ? "On" : "Off";
-            toggleGrainBtn.classList.toggle("active", grainConfig.enabled);
-            drawCurrentFrame();
-        });
-    }
-
-    freqBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            freqBtns.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            grainConfig.pixelScale = parseInt((btn as HTMLElement).dataset.scale || "1", 10);
-            drawCurrentFrame();
-        });
-    });
 
     async function initCatalog() {
         try {
@@ -1353,91 +1292,5 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     .action-btn.secondary:hover {
         background: #222;
         color: #fff;
-    }
-
-    /* Grain Tuning Panel */
-    .grain-tuning-section {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 8px;
-        padding: 0.65rem;
-    }
-
-    .toggle-grain-btn {
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: transparent;
-        transition: all 0.15s;
-    }
-
-    .toggle-grain-btn.active {
-        background: #4ade80;
-        color: #000;
-        font-weight: 600;
-        border-color: #4ade80;
-    }
-
-    .grain-controls-body {
-        display: flex;
-        flex-direction: column;
-        gap: 0.65rem;
-        margin-top: 0.4rem;
-    }
-
-    .grain-slider-row {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-
-    .grain-slider-label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.7rem;
-        color: #888;
-    }
-
-    .grain-slider-label span:last-child {
-        color: #fff;
-        font-family: monospace;
-    }
-
-    .grain-slider-row input[type="range"] {
-        width: 100%;
-        accent-color: #ffd700;
-        height: 4px;
-        background: #222;
-        border-radius: 2px;
-        cursor: pointer;
-    }
-
-    .freq-pills {
-        display: flex;
-        gap: 0.3rem;
-        margin-top: 0.1rem;
-    }
-
-    .freq-btn {
-        flex: 1;
-        background: #141414;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #888;
-        padding: 0.25rem 0.4rem;
-        border-radius: 4px;
-        font-size: 0.68rem;
-        cursor: pointer;
-        transition: all 0.15s;
-    }
-
-    .freq-btn:hover {
-        color: #fff;
-        background: #222;
-    }
-
-    .freq-btn.active {
-        background: #fff;
-        color: #000;
-        font-weight: 600;
-        border-color: #fff;
     }
 </style>
