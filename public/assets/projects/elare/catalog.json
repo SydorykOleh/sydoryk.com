@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": 1793028096.0252256,
+  "updatedAt": 1793033470.575698,
   "categories": [
     "Ring"
   ],
@@ -15,7 +15,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 36,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Cracked17/",
       "thumbnail": "/assets/projects/elare/Ring-Cracked17/thumbnail.webp"
     }
