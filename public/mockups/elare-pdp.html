@@ -531,6 +531,32 @@
             gap: 10px;
         }
 
+        .bg-style-btn {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .bg-style-btn:hover {
+            border-color: #555;
+            background: #1a1a1a;
+        }
+
+        .bg-style-btn.active {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
         .metal-btn {
             background: var(--soft);
             border: 1px solid var(--line);
@@ -856,10 +882,10 @@
                     <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
                 </div>
                 <div class="metal-pills">
-                    <button class="metal-btn active bg-style-btn" data-product="Ring-Cracked17">
+                    <button class="bg-style-btn active" data-product="Ring-Cracked17">
                         <span>Normal (Floor Reflection)</span>
                     </button>
-                    <button class="metal-btn bg-style-btn" data-product="Ring-Cracked17-dark">
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-dark">
                         <span>Dark (Clean Cutout)</span>
                     </button>
                 </div>
@@ -995,7 +1021,7 @@
         const autoplayIcon = document.getElementById("autoplayIcon");
         const autoplayText = document.getElementById("autoplayText");
         const btnReset = document.getElementById("btnReset");
-        const metalBtns = document.querySelectorAll(".metal-btn");
+        const metalBtns = document.querySelectorAll(".metal-btn[data-material]");
         const sizeBtns = document.querySelectorAll(".size-btn");
         const selectedMetalLabel = document.getElementById("selectedMetalLabel");
         const selectedSizeLabel = document.getElementById("selectedSizeLabel");
@@ -1242,13 +1268,17 @@
         const selectedBgLabel = document.getElementById("selectedBgLabel");
         bgBtns.forEach(btn => {
             btn.addEventListener("click", () => {
+                const prod = btn.dataset.product;
+                if (!prod || prod === currentProductId) return;
                 bgBtns.forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
-                currentProductId = btn.dataset.product;
+                currentProductId = prod;
                 BASE_ASSET_URL = resolveProductBaseUrl(currentProductId);
-                selectedBgLabel.textContent = currentProductId.includes("dark")
-                    ? "Dark (Clean Cutout)"
-                    : "Normal (Floor Reflection)";
+                if (selectedBgLabel) {
+                    selectedBgLabel.textContent = currentProductId.includes("dark")
+                        ? "Dark (Clean Cutout)"
+                        : "Normal (Floor Reflection)";
+                }
                 loadCurrentSequence();
                 updateEditorialGallery();
             });
@@ -1257,9 +1287,10 @@
         // Metal Finish Switcher
         metalBtns.forEach(btn => {
             btn.addEventListener("click", () => {
+                const mat = btn.dataset.material;
+                if (!mat || mat === state.material) return;
                 metalBtns.forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
-                const mat = btn.dataset.material;
                 state.material = mat;
                 selectedMetalLabel.textContent = mat;
                 loadCurrentSequence();
