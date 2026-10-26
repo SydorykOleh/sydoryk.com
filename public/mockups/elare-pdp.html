@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CRUSHED Ring • Rhodium Plated Stainless Steel • Elaré Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --ink: #ffffff;
+            --mute: #9a9a9a;
+            --soft: #121212;
+            --line: #262626;
+            --acc: #ffffff;
+            --btn-bg: #ffffff;
+            --btn-fg: #000000;
+            --gold: #dfb15b;
+            --silver: #e0e0e0;
+            --ff: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--ff);
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Announcement Banner */
+        .announcement-bar {
+            background: #111;
+            border-bottom: 1px solid var(--line);
+            text-align: center;
+            padding: 7px 14px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ddd;
+        }
+
+        .announcement-bar span {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Header */
+        .hdr {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hdr-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hdr-burger {
+            background: none;
+            border: none;
+            color: var(--ink);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .hdr-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hdr-nav a {
+            color: var(--mute);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.15s;
+        }
+
+        .hdr-nav a:hover, .hdr-nav a.active {
+            color: var(--ink);
+        }
+
+        .hdr-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-wordmark {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 0.22em;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .hdr-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hdr-action {
+            background: none;
+            border: none;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cart-badge {
+            background: var(--ink);
+            color: var(--bg);
+            font-size: 10px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2px;
+        }
+
+        /* Demo Notice Banner */
+        .mockup-ribbon {
+            background: linear-gradient(90deg, #1c1c1c, #2a2a2a, #1c1c1c);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #bbb;
+        }
+
+        .mockup-ribbon b {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .mockup-ribbon .tag {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 10px;
+        }
+
+        /* PDP Container */
+        .pdp-main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 32px 24px 60px;
+            display: grid;
+            grid-template-columns: 56% 44%;
+            gap: 48px;
+        }
+
+        /* Left Column: Media & 360 Turntable */
+        .pdp-media-col {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Mode Selector Tabs (360° vs Photos) */
+        .media-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--soft);
+            padding: 4px;
+            border-radius: 30px;
+            width: fit-content;
+            border: 1px solid var(--line);
+        }
+
+        .media-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--mute);
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .media-tab-btn.active {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .tab-badge {
+            background: #ffd700;
+            color: #000;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 8px;
+            font-weight: 800;
+        }
+
+        /* 360 Stage Wrapper */
+        .turntable-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: radial-gradient(circle at center, #161616 0%, #050505 85%);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        #turntableCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        #turntableCanvas:active {
+            cursor: grabbing;
+        }
+
+        /* Overlay Hint */
+        .hint-pill {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #ccc;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+
+        .angle-indicator {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 10px;
+            font-family: monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .turntable-loader {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        /* Playback Bar Below Viewer */
+        .turntable-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+        }
+
+        .tool-btn {
+            background: transparent;
+            border: 1px solid var(--line);
+            color: var(--mute);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            color: var(--ink);
+            border-color: #555;
+        }
+
+        .tool-btn.active {
+            background: var(--ink);
+            color: var(--bg);
+            border-color: var(--ink);
+        }
+
+        .progress-micro {
+            flex: 1;
+            max-width: 220px;
+            margin: 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: center;
+        }
+
+        .progress-micro-bar {
+            width: 100%;
+            height: 2px;
+            background: #222;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-micro-fill {
+            height: 100%;
+            background: #fff;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .progress-micro-text {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Editorial Gallery (Fallback Tab) */
+        .editorial-gallery {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .gallery-main-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #0d0d0d;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            object-fit: cover;
+        }
+
+        .gallery-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-thumb {
+            aspect-ratio: 1;
+            background: #0d0d0d;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Right Column: Product Info & Purchase */
+        .pdp-info-col {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .eyebrow {
+            color: var(--mute);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            line-height: 1.15;
+            text-transform: uppercase;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .price-current {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .price-compare {
+            font-size: 15px;
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        .price-discount {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .reviews-summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        /* Promo Tag */
+        .promo-box {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .promo-box b {
+            color: #ffd700;
+        }
+
+        /* Section Selectors */
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .option-header span b {
+            color: #fff;
+        }
+
+        .size-guide-link {
+            color: var(--mute);
+            text-decoration: underline;
+            font-size: 11px;
+            text-transform: none;
+            cursor: pointer;
+        }
+
+        /* Metal Finish Pills */
+        .metal-pills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metal-btn {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.15s;
+        }
+
+        .metal-btn:hover {
+            border-color: #555;
+            background: #1a1a1a;
+        }
+
+        .metal-btn.active {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .swatch-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .swatch-silver {
+            background: linear-gradient(135deg, #f5f5f5 0%, #a5a5a5 100%);
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+        }
+
+        .swatch-gold {
+            background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+            box-shadow: 0 0 4px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Ring Size Pills */
+        .size-pills {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 6px;
+        }
+
+        .size-btn {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            color: var(--mute);
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .size-btn:hover {
+            color: #fff;
+            border-color: #666;
+        }
+
+        .size-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* CTAs */
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .btn-atc {
+            background: var(--btn-bg);
+            color: var(--btn-fg);
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .btn-atc:hover {
+            background: #e2e2e2;
+        }
+
+        .btn-shoppay {
+            background: #5a31f4;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+        }
+
+        /* Value Props */
+        .value-props {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 16px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .prop-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .prop-icon {
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        /* Accordions */
+        .accordion {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .acc-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 14px 0;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .acc-content {
+            padding-bottom: 14px;
+            color: #999;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* Mobile Breakpoint */
+        @media (max-width: 900px) {
+            .pdp-main {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 16px 14px 60px;
+            }
+
+            .hdr-nav {
+                display: none;
+            }
+
+            .product-title {
+                font-size: 22px;
+            }
+
+            .size-pills {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Free Shipping on US orders $50+ • <span>100-Day Risk-Free Returns</span>
+    </div>
+
+    <!-- Header -->
+    <header class="hdr">
+        <div class="hdr-left">
+            <button class="hdr-burger" aria-label="Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+            <nav class="hdr-nav">
+                <a href="#shop" class="active">SHOP BY</a>
+                <a href="#new">NEW RELEASES</a>
+                <a href="#all">ALL PRODUCTS</a>
+                <a href="#reviews">REVIEWS</a>
+                <a href="#faq">FAQ'S</a>
+            </nav>
+        </div>
+
+        <a href="#home" class="hdr-logo">
+            <span class="logo-wordmark">ELARÉ</span>
+        </a>
+
+        <div class="hdr-right">
+            <button class="hdr-action" aria-label="Currency">USD $</button>
+            <button class="hdr-action" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="hdr-action" aria-label="Cart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span class="cart-badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Client Mockup Banner -->
+    <div class="mockup-ribbon">
+        <div>
+            <b>Interactive Client Mockup</b>: High-Fidelity 360° Turntable Integration for <b>elare.co</b>
+        </div>
+        <div class="tag">Production Candidate • 72 Frames</div>
+    </div>
+
+    <!-- Main PDP -->
+    <main class="pdp-main">
+
+        <!-- Left Column: 360 Turntable & Gallery -->
+        <div class="pdp-media-col">
+            <!-- Media Mode Toggle -->
+            <div class="media-tabs">
+                <button class="media-tab-btn active" id="tab360Btn">
+                    <span>360° Interactive View</span>
+                    <span class="tab-badge">3D</span>
+                </button>
+                <button class="media-tab-btn" id="tabPhotosBtn">
+                    <span>Editorial Photos</span>
+                </button>
+            </div>
+
+            <!-- 360 View Stage -->
+            <div id="turntableStage" class="turntable-container">
+                <canvas id="turntableCanvas" width="1000" height="1000"></canvas>
+                
+                <div class="hint-pill" id="hintPill">
+                    <span>🖱️ Drag to rotate 360° • Space to autoplay</span>
+                </div>
+
+                <div class="angle-indicator" id="angleIndicator">0°</div>
+                <div class="turntable-loader" id="turntableLoader">Loading 360° Render...</div>
+            </div>
+
+            <!-- Turntable Controls Bar -->
+            <div class="turntable-toolbar" id="turntableToolbar">
+                <button class="tool-btn" id="btnAutoplay">
+                    <span id="autoplayIcon">▶</span>
+                    <span id="autoplayText">Autoplay</span>
+                </button>
+
+                <div class="progress-micro">
+                    <div class="progress-micro-bar">
+                        <div class="progress-micro-fill" id="progressFill" style="width: 0%;"></div>
+                    </div>
+                    <span class="progress-micro-text" id="progressText">Loading frames...</span>
+                </div>
+
+                <button class="tool-btn" id="btnReset">↺ Front</button>
+            </div>
+
+            <!-- Editorial Photos View (Hidden by default) -->
+            <div id="editorialGallery" class="editorial-gallery">
+                <img id="mainGalleryImg" src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=1200" alt="CRUSHED Ring editorial" class="gallery-main-img" onerror="this.src='/favicon.png'">
+                <div class="gallery-thumbs">
+                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=1200')">
+                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/0C006ABD-EC81-4D3B-8272-56ADB20AF619.png?width=300" alt="thumb 1">
+                    </div>
+                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0655.jpg?width=1200')">
+                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0655.jpg?width=300" alt="thumb 2">
+                    </div>
+                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0656.jpg?width=1200')">
+                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0656.jpg?width=300" alt="thumb 3">
+                    </div>
+                    <div class="gallery-thumb" onclick="swapGallery('https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0657.jpg?width=1200')">
+                        <img src="https://cdn.shopify.com/s/files/1/0953/2984/5538/files/DSC0657.jpg?width=300" alt="thumb 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Product Info & Commerce -->
+        <div class="pdp-info-col">
+            <span class="eyebrow">Rings / Signature Series</span>
+            <h1 class="product-title" id="pdpTitle">CRUSHED Ring</h1>
+
+            <div class="price-row">
+                <span class="price-current" id="pdpPrice">$45</span>
+                <span class="price-compare">$65</span>
+                <span class="price-discount">Save $20</span>
+            </div>
+
+            <div class="reviews-summary">
+                <span class="stars">★★★★★</span>
+                <span>107 reviews</span>
+            </div>
+
+            <div class="promo-box">
+                <span>⚡</span>
+                <span><b>Buy 2, Get 1 Free</b> • Applied automatically at checkout</span>
+            </div>
+
+            <!-- Precious Metal Finish Selector -->
+            <div class="option-group">
+                <div class="option-header">
+                    <span>Precious Metal: <b id="selectedMetalLabel">Silver</b></span>
+                </div>
+                <div class="metal-pills">
+                    <button class="metal-btn active" data-material="Silver">
+                        <span class="swatch-dot swatch-silver"></span>
+                        <span>Rhodium Silver</span>
+                    </button>
+                    <button class="metal-btn" data-material="Gold">
+                        <span class="swatch-dot swatch-gold"></span>
+                        <span>18K Yellow Gold</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ring Size Selector -->
+            <div class="option-group">
+                <div class="option-header">
+                    <span>Ring Size (US): <b id="selectedSizeLabel">9</b></span>
+                    <a href="#sizing" class="size-guide-link">Find your size</a>
+                </div>
+                <div class="size-pills">
+                    <button class="size-btn">5</button>
+                    <button class="size-btn">6</button>
+                    <button class="size-btn">7</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn active">9</button>
+                    <button class="size-btn">10</button>
+                    <button class="size-btn">11</button>
+                    <button class="size-btn">12</button>
+                </div>
+            </div>
+
+            <!-- Purchase Buttons -->
+            <div class="cta-group">
+                <button class="btn-atc" id="btnAtc">ADD TO BAG • $45</button>
+                <button class="btn-shoppay">Buy with Shop Pay</button>
+            </div>
+
+            <!-- Value Props -->
+            <div class="value-props">
+                <div class="prop-item">
+                    <span class="prop-icon">✦</span>
+                    <span>Solid 316L Stainless Steel with heavy Rhodium / 18K Gold PVD</span>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">💧</span>
+                    <span>100% Waterproof, Sweatproof & Hypoallergenic (Won't turn skin green)</span>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">🛡️</span>
+                    <span>Lifetime Durability & Color Guarantee</span>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">📦</span>
+                    <span>Dispatched in 24 hours from Los Angeles, CA</span>
+                </div>
+            </div>
+
+            <!-- Collapsible Accordions -->
+            <div class="accordion">
+                <button class="acc-trigger">Design & Inspiration <span>+</span></button>
+                <div class="acc-content">
+                    Sculpted with organic distressed facets and sharp fractured geometry, the Crushed Ring balances brutalist raw stone textures with mirror-polished luxury metal finishes.
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="acc-trigger">Material & Specifications <span>+</span></button>
+                <div class="acc-content">
+                    • Band Width: 8.5 mm<br>
+                    • Core: Solid Medical Grade 316L Stainless Steel<br>
+                    • Coating: Multi-layered Ion Vapor Deposition (PVD)<br>
+                    • Weight: Approx. 14 grams
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="acc-trigger">Shipping & 100-Day Returns <span>+</span></button>
+                <div class="acc-content">
+                    Free tracked shipping on all US orders over $50. Enjoy 100-day hassle-free size exchanges and returns.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Embedded Turntable Script Engine -->
+    <script>
+        // Resolve asset base path (works whether opened directly via file://, local dev server, or live)
+        const isFileProtocol = window.location.protocol === "file:";
+        const BASE_ASSET_URL = isFileProtocol 
+            ? "https://sydoryk.com/assets/projects/elare/Ring-Cracked17/" 
+            : "/assets/projects/elare/Ring-Cracked17/";
+
+        const state = {
+            material: "Silver",
+            frameCount: 72,
+            angleIndex: 0,
+            isAutoplaying: false,
+            autoplayInterval: null,
+            grainAmount: 0.07 // 7% fine micro-grain
+        };
+
+        const canvas = document.getElementById("turntableCanvas");
+        const ctx = canvas.getContext("2d");
+        const loader = document.getElementById("turntableLoader");
+        const progressFill = document.getElementById("progressFill");
+        const progressText = document.getElementById("progressText");
+        const hintPill = document.getElementById("hintPill");
+        const angleIndicator = document.getElementById("angleIndicator");
+        const btnAutoplay = document.getElementById("btnAutoplay");
+        const autoplayIcon = document.getElementById("autoplayIcon");
+        const autoplayText = document.getElementById("autoplayText");
+        const btnReset = document.getElementById("btnReset");
+        const metalBtns = document.querySelectorAll(".metal-btn");
+        const sizeBtns = document.querySelectorAll(".size-btn");
+        const selectedMetalLabel = document.getElementById("selectedMetalLabel");
+        const selectedSizeLabel = document.getElementById("selectedSizeLabel");
+
+        // Mobile touch detection
+        if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
+            hintPill.textContent = "Swipe to rotate 360°";
+        }
+
+        const imageCache = {};
+        const noiseCache = {};
+
+        function getFrameUrl(material, index) {
+            const framePad = String(index).padStart(2, "0");
+            return `${BASE_ASSET_URL}${material}/frame_${framePad}.webp`;
+        }
+
+        function loadImage(url) {
+            if (imageCache[url]) return Promise.resolve(imageCache[url]);
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    imageCache[url] = img;
+                    resolve(img);
+                };
+                img.onerror = () => resolve(img);
+            });
+        }
+
+        function getNoisePattern(context, frameIndex, amount) {
+            const key = `${frameIndex}_${amount}`;
+            if (noiseCache[key]) return noiseCache[key];
+
+            const size = 256;
+            const off = document.createElement("canvas");
+            off.width = size;
+            off.height = size;
+            const oCtx = off.getContext("2d");
+            const imgData = oCtx.createImageData(size, size);
+            const data = imgData.data;
+
+            let seed = ((frameIndex + 1) * 31337) ^ 0x5DEECE66D;
+            function rnd() {
+                seed = (seed * 1664525 + 1013904223) >>> 0;
+                return (seed & 0xFFFFFF) / 0xFFFFFF;
+            }
+
+            const amp = amount * 128;
+            for (let i = 0; i < data.length; i += 4) {
+                const n = (rnd() - 0.5) * 2 * amp;
+                const v = Math.min(255, Math.max(0, Math.round(128 + n)));
+                data[i] = v;
+                data[i+1] = v;
+                data[i+2] = v;
+                data[i+3] = 255;
+            }
+
+            oCtx.putImageData(imgData, 0, 0);
+            const pat = context.createPattern(off, "repeat");
+            noiseCache[key] = pat;
+            return pat;
+        }
+
+        function drawFrame() {
+            if (!ctx) return;
+            const url = getFrameUrl(state.material, state.angleIndex);
+            const img = imageCache[url];
+
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.globalCompositeOperation = "source-over";
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                if (state.grainAmount > 0) {
+                    const pat = getNoisePattern(ctx, state.angleIndex, state.grainAmount);
+                    if (pat) {
+                        ctx.save();
+                        ctx.globalCompositeOperation = "overlay";
+                        ctx.fillStyle = pat;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.restore();
+                    }
+                }
+                loader.style.display = "none";
+            }
+
+            const deg = Math.round(state.angleIndex * (360 / state.frameCount));
+            angleIndicator.textContent = `${deg}°`;
+        }
+
+        let seqId = 0;
+        function loadCurrentSequence() {
+            const currentSeq = ++seqId;
+            let loaded = 0;
+            const total = state.frameCount;
+
+            loader.style.display = "flex";
+            progressFill.style.width = "0%";
+            progressText.textContent = `0 / ${total}`;
+
+            const firstUrl = getFrameUrl(state.material, state.angleIndex);
+            loadImage(firstUrl).then(() => {
+                if (currentSeq === seqId) drawFrame();
+            });
+
+            for (let i = 0; i < total; i++) {
+                const url = getFrameUrl(state.material, i);
+                loadImage(url).then(() => {
+                    if (currentSeq !== seqId) return;
+                    loaded++;
+                    const pct = Math.round((loaded / total) * 100);
+                    progressFill.style.width = `${pct}%`;
+                    progressText.textContent = `${loaded} / ${total}`;
+                    if (loaded >= total) {
+                        loader.style.display = "none";
+                        drawFrame();
+                    }
+                });
+            }
+        }
+
+        // Drag to rotate logic
+        let isDragging = false;
+        let startX = 0;
+        function getSensitivity() {
+            return state.frameCount >= 72 ? 12 : 24;
+        }
+
+        canvas.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            stopAutoplay();
+            hintPill.style.opacity = "0";
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const sens = getSensitivity();
+            if (Math.abs(dx) >= sens) {
+                const steps = Math.floor(dx / sens);
+                state.angleIndex = (state.angleIndex + steps + state.frameCount * 10) % state.frameCount;
+                startX = e.clientX;
+                drawFrame();
+            }
+        });
+
+        window.addEventListener("mouseup", () => { isDragging = false; });
+
+        canvas.addEventListener("touchstart", (e) => {
+            if (e.touches.length === 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                stopAutoplay();
+                hintPill.style.opacity = "0";
+            }
+        }, { passive: true });
+
+        window.addEventListener("touchmove", (e) => {
+            if (!isDragging || e.touches.length !== 1) return;
+            const dx = e.touches[0].clientX - startX;
+            const sens = getSensitivity();
+            if (Math.abs(dx) >= sens) {
+                const steps = Math.floor(dx / sens);
+                state.angleIndex = (state.angleIndex + steps + state.frameCount * 10) % state.frameCount;
+                startX = e.touches[0].clientX;
+                drawFrame();
+            }
+        }, { passive: true });
+
+        window.addEventListener("touchend", () => { isDragging = false; });
+        window.addEventListener("touchcancel", () => { isDragging = false; });
+
+        // Autoplay
+        function startAutoplay() {
+            if (state.isAutoplaying) return;
+            state.isAutoplaying = true;
+            autoplayIcon.textContent = "⏸";
+            autoplayText.textContent = "Pause";
+            btnAutoplay.classList.add("active");
+            hintPill.style.opacity = "0";
+
+            const interval = state.frameCount >= 72 ? 40 : 80;
+            state.autoplayInterval = setInterval(() => {
+                state.angleIndex = (state.angleIndex + 1) % state.frameCount;
+                drawFrame();
+            }, interval);
+        }
+
+        function stopAutoplay() {
+            if (!state.isAutoplaying) return;
+            state.isAutoplaying = false;
+            autoplayIcon.textContent = "▶";
+            autoplayText.textContent = "Autoplay";
+            btnAutoplay.classList.remove("active");
+            if (state.autoplayInterval) {
+                clearInterval(state.autoplayInterval);
+                state.autoplayInterval = null;
+            }
+        }
+
+        btnAutoplay.addEventListener("click", () => {
+            if (state.isAutoplaying) stopAutoplay(); else startAutoplay();
+        });
+
+        btnReset.addEventListener("click", () => {
+            stopAutoplay();
+            state.angleIndex = 0;
+            drawFrame();
+        });
+
+        // Metal Finish Switcher
+        metalBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                metalBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                const mat = btn.dataset.material;
+                state.material = mat;
+                selectedMetalLabel.textContent = mat;
+                loadCurrentSequence();
+            });
+        });
+
+        // Size Button Selectors
+        sizeBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                sizeBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                selectedSizeLabel.textContent = btn.textContent;
+            });
+        });
+
+        // View Mode Toggles (360° View vs Editorial Photos)
+        const tab360Btn = document.getElementById("tab360Btn");
+        const tabPhotosBtn = document.getElementById("tabPhotosBtn");
+        const turntableStage = document.getElementById("turntableStage");
+        const turntableToolbar = document.getElementById("turntableToolbar");
+        const editorialGallery = document.getElementById("editorialGallery");
+
+        tab360Btn.addEventListener("click", () => {
+            tab360Btn.classList.add("active");
+            tabPhotosBtn.classList.remove("active");
+            turntableStage.style.display = "block";
+            turntableToolbar.style.display = "flex";
+            editorialGallery.style.display = "none";
+        });
+
+        tabPhotosBtn.addEventListener("click", () => {
+            stopAutoplay();
+            tabPhotosBtn.classList.add("active");
+            tab360Btn.classList.remove("active");
+            turntableStage.style.display = "none";
+            turntableToolbar.style.display = "none";
+            editorialGallery.style.display = "flex";
+        });
+
+        window.swapGallery = function(src) {
+            document.getElementById("mainGalleryImg").src = src;
+        };
+
+        // Initialize sequence
+        loadCurrentSequence();
+    </script>
+</body>
+</html>
