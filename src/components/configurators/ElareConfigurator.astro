@@ -491,10 +491,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         });
     }
 
-    // Dynamic rotation sensitivity: 12px for 72 frames (5° step), 24px for 36 frames (10° step)
+    // Dynamic rotation sensitivity: 9px for 72 frames (5° step), 18px for 36 frames (10° step) (+30% faster rotation)
     function getDragSensitivity() {
         const total = state.activeProduct ? (state.activeProduct.frameCount || CONFIG.defaultFrames) : CONFIG.defaultFrames;
-        return total >= 72 ? 12 : 24;
+        return total >= 72 ? 9 : 18;
     }
 
     // Natural drag to rotate (follows cursor & touch gestures)
@@ -582,7 +582,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         if (rotateHint) rotateHint.style.opacity = "0";
 
         const total = state.activeProduct ? (state.activeProduct.frameCount || CONFIG.defaultFrames) : CONFIG.defaultFrames;
-        const intervalMs = total >= 72 ? 40 : 80;
+        const intervalMs = total >= 72 ? 30 : 60; // 30% faster autoplay rotation
 
         state.autoplayInterval = setInterval(() => {
             const curTotal = state.activeProduct ? (state.activeProduct.frameCount || CONFIG.defaultFrames) : CONFIG.defaultFrames;

@@ -1125,11 +1125,11 @@
             }
         }
 
-        // Drag to rotate logic
+        // Drag to rotate logic (+30% faster rotation)
         let isDragging = false;
         let startX = 0;
         function getSensitivity() {
-            return state.frameCount >= 72 ? 12 : 24;
+            return state.frameCount >= 72 ? 9 : 18;
         }
 
         canvas.addEventListener("mousedown", (e) => {
@@ -1186,7 +1186,7 @@
             btnAutoplay.classList.add("active");
             hintPill.style.opacity = "0";
 
-            const interval = state.frameCount >= 72 ? 40 : 80;
+            const interval = state.frameCount >= 72 ? 30 : 60; // 30% faster autoplay
             state.autoplayInterval = setInterval(() => {
                 state.angleIndex = (state.angleIndex + 1) % state.frameCount;
                 drawFrame();
