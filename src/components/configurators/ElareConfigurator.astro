@@ -10,7 +10,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     <!-- Viewport Stage (Canvas + Overlay + Loader) -->
     <div class="turntable-stage">
         <div class="canvas-wrapper">
-            <canvas id="configCanvas" width="1000" height="1000"></canvas>
+            <canvas id="configCanvas" width="800" height="800"></canvas>
             
             <div id="rotate-hint">
                 <span class="mouse-icon">🖱️</span>
@@ -155,8 +155,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     const CONFIG = {
         catalogUrl: "/assets/projects/elare/catalog.json",
         defaultFrames: 72,
-        canvasWidth: 1000,
-        canvasHeight: 1000
+        canvasWidth: 800,
+        canvasHeight: 800
     };
 
     const state = {
