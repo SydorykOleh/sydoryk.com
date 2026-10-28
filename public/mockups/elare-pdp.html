@@ -531,6 +531,32 @@
             gap: 10px;
         }
 
+        .bg-style-btn {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .bg-style-btn:hover {
+            border-color: #555;
+            background: #1a1a1a;
+        }
+
+        .bg-style-btn.active {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
         .metal-btn {
             background: var(--soft);
             border: 1px solid var(--line);
@@ -849,6 +875,31 @@
                 <span><b>Buy 2, Get 1 Free</b> • Applied automatically at checkout</span>
             </div>
 
+            <!-- Background Style Selector (Variations) -->
+            <div class="option-group">
+                <div class="option-header">
+                    <span>Background Style: <b id="selectedBgLabel">Default (Floor Reflection)</b></span>
+                    <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
+                </div>
+                <div class="metal-pills" style="grid-template-columns: repeat(2, 1fr); gap: 6px;">
+                    <button class="bg-style-btn active" data-product="Ring-Cracked17-default">
+                        <span>Default (Floor)</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-white">
+                        <span>White Studio</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17">
+                        <span>Floating (Clean)</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-dark-refl">
+                        <span>Dark + Refl</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-dark">
+                        <span>Dark (Cutout)</span>
+                    </button>
+                </div>
+            </div>
+
             <!-- Precious Metal Finish Selector -->
             <div class="option-group">
                 <div class="option-header">
@@ -941,7 +992,7 @@
     <!-- Embedded Turntable Script Engine -->
     <script>
         // Resolve asset base path to guarantee local and online reliability
-        let currentProductId = "Ring-Cracked17";
+        let currentProductId = "Ring-Cracked17-default";
         function resolveProductBaseUrl(productId) {
             if (window.location.protocol === "file:") {
                 if (window.location.pathname.includes("sydoryk.com")) {
@@ -1216,6 +1267,36 @@
             stopAutoplay();
             state.angleIndex = 0;
             drawFrame();
+        });
+
+        // Background Style Switcher (Variations)
+        const BG_NAMES = {
+            'Ring-Cracked17-default': 'Default (Floor Reflection)',
+            'Ring-Cracked17-white': 'White Studio',
+            'Ring-Cracked17': 'Floating (Clean Alpha)',
+            'Ring-Cracked17-dark-refl': 'Dark + Refl (Contact Floor)',
+            'Ring-Cracked17-dark': 'Dark (Clean Cutout)'
+        };
+        const bgBtns = document.querySelectorAll(".bg-style-btn");
+        const selectedBgLabel = document.getElementById("selectedBgLabel");
+        const stageContainer = document.getElementById("turntableStage");
+        bgBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const prod = btn.dataset.product;
+                if (!prod || prod === currentProductId) return;
+                bgBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentProductId = prod;
+                BASE_ASSET_URL = resolveProductBaseUrl(currentProductId);
+                if (selectedBgLabel) {
+                    selectedBgLabel.textContent = BG_NAMES[currentProductId] || currentProductId;
+                }
+                if (stageContainer) {
+                    stageContainer.style.background = currentProductId.includes("white") ? "#ffffff" : "#000000";
+                }
+                loadCurrentSequence();
+                updateEditorialGallery();
+            });
         });
 
         // Metal Finish Switcher
