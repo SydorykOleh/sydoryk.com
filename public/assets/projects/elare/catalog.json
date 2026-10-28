@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": 1793051267.0953507,
+  "updatedAt": 1793202129.5486057,
   "categories": [
     "Ring"
   ],
@@ -16,35 +16,8 @@
       ],
       "defaultVariant": "Silver",
       "frameCount": 72,
-      "basePath": "/assets/projects/elare/Ring-Cracked17-default/",
-      "thumbnail": "/assets/projects/elare/Ring-Cracked17-default/thumbnail.webp",
-      "variations": [
-        {
-          "id": "default",
-          "label": "Default",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-default/",
-          "bg": "#000000"
-        },
-        {
-          "id": "dark",
-          "label": "Dark",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-dark/",
-          "bg": "#000000"
-        },
-        {
-          "id": "dark-refl",
-          "label": "Dark + Refl",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-dark-refl/",
-          "bg": "#000000"
-        },
-        {
-          "id": "white",
-          "label": "White",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-white/",
-          "bg": "#ffffff"
-        }
-      ],
-      "defaultVariation": "default"
+      "basePath": "/assets/projects/elare/Ring-Cracked17/",
+      "thumbnail": "/assets/projects/elare/Ring-Cracked17/thumbnail.webp"
     }
   ]
 }

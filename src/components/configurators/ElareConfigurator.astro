@@ -47,14 +47,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 <span id="product-count" class="badge">0 items</span>
             </div>
 
-            <!-- Side-by-Side Comparison Shortcut -->
-            <div class="compare-banner-box">
-                <a href="/mockups/elare-compare.html" target="_blank" class="compare-banner-link">
-                    <span>⇄ Compare Normal vs Dark (Side-by-Side)</span>
-                    <span style="font-size: 13px;">↗</span>
-                </a>
-            </div>
-
             <!-- Category Filter Tabs -->
             <section class="control-section">
                 <div class="category-tabs" id="categoryTabs">
@@ -104,17 +96,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
             </section>
 
-            <!-- Background Variation Selector (Separate buttons for single piece) -->
-            <section class="control-section" id="variationSection">
-                <div class="section-label-row">
-                    <h4>Background Variation</h4>
-                    <span id="active-variation-label" class="badge-mini">Default</span>
-                </div>
-                <div class="variation-toggles" id="variationToggles">
-                    <!-- Populated dynamically from product.variations in catalog.json -->
-                </div>
-            </section>
-
             <!-- Turntable Playback Controls -->
             <section class="control-section playback-section">
                 <div class="section-label-row">
@@ -154,7 +135,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         catalog: null,
         activeProduct: null,
         activeMaterial: "Silver",
-        activeVariation: "default",
         angleIndex: 0,
         isAutoplaying: false,
         autoplayInterval: null,
@@ -248,9 +228,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     const autoplayText = document.getElementById("autoplayText");
     const resetBtn = document.getElementById("resetBtn");
     const materialToggles = document.getElementById("materialToggles");
-    const variationSection = document.getElementById("variationSection");
-    const variationToggles = document.getElementById("variationToggles");
-    const activeVariationLabel = document.getElementById("active-variation-label");
     const canvasWrapper = document.querySelector(".canvas-wrapper") as HTMLElement;
 
     async function initCatalog() {
@@ -368,58 +345,13 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             state.activeMaterial = product.defaultVariant || product.variants[0] || "Silver";
         }
 
-        if (product.variations && product.variations.length > 0) {
-            if (!product.variations.some(v => v.id === state.activeVariation)) {
-                state.activeVariation = product.defaultVariation || product.variations[0].id;
-            }
-        }
-
         updateMaterialButtons();
-        updateVariationButtons();
         updateAngleReadout();
         loadAndRenderCurrent();
         
         const otherVariant = product.variants.find(v => v !== state.activeMaterial);
         if (otherVariant) {
             preloadVariant(product, otherVariant);
-        }
-    }
-
-    function updateVariationButtons() {
-        if (!variationToggles || !state.activeProduct) return;
-        const variations = state.activeProduct.variations;
-        
-        if (!variations || variations.length === 0) {
-            if (variationSection) variationSection.style.display = "none";
-            return;
-        }
-
-        if (variationSection) variationSection.style.display = "block";
-        variationToggles.innerHTML = "";
-
-        variations.forEach(v => {
-            const btn = document.createElement("button");
-            const isSelected = v.id === state.activeVariation;
-            btn.className = `var-btn ${isSelected ? "selected" : ""}`;
-            btn.dataset.variation = v.id;
-            btn.innerHTML = `<span>${v.label}</span>`;
-            
-            btn.addEventListener("click", () => {
-                if (state.activeVariation === v.id) return;
-                state.activeVariation = v.id;
-                updateVariationButtons();
-                loadAndRenderCurrent();
-            });
-            variationToggles.appendChild(btn);
-        });
-
-        const activeVar = variations.find(v => v.id === state.activeVariation) || variations[0];
-        if (activeVariationLabel && activeVar) {
-            activeVariationLabel.textContent = activeVar.label;
-        }
-
-        if (canvasWrapper && activeVar) {
-            canvasWrapper.style.background = activeVar.bg === "#ffffff" ? "#ffffff" : "radial-gradient(circle at center, #181818 0%, #050505 85%)";
         }
     }
 
@@ -454,18 +386,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         });
     }
 
-    function getActiveBasePath(product) {
-        if (product && product.variations && product.variations.length > 0) {
-            const found = product.variations.find(v => v.id === state.activeVariation);
-            if (found) return found.basePath;
-        }
-        return product ? product.basePath : "";
-    }
-
     function getFrameUrl(product, material, index) {
         const framePad = String(index).padStart(2, "0");
-        const basePath = getActiveBasePath(product);
-        return `${basePath}${material}/frame_${framePad}.webp`;
+        return `${product.basePath}${material}/frame_${framePad}.webp`;
     }
 
     function drawCurrentFrame() {
@@ -845,32 +768,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         margin: 0 auto !important;
     }
 
-    .compare-banner-box {
-        margin: 0.75rem 0 1rem !important;
-    }
-
-    .compare-banner-link {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 8px 12px !important;
-        background: linear-gradient(90deg, #181818, #222222) !important;
-        border: 1px solid rgba(223, 177, 91, 0.4) !important;
-        border-radius: 6px !important;
-        color: #dfb15b !important;
-        font-size: 11px !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.04em !important;
-        text-decoration: none !important;
-        transition: all 0.2s ease !important;
-    }
-
-    .compare-banner-link:hover {
-        background: #262626 !important;
-        border-color: #dfb15b !important;
-        color: #ffffff !important;
-    }
-
     /* Category pills dark mode */
     .cat-pill {
         background: #161616 !important;
@@ -960,50 +857,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         line-height: 1.2 !important;
-    }
-
-    /* ========================================================
-       BACKGROUND VARIATION TOGGLES (Global for dynamically injected elements)
-       ======================================================== */
-    .variation-toggles {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.45rem !important;
-        width: 100% !important;
-    }
-
-    .var-btn {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        background: #141414 !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        padding: 0.55rem 0.8rem !important;
-        border-radius: 6px !important;
-        color: #ccc !important;
-        font-family: inherit !important;
-        font-size: 0.8rem !important;
-        cursor: pointer !important;
-        outline: none !important;
-        transition: all 0.15s ease !important;
-        text-align: center !important;
-        box-sizing: border-box !important;
-        appearance: none !important;
-        -webkit-appearance: none !important;
-    }
-
-    .var-btn:hover {
-        background: #222 !important;
-        border-color: rgba(255, 255, 255, 0.3) !important;
-        color: #fff !important;
-    }
-
-    .var-btn.selected {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border-color: #fff !important;
-        color: #fff !important;
-        font-weight: 600 !important;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.1) !important;
     }
 
     /* ========================================================
@@ -1381,40 +1234,6 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     .mat-btn.disabled {
         opacity: 0.3;
         cursor: not-allowed;
-    }
-
-    /* Background Variation Buttons */
-    .variation-toggles {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.4rem;
-    }
-
-    .var-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #141414;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 0.45rem 0.6rem;
-        border-radius: 6px;
-        color: #ccc;
-        font-size: 0.8rem;
-        cursor: pointer;
-        transition: all 0.15s ease;
-    }
-
-    .var-btn:hover {
-        background: #222;
-        border-color: rgba(255, 255, 255, 0.3);
-        color: #fff;
-    }
-
-    .var-btn.selected {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: #fff;
-        color: #fff;
-        font-weight: 600;
     }
 
     .swatch-metal {
