@@ -10,16 +10,16 @@
 
     <style>
         :root {
-            --bg: #000000;
-            --ink: #ffffff;
-            --mute: #9a9a9a;
-            --soft: #121212;
-            --line: #262626;
-            --acc: #ffffff;
-            --btn-bg: #ffffff;
-            --btn-fg: #000000;
-            --gold: #dfb15b;
-            --silver: #e0e0e0;
+            --bg: #ffffff;
+            --ink: #111111;
+            --mute: #666666;
+            --soft: #f7f7f7;
+            --line: #e8e8e8;
+            --acc: #000000;
+            --btn-bg: #000000;
+            --btn-fg: #ffffff;
+            --gold: #b8860b;
+            --silver: #777777;
             --ff: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
@@ -42,7 +42,7 @@
 
         /* Top Announcement Banner */
         .announcement-bar {
-            background: #111;
+            background: #f5f5f5;
             border-bottom: 1px solid var(--line);
             text-align: center;
             padding: 7px 14px;
@@ -50,11 +50,11 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #ddd;
+            color: #444;
         }
 
         .announcement-bar span {
-            color: #fff;
+            color: #000;
             font-weight: 700;
         }
 
@@ -63,7 +63,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--line);
             padding: 0 24px;
@@ -121,7 +121,7 @@
             font-size: 20px;
             font-weight: 900;
             letter-spacing: 0.22em;
-            color: #fff;
+            color: #000;
             text-transform: uppercase;
         }
 
@@ -143,8 +143,8 @@
         }
 
         .cart-badge {
-            background: var(--ink);
-            color: var(--bg);
+            background: #000;
+            color: #fff;
             font-size: 10px;
             font-weight: 700;
             width: 16px;
@@ -158,26 +158,26 @@
 
         /* Demo Notice Banner */
         .mockup-ribbon {
-            background: linear-gradient(90deg, #1c1c1c, #2a2a2a, #1c1c1c);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: #f7f7f7;
+            border-bottom: 1px solid var(--line);
             padding: 8px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 11px;
-            color: #bbb;
+            color: #555;
         }
 
         .mockup-ribbon b {
-            color: #ffd700;
+            color: #996515;
             font-weight: 600;
         }
 
         .mockup-ribbon .tag {
-            background: rgba(255, 255, 255, 0.12);
+            background: #e8e8e8;
             padding: 2px 8px;
             border-radius: 12px;
-            color: #fff;
+            color: #111;
             font-weight: 600;
             font-size: 10px;
         }
@@ -245,12 +245,12 @@
         .turntable-container {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background: radial-gradient(circle at center, #161616 0%, #050505 85%);
+            background: #ffffff;
             border: 1px solid var(--line);
             border-radius: 12px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
         }
 
         #turntableCanvas {
@@ -271,28 +271,29 @@
             top: 14px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid #ddd;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 11px;
-            color: #ccc;
+            color: #444;
             pointer-events: none;
             display: flex;
             align-items: center;
             gap: 6px;
             transition: opacity 0.3s;
             z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .angle-indicator {
             position: absolute;
             top: 14px;
             right: 14px;
-            background: rgba(0, 0, 0, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            color: #555;
             font-size: 10px;
             font-family: monospace;
             padding: 3px 8px;
@@ -303,8 +304,8 @@
         .turntable-loader {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.85);
+            color: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -388,7 +389,7 @@
         .gallery-main-img {
             width: 100%;
             aspect-ratio: 1;
-            background: #0d0d0d;
+            background: #ffffff;
             border-radius: 12px;
             border: 1px solid var(--line);
             object-fit: cover;
@@ -402,7 +403,7 @@
 
         .gallery-thumb {
             aspect-ratio: 1;
-            background: #0d0d0d;
+            background: #ffffff;
             border-radius: 6px;
             border: 1px solid var(--line);
             cursor: pointer;
@@ -447,18 +448,18 @@
         .price-current {
             font-size: 20px;
             font-weight: 700;
-            color: #fff;
+            color: #000;
         }
 
         .price-compare {
             font-size: 15px;
-            color: #666;
+            color: #888;
             text-decoration: line-through;
         }
 
         .price-discount {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            background: #f0f0f0;
+            color: #000;
             padding: 2px 7px;
             border-radius: 4px;
             font-size: 10px;
@@ -471,7 +472,7 @@
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            color: #aaa;
+            color: #666;
         }
 
         .stars {
@@ -482,18 +483,19 @@
 
         /* Promo Tag */
         .promo-box {
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #333;
         }
 
         .promo-box b {
-            color: #ffd700;
+            color: #b8860b;
         }
 
         /* Section Selectors */
@@ -513,7 +515,7 @@
         }
 
         .option-header span b {
-            color: #fff;
+            color: #000;
         }
 
         .size-guide-link {
@@ -532,9 +534,9 @@
         }
 
         .bg-style-btn {
-            background: var(--soft);
-            border: 1px solid var(--line);
-            color: var(--ink);
+            background: #ffffff;
+            border: 1px solid #ddd;
+            color: #222;
             padding: 8px 12px;
             border-radius: 8px;
             font-size: 11px;
@@ -548,19 +550,20 @@
         }
 
         .bg-style-btn:hover {
-            border-color: #555;
-            background: #1a1a1a;
+            border-color: #888;
+            background: #f5f5f5;
         }
 
         .bg-style-btn.active {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.12);
+            border-color: #000;
+            background: #111;
+            color: #fff;
         }
 
         .metal-btn {
-            background: var(--soft);
-            border: 1px solid var(--line);
-            color: var(--ink);
+            background: #ffffff;
+            border: 1px solid #ddd;
+            color: #222;
             padding: 10px 14px;
             border-radius: 8px;
             font-size: 12px;
@@ -574,13 +577,14 @@
         }
 
         .metal-btn:hover {
-            border-color: #555;
-            background: #1a1a1a;
+            border-color: #888;
+            background: #f5f5f5;
         }
 
         .metal-btn.active {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.12);
+            border-color: #000;
+            background: #111;
+            color: #fff;
         }
 
         .swatch-dot {
@@ -608,9 +612,9 @@
         }
 
         .size-btn {
-            background: var(--soft);
-            border: 1px solid var(--line);
-            color: var(--mute);
+            background: #ffffff;
+            border: 1px solid #ddd;
+            color: #555;
             padding: 10px 0;
             text-align: center;
             border-radius: 6px;
@@ -621,14 +625,14 @@
         }
 
         .size-btn:hover {
-            color: #fff;
-            border-color: #666;
+            color: #000;
+            border-color: #999;
         }
 
         .size-btn.active {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
+            background: #000;
+            color: #fff;
+            border-color: #000;
         }
 
         /* CTAs */
@@ -684,11 +688,11 @@
             align-items: center;
             gap: 10px;
             font-size: 12px;
-            color: #bbb;
+            color: #444;
         }
 
         .prop-icon {
-            color: #ffd700;
+            color: #b8860b;
             font-size: 14px;
         }
 
@@ -701,7 +705,7 @@
             width: 100%;
             background: none;
             border: none;
-            color: #fff;
+            color: #000;
             padding: 14px 0;
             text-align: left;
             font-size: 12px;
@@ -716,7 +720,7 @@
 
         .acc-content {
             padding-bottom: 14px;
-            color: #999;
+            color: #555;
             font-size: 12px;
             line-height: 1.6;
         }
@@ -878,21 +882,21 @@
             <!-- Background Style Selector (Variations) -->
             <div class="option-group">
                 <div class="option-header">
-                    <span>Background Style: <b id="selectedBgLabel">Default (Floor Reflection)</b></span>
+                    <span>Background Style: <b id="selectedBgLabel">White v02 (Floating)</b></span>
                     <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
                 </div>
                 <div class="metal-pills" style="grid-template-columns: repeat(2, 1fr); gap: 6px;">
-                    <button class="bg-style-btn active" data-product="Ring-Cracked17-default">
-                        <span>Default (Floor)</span>
+                    <button class="bg-style-btn active" data-product="Ring-Cracked17" style="border-color: #000; font-weight: 700;">
+                        <span>White v02 (Floating)</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-white-v3">
+                        <span>White Studio v03 ✨</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-white">
                         <span>White Studio v01</span>
                     </button>
-                    <button class="bg-style-btn" data-product="Ring-Cracked17">
-                        <span>White v02 (Floating)</span>
-                    </button>
-                    <button class="bg-style-btn" data-product="Ring-Cracked17-white-v3" style="border-color: rgba(223, 177, 91, 0.4); color: #dfb15b;">
-                        <span>White Studio v03 ✨</span>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-default">
+                        <span>Default (Floor)</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-dark-refl">
                         <span>Dark + Refl</span>
@@ -995,7 +999,7 @@
     <!-- Embedded Turntable Script Engine -->
     <script>
         // Resolve asset base path to guarantee local and online reliability
-        let currentProductId = "Ring-Cracked17-default";
+        let currentProductId = "Ring-Cracked17";
         function resolveProductBaseUrl(productId) {
             if (window.location.protocol === "file:") {
                 if (window.location.pathname.includes("sydoryk.com")) {
@@ -1296,7 +1300,7 @@
                     selectedBgLabel.textContent = BG_NAMES[currentProductId] || currentProductId;
                 }
                 if (stageContainer) {
-                    stageContainer.style.background = (currentProductId.includes("white") || currentProductId === "Ring-Cracked17") ? "#ffffff" : "#000000";
+                    stageContainer.style.background = currentProductId.includes("dark") ? "#000000" : "#ffffff";
                 }
                 loadCurrentSequence();
                 updateEditorialGallery();
