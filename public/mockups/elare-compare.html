@@ -14,7 +14,7 @@
             --ink: #ffffff;
             --mute: #8e8e8e;
             --border: #222222;
-            --card-bg: #080808;
+            --card-bg: #000000;
             --btn-bg: #000000;
             --btn-border: #444444;
             --gold: #dfb15b;
@@ -78,7 +78,7 @@
 
         .icon-btn {
             background: none;
-            border: none;
+            border: none !important;
             color: #fff;
             cursor: pointer;
             display: flex;
@@ -310,25 +310,28 @@
             }
         }
 
-        /* Product Card */
+        /* Product Card (Seamless, zero borders) */
         .product-card {
             background: var(--card-bg);
-            border: 1px solid #1c1c1c;
-            border-radius: 8px;
+            border: none !important;
+            border-radius: 0;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             position: relative;
+            box-shadow: none !important;
+            transition: background 0.2s ease;
         }
 
         /* Card Variation Header Controls */
         .card-view-header {
             padding: 10px 12px;
-            background: #0d0d0d;
-            border-bottom: 1px solid #181818;
+            background: var(--card-bg);
+            border: none !important;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            transition: background 0.2s ease;
         }
 
         .view-header-top {
@@ -402,7 +405,7 @@
             font-weight: 700;
         }
 
-        /* Turntable Canvas Stage */
+        /* Turntable Canvas Stage (Seamless, zero borders) */
         .canvas-stage {
             width: 100%;
             aspect-ratio: 1;
@@ -411,6 +414,9 @@
             cursor: grab;
             user-select: none;
             touch-action: none;
+            border: none !important;
+            border-radius: 0;
+            box-shadow: none !important;
             transition: background 0.2s ease;
         }
 
@@ -478,6 +484,8 @@
             flex-direction: column;
             gap: 4px;
             flex-grow: 1;
+            background: var(--card-bg);
+            transition: background 0.2s ease;
         }
 
         .product-title-row {
@@ -627,7 +635,7 @@
             --ink: #111111;
             --mute: #666666;
             --border: #e8e8e8;
-            --card-bg: #f9f9f9;
+            --card-bg: #ffffff;
             --btn-bg: #ffffff;
             --btn-border: #cccccc;
         }
@@ -691,11 +699,22 @@
             color: #333;
         }
         body.light-storefront .product-card {
-            border-color: #e5e5e5;
+            background: #ffffff;
+            border: none !important;
+            box-shadow: none !important;
         }
         body.light-storefront .card-view-header {
-            background: #f4f4f4;
-            border-color: #e8e8e8;
+            background: #ffffff;
+            border: none !important;
+        }
+        body.light-storefront .canvas-stage {
+            background: #ffffff;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        body.light-storefront .product-meta {
+            background: #ffffff;
+            border: none !important;
         }
         body.light-storefront .variation-select {
             background: #ffffff;
@@ -749,7 +768,7 @@
         }
     </style>
 </head>
-<body>
+<body class="light-storefront">
 
     <!-- Announcement Bar -->
     <div class="top-banner">
@@ -769,6 +788,10 @@
             <a href="#" class="logo-text">ELARÉ</a>
         </div>
         <div class="hdr-right">
+            <a href="/mockups/elare-pdp.html" style="color: #dfb15b; text-decoration: none; font-size: 11px; font-weight: 600; margin-right: 6px;">← Storefront PDP</a>
+            <button class="icon-btn theme-toggle-btn" id="hdrThemeToggle" aria-label="Toggle Theme" title="Toggle Dark / White Theme" style="font-size: 11px; font-weight: 600; gap: 5px; border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; cursor: pointer;">
+                <span id="hdrThemeIcon">🌙</span> <span id="hdrThemeText">Dark Studio</span>
+            </button>
             <button class="icon-btn" aria-label="Search">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -819,7 +842,7 @@
             <button class="btn-toolbar" id="btnResetBoth">↺ Front (0°)</button>
         </div>
         <div class="compare-toolbar-right" style="display: flex; align-items: center; gap: 8px;">
-            <button class="btn-toolbar" id="btnToggleTheme" style="font-weight: 600; color: #dfb15b; border-color: rgba(223, 177, 91, 0.5);">☀️ White Storefront</button>
+            <button class="btn-toolbar active" id="btnToggleTheme" style="font-weight: 600; color: #dfb15b; border-color: rgba(223, 177, 91, 0.5);">🌙 Dark Studio Mode</button>
             <button class="btn-toolbar" id="btnBothSilver">All Silver</button>
             <button class="btn-toolbar" id="btnBothGold">All Gold</button>
             <span class="angle-readout" id="angleDisplay">0° (Frame 00/72)</span>
@@ -848,19 +871,19 @@
                     <div class="view-header-top">
                         <span class="view-indicator">View 1:</span>
                         <select class="variation-select" id="selectView1" data-view="view1">
-                            <option value="Ring-Cracked17-default" selected>Default (Floor Reflection)</option>
-                            <option value="Ring-Cracked17-white">White Studio v01</option>
+                            <option value="Ring-Cracked17-white-v3" selected>White Studio v03 ✨</option>
                             <option value="Ring-Cracked17">White v02 (Floating)</option>
-                            <option value="Ring-Cracked17-white-v3">White Studio v03</option>
+                            <option value="Ring-Cracked17-white">White Studio v01</option>
+                            <option value="Ring-Cracked17-default">Default (Floor Reflection)</option>
                             <option value="Ring-Cracked17-dark">Dark (Clean Cutout)</option>
                             <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
                         </select>
                     </div>
                     <div class="variation-pills" data-view="view1">
-                        <button class="btn-var-pill active" data-prod="Ring-Cracked17-default">Default</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White v01</button>
+                        <button class="btn-var-pill active" data-prod="Ring-Cracked17-white-v3">White v03 ✨</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17">White v02</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white-v3">White v03</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White v01</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-default">Default</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark">Dark</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
                     </div>
@@ -877,7 +900,7 @@
 
                 <div class="product-meta">
                     <div class="product-title-row">
-                        <h2 class="product-title" id="titleView1">CRUSHED Ring | Silver</h2>
+                        <h2 class="product-title" id="titleView1">CRUSHED Ring (White Studio v03) | Silver</h2>
                         <span class="product-price">$38</span>
                     </div>
                     <div class="product-offer">BUY 2, GET 1 FREE</div>
@@ -903,20 +926,20 @@
                     <div class="view-header-top">
                         <span class="view-indicator">View 2:</span>
                         <select class="variation-select" id="selectView2" data-view="view2">
-                            <option value="Ring-Cracked17-default">Default (Floor Reflection)</option>
+                            <option value="Ring-Cracked17" selected>White v02 (Floating)</option>
+                            <option value="Ring-Cracked17-white-v3">White Studio v03 ✨</option>
                             <option value="Ring-Cracked17-white">White Studio v01</option>
-                            <option value="Ring-Cracked17">White v02 (Floating)</option>
-                            <option value="Ring-Cracked17-white-v3">White Studio v03</option>
-                            <option value="Ring-Cracked17-dark" selected>Dark (Clean Cutout)</option>
+                            <option value="Ring-Cracked17-default">Default (Floor Reflection)</option>
+                            <option value="Ring-Cracked17-dark">Dark (Clean Cutout)</option>
                             <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
                         </select>
                     </div>
                     <div class="variation-pills" data-view="view2">
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-default">Default</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white-v3">White v03 ✨</button>
+                        <button class="btn-var-pill active" data-prod="Ring-Cracked17">White v02</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White v01</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17">White v02</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white-v3">White v03</button>
-                        <button class="btn-var-pill active" data-prod="Ring-Cracked17-dark">Dark</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-default">Default</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-dark">Dark</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
                     </div>
                 </div>
@@ -932,7 +955,7 @@
 
                 <div class="product-meta">
                     <div class="product-title-row">
-                        <h2 class="product-title" id="titleView2">CRUSHED Ring | Silver</h2>
+                        <h2 class="product-title" id="titleView2">CRUSHED Ring (White v02 Floating) | Silver</h2>
                         <span class="product-price">$38</span>
                     </div>
                     <div class="product-offer">BUY 2, GET 1 FREE</div>
@@ -1011,10 +1034,10 @@
             isAutoplaying: false,
             autoplayTimer: null,
             view1: {
-                productId: 'Ring-Cracked17-default',
+                productId: 'Ring-Cracked17-white-v3',
                 variant: 'Silver',
                 angleIndex: 0,
-                basePath: getProductBasePath('Ring-Cracked17-default'),
+                basePath: getProductBasePath('Ring-Cracked17-white-v3'),
                 canvas: document.getElementById('canvasView1'),
                 ctx: document.getElementById('canvasView1').getContext('2d'),
                 loader: document.getElementById('loaderView1'),
@@ -1024,10 +1047,10 @@
                 cache: {}
             },
             view2: {
-                productId: 'Ring-Cracked17-dark',
+                productId: 'Ring-Cracked17',
                 variant: 'Silver',
                 angleIndex: 0,
-                basePath: getProductBasePath('Ring-Cracked17-dark'),
+                basePath: getProductBasePath('Ring-Cracked17'),
                 canvas: document.getElementById('canvasView2'),
                 ctx: document.getElementById('canvasView2').getContext('2d'),
                 loader: document.getElementById('loaderView2'),
@@ -1140,9 +1163,8 @@
             v.loader.style.display = "flex";
             v.loader.style.opacity = "1";
 
-            // Update stage background color based on variation (e.g. White uses #ffffff)
-            const conf = VARIATION_CONFIG[v.productId] || { bg: '#000000' };
-            v.stage.style.background = conf.bg;
+            // Update stage background color based on variation and active theme
+            updateStageBg(viewKey);
 
             // Load current frame immediately
             loadImage(viewKey, v.variant, v.angleIndex).then(() => {
@@ -1253,15 +1275,23 @@
         }
 
         // Variation Switching (Default / Dark / Dark+Refl / White)
-        let isWhiteTheme = false;
+        let isWhiteTheme = true;
         function updateStageBg(viewKey) {
             const v = state[viewKey];
             const conf = VARIATION_CONFIG[v.productId] || {};
             if (v.stage) {
-                if (isWhiteTheme || v.productId === 'Ring-Cracked17' || v.productId.includes('white')) {
+                if (isWhiteTheme) {
                     v.stage.style.background = '#ffffff';
                 } else {
-                    v.stage.style.background = conf.bg || '#000000';
+                    if (v.productId === 'Ring-Cracked17') {
+                        // White v02 Floating is transparent cutout, so on Dark mode it sits seamlessly on pure black #000000!
+                        v.stage.style.background = '#000000';
+                    } else if (v.productId.includes('white')) {
+                        // White studio v01 and v03 have baked white background
+                        v.stage.style.background = '#ffffff';
+                    } else {
+                        v.stage.style.background = conf.bg || '#000000';
+                    }
                 }
             }
         }
@@ -1288,9 +1318,15 @@
             else isWhiteTheme = !isWhiteTheme;
             document.body.classList.toggle('light-storefront', isWhiteTheme);
             const btnTheme = document.getElementById('btnToggleTheme');
+            const hdrIcon = document.getElementById('hdrThemeIcon');
+            const hdrText = document.getElementById('hdrThemeText');
             if (btnTheme) {
                 btnTheme.textContent = isWhiteTheme ? "🌙 Dark Studio Mode" : "☀️ White Storefront Mode";
                 btnTheme.classList.toggle('active', isWhiteTheme);
+            }
+            if (hdrIcon && hdrText) {
+                hdrIcon.textContent = isWhiteTheme ? "🌙" : "☀️";
+                hdrText.textContent = isWhiteTheme ? "Dark Studio" : "White Mode";
             }
             updateStageBg('view1');
             updateStageBg('view2');
@@ -1338,10 +1374,14 @@
                 });
             });
 
-            // Theme Toggle Button
+            // Theme Toggle Buttons
             const btnTheme = document.getElementById('btnToggleTheme');
             if (btnTheme) {
                 btnTheme.addEventListener('click', () => toggleStorefrontTheme());
+            }
+            const hdrTheme = document.getElementById('hdrThemeToggle');
+            if (hdrTheme) {
+                hdrTheme.addEventListener('click', () => toggleStorefrontTheme());
             }
 
             // Sync toggle

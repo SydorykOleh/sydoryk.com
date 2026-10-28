@@ -241,16 +241,17 @@
             font-weight: 800;
         }
 
-        /* 360 Stage Wrapper */
+        /* 360 Stage Wrapper (Seamless, zero borders, zero shadows) */
         .turntable-container {
             width: 100%;
             aspect-ratio: 1 / 1;
             background: #ffffff;
-            border: 1px solid var(--line);
-            border-radius: 12px;
+            border: none !important;
+            border-radius: 0 !important;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            box-shadow: none !important;
+            transition: background 0.2s ease;
         }
 
         #turntableCanvas {
@@ -284,7 +285,7 @@
             gap: 6px;
             transition: opacity 0.3s;
             z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: none;
         }
 
         .angle-indicator {
@@ -389,10 +390,11 @@
         .gallery-main-img {
             width: 100%;
             aspect-ratio: 1;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            object-fit: cover;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            object-fit: contain;
         }
 
         .gallery-thumbs {
@@ -745,6 +747,243 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+
+        /* Dark Theme Support (Seamless Storefront) */
+        body.dark-mode {
+            --bg: #000000;
+            --ink: #ffffff;
+            --mute: #8e8e8e;
+            --soft: #121212;
+            --line: #222222;
+            --acc: #ffffff;
+            --btn-bg: #ffffff;
+            --btn-fg: #000000;
+        }
+
+        body.dark-mode .announcement-bar {
+            background: #0d0d0d;
+            border-bottom: 1px solid #222222;
+            color: #aaa;
+        }
+
+        body.dark-mode .announcement-bar span {
+            color: #fff;
+        }
+
+        body.dark-mode .hdr {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid #222222;
+        }
+
+        body.dark-mode .hdr-burger {
+            color: #fff;
+        }
+
+        body.dark-mode .hdr-nav a {
+            color: #888;
+        }
+
+        body.dark-mode .hdr-nav a:hover,
+        body.dark-mode .hdr-nav a.active {
+            color: #fff;
+        }
+
+        body.dark-mode .logo-wordmark {
+            color: #fff;
+        }
+
+        body.dark-mode .hdr-action {
+            color: #fff;
+        }
+
+        body.dark-mode .cart-badge {
+            background: #fff;
+            color: #000;
+        }
+
+        body.dark-mode .mockup-ribbon {
+            background: #0d0d0d;
+            border-bottom: 1px solid #222222;
+            color: #aaa;
+        }
+
+        body.dark-mode .mockup-ribbon b {
+            color: #dfb15b;
+        }
+
+        body.dark-mode .mockup-ribbon .tag {
+            background: #222222;
+            color: #eee;
+        }
+
+        body.dark-mode .media-tabs {
+            background: #141414;
+            border-color: #282828;
+        }
+
+        body.dark-mode .media-tab-btn {
+            color: #888;
+        }
+
+        body.dark-mode .media-tab-btn.active {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode .hint-pill {
+            background: rgba(20, 20, 20, 0.9);
+            border-color: #333333;
+            color: #ccc;
+            box-shadow: none;
+        }
+
+        body.dark-mode .angle-indicator {
+            background: rgba(20, 20, 20, 0.9);
+            border-color: #333333;
+            color: #aaa;
+        }
+
+        body.dark-mode .turntable-loader {
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+        }
+
+        body.dark-mode .tool-btn {
+            border-color: #333333;
+            color: #888888;
+        }
+
+        body.dark-mode .tool-btn:hover {
+            color: #ffffff;
+            border-color: #666666;
+        }
+
+        body.dark-mode .tool-btn.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        body.dark-mode .progress-micro-bar {
+            background: #333333;
+        }
+
+        body.dark-mode .progress-micro-fill {
+            background: #ffffff;
+        }
+
+        body.dark-mode .progress-micro-text {
+            color: #888888;
+        }
+
+        body.dark-mode .gallery-thumb {
+            border-color: #333333;
+        }
+
+        body.dark-mode .product-title {
+            color: #ffffff;
+        }
+
+        body.dark-mode .price-current {
+            color: #ffffff;
+        }
+
+        body.dark-mode .price-compare {
+            color: #777777;
+        }
+
+        body.dark-mode .price-discount {
+            background: #222222;
+            color: #ffffff;
+        }
+
+        body.dark-mode .reviews-summary {
+            color: #888888;
+        }
+
+        body.dark-mode .promo-box {
+            background: #111111;
+            border-color: #242424;
+            color: #bbbbbb;
+        }
+
+        body.dark-mode .promo-box b {
+            color: #dfb15b;
+        }
+
+        body.dark-mode .option-header span b {
+            color: #ffffff;
+        }
+
+        body.dark-mode .bg-style-btn {
+            background: #141414;
+            border-color: #2e2e2e;
+            color: #cccccc;
+        }
+
+        body.dark-mode .bg-style-btn:hover {
+            border-color: #666666;
+            background: #202020;
+            color: #ffffff;
+        }
+
+        body.dark-mode .bg-style-btn.active {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode .metal-btn {
+            background: #141414;
+            border-color: #2e2e2e;
+            color: #cccccc;
+        }
+
+        body.dark-mode .metal-btn:hover {
+            border-color: #666666;
+            background: #202020;
+            color: #ffffff;
+        }
+
+        body.dark-mode .metal-btn.active {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode .size-btn {
+            background: #141414;
+            border-color: #2e2e2e;
+            color: #888888;
+        }
+
+        body.dark-mode .size-btn:hover {
+            border-color: #666666;
+            color: #ffffff;
+        }
+
+        body.dark-mode .size-btn.active {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        body.dark-mode .btn-atc {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode .prop-item {
+            color: #aaaaaa;
+        }
+
+        body.dark-mode .acc-trigger {
+            color: #ffffff;
+        }
+
+        body.dark-mode .acc-content {
+            color: #888888;
+        }
     </style>
 </head>
 <body>
@@ -774,6 +1013,9 @@
         </a>
 
         <div class="hdr-right">
+            <button class="hdr-action theme-toggle-btn" id="themeToggleBtnHdr" aria-label="Toggle Theme" title="Toggle Dark / White Theme" style="font-weight: 600; padding: 4px 11px; border: 1px solid var(--line); border-radius: 20px; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                <span id="hdrThemeIcon">🌙</span> <span id="hdrThemeText">Dark Mode</span>
+            </button>
             <button class="hdr-action" aria-label="Currency">USD $</button>
             <button class="hdr-action" aria-label="Search">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -840,19 +1082,19 @@
 
             <!-- Editorial Photos View (Updated to new 800px renders) -->
             <div id="editorialGallery" class="editorial-gallery">
-                <img id="mainGalleryImg" src="../assets/projects/elare/Ring-Cracked17/Silver/frame_00.webp" alt="CRUSHED Ring editorial" class="gallery-main-img">
+                <img id="mainGalleryImg" src="../assets/projects/elare/Ring-Cracked17-white-v3/Silver/frame_00.webp" alt="CRUSHED Ring editorial" class="gallery-main-img">
                 <div class="gallery-thumbs">
                     <div class="gallery-thumb" id="thumb0">
-                        <img id="thumbImg0" src="../assets/projects/elare/Ring-Cracked17/Silver/frame_00.webp" alt="Angle 0° Front">
+                        <img id="thumbImg0" src="../assets/projects/elare/Ring-Cracked17-white-v3/Silver/frame_00.webp" alt="Angle 0° Front">
                     </div>
                     <div class="gallery-thumb" id="thumb1">
-                        <img id="thumbImg1" src="../assets/projects/elare/Ring-Cracked17/Silver/frame_18.webp" alt="Angle 90° Profile">
+                        <img id="thumbImg1" src="../assets/projects/elare/Ring-Cracked17-white-v3/Silver/frame_18.webp" alt="Angle 90° Profile">
                     </div>
                     <div class="gallery-thumb" id="thumb2">
-                        <img id="thumbImg2" src="../assets/projects/elare/Ring-Cracked17/Silver/frame_36.webp" alt="Angle 180° Back">
+                        <img id="thumbImg2" src="../assets/projects/elare/Ring-Cracked17-white-v3/Silver/frame_36.webp" alt="Angle 180° Back">
                     </div>
                     <div class="gallery-thumb" id="thumb3">
-                        <img id="thumbImg3" src="../assets/projects/elare/Ring-Cracked17/Silver/frame_54.webp" alt="Angle 270° Side">
+                        <img id="thumbImg3" src="../assets/projects/elare/Ring-Cracked17-white-v3/Silver/frame_54.webp" alt="Angle 270° Side">
                     </div>
                 </div>
             </div>
@@ -882,14 +1124,19 @@
             <!-- Background Style Selector (Variations) -->
             <div class="option-group">
                 <div class="option-header">
-                    <span>Background Style: <b id="selectedBgLabel">White v02 (Floating)</b></span>
-                    <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
+                    <span>Background Style: <b id="selectedBgLabel">White Studio v03 ✨</b></span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <button id="themeToggleBtnInline" style="background: none; border: 1px solid var(--line); border-radius: 12px; padding: 2px 8px; font-size: 10px; font-weight: 600; cursor: pointer; color: var(--ink); display: inline-flex; align-items: center; gap: 4px;">
+                            <span id="inlineThemeIcon">🌙</span> <span id="inlineThemeText">Dark Theme</span>
+                        </button>
+                        <a href="/mockups/elare-compare.html" id="sideBySideLink" style="color: #dfb15b; font-size: 11px; text-decoration: none; letter-spacing: 0.05em; font-weight: 500;">Side-by-Side View ↗</a>
+                    </div>
                 </div>
                 <div class="metal-pills" style="grid-template-columns: repeat(2, 1fr); gap: 6px;">
-                    <button class="bg-style-btn active" data-product="Ring-Cracked17" style="border-color: #000; font-weight: 700;">
+                    <button class="bg-style-btn" data-product="Ring-Cracked17">
                         <span>White v02 (Floating)</span>
                     </button>
-                    <button class="bg-style-btn" data-product="Ring-Cracked17-white-v3">
+                    <button class="bg-style-btn active" data-product="Ring-Cracked17-white-v3" style="border-color: #000; font-weight: 700;">
                         <span>White Studio v03 ✨</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-white">
@@ -999,7 +1246,7 @@
     <!-- Embedded Turntable Script Engine -->
     <script>
         // Resolve asset base path to guarantee local and online reliability
-        let currentProductId = "Ring-Cracked17";
+        let currentProductId = "Ring-Cracked17-white-v3";
         function resolveProductBaseUrl(productId) {
             if (window.location.protocol === "file:") {
                 if (window.location.pathname.includes("sydoryk.com")) {
@@ -1288,6 +1535,53 @@
         const bgBtns = document.querySelectorAll(".bg-style-btn");
         const selectedBgLabel = document.getElementById("selectedBgLabel");
         const stageContainer = document.getElementById("turntableStage");
+
+        // Dark / White Theme Toggle
+        let isDarkMode = false;
+
+        function updatePdpStageBg() {
+            if (!stageContainer) return;
+            if (isDarkMode) {
+                if (currentProductId.includes("white")) {
+                    stageContainer.style.background = "#ffffff";
+                } else {
+                    stageContainer.style.background = "#000000";
+                }
+            } else {
+                if (currentProductId.includes("dark") || currentProductId.includes("default")) {
+                    stageContainer.style.background = "#000000";
+                } else {
+                    stageContainer.style.background = "#ffffff";
+                }
+            }
+        }
+
+        function toggleTheme(forceDark) {
+            if (typeof forceDark === "boolean") isDarkMode = forceDark;
+            else isDarkMode = !isDarkMode;
+            document.body.classList.toggle("dark-mode", isDarkMode);
+
+            const hdrIcon = document.getElementById("hdrThemeIcon");
+            const hdrText = document.getElementById("hdrThemeText");
+            const inlineIcon = document.getElementById("inlineThemeIcon");
+            const inlineText = document.getElementById("inlineThemeText");
+
+            if (hdrIcon && hdrText) {
+                hdrIcon.textContent = isDarkMode ? "☀️" : "🌙";
+                hdrText.textContent = isDarkMode ? "White Mode" : "Dark Mode";
+            }
+            if (inlineIcon && inlineText) {
+                inlineIcon.textContent = isDarkMode ? "☀️" : "🌙";
+                inlineText.textContent = isDarkMode ? "White Theme" : "Dark Theme";
+            }
+            updatePdpStageBg();
+        }
+
+        const btnThemeHdr = document.getElementById("themeToggleBtnHdr");
+        if (btnThemeHdr) btnThemeHdr.addEventListener("click", () => toggleTheme());
+        const btnThemeInline = document.getElementById("themeToggleBtnInline");
+        if (btnThemeInline) btnThemeInline.addEventListener("click", () => toggleTheme());
+
         bgBtns.forEach(btn => {
             btn.addEventListener("click", () => {
                 const prod = btn.dataset.product;
@@ -1299,9 +1593,7 @@
                 if (selectedBgLabel) {
                     selectedBgLabel.textContent = BG_NAMES[currentProductId] || currentProductId;
                 }
-                if (stageContainer) {
-                    stageContainer.style.background = currentProductId.includes("dark") ? "#000000" : "#ffffff";
-                }
+                updatePdpStageBg();
                 loadCurrentSequence();
                 updateEditorialGallery();
             });
