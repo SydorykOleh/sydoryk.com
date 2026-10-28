@@ -886,13 +886,13 @@
                         <span>Default (Floor)</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-white">
-                        <span>White Studio (v1)</span>
-                    </button>
-                    <button class="bg-style-btn" data-product="Ring-Cracked17-white-v2" style="border-color: rgba(223, 177, 91, 0.4); color: #dfb15b;">
-                        <span>White Studio v2 ✨</span>
+                        <span>White Studio v01</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17">
-                        <span>Floating (Clean)</span>
+                        <span>White v02 (Floating)</span>
+                    </button>
+                    <button class="bg-style-btn" data-product="Ring-Cracked17-white-v3" style="border-color: rgba(223, 177, 91, 0.4); color: #dfb15b;">
+                        <span>White Studio v03 ✨</span>
                     </button>
                     <button class="bg-style-btn" data-product="Ring-Cracked17-dark-refl">
                         <span>Dark + Refl</span>
@@ -1275,9 +1275,9 @@
         // Background Style Switcher (Variations)
         const BG_NAMES = {
             'Ring-Cracked17-default': 'Default (Floor Reflection)',
-            'Ring-Cracked17-white': 'White Studio (v1)',
-            'Ring-Cracked17-white-v2': 'White Studio v2',
-            'Ring-Cracked17': 'Floating (Clean Alpha)',
+            'Ring-Cracked17-white': 'White Studio v01',
+            'Ring-Cracked17': 'White v02 (Floating)',
+            'Ring-Cracked17-white-v3': 'White Studio v03',
             'Ring-Cracked17-dark-refl': 'Dark + Refl (Contact Floor)',
             'Ring-Cracked17-dark': 'Dark (Clean Cutout)'
         };
@@ -1296,7 +1296,7 @@
                     selectedBgLabel.textContent = BG_NAMES[currentProductId] || currentProductId;
                 }
                 if (stageContainer) {
-                    stageContainer.style.background = currentProductId.includes("white") ? "#ffffff" : "#000000";
+                    stageContainer.style.background = (currentProductId.includes("white") || currentProductId === "Ring-Cracked17") ? "#ffffff" : "#000000";
                 }
                 loadCurrentSequence();
                 updateEditorialGallery();

@@ -27,14 +27,20 @@
         },
         {
           "id": "white",
-          "label": "White Studio (v1)",
+          "label": "White Studio v01",
           "basePath": "/assets/projects/elare/Ring-Cracked17-white/",
           "bg": "#ffffff"
         },
         {
-          "id": "white-v2",
-          "label": "White Studio v2",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-white-v2/",
+          "id": "white-v02",
+          "label": "White v02 (Floating)",
+          "basePath": "/assets/projects/elare/Ring-Cracked17/",
+          "bg": "#ffffff"
+        },
+        {
+          "id": "white-v03",
+          "label": "White Studio v03",
+          "basePath": "/assets/projects/elare/Ring-Cracked17-white-v3/",
           "bg": "#ffffff"
         },
         {
@@ -47,12 +53,6 @@
           "id": "dark-refl",
           "label": "Dark + Refl",
           "basePath": "/assets/projects/elare/Ring-Cracked17-dark-refl/",
-          "bg": "#000000"
-        },
-        {
-          "id": "floating",
-          "label": "Floating (Clean)",
-          "basePath": "/assets/projects/elare/Ring-Cracked17/",
           "bg": "#000000"
         }
       ],
