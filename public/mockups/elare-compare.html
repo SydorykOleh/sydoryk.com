@@ -829,7 +829,8 @@
     <!-- Quick Presets -->
     <div class="presets-row">
         <span class="presets-label">Compare Presets:</span>
-        <button class="btn-preset" id="presetWhiteCompare" data-left="Ring-Cracked17" data-right="Ring-Cracked17-white" style="border-color: #dfb15b; color: #dfb15b; font-weight: 600;">⚡ White Store: Transparent vs Solid White</button>
+        <button class="btn-preset" id="presetWhiteV1vsV2" data-left="Ring-Cracked17-white" data-right="Ring-Cracked17-white-v2" style="border-color: #dfb15b; color: #dfb15b; font-weight: 600;">⚡ White v1 vs White v2</button>
+        <button class="btn-preset" id="presetWhiteCompare" data-left="Ring-Cracked17" data-right="Ring-Cracked17-white-v2" style="border-color: #dfb15b; color: #dfb15b; font-weight: 600;">⚡ White Store: Transparent vs White v2</button>
         <button class="btn-preset" data-left="Ring-Cracked17-default" data-right="Ring-Cracked17-dark">Default vs Dark</button>
         <button class="btn-preset" data-left="Ring-Cracked17-dark" data-right="Ring-Cracked17-dark-refl">Dark vs Dark+Refl</button>
         <button class="btn-preset" data-left="Ring-Cracked17-dark" data-right="Ring-Cracked17-white">Dark vs White</button>
@@ -847,7 +848,8 @@
                         <span class="view-indicator">View 1:</span>
                         <select class="variation-select" id="selectView1" data-view="view1">
                             <option value="Ring-Cracked17-default" selected>Default (Floor Reflection)</option>
-                            <option value="Ring-Cracked17-white">White Studio</option>
+                            <option value="Ring-Cracked17-white">White Studio (v1)</option>
+                            <option value="Ring-Cracked17-white-v2">White Studio v2</option>
                             <option value="Ring-Cracked17">Floating (Clean Alpha)</option>
                             <option value="Ring-Cracked17-dark">Dark (Clean Cutout)</option>
                             <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
@@ -855,7 +857,8 @@
                     </div>
                     <div class="variation-pills" data-view="view1">
                         <button class="btn-var-pill active" data-prod="Ring-Cracked17-default">Default</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White v1</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white-v2">White v2</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17">Floating</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark">Dark</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
@@ -900,7 +903,8 @@
                         <span class="view-indicator">View 2:</span>
                         <select class="variation-select" id="selectView2" data-view="view2">
                             <option value="Ring-Cracked17-default">Default (Floor Reflection)</option>
-                            <option value="Ring-Cracked17-white">White Studio</option>
+                            <option value="Ring-Cracked17-white">White Studio (v1)</option>
+                            <option value="Ring-Cracked17-white-v2">White Studio v2</option>
                             <option value="Ring-Cracked17">Floating (Clean Alpha)</option>
                             <option value="Ring-Cracked17-dark" selected>Dark (Clean Cutout)</option>
                             <option value="Ring-Cracked17-dark-refl">Dark + Refl (Contact Floor)</option>
@@ -908,7 +912,8 @@
                     </div>
                     <div class="variation-pills" data-view="view2">
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-default">Default</button>
-                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white">White v1</button>
+                        <button class="btn-var-pill" data-prod="Ring-Cracked17-white-v2">White v2</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17">Floating</button>
                         <button class="btn-var-pill active" data-prod="Ring-Cracked17-dark">Dark</button>
                         <button class="btn-var-pill" data-prod="Ring-Cracked17-dark-refl">Dark+Refl</button>
@@ -985,7 +990,8 @@
 
         const VARIATION_CONFIG = {
             'Ring-Cracked17-default': { name: 'Default', bg: '#000000', label: 'CRUSHED Ring (Default)' },
-            'Ring-Cracked17-white': { name: 'White Studio', bg: '#ffffff', label: 'CRUSHED Ring (White Studio)' },
+            'Ring-Cracked17-white': { name: 'White Studio (v1)', bg: '#ffffff', label: 'CRUSHED Ring (White Studio v1)' },
+            'Ring-Cracked17-white-v2': { name: 'White Studio v2', bg: '#ffffff', label: 'CRUSHED Ring (White Studio v2)' },
             'Ring-Cracked17': { name: 'Floating', bg: '#000000', label: 'CRUSHED Ring (Floating Alpha)' },
             'Ring-Cracked17-dark': { name: 'Dark', bg: '#000000', label: 'CRUSHED Ring (Dark)' },
             'Ring-Cracked17-dark-refl': { name: 'Dark + Refl', bg: '#000000', label: 'CRUSHED Ring (Dark+Refl)' }
@@ -1323,7 +1329,7 @@
             // Preset Buttons
             document.querySelectorAll('.btn-preset').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    if (btn.id === 'presetWhiteCompare') {
+                    if (btn.id === 'presetWhiteCompare' || btn.id === 'presetWhiteV1vsV2') {
                         toggleStorefrontTheme(true);
                     }
                     setProductVariation('view1', btn.dataset.left);

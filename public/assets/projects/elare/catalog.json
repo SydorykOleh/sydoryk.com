@@ -27,8 +27,14 @@
         },
         {
           "id": "white",
-          "label": "White Studio",
+          "label": "White Studio (v1)",
           "basePath": "/assets/projects/elare/Ring-Cracked17-white/",
+          "bg": "#ffffff"
+        },
+        {
+          "id": "white-v2",
+          "label": "White Studio v2",
+          "basePath": "/assets/projects/elare/Ring-Cracked17-white-v2/",
           "bg": "#ffffff"
         },
         {
