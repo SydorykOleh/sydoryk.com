@@ -1,62 +1,873 @@
 {
-  "version": "1.0",
-  "updatedAt": 1793051267.0953507,
+  "version": "1.3",
+  "updatedAt": 1793616111,
+  "readyCount": 23,
+  "finalCount": 0,
+  "x3Count": 23,
+  "missingCount": 26,
   "categories": [
-    "Ring"
+    "Ring",
+    "Bracelet",
+    "Pendant",
+    "Chain",
+    "Earring"
   ],
   "products": [
     {
-      "id": "Ring-Cracked17",
+      "id": "Ring-Crushed",
+      "folderId": "Ring-Crushed",
+      "num": "1",
+      "group": "current",
+      "status": "x3",
       "category": "Ring",
-      "name": "Cracked17",
-      "displayName": "Crushed Ring",
+      "name": "Crushed Ring",
+      "displayName": "1. CRUSHED Ring",
       "variants": [
         "Silver",
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 72,
-      "basePath": "/assets/projects/elare/Ring-Cracked17-default/",
-      "thumbnail": "/assets/projects/elare/Ring-Cracked17-default/thumbnail.webp",
-      "variations": [
-        {
-          "id": "default",
-          "label": "Default (Floor)",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-default/",
-          "bg": "#000000"
-        },
-        {
-          "id": "white",
-          "label": "White Studio v01",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-white/",
-          "bg": "#ffffff"
-        },
-        {
-          "id": "white-v02",
-          "label": "White v02 (Floating)",
-          "basePath": "/assets/projects/elare/Ring-Cracked17/",
-          "bg": "#ffffff"
-        },
-        {
-          "id": "white-v03",
-          "label": "White Studio v03",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-white-v3/",
-          "bg": "#ffffff"
-        },
-        {
-          "id": "dark",
-          "label": "Dark (Cutout)",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-dark/",
-          "bg": "#000000"
-        },
-        {
-          "id": "dark-refl",
-          "label": "Dark + Refl",
-          "basePath": "/assets/projects/elare/Ring-Cracked17-dark-refl/",
-          "bg": "#000000"
-        }
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Crushed/",
+      "thumbnail": "/assets/projects/elare/Ring-Crushed/thumbnail.webp"
+    },
+    {
+      "id": "Ring-CrushedV2",
+      "folderId": "Ring-CrushedV2",
+      "num": "2",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Crushed V2 Ring",
+      "displayName": "2. CRUSHED V2 Ring",
+      "variants": [
+        "Silver",
+        "Gold"
       ],
-      "defaultVariation": "default"
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-CrushedV2/",
+      "thumbnail": "/assets/projects/elare/Ring-CrushedV2/thumbnail.webp"
+    },
+    {
+      "id": "Ring-CrushedV3",
+      "folderId": "Ring-CrushedV3",
+      "num": "3",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Crushed V3 Ring",
+      "displayName": "3. CRUSHED V3 Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-CrushedV3/",
+      "thumbnail": "/assets/projects/elare/Ring-CrushedV3/thumbnail.webp"
+    },
+    {
+      "id": "Ring-CrushedSignet",
+      "folderId": "Ring-CrushedSignet",
+      "num": "4",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Crushed Signet Ring",
+      "displayName": "4. CRUSHED SIGNET Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-CrushedSignet/",
+      "thumbnail": "/assets/projects/elare/Ring-CrushedSignet/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Sanctum",
+      "folderId": "Ring-Sanctum",
+      "num": "5",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Sanctum Ring",
+      "displayName": "5. SANCTUM Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Sanctum/",
+      "thumbnail": "/assets/projects/elare/Ring-Sanctum/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Lunara",
+      "folderId": "Ring-Lunara",
+      "num": "6",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Lunara Ring",
+      "displayName": "6. LUNARA Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Lunara/",
+      "thumbnail": "/assets/projects/elare/Ring-Lunara/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Form",
+      "folderId": "Ring-Form",
+      "num": "7",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Form Ring",
+      "displayName": "7. FORM Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Form/",
+      "thumbnail": "/assets/projects/elare/Ring-Form/thumbnail.webp"
+    },
+    {
+      "id": "Ring-Axiom",
+      "folderId": "Ring-Axiom",
+      "num": "8",
+      "group": "current",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Axiom Ring",
+      "displayName": "8. AXIOM Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Axiom/",
+      "thumbnail": "/assets/projects/elare/Ring-Axiom/thumbnail.webp"
+    },
+    {
+      "id": "Bracelet-Sanctum",
+      "folderId": "Bracelet-Sanctum",
+      "num": "9",
+      "group": "current",
+      "status": "x3",
+      "category": "Bracelet",
+      "name": "Sanctum Bracelet",
+      "displayName": "9. SANCTUM Bracelet",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Bracelet-Sanctum/",
+      "thumbnail": "/assets/projects/elare/Bracelet-Sanctum/thumbnail.webp"
+    },
+    {
+      "id": "Bracelet-CovenantID",
+      "folderId": "Bracelet-CovenantID",
+      "num": "10",
+      "group": "current",
+      "status": "x3",
+      "category": "Bracelet",
+      "name": "Covenant ID Bracelet",
+      "displayName": "10. COVENANT ID Bracelet",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Bracelet-CovenantID/",
+      "thumbnail": "/assets/projects/elare/Bracelet-CovenantID/thumbnail.webp"
+    },
+    {
+      "id": "Bracelet-Silen",
+      "folderId": "Bracelet-Silen",
+      "num": "11",
+      "group": "current",
+      "status": "x3",
+      "category": "Bracelet",
+      "name": "Silen Bracelet",
+      "displayName": "11. SILEN Bracelet",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Bracelet-Silen/",
+      "thumbnail": "/assets/projects/elare/Bracelet-Silen/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Crucifix",
+      "folderId": "Necklace-Crucifix",
+      "num": "12",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Crucifix Pendant",
+      "displayName": "12. CRUCIFIX Pendant (Dragonbone)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Crucifix/",
+      "thumbnail": "/assets/projects/elare/Necklace-Crucifix/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-CrushedCrossSmall",
+      "folderId": "Necklace-CrushedCrossSmall",
+      "num": "13a",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Crushed Cross (31mm)",
+      "displayName": "13a. CRUSHED CROSS (Small 31mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-CrushedCrossSmall/",
+      "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossSmall/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-CrushedCrossMedium",
+      "folderId": "Necklace-CrushedCrossMedium",
+      "num": "13b",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Crushed Cross (42mm)",
+      "displayName": "13b. CRUSHED CROSS (Medium 42mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-CrushedCrossMedium/",
+      "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossMedium/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-CrushedCrossBig",
+      "folderId": "Necklace-CrushedCrossBig",
+      "num": "13c",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Crushed Cross (50mm)",
+      "displayName": "13c. CRUSHED CROSS (Large 50mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-CrushedCrossBig/",
+      "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossBig/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Sanctum",
+      "folderId": "Necklace-Sanctum",
+      "num": "14",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Sanctum Pendant",
+      "displayName": "14. SANCTUM Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Sanctum/",
+      "thumbnail": "/assets/projects/elare/Necklace-Sanctum/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Cross",
+      "folderId": "Necklace-Cross",
+      "num": "15",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Cross Pendant",
+      "displayName": "15. CROSS Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Cross/",
+      "thumbnail": "/assets/projects/elare/Necklace-Cross/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Dagger",
+      "folderId": "Necklace-Dagger",
+      "num": "16",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Dagger Pendant",
+      "displayName": "16. DAGGER Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Dagger/",
+      "thumbnail": "/assets/projects/elare/Necklace-Dagger/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Relic",
+      "folderId": "Necklace-Relic",
+      "num": "17",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Relic Pendant",
+      "displayName": "17. RELIC Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Relic/",
+      "thumbnail": "/assets/projects/elare/Necklace-Relic/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-Vesper",
+      "folderId": "Necklace-Vesper",
+      "num": "18",
+      "group": "current",
+      "status": "x3",
+      "category": "Pendant",
+      "name": "Vesper Pendant",
+      "displayName": "18. VESPER Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Necklace-Vesper/",
+      "thumbnail": "/assets/projects/elare/Necklace-Vesper/thumbnail.webp"
+    },
+    {
+      "id": "Chain-Silen",
+      "num": "19",
+      "group": "current",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Silen Chain",
+      "displayName": "19. SILEN Chain",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-Fine3mm",
+      "num": "20",
+      "group": "current",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Fine Chain 3mm",
+      "displayName": "20. Fine Chain 3mm",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-O3mm",
+      "num": "21",
+      "group": "current",
+      "status": "todo",
+      "category": "Chain",
+      "name": "O Chain 3mm",
+      "displayName": "21. O Chain 3mm",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-Box3mm",
+      "num": "22",
+      "group": "current",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Box Chain 3mm",
+      "displayName": "22. Box Chain 3mm",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-Dragonbone",
+      "num": "23",
+      "group": "current",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Dragonbone Chain",
+      "displayName": "23. Dragonbone Chain",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-Crushed",
+      "num": "24",
+      "group": "current",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Crushed Earrings",
+      "displayName": "24. CRUSHED Earrings",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Ring-Nugget",
+      "folderId": "Ring-Nugget",
+      "num": "N1",
+      "group": "new",
+      "status": "x3",
+      "category": "Ring",
+      "name": "Nugget Ring",
+      "displayName": "N1. NUGGET Ring",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Ring-Nugget/",
+      "thumbnail": "/assets/projects/elare/Ring-Nugget/thumbnail.webp"
+    },
+    {
+      "id": "Necklace-CrushedSmall",
+      "num": "N2a",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Crushed Pendant (13.5mm)",
+      "displayName": "N2a. CRUSHED Pendant (13.5mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-CrushedMedium",
+      "num": "N2b",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Crushed Pendant (20mm)",
+      "displayName": "N2b. CRUSHED Pendant (20mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-CrushedBig",
+      "num": "N2c",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Crushed Pendant (25mm)",
+      "displayName": "N2c. CRUSHED Pendant (25mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-FleurDeLisCross",
+      "num": "N3",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Fleur-de-lis Cross",
+      "displayName": "N3. Fleur-de-lis Cross Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-ScrollCross",
+      "num": "N4",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Scroll Cross Pendant",
+      "displayName": "N4. Scroll Cross Pendant",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-FleurCrossSmall",
+      "num": "N5a",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Fleur Cross (22mm)",
+      "displayName": "N5a. Fleur Cross Pendant (22mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-FleurCrossBig",
+      "num": "N5b",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Fleur Cross (40mm)",
+      "displayName": "N5b. Fleur Cross Pendant (40mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-QuatrefoilWhiteSmall",
+      "num": "N6a",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Quatrefoil White (15mm)",
+      "displayName": "N6a. Quatrefoil (White, 15mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-QuatrefoilWhiteBig",
+      "num": "N6b",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Quatrefoil White (27mm)",
+      "displayName": "N6b. Quatrefoil (White, 27mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-QuatrefoilRedSmall",
+      "num": "N6c",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Quatrefoil Red (15mm)",
+      "displayName": "N6c. Quatrefoil (Red, 15mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Necklace-QuatrefoilRedBig",
+      "num": "N6d",
+      "group": "new",
+      "status": "todo",
+      "category": "Pendant",
+      "name": "Quatrefoil Red (27mm)",
+      "displayName": "N6d. Quatrefoil (Red, 27mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Bracelet-CrossDiamond",
+      "folderId": "Bracelet-CrossDiamond",
+      "num": "N7",
+      "group": "new",
+      "status": "x3",
+      "category": "Bracelet",
+      "name": "Cross Bracelet (Diamond)",
+      "displayName": "N7. Cross Bracelet (Diamond Centre)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Bracelet-CrossDiamond/",
+      "thumbnail": "/assets/projects/elare/Bracelet-CrossDiamond/thumbnail.webp"
+    },
+    {
+      "id": "Bracelet-SmallCross",
+      "folderId": "Bracelet-SmallCross",
+      "num": "N8",
+      "group": "new",
+      "status": "x3",
+      "category": "Bracelet",
+      "name": "Small Cross Bracelet",
+      "displayName": "N8. Small Cross Bracelet",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "/assets/projects/elare/Bracelet-SmallCross/",
+      "thumbnail": "/assets/projects/elare/Bracelet-SmallCross/thumbnail.webp"
+    },
+    {
+      "id": "Bracelet-Toggle",
+      "num": "N9",
+      "group": "new",
+      "status": "todo",
+      "category": "Bracelet",
+      "name": "Toggle Bracelet",
+      "displayName": "N9. Toggle Bracelet",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopSmall",
+      "num": "N10a",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop Earrings (16mm)",
+      "displayName": "N10a. Hoop Earrings (16mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopBig",
+      "num": "N10b",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop Earrings (33mm)",
+      "displayName": "N10b. Hoop Earrings (33mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopWhiteSmall",
+      "num": "N11a",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop White Stones (16mm)",
+      "displayName": "N11a. Hoop w/ Stones (White, 16mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopWhiteBig",
+      "num": "N11b",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop White Stones (33mm)",
+      "displayName": "N11b. Hoop w/ Stones (White, 33mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopRedSmall",
+      "num": "N11c",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop Red Stones (16mm)",
+      "displayName": "N11c. Hoop w/ Stones (Red, 16mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Earring-HoopRedBig",
+      "num": "N11d",
+      "group": "new",
+      "status": "todo",
+      "category": "Earring",
+      "name": "Hoop Red Stones (33mm)",
+      "displayName": "N11d. Hoop w/ Stones (Red, 33mm)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-Bead5mm",
+      "num": "N12",
+      "group": "new",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Bead Chain 5mm",
+      "displayName": "N12. Bead Chain 5mm",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
+    },
+    {
+      "id": "Chain-Crucifix",
+      "num": "N13",
+      "group": "new",
+      "status": "todo",
+      "category": "Chain",
+      "name": "Crucifix Chain (Welded)",
+      "displayName": "N13. CRUCIFIX Chain (Welded Links)",
+      "variants": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultVariant": "Silver",
+      "frameCount": 24,
+      "basePath": "",
+      "thumbnail": ""
     }
   ]
 }
