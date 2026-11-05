@@ -1,9 +1,9 @@
 {
   "version": "1.3",
-  "updatedAt": 1793689083,
+  "updatedAt": 1793888405,
   "readyCount": 23,
-  "finalCount": 0,
-  "x3Count": 23,
+  "finalCount": 23,
+  "x3Count": 0,
   "missingCount": 26,
   "categories": [
     "Ring",
@@ -18,7 +18,7 @@
       "folderId": "Ring-Crushed",
       "num": "1",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Crushed Ring",
       "displayName": "1. CRUSHED Ring",
@@ -27,7 +27,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Crushed/",
       "thumbnail": "/assets/projects/elare/Ring-Crushed/thumbnail.webp"
     },
@@ -36,7 +36,7 @@
       "folderId": "Ring-CrushedV2",
       "num": "2",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Crushed V2 Ring",
       "displayName": "2. CRUSHED V2 Ring",
@@ -45,7 +45,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedV2/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedV2/thumbnail.webp"
     },
@@ -54,7 +54,7 @@
       "folderId": "Ring-CrushedV3",
       "num": "3",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Crushed V3 Ring",
       "displayName": "3. CRUSHED V3 Ring",
@@ -63,7 +63,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedV3/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedV3/thumbnail.webp"
     },
@@ -72,7 +72,7 @@
       "folderId": "Ring-CrushedSignet",
       "num": "4",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Crushed Signet Ring",
       "displayName": "4. CRUSHED SIGNET Ring",
@@ -81,7 +81,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedSignet/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedSignet/thumbnail.webp"
     },
@@ -90,7 +90,7 @@
       "folderId": "Ring-Sanctum",
       "num": "5",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Sanctum Ring",
       "displayName": "5. SANCTUM Ring",
@@ -99,7 +99,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Sanctum/",
       "thumbnail": "/assets/projects/elare/Ring-Sanctum/thumbnail.webp"
     },
@@ -108,7 +108,7 @@
       "folderId": "Ring-Lunara",
       "num": "6",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Lunara Ring",
       "displayName": "6. LUNARA Ring",
@@ -117,7 +117,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Lunara/",
       "thumbnail": "/assets/projects/elare/Ring-Lunara/thumbnail.webp"
     },
@@ -126,7 +126,7 @@
       "folderId": "Ring-Form",
       "num": "7",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Form Ring",
       "displayName": "7. FORM Ring",
@@ -135,7 +135,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Form/",
       "thumbnail": "/assets/projects/elare/Ring-Form/thumbnail.webp"
     },
@@ -144,7 +144,7 @@
       "folderId": "Ring-Axiom",
       "num": "8",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Axiom Ring",
       "displayName": "8. AXIOM Ring",
@@ -153,7 +153,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Axiom/",
       "thumbnail": "/assets/projects/elare/Ring-Axiom/thumbnail.webp"
     },
@@ -162,7 +162,7 @@
       "folderId": "Bracelet-Sanctum",
       "num": "9",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Bracelet",
       "name": "Sanctum Bracelet",
       "displayName": "9. SANCTUM Bracelet",
@@ -171,7 +171,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-Sanctum/",
       "thumbnail": "/assets/projects/elare/Bracelet-Sanctum/thumbnail.webp"
     },
@@ -180,7 +180,7 @@
       "folderId": "Bracelet-CovenantID",
       "num": "10",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Bracelet",
       "name": "Covenant ID Bracelet",
       "displayName": "10. COVENANT ID Bracelet",
@@ -189,7 +189,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-CovenantID/",
       "thumbnail": "/assets/projects/elare/Bracelet-CovenantID/thumbnail.webp"
     },
@@ -198,7 +198,7 @@
       "folderId": "Bracelet-Silen",
       "num": "11",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Bracelet",
       "name": "Silen Bracelet",
       "displayName": "11. SILEN Bracelet",
@@ -207,7 +207,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-Silen/",
       "thumbnail": "/assets/projects/elare/Bracelet-Silen/thumbnail.webp"
     },
@@ -216,7 +216,7 @@
       "folderId": "Necklace-Crucifix",
       "num": "12",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Crucifix Pendant",
       "displayName": "12. CRUCIFIX Pendant (Dragonbone)",
@@ -225,7 +225,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Crucifix/",
       "thumbnail": "/assets/projects/elare/Necklace-Crucifix/thumbnail.webp"
     },
@@ -234,7 +234,7 @@
       "folderId": "Necklace-CrushedCrossSmall",
       "num": "13a",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Crushed Cross (31mm)",
       "displayName": "13a. CRUSHED CROSS (Small 31mm)",
@@ -243,7 +243,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossSmall/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossSmall/thumbnail.webp"
     },
@@ -252,7 +252,7 @@
       "folderId": "Necklace-CrushedCrossMedium",
       "num": "13b",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Crushed Cross (42mm)",
       "displayName": "13b. CRUSHED CROSS (Medium 42mm)",
@@ -261,7 +261,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossMedium/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossMedium/thumbnail.webp"
     },
@@ -270,7 +270,7 @@
       "folderId": "Necklace-CrushedCrossBig",
       "num": "13c",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Crushed Cross (50mm)",
       "displayName": "13c. CRUSHED CROSS (Large 50mm)",
@@ -279,7 +279,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossBig/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossBig/thumbnail.webp"
     },
@@ -288,7 +288,7 @@
       "folderId": "Necklace-Sanctum",
       "num": "14",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Sanctum Pendant",
       "displayName": "14. SANCTUM Pendant",
@@ -297,7 +297,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Sanctum/",
       "thumbnail": "/assets/projects/elare/Necklace-Sanctum/thumbnail.webp"
     },
@@ -306,7 +306,7 @@
       "folderId": "Necklace-Cross",
       "num": "15",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Cross Pendant",
       "displayName": "15. CROSS Pendant",
@@ -315,7 +315,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Cross/",
       "thumbnail": "/assets/projects/elare/Necklace-Cross/thumbnail.webp"
     },
@@ -324,7 +324,7 @@
       "folderId": "Necklace-Dagger",
       "num": "16",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Dagger Pendant",
       "displayName": "16. DAGGER Pendant",
@@ -333,7 +333,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Dagger/",
       "thumbnail": "/assets/projects/elare/Necklace-Dagger/thumbnail.webp"
     },
@@ -342,7 +342,7 @@
       "folderId": "Necklace-Relic",
       "num": "17",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Relic Pendant",
       "displayName": "17. RELIC Pendant",
@@ -351,7 +351,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Relic/",
       "thumbnail": "/assets/projects/elare/Necklace-Relic/thumbnail.webp"
     },
@@ -360,7 +360,7 @@
       "folderId": "Necklace-Vesper",
       "num": "18",
       "group": "current",
-      "status": "x3",
+      "status": "final",
       "category": "Pendant",
       "name": "Vesper Pendant",
       "displayName": "18. VESPER Pendant",
@@ -369,7 +369,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Vesper/",
       "thumbnail": "/assets/projects/elare/Necklace-Vesper/thumbnail.webp"
     },
@@ -480,7 +480,7 @@
       "folderId": "Ring-Nugget",
       "num": "N1",
       "group": "new",
-      "status": "x3",
+      "status": "final",
       "category": "Ring",
       "name": "Nugget Ring",
       "displayName": "N1. NUGGET Ring",
@@ -489,7 +489,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Nugget/",
       "thumbnail": "/assets/projects/elare/Ring-Nugget/thumbnail.webp"
     },
@@ -685,7 +685,7 @@
       "folderId": "Bracelet-CrossDiamond",
       "num": "N7",
       "group": "new",
-      "status": "x3",
+      "status": "final",
       "category": "Bracelet",
       "name": "Cross Bracelet (Diamond)",
       "displayName": "N7. Cross Bracelet (Diamond Centre)",
@@ -694,7 +694,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-CrossDiamond/",
       "thumbnail": "/assets/projects/elare/Bracelet-CrossDiamond/thumbnail.webp"
     },
@@ -703,7 +703,7 @@
       "folderId": "Bracelet-SmallCross",
       "num": "N8",
       "group": "new",
-      "status": "x3",
+      "status": "final",
       "category": "Bracelet",
       "name": "Small Cross Bracelet",
       "displayName": "N8. Small Cross Bracelet",
@@ -712,7 +712,7 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
-      "frameCount": 24,
+      "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-SmallCross/",
       "thumbnail": "/assets/projects/elare/Bracelet-SmallCross/thumbnail.webp"
     },

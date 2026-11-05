@@ -10,6 +10,18 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     <!-- Viewport Stage (Canvas + Overlay + Loader) -->
     <div class="turntable-stage" id="turntableStage">
         <div class="canvas-wrapper" id="canvasWrapper">
+            <!-- GPU Nuke-Style Grade LUT Filter (Gain & Gamma) -->
+            <svg width="0" height="0" style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+                <defs>
+                    <filter id="elareGradeFilter" color-interpolation-filters="sRGB">
+                        <feComponentTransfer>
+                            <feFuncR id="gradeFuncR" type="identity"></feFuncR>
+                            <feFuncG id="gradeFuncG" type="identity"></feFuncG>
+                            <feFuncB id="gradeFuncB" type="identity"></feFuncB>
+                        </feComponentTransfer>
+                    </filter>
+                </defs>
+            </svg>
             <canvas id="configCanvas" width="800" height="800"></canvas>
             
             <div id="rotate-hint">
@@ -128,6 +140,71 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                     </button>
                 </div>
             </section>
+
+            <!-- Closed-by-Default Post-Processing / Grade Menu -->
+            <details class="grade-menu" id="gradeMenu">
+                <summary class="grade-menu-summary">
+                    <span class="grade-summary-title">Post-Processing & Grade</span>
+                    <span class="grade-summary-meta" id="gradeSummaryMeta">3% • γ 1.33 • x1.00</span>
+                </summary>
+                <div class="grade-menu-body">
+                    <div class="grade-slider-row">
+                        <div class="grade-slider-header">
+                            <label for="grainSlider">Grain Amount</label>
+                            <span id="grainValLabel" class="badge-mini">3%</span>
+                        </div>
+                        <input
+                            type="range"
+                            id="grainSlider"
+                            min="0"
+                            max="20"
+                            step="1"
+                            value="3"
+                            title="Double-click to reset to 3%"
+                        />
+                    </div>
+
+                    <div class="grade-slider-row">
+                        <div class="grade-slider-header">
+                            <label for="gammaSlider">Gamma</label>
+                            <span id="gammaValLabel" class="badge-mini">1.33</span>
+                        </div>
+                        <input
+                            type="range"
+                            id="gammaSlider"
+                            min="0.50"
+                            max="2.00"
+                            step="0.01"
+                            value="1.33"
+                            title="Double-click to reset to 1.33"
+                        />
+                    </div>
+
+                    <div class="grade-slider-row">
+                        <div class="grade-slider-header">
+                            <label for="gainSlider">Gain</label>
+                            <span id="gainValLabel" class="badge-mini">1.00</span>
+                        </div>
+                        <input
+                            type="range"
+                            id="gainSlider"
+                            min="0.50"
+                            max="2.00"
+                            step="0.01"
+                            value="1.00"
+                            title="Double-click to reset to 1.00"
+                        />
+                    </div>
+
+                    <div class="grade-footer-row">
+                        <label class="grade-checkbox-label" title="Prevents pure #ffffff background from turning gray when Gain < 1.0">
+                            <input type="checkbox" id="preserveWhiteBgCheck" checked />
+                            <span>Keep #ffffff BG</span>
+                        </label>
+                        <button type="button" class="grade-reset-btn" id="resetGradeBtn">Reset Grade</button>
+                    </div>
+                </div>
+            </details>
         </div>
     </Fragment>
 
@@ -159,11 +236,17 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         searchQuery: ""
     };
 
-    // 7% VFX Mathematical Film Grain (enabled in overlay mode; leaves pure #ffffff background untouched)
+    // Post-Processing & Grade Config (3% Grain, Gamma 1.33, Gain 1.00 by default)
     const grainConfig = {
         enabled: true,
-        amount: 0.07,
+        amount: 0.03,
         pixelScale: 1
+    };
+
+    const gradeConfig = {
+        gamma: 1.33,
+        gain: 1.0,
+        preserveWhiteBg: true
     };
 
     const noisePatternCache = {};
@@ -733,6 +816,137 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             drawCurrentFrame();
         });
     }
+
+    // --- Post-Processing & Grade Controls (Grain 0-20%, Gamma, Gain) ---
+    const grainSlider = document.getElementById("grainSlider") as HTMLInputElement;
+    const gammaSlider = document.getElementById("gammaSlider") as HTMLInputElement;
+    const gainSlider = document.getElementById("gainSlider") as HTMLInputElement;
+    const grainValLabel = document.getElementById("grainValLabel");
+    const gammaValLabel = document.getElementById("gammaValLabel");
+    const gainValLabel = document.getElementById("gainValLabel");
+    const gradeSummaryMeta = document.getElementById("gradeSummaryMeta");
+    const preserveWhiteBgCheck = document.getElementById("preserveWhiteBgCheck") as HTMLInputElement;
+    const resetGradeBtn = document.getElementById("resetGradeBtn");
+    const gradeFuncR = document.getElementById("gradeFuncR");
+    const gradeFuncG = document.getElementById("gradeFuncG");
+    const gradeFuncB = document.getElementById("gradeFuncB");
+
+    function updateGradeFilter() {
+        const grainPct = Math.round(grainConfig.amount * 100);
+        if (grainValLabel) grainValLabel.textContent = `${grainPct}%`;
+        if (gammaValLabel) gammaValLabel.textContent = gradeConfig.gamma.toFixed(2);
+        if (gainValLabel) gainValLabel.textContent = gradeConfig.gain.toFixed(2);
+        if (gradeSummaryMeta) {
+            gradeSummaryMeta.textContent = `${grainPct}% • γ ${gradeConfig.gamma.toFixed(2)} • x${gradeConfig.gain.toFixed(2)}`;
+        }
+
+        if (!canvas || !gradeFuncR || !gradeFuncG || !gradeFuncB) return;
+
+        const isIdentity = Math.abs(gradeConfig.gamma - 1.0) < 0.001 && Math.abs(gradeConfig.gain - 1.0) < 0.001;
+        if (isIdentity) {
+            gradeFuncR.setAttribute("type", "identity");
+            gradeFuncG.setAttribute("type", "identity");
+            gradeFuncB.setAttribute("type", "identity");
+            canvas.style.filter = "none";
+            return;
+        }
+
+        // Build 256-entry Nuke Grade LUT: out = (in * gain) ^ (1 / gamma)
+        const invGamma = 1.0 / Math.max(0.05, gradeConfig.gamma);
+        const gain = gradeConfig.gain;
+        const keepWhite = gradeConfig.preserveWhiteBg;
+        const table: string[] = [];
+
+        for (let i = 0; i < 256; i++) {
+            const x = i / 255.0;
+            let y = Math.pow(Math.max(0.0, x * gain), invGamma);
+
+            // Smoothly feather top 4% back to 1.0 so #ffffff background never turns gray when Gain < 1.0
+            if (keepWhite && x > 0.96) {
+                const t = (x - 0.96) / 0.04;
+                const s = t * t * (3.0 - 2.0 * t);
+                y = y * (1.0 - s) + 1.0 * s;
+            }
+
+            y = Math.min(1.0, Math.max(0.0, y));
+            table.push(y.toFixed(4));
+        }
+
+        const tableStr = table.join(" ");
+        gradeFuncR.setAttribute("type", "table");
+        gradeFuncG.setAttribute("type", "table");
+        gradeFuncB.setAttribute("type", "table");
+        gradeFuncR.setAttribute("tableValues", tableStr);
+        gradeFuncG.setAttribute("tableValues", tableStr);
+        gradeFuncB.setAttribute("tableValues", tableStr);
+        canvas.style.filter = "url(#elareGradeFilter)";
+    }
+
+    if (grainSlider) {
+        grainSlider.addEventListener("input", () => {
+            const pct = parseFloat(grainSlider.value) || 0;
+            grainConfig.amount = pct / 100.0;
+            grainConfig.enabled = pct > 0;
+            updateGradeFilter();
+            drawCurrentFrame();
+        });
+        grainSlider.addEventListener("dblclick", () => {
+            grainSlider.value = "3";
+            grainConfig.amount = 0.03;
+            grainConfig.enabled = true;
+            updateGradeFilter();
+            drawCurrentFrame();
+        });
+    }
+
+    if (gammaSlider) {
+        gammaSlider.addEventListener("input", () => {
+            gradeConfig.gamma = parseFloat(gammaSlider.value) || 1.33;
+            updateGradeFilter();
+        });
+        gammaSlider.addEventListener("dblclick", () => {
+            gammaSlider.value = "1.33";
+            gradeConfig.gamma = 1.33;
+            updateGradeFilter();
+        });
+    }
+
+    if (gainSlider) {
+        gainSlider.addEventListener("input", () => {
+            gradeConfig.gain = parseFloat(gainSlider.value) || 1.0;
+            updateGradeFilter();
+        });
+        gainSlider.addEventListener("dblclick", () => {
+            gainSlider.value = "1.00";
+            gradeConfig.gain = 1.0;
+            updateGradeFilter();
+        });
+    }
+
+    if (preserveWhiteBgCheck) {
+        preserveWhiteBgCheck.addEventListener("change", () => {
+            gradeConfig.preserveWhiteBg = preserveWhiteBgCheck.checked;
+            updateGradeFilter();
+        });
+    }
+
+    if (resetGradeBtn) {
+        resetGradeBtn.addEventListener("click", () => {
+            grainConfig.amount = 0.03;
+            grainConfig.enabled = true;
+            gradeConfig.gamma = 1.33;
+            gradeConfig.gain = 1.0;
+            gradeConfig.preserveWhiteBg = true;
+            if (grainSlider) grainSlider.value = "3";
+            if (gammaSlider) gammaSlider.value = "1.33";
+            if (gainSlider) gainSlider.value = "1.00";
+            if (preserveWhiteBgCheck) preserveWhiteBgCheck.checked = true;
+            updateGradeFilter();
+            drawCurrentFrame();
+        });
+    }
+
+    updateGradeFilter();
 
     window.addEventListener("keydown", (e) => {
         if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -1587,5 +1801,150 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     .action-btn.secondary:hover {
         background: #f2f2f6;
         color: #111111;
+    }
+
+    /* Closed-by-default Post-Processing & Grade Collapsible Menu */
+    .grade-menu {
+        background: #ffffff;
+        border: 1px solid #e0e0e6;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: border-color 0.15s ease;
+    }
+
+    .grade-menu[open] {
+        border-color: #c5c5d0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .grade-menu-summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0.7rem;
+        cursor: pointer;
+        user-select: none;
+        background: #f6f6f9;
+        transition: background 0.15s ease;
+    }
+
+    .grade-menu-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .grade-menu-summary:hover {
+        background: #eeeef4;
+    }
+
+    .grade-summary-title {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #555560;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .grade-summary-title::before {
+        content: "▸";
+        font-size: 0.75rem;
+        color: #777785;
+        transition: transform 0.15s ease;
+        display: inline-block;
+    }
+
+    .grade-menu[open] .grade-summary-title::before {
+        transform: rotate(90deg);
+    }
+
+    .grade-summary-meta {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: #666672;
+        background: #e8e8ee;
+        padding: 0.12rem 0.45rem;
+        border-radius: 4px;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .grade-menu-body {
+        padding: 0.65rem 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        border-top: 1px solid #e8e8ee;
+        background: #ffffff;
+    }
+
+    .grade-slider-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .grade-slider-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .grade-slider-header label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: #33333d;
+    }
+
+    .grade-slider-row input[type="range"] {
+        width: 100%;
+        height: 5px;
+        accent-color: #111111;
+        cursor: pointer;
+        margin: 2px 0;
+    }
+
+    .grade-footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.25rem;
+        border-top: 1px dashed #e6e6ec;
+        margin-top: 0.1rem;
+    }
+
+    .grade-checkbox-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #555560;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .grade-checkbox-label input[type="checkbox"] {
+        accent-color: #111111;
+        cursor: pointer;
+    }
+
+    .grade-reset-btn {
+        background: #f2f2f6;
+        border: 1px solid #d8d8e2;
+        color: #33333d;
+        font-size: 0.68rem;
+        font-weight: 600;
+        padding: 0.22rem 0.55rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .grade-reset-btn:hover {
+        background: #111111;
+        border-color: #111111;
+        color: #ffffff;
     }
 </style>
