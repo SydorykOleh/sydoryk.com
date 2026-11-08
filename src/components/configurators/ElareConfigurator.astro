@@ -22,12 +22,14 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                     </filter>
                 </defs>
             </svg>
-            <canvas id="configCanvas" width="800" height="800"></canvas>
+            <canvas id="configCanvas" width="1000" height="1000"></canvas>
             
             <div id="rotate-hint">
                 <span class="mouse-icon">🖱️</span>
                 <span class="hint-text">Drag to rotate • Space for autoplay</span>
             </div>
+
+            <div id="version-badge" class="canvas-version-badge">v002 • 1000px</div>
 
             <div id="loader">Loading Turntable...</div>
 
@@ -103,6 +105,24 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
                 <div class="product-list" id="productGrid">
                     <div class="catalog-loading">Loading catalog...</div>
+                </div>
+            </section>
+
+            <!-- Render Comp Version Selector (v002 vs v001) -->
+            <section class="control-section">
+                <div class="section-label-row">
+                    <h4>Render Comp</h4>
+                    <span id="active-version-label" class="badge-mini">v002 (1000px)</span>
+                </div>
+                <div class="version-toggles" id="versionToggles">
+                    <button class="version-btn selected" data-version="v002" title="Latest high-res lookdev render (1000x1000 px)">
+                        <span class="version-tag">v002</span>
+                        <span class="version-sub">1000 px</span>
+                    </button>
+                    <button class="version-btn" data-version="v001" title="Previous revision for visual comparison (800x800 px scaled)">
+                        <span class="version-tag">v001</span>
+                        <span class="version-sub">800 px</span>
+                    </button>
                 </div>
             </section>
 
@@ -220,14 +240,15 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     const CONFIG = {
         catalogUrl: "/assets/projects/elare/catalog.json",
         defaultFrames: 24,
-        canvasWidth: 800,
-        canvasHeight: 800
+        canvasWidth: 1000,
+        canvasHeight: 1000
     };
 
     const state = {
         catalog: null,
         activeProduct: null,
         activeMaterial: "Gold",
+        activeVersion: "v002",
         angleIndex: 0,
         isAutoplaying: false,
         autoplayInterval: null,
@@ -315,6 +336,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     const autoplayText = document.getElementById("autoplayText");
     const resetBtn = document.getElementById("resetBtn");
     const materialToggles = document.getElementById("materialToggles");
+    const versionToggles = document.getElementById("versionToggles");
+    const activeVersionLabel = document.getElementById("active-version-label");
+    const versionBadge = document.getElementById("version-badge");
 
     function getProductStatus(p): "todo" | "x3" | "final" {
         if (!p || p.status === "missing" || p.status === "todo") return "todo";
@@ -331,6 +355,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             if (!state.catalog.products || state.catalog.products.length === 0) {
                 showEmptyState();
                 return;
+            }
+
+            if (state.catalog.defaultVersion) {
+                state.activeVersion = state.catalog.defaultVersion;
             }
 
             updateStatusCounts();
@@ -355,7 +383,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         const todoCount = products.filter(p => getProductStatus(p) === "todo").length;
 
         if (catalogProgressSubtitle) {
-            catalogProgressSubtitle.textContent = `${finalCount} Final • ${x3Count} x3 Frames • ${todoCount} Todo`;
+            catalogProgressSubtitle.textContent = `${finalCount} Final (v002 1000px) • ${x3Count} x3 Frames • ${todoCount} Todo`;
         }
 
         if (statusFilterTabs) {
@@ -516,6 +544,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         if (pStatus === "todo") {
             stopAutoplay();
             if (loader) loader.style.display = "none";
+            if (versionBadge) versionBadge.style.display = "none";
             if (missingNotice) {
                 missingNotice.style.display = "flex";
                 if (missingItemNum) missingItemNum.textContent = product.num ? `#${product.num}` : "TODO";
@@ -533,24 +562,75 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         }
 
         if (missingNotice) missingNotice.style.display = "none";
+        if (versionBadge) versionBadge.style.display = "block";
 
         const total = product.frameCount || CONFIG.defaultFrames;
         if (state.angleIndex >= total) {
             state.angleIndex = 0;
         }
 
+        const availVersions = product.versions || ["v002", "v001"];
+        if (!availVersions.includes(state.activeVersion)) {
+            state.activeVersion = product.defaultVersion || availVersions[0] || "v002";
+        }
+
         if (!product.variants.includes(state.activeMaterial)) {
             state.activeMaterial = product.defaultVariant || product.variants[0] || "Gold";
         }
 
+        updateVersionButtons();
         updateMaterialButtons();
         updateAngleReadout();
         loadAndRenderCurrent();
         
         const otherVariant = product.variants.find(v => v !== state.activeMaterial);
         if (otherVariant) {
-            preloadVariant(product, otherVariant);
+            preloadVariant(product, otherVariant, state.activeVersion);
         }
+    }
+
+    function updateVersionButtons() {
+        if (!versionToggles || !state.activeProduct) return;
+        const available = state.activeProduct.versions || ["v002", "v001"];
+
+        versionToggles.querySelectorAll(".version-btn").forEach((btn: HTMLElement) => {
+            const ver = btn.dataset.version;
+            const isAvail = available.includes(ver);
+            const isSelected = ver === state.activeVersion;
+
+            btn.classList.toggle("disabled", !isAvail);
+            btn.classList.toggle("selected", isSelected);
+            (btn as HTMLButtonElement).disabled = !isAvail;
+        });
+
+        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000 };
+        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v002" ? 1000 : 800);
+
+        if (activeVersionLabel) {
+            activeVersionLabel.textContent = `${state.activeVersion} (${curRes}px)`;
+        }
+        if (versionBadge) {
+            const scaleTag = state.activeVersion === "v001" ? " (scaled)" : "";
+            versionBadge.textContent = `${state.activeVersion} • ${curRes}px${scaleTag}`;
+        }
+    }
+
+    if (versionToggles) {
+        versionToggles.querySelectorAll(".version-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const ver = (btn as HTMLElement).dataset.version;
+                if (!ver || ver === state.activeVersion) return;
+                const available = (state.activeProduct && state.activeProduct.versions) || ["v002", "v001"];
+                if (!available.includes(ver)) return;
+                state.activeVersion = ver;
+                updateVersionButtons();
+                loadAndRenderCurrent();
+                if (state.activeProduct) {
+                    const other = state.activeProduct.variants.find(v => v !== state.activeMaterial);
+                    if (other) preloadVariant(state.activeProduct, other, state.activeVersion);
+                }
+            });
+        });
     }
 
     function updateMaterialButtons() {
@@ -584,11 +664,13 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         });
     }
 
-    function getFrameUrl(product, material, index) {
+    function getFrameUrl(product, material, index, version = state.activeVersion) {
         const framePad = String(index).padStart(2, "0");
         const basePath = product ? product.basePath : "";
         const v = state.catalog && state.catalog.updatedAt ? `?v=${state.catalog.updatedAt}` : "";
-        return `${basePath}${material}/frame_${framePad}.webp${v}`;
+        const hasVersion = product && product.versions && product.versions.includes(version);
+        const verPrefix = hasVersion ? `${version}/` : "";
+        return `${basePath}${verPrefix}${material}/frame_${framePad}.webp${v}`;
     }
 
     function drawCurrentFrame() {
@@ -598,12 +680,14 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 
         if (img && img.complete && img.naturalWidth > 0) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = "high";
             
-            // 1. Draw base photo-real render directly
+            // 1. Draw base photo-real render directly (scales 800px frames to fit 1000px viewer smoothly)
             ctx.globalCompositeOperation = "source-over";
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            // 2. Apply 7% VFX Film Grain in overlay mode (leaves pure #ffffff background at 255,255,255)
+            // 2. Apply VFX Film Grain in overlay mode (leaves pure #ffffff background at 255,255,255)
             if (grainConfig.enabled && grainConfig.amount > 0) {
                 const pattern = getVFXGrainPattern(ctx, state.angleIndex, grainConfig.amount, grainConfig.pixelScale);
                 if (pattern) {
@@ -637,6 +721,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         const currentSeq = ++loadSequenceId;
         const total = state.activeProduct.frameCount || CONFIG.defaultFrames;
         const statusLabel = total >= 72 ? "Final" : "x3 frames";
+        const verTag = state.activeVersion.toUpperCase();
+        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000 };
+        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v002" ? 1000 : 800);
+        const scaleTag = state.activeVersion === "v001" ? " scaled" : "";
         let loadedCount = 0;
 
         const targetUrl = getFrameUrl(state.activeProduct, state.activeMaterial, state.angleIndex);
@@ -657,7 +745,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 loadedCount++;
                 const pct = Math.round((loadedCount / total) * 100);
                 if (progressFill) progressFill.style.width = `${pct}%`;
-                if (progressText) progressText.textContent = `${loadedCount} / ${total} frames (${statusLabel} • ${Math.round(360 / total)}° step)`;
+                if (progressText) progressText.textContent = `${loadedCount} / ${total} frames (${statusLabel} • ${Math.round(360 / total)}° step • ${verTag} ${curRes}px${scaleTag})`;
 
                 if (loadedCount >= total) {
                     if (loader) loader.style.display = "none";
@@ -667,11 +755,11 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         }
     }
 
-    function preloadVariant(product, material) {
+    function preloadVariant(product, material, version = state.activeVersion) {
         if (!product || getProductStatus(product) === "todo") return;
         const total = product.frameCount || CONFIG.defaultFrames;
         for (let i = 0; i < total; i++) {
-            const url = getFrameUrl(product, material, i);
+            const url = getFrameUrl(product, material, i, version);
             loadImage(url);
         }
     }
@@ -991,7 +1079,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         padding-bottom: 2rem !important;
         row-gap: 10px !important;
         column-gap: 32px !important;
-        max-width: 1520px !important;
+        max-width: 1640px !important;
         margin: 0 auto !important;
         background: #ffffff !important;
     }
@@ -1061,9 +1149,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         align-items: center !important;
         justify-content: flex-start !important;
         width: 100% !important;
-        max-width: 920px !important;
+        max-width: 1040px !important;
         margin-top: 0 !important;
-        padding: 12px !important;
+        padding: 8px !important;
         border-radius: 0 !important;
         background: #ffffff !important;
         border: none !important;
@@ -1073,7 +1161,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     .canvas-wrapper {
         position: relative !important;
         width: 100% !important;
-        max-width: 800px !important;
+        max-width: 1000px !important;
         aspect-ratio: 1 / 1 !important;
         background: #ffffff !important;
         border: none !important;
@@ -1086,7 +1174,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     /* Centered Progress Indicator Underneath Canvas */
     .loader-container {
         width: 100% !important;
-        max-width: 500px !important;
+        max-width: 600px !important;
         margin: 0.75rem auto 0 auto !important;
         display: flex !important;
         flex-direction: column !important;
@@ -1098,7 +1186,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 
     .progress-bar {
         width: 100% !important;
-        max-width: 500px !important;
+        max-width: 600px !important;
         height: 3px !important;
         background: #ebebef !important;
         border-radius: 2px !important;
@@ -1700,6 +1788,81 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 
     .search-box input:focus {
         border-color: #111111;
+    }
+
+    /* Render Version Toggles (v002 vs v001) */
+    .version-toggles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+    }
+
+    .version-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        background: #ffffff;
+        border: 1px solid #dcdce2;
+        padding: 0.45rem 0.6rem;
+        border-radius: 6px;
+        color: #333333;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .version-btn:hover:not(.disabled) {
+        background: #f2f2f6;
+        border-color: #9999a3;
+    }
+
+    .version-btn.selected {
+        background: #111111;
+        border-color: #111111;
+        color: #ffffff;
+    }
+
+    .version-tag {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    .version-sub {
+        font-size: 0.68rem;
+        color: #777782;
+        font-weight: 500;
+    }
+
+    .version-btn.selected .version-sub {
+        color: #dfb15b;
+    }
+
+    .version-btn.disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+    }
+
+    /* Floating Canvas Version Pill */
+    .canvas-version-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        padding: 4px 10px;
+        border-radius: 14px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #111111;
+        border: 1px solid #e0e0e6;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        pointer-events: none;
+        z-index: 15;
+        font-variant-numeric: tabular-nums;
+        transition: opacity 0.3s ease;
     }
 
     /* Metal Variant Selector */

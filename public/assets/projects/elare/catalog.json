@@ -1,6 +1,15 @@
 {
-  "version": "1.3",
-  "updatedAt": 1793888405,
+  "version": "2.0",
+  "updatedAt": 1794144694,
+  "defaultVersion": "v002",
+  "availableVersions": [
+    "v002",
+    "v001"
+  ],
+  "resolutions": {
+    "v001": 800,
+    "v002": 1000
+  },
   "readyCount": 23,
   "finalCount": 23,
   "x3Count": 0,
@@ -27,6 +36,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Crushed/",
       "thumbnail": "/assets/projects/elare/Ring-Crushed/thumbnail.webp"
@@ -45,6 +63,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedV2/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedV2/thumbnail.webp"
@@ -63,6 +90,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedV3/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedV3/thumbnail.webp"
@@ -81,6 +117,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedSignet/",
       "thumbnail": "/assets/projects/elare/Ring-CrushedSignet/thumbnail.webp"
@@ -99,6 +144,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Sanctum/",
       "thumbnail": "/assets/projects/elare/Ring-Sanctum/thumbnail.webp"
@@ -117,6 +171,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Lunara/",
       "thumbnail": "/assets/projects/elare/Ring-Lunara/thumbnail.webp"
@@ -135,6 +198,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Form/",
       "thumbnail": "/assets/projects/elare/Ring-Form/thumbnail.webp"
@@ -153,6 +225,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Axiom/",
       "thumbnail": "/assets/projects/elare/Ring-Axiom/thumbnail.webp"
@@ -171,6 +252,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-Sanctum/",
       "thumbnail": "/assets/projects/elare/Bracelet-Sanctum/thumbnail.webp"
@@ -189,6 +279,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-CovenantID/",
       "thumbnail": "/assets/projects/elare/Bracelet-CovenantID/thumbnail.webp"
@@ -207,6 +306,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-Silen/",
       "thumbnail": "/assets/projects/elare/Bracelet-Silen/thumbnail.webp"
@@ -225,6 +333,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Crucifix/",
       "thumbnail": "/assets/projects/elare/Necklace-Crucifix/thumbnail.webp"
@@ -243,6 +360,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossSmall/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossSmall/thumbnail.webp"
@@ -261,6 +387,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossMedium/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossMedium/thumbnail.webp"
@@ -279,6 +414,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-CrushedCrossBig/",
       "thumbnail": "/assets/projects/elare/Necklace-CrushedCrossBig/thumbnail.webp"
@@ -297,6 +441,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Sanctum/",
       "thumbnail": "/assets/projects/elare/Necklace-Sanctum/thumbnail.webp"
@@ -315,6 +468,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Cross/",
       "thumbnail": "/assets/projects/elare/Necklace-Cross/thumbnail.webp"
@@ -333,6 +495,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Dagger/",
       "thumbnail": "/assets/projects/elare/Necklace-Dagger/thumbnail.webp"
@@ -351,6 +522,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Relic/",
       "thumbnail": "/assets/projects/elare/Necklace-Relic/thumbnail.webp"
@@ -369,6 +549,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Necklace-Vesper/",
       "thumbnail": "/assets/projects/elare/Necklace-Vesper/thumbnail.webp"
@@ -386,6 +575,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -403,6 +601,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -420,6 +627,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -437,6 +653,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -454,6 +679,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -471,6 +705,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -489,6 +732,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-Nugget/",
       "thumbnail": "/assets/projects/elare/Ring-Nugget/thumbnail.webp"
@@ -506,6 +758,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -523,6 +784,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -540,6 +810,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -557,6 +836,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -574,6 +862,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -591,6 +888,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -608,6 +914,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -625,6 +940,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -642,6 +966,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -659,6 +992,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -676,6 +1018,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -694,6 +1045,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-CrossDiamond/",
       "thumbnail": "/assets/projects/elare/Bracelet-CrossDiamond/thumbnail.webp"
@@ -712,6 +1072,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-SmallCross/",
       "thumbnail": "/assets/projects/elare/Bracelet-SmallCross/thumbnail.webp"
@@ -729,6 +1098,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -746,6 +1124,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -763,6 +1150,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -780,6 +1176,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -797,6 +1202,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -814,6 +1228,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -831,6 +1254,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -848,6 +1280,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
@@ -865,6 +1306,15 @@
         "Gold"
       ],
       "defaultVariant": "Silver",
+      "versions": [
+        "v002",
+        "v001"
+      ],
+      "defaultVersion": "v002",
+      "resolutions": {
+        "v001": 800,
+        "v002": 1000
+      },
       "frameCount": 24,
       "basePath": "",
       "thumbnail": ""
