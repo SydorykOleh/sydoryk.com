@@ -1,12 +1,40 @@
 ---
 // src/components/GalleryGrid.astro
+import fs from 'node:fs';
+import path from 'node:path';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import homeData from '../data/home.json';
 
-// Eagerly import all media files from the static and source directories
-const publicGallery = import.meta.glob('/public/assets/gallery/**/*.{webp,mp4}', { eager: true });
-const publicProjects = import.meta.glob('/public/assets/projects/**/*.{webp,png,jpg,jpeg,mp4}', { eager: true });
+function walkPublicFiles(relDir: string, allowedExts: Set<string>): string[] {
+  const rootPublic = path.resolve(process.cwd(), 'public');
+  const startDir = path.join(rootPublic, relDir);
+  const results: string[] = [];
+
+  function walk(currentDir: string) {
+    if (!fs.existsSync(currentDir)) return;
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.isFile()) {
+        const ext = path.extname(entry.name).toLowerCase();
+        if (allowedExts.has(ext)) {
+          const relToPublic = path.relative(rootPublic, fullPath).split(path.sep).join('/');
+          results.push(`/public/${relToPublic}`);
+        }
+      }
+    }
+  }
+
+  walk(startDir);
+  return results;
+}
+
+// List static media files from /public without bundling duplicates into dist/_astro/
+const publicGalleryKeys = walkPublicFiles('assets/gallery', new Set(['.webp', '.mp4']));
+const publicProjectKeys = walkPublicFiles('assets/projects', new Set(['.webp', '.png', '.jpg', '.jpeg', '.mp4']));
 const srcProjects = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/**/*.{webp,png,jpg,jpeg}', { eager: true });
 
 // Helper to calculate a deterministic hash for sorting (shuffling)
@@ -84,6 +112,9 @@ function isExcluded(filePath: string): boolean {
   const exclusions = [
     '/icons/',
     '/cropped/',
+    '/projects/elare/',
+    '/project/elare/',
+    '/elare/',
     '/projects/mic/',
     '/project/mic/',
     '/projects/rings/',
@@ -104,7 +135,7 @@ function isExcluded(filePath: string): boolean {
 const items: any[] = [];
 
 // 1. Process public/assets/gallery/
-Object.keys(publicGallery).forEach(key => {
+publicGalleryKeys.forEach(key => {
   if (isExcluded(key)) return;
   
   const webPath = key.replace('/public', '');
@@ -129,7 +160,7 @@ Object.keys(publicGallery).forEach(key => {
 });
 
 // 2. Process public/assets/projects/
-Object.keys(publicProjects).forEach(key => {
+publicProjectKeys.forEach(key => {
   if (isExcluded(key)) return;
   
   const webPath = key.replace('/public', '');
