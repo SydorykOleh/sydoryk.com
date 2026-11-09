@@ -1,6 +1,6 @@
 {
   "version": "3.0",
-  "updatedAt": 1794221618,
+  "updatedAt": 1794232808,
   "defaultVersion": "v003",
   "availableVersions": [
     "v003",
@@ -66,13 +66,15 @@
       ],
       "defaultVariant": "Silver",
       "versions": [
+        "v003",
         "v002",
         "v001"
       ],
-      "defaultVersion": "v002",
+      "defaultVersion": "v003",
       "resolutions": {
         "v001": 800,
-        "v002": 1000
+        "v002": 1000,
+        "v003": 1000
       },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Ring-CrushedV2/",
@@ -263,13 +265,15 @@
       ],
       "defaultVariant": "Silver",
       "versions": [
+        "v003",
         "v002",
         "v001"
       ],
-      "defaultVersion": "v002",
+      "defaultVersion": "v003",
       "resolutions": {
         "v001": 800,
-        "v002": 1000
+        "v002": 1000,
+        "v003": 1000
       },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-Sanctum/",
@@ -290,13 +294,15 @@
       ],
       "defaultVariant": "Silver",
       "versions": [
+        "v003",
         "v002",
         "v001"
       ],
-      "defaultVersion": "v002",
+      "defaultVersion": "v003",
       "resolutions": {
         "v001": 800,
-        "v002": 1000
+        "v002": 1000,
+        "v003": 1000
       },
       "frameCount": 72,
       "basePath": "/assets/projects/elare/Bracelet-CovenantID/",

@@ -26,7 +26,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             
             <div id="rotate-hint">
                 <span class="mouse-icon">🖱️</span>
-                <span class="hint-text">Drag to rotate • Space for autoplay</span>
+                <span class="hint-text">Drag to rotate</span>
             </div>
 
             <div id="version-badge" class="canvas-version-badge">v003 • 1000px</div>
@@ -69,8 +69,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 <span id="product-count" class="badge">0 items</span>
             </div>
 
-            <!-- Status / Group Filter + Category Filter Tabs -->
-            <section class="control-section">
+            <!-- Status / Group Filter + Category Filter Tabs (Hidden) -->
+            <section class="control-section" style="display: none;">
                 <div class="status-filter-row" id="statusFilterTabs">
                     <button class="status-pill active" data-filter="ALL">All</button>
                     <button class="status-pill" data-filter="CURRENT">Current</button>
@@ -84,8 +84,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
             </section>
 
-            <!-- Search Input -->
-            <section class="control-section">
+            <!-- Search Input (Hidden) -->
+            <section class="control-section" style="display: none;">
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
                     <input
@@ -148,8 +148,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
             </section>
 
-            <!-- Turntable Playback Controls -->
-            <section class="control-section playback-section">
+            <!-- Turntable Playback Controls (Hidden) -->
+            <section class="control-section playback-section" style="display: none;">
                 <div class="section-label-row">
                     <h4>Angle & Playback</h4>
                     <span id="angle-badge" class="badge-mini">0°</span>
@@ -165,8 +165,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
             </section>
 
-            <!-- Closed-by-Default Post-Processing / Grade Menu -->
-            <details class="grade-menu" id="gradeMenu">
+            <!-- Closed-by-Default Post-Processing / Grade Menu (Hidden) -->
+            <details class="grade-menu" id="gradeMenu" style="display: none;">
                 <summary class="grade-menu-summary">
                     <span class="grade-summary-title">Post-Processing & Grade</span>
                     <span class="grade-summary-meta" id="gradeSummaryMeta">3% • γ 1.33 • x1.00</span>
@@ -351,12 +351,25 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         return "x3";
     }
 
+    // Curated preview whitelist (set to null to show all catalog items)
+    const SELECTED_PREVIEW_IDS: Set<string> | null = new Set([
+        "Ring-CrushedV2",
+        "Ring-Sanctum",
+        "Bracelet-Sanctum",
+        "Necklace-Sanctum",
+        "Necklace-Vesper"
+    ]);
+
     async function initCatalog() {
         try {
             const res = await fetch(`${CONFIG.catalogUrl}?t=${Date.now()}`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             state.catalog = await res.json();
             
+            if (state.catalog && Array.isArray(state.catalog.products) && SELECTED_PREVIEW_IDS) {
+                state.catalog.products = state.catalog.products.filter(p => SELECTED_PREVIEW_IDS.has(p.id));
+            }
+
             if (!state.catalog.products || state.catalog.products.length === 0) {
                 showEmptyState();
                 return;
@@ -390,7 +403,9 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         const todoCount = products.filter(p => getProductStatus(p) === "todo").length;
 
         if (catalogProgressSubtitle) {
-            catalogProgressSubtitle.textContent = `${finalCount} Final (${v3Count} v003) • ${x3Count} x3 Frames • ${todoCount} Todo`;
+            catalogProgressSubtitle.textContent = SELECTED_PREVIEW_IDS
+                ? "360° Preview Selection"
+                : `${finalCount} Final (${v3Count} v003) • ${x3Count} x3 Frames • ${todoCount} Todo`;
         }
 
         if (statusFilterTabs) {
@@ -803,7 +818,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     if (typeof window !== "undefined" && (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window)) {
         const hintText = document.querySelector("#rotate-hint .hint-text");
         if (hintText) {
-            hintText.textContent = "Swipe to rotate • Space for autoplay";
+            hintText.textContent = "Swipe to rotate";
         }
     }
 
@@ -1050,10 +1065,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     window.addEventListener("keydown", (e) => {
         if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
         const total = state.activeProduct ? (state.activeProduct.frameCount || CONFIG.defaultFrames) : CONFIG.defaultFrames;
-        if (e.code === "Space") {
-            e.preventDefault();
-            toggleAutoplay();
-        } else if (e.code === "ArrowLeft") {
+        if (e.code === "ArrowLeft") {
             state.angleIndex = (state.angleIndex - 1 + total) % total;
             drawCurrentFrame();
         } else if (e.code === "ArrowRight") {
