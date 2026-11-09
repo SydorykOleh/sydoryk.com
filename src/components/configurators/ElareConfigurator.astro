@@ -29,7 +29,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 <span class="hint-text">Drag to rotate • Space for autoplay</span>
             </div>
 
-            <div id="version-badge" class="canvas-version-badge">v002 • 1000px</div>
+            <div id="version-badge" class="canvas-version-badge">v003 • 1000px</div>
 
             <div id="loader">Loading Turntable...</div>
 
@@ -108,18 +108,22 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
                 </div>
             </section>
 
-            <!-- Render Comp Version Selector (v002 vs v001) -->
+            <!-- Render Comp Version Selector (v003 vs v002 vs v001) -->
             <section class="control-section">
                 <div class="section-label-row">
                     <h4>Render Comp</h4>
-                    <span id="active-version-label" class="badge-mini">v002 (1000px)</span>
+                    <span id="active-version-label" class="badge-mini">v003 (1000px)</span>
                 </div>
                 <div class="version-toggles" id="versionToggles">
-                    <button class="version-btn selected" data-version="v002" title="Latest high-res lookdev render (1000x1000 px)">
+                    <button class="version-btn selected" data-version="v003" title="Latest lookdev revision (1000x1000 px)">
+                        <span class="version-tag">v003</span>
+                        <span class="version-sub">1000 px</span>
+                    </button>
+                    <button class="version-btn" data-version="v002" title="Previous high-res lookdev revision (1000x1000 px)">
                         <span class="version-tag">v002</span>
                         <span class="version-sub">1000 px</span>
                     </button>
-                    <button class="version-btn" data-version="v001" title="Previous revision for visual comparison (800x800 px scaled)">
+                    <button class="version-btn" data-version="v001" title="Initial revision for visual comparison (800x800 px scaled)">
                         <span class="version-tag">v001</span>
                         <span class="version-sub">800 px</span>
                     </button>
@@ -248,7 +252,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         catalog: null,
         activeProduct: null,
         activeMaterial: "Gold",
-        activeVersion: "v002",
+        activeVersion: "v003",
+        preferredVersion: "v003",
         angleIndex: 0,
         isAutoplaying: false,
         autoplayInterval: null,
@@ -359,6 +364,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 
             if (state.catalog.defaultVersion) {
                 state.activeVersion = state.catalog.defaultVersion;
+                state.preferredVersion = state.catalog.defaultVersion;
             }
 
             updateStatusCounts();
@@ -379,11 +385,12 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         const currentCount = products.filter(p => p.group === "current").length;
         const newCount = products.filter(p => p.group === "new").length;
         const finalCount = products.filter(p => getProductStatus(p) === "final").length;
+        const v3Count = products.filter(p => getProductStatus(p) !== "todo" && p.versions && p.versions.includes("v003")).length;
         const x3Count = products.filter(p => getProductStatus(p) === "x3").length;
         const todoCount = products.filter(p => getProductStatus(p) === "todo").length;
 
         if (catalogProgressSubtitle) {
-            catalogProgressSubtitle.textContent = `${finalCount} Final (v002 1000px) • ${x3Count} x3 Frames • ${todoCount} Todo`;
+            catalogProgressSubtitle.textContent = `${finalCount} Final (${v3Count} v003) • ${x3Count} x3 Frames • ${todoCount} Todo`;
         }
 
         if (statusFilterTabs) {
@@ -476,9 +483,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             row.className = `product-list-item ${isSelected ? "active" : ""} status-${pStatus}`;
             row.dataset.id = p.id;
 
+            const latestVer = !isTodo && p.versions && p.versions.length > 0 ? p.versions[0] : "";
             const statusBadgeHtml =
                 pStatus === "final"
-                    ? `<span class="status-badge badge-final">Final</span>`
+                    ? `<span class="status-badge badge-final">${latestVer === "v003" ? "v003 • Final" : "Final"}</span>`
                     : pStatus === "x3"
                     ? `<span class="status-badge badge-x3">x3 frames</span>`
                     : `<span class="status-badge badge-todo">todo</span>`;
@@ -569,8 +577,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             state.angleIndex = 0;
         }
 
-        const availVersions = product.versions || ["v002", "v001"];
-        if (!availVersions.includes(state.activeVersion)) {
+        const availVersions = product.versions || ["v003", "v002", "v001"];
+        if (availVersions.includes(state.preferredVersion)) {
+            state.activeVersion = state.preferredVersion;
+        } else if (!availVersions.includes(state.activeVersion)) {
             state.activeVersion = product.defaultVersion || availVersions[0] || "v002";
         }
 
@@ -591,7 +601,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
 
     function updateVersionButtons() {
         if (!versionToggles || !state.activeProduct) return;
-        const available = state.activeProduct.versions || ["v002", "v001"];
+        const available = state.activeProduct.versions || ["v003", "v002", "v001"];
 
         versionToggles.querySelectorAll(".version-btn").forEach((btn: HTMLElement) => {
             const ver = btn.dataset.version;
@@ -603,8 +613,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             (btn as HTMLButtonElement).disabled = !isAvail;
         });
 
-        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000 };
-        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v002" ? 1000 : 800);
+        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000, v003: 1000 };
+        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v001" ? 800 : 1000);
 
         if (activeVersionLabel) {
             activeVersionLabel.textContent = `${state.activeVersion} (${curRes}px)`;
@@ -620,9 +630,10 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
             btn.addEventListener("click", () => {
                 const ver = (btn as HTMLElement).dataset.version;
                 if (!ver || ver === state.activeVersion) return;
-                const available = (state.activeProduct && state.activeProduct.versions) || ["v002", "v001"];
+                const available = (state.activeProduct && state.activeProduct.versions) || ["v003", "v002", "v001"];
                 if (!available.includes(ver)) return;
                 state.activeVersion = ver;
+                state.preferredVersion = ver;
                 updateVersionButtons();
                 loadAndRenderCurrent();
                 if (state.activeProduct) {
@@ -722,8 +733,8 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         const total = state.activeProduct.frameCount || CONFIG.defaultFrames;
         const statusLabel = total >= 72 ? "Final" : "x3 frames";
         const verTag = state.activeVersion.toUpperCase();
-        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000 };
-        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v002" ? 1000 : 800);
+        const resMap = (state.activeProduct && state.activeProduct.resolutions) || { v001: 800, v002: 1000, v003: 1000 };
+        const curRes = resMap[state.activeVersion] || (state.activeVersion === "v001" ? 800 : 1000);
         const scaleTag = state.activeVersion === "v001" ? " scaled" : "";
         let loadedCount = 0;
 
@@ -1790,21 +1801,21 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         border-color: #111111;
     }
 
-    /* Render Version Toggles (v002 vs v001) */
+    /* Render Version Toggles (v003 vs v002 vs v001) */
     .version-toggles {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.4rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.35rem;
     }
 
     .version-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.45rem;
+        gap: 0.35rem;
         background: #ffffff;
         border: 1px solid #dcdce2;
-        padding: 0.45rem 0.6rem;
+        padding: 0.4rem 0.45rem;
         border-radius: 6px;
         color: #333333;
         font-size: 0.8rem;
