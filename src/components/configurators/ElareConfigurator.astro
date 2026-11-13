@@ -6,6 +6,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     title="Elaré Jewelry 360 Turntable Review"
     description="Interactive 360-degree turntable review system for Elaré luxury jewelry catalog."
     keywords="Jewelry, 360 Rotation, Turntable, Product Viewer, Pre-rendered, WebP, Elare"
+    bodyClass="elare-theme"
 >
     <!-- Viewport Stage (Canvas + Overlay + Loader) -->
     <div class="turntable-stage" id="turntableStage">
@@ -1077,21 +1078,27 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
     initCatalog();
 </script>
 
-<style is:global>
+<style is:global lang="scss">
     /* ========================================================
        PURE WHITE (#ffffff) PRODUCTION THEME FOR /detail/elare/
        Wider Left Menu + Vertical Product List with Status Badges
        ======================================================== */
 
-    html,
-    html.theme-dark,
-    body,
-    body._body,
-    .configurator-main {
+    html:has(body.elare-theme),
+    html.theme-dark:has(body.elare-theme),
+    body.elare-theme,
+    body._body.elare-theme {
         background: #ffffff !important;
         background-color: #ffffff !important;
         color: #111111 !important;
     }
+
+    body.elare-theme {
+        .configurator-main {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
 
     .configurator-wrapper {
         display: grid !important;
@@ -1591,6 +1598,7 @@ import ConfiguratorLayout from "../../layouts/ConfiguratorLayout.astro";
         .product-list {
             max-height: 340px !important;
         }
+    }
     }
 </style>
 

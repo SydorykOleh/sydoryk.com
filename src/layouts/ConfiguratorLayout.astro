@@ -10,16 +10,17 @@ interface Props {
     description?: string;
     keywords?: string;
     fullWidth?: boolean;
+    bodyClass?: string;
 }
 
-const { title, description, keywords, fullWidth = false } = Astro.props;
+const { title, description, keywords, fullWidth = false, bodyClass = '' } = Astro.props;
 ---
 
 <html lang="en" class="theme-dark">
     <head>
         <MainHead title={title} description={description} keywords={keywords} />
     </head>
-    <body class="_body">
+    <body class={`_body ${bodyClass}`.trim()}>
         <Nav transition:persist />
 
         <main class="configurator-main">
