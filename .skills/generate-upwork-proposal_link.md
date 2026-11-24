@@ -1,57 +1,76 @@
 ---
 name: generate-upwork-proposal-link
-description: Take a generated Upwork proposal text, format it as a markdown web page on your site, add visual portfolio links, and generate a short link hook to paste into Upwork.
+description: Create a custom visual Upwork proposal webpage on sydoryk.com (src/content/upwork/) and pair it with a very short Upwork cover letter hook pointing to the deployed URL. Use this as the primary Upwork workflow.
 ---
 
-# Generate Upwork Proposal Web Page & Hook
+# Generate Upwork Proposal Webpage + Short Link Hook
 
-Take a previously generated plain-text Upwork proposal (e.g. from the `generate-upwork-proposal` skill), format it beautifully into a custom web page for the client, and provide a short hook link to use for the actual application.
+Create a dedicated, visually polished proposal page in `src/content/upwork/` so the client sees a controlled, high-trust presentation on `sydoryk.com`, paired with a very short plain-text hook for Upwork's cover letter box.
 
 ## Process
 
-### 1. Generate Proposal & Gather Context
-- First, use the `generate-upwork-proposal` skill to generate the initial plain-text proposal based on the client's job description.
-- Identify the key skills and requirements mentioned in the proposal to select the best portfolio items.
+### 1. Gather Context & Inspect Attachments
+- Read the job description, budget/timeline, and any screening questions.
+- If the user provides an attachment folder or files (`.xlsx`, `.pdf`, `.step`, `.jpg`, `.png`), inspect every tab, formula, note, embedded image, drawing, metadata field, and reference render before writing. Report only verified facts observed directly in the brief or attachments.
+- Read `src/content/experience/lrc.md`, `src/content/experience/technical.md`, `src/data/home.json`, and `docs/portfolio-assets.md` to pull accurate experience and asset paths.
 
-### 2. Create the Web Page File
-Generate the markdown file to be saved in `src/content/upwork/`. 
-- Determine the filename using the format `<client-or-project>.md`. Convert it to lowercase and replace spaces with hyphens.
-- **CRITICAL:** Do NOT overwrite any existing files in the directory. If a file with the chosen name already exists, adjust the name by choosing new words or appending a number (e.g., `<client-or-project>-2.md`) to ensure it's unique.
-- Include proper frontmatter:
+### 2. Build the Proposal Webpage (`src/content/upwork/<slug>.md`)
+- **Unique Filename:** Name the file `<client-or-project>.md` in lowercase with hyphens. Check `src/content/upwork/` first and pick a unique slug so existing files are never overwritten.
+- **Frontmatter:**
   ```markdown
   ---
-  title: Project Proposal for <client or project name>
-  company: <client or Upwork Client>
-  role: <position>
+  title: Project Proposal for <Client or Project Name>
+  company: <Client or Upwork Client>
+  role: <Relevant Role Title>
   date: <YYYY-MM-DD>
   ---
   ```
-- **Format the Proposal Text**: Adjust the generated proposal text accordingly to publish on the website. Add markdown headings (like `### Proposed Workflow`), bullet points, and bold text where appropriate to make it highly readable and professional.
-- **Remove Website Link**: From the signature at the end of the proposal text, remove the website link so it reads exactly as:
-  ```text
-  Best regards,  
-  Sydoryk Oleh  
-  3D Visualization / 3D Animation
-  ```
-- **HTML Portfolio Cards**: At the bottom of the markdown file, include an HTML grid of 2-6 highly relevant portfolio items from `src/data/home.json` or `public/assets/gallery/` (e.g. `public/assets/gallery/packaging/` for packaging and gift sets) so the web page looks premium. Use a minimum width of 300px per card:
-  ```html
-  <h3>Relevant Portfolio Examples</h3>
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-    <!-- Render each item as an <a> tag linking to its detail page or asset URL. Use <img> with .webp (still or animated) or <video> based on the cover property -->
-    <a href="[DETAIL_PATH_OR_ASSET_URL]" target="_blank" style="text-decoration: none; color: inherit; border: 1px solid var(--color-700); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); transition: transform 0.2s;">
-      <img src="[COVER_PATH]" alt="[TITLE]" style="width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--color-700);" />
-      <div style="padding: 1rem;">
-        <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: var(--color-100);">[TITLE]</h4>
-        <p style="margin: 0; font-size: 0.9rem; color: var(--color-300);">[DESC]</p>
-      </div>
-    </a>
-  </div>
-  ```
+- **Page Content & Tone:**
+  - Open directly with the client's target deliverable, verified scope from their brief/attachments, and relevant scale proof.
+  - Explain the workflow clearly (e.g., modular CAD/parts prep, procedural Houdini/Solaris assembly, Karma lighting, Nuke post-processing, automated QA) in plain, direct language focused on client outcomes (visual consistency, accurate variants, clean file naming).
+  - Use standard punctuation only (periods, commas, colons, parentheses, and regular `-` hyphens). Keep the text free of em dashes (`—`), en dashes (`–`), and AI clichés ("perfectly aligns with", "I specialize in", "utilizing", "delve into", "testament to", "meticulously").
+  - **Smooth Kickoff Alignment:** If attachment review uncovers edge cases or spec ambiguities (such as conflicting drawing options, material choices, or duplicate naming formulas), frame them constructively under a concise **"Milestone 1 Alignment"** section rather than an intimidating pre-hire quiz.
+  - **Milestones (Fixed-Price Jobs):** Propose a 3-milestone breakdown (Milestone 1 proof renders/lookdev, Milestone 2 core/batch production, Milestone 3 final QA & delivery) aligned with the client's budget and timeline.
+  - **Signature (Webpage):** Omit the website URL on the site's own page:
+    ```text
+    Best regards,  
+    Sydoryk Oleh  
+    3D Visualization / 3D Animation
+    ```
+- **Visual Showcase (Follow `docs/portfolio-assets.md`):**
+  - When strong matching visuals exist in `public/assets/gallery/` or `public/assets/projects/`, include a compact grid of standalone reference renders (`width: 300px` per `docs/portfolio-assets.md` section 3A) above the case study cards so the client immediately sees relevant quality without clicking away.
+  - Include 2-4 HTML case study cards (`minmax(280px, 1fr)` or `minmax(300px, 1fr)` per `docs/portfolio-assets.md` section 3B) linking to `/detail/<slug>` using verified cover paths from `public/assets/cover/` or `src/data/home.json`.
 
-### 3. Respond to the User
-When outputting your response in the chat:
-1. Provide a clickable link to the local preview `http://localhost:4321/upwork/<client>` so the user can review it immediately, and mention the custom webpage will be available at `https://sydoryk.com/upwork/<client>`. Provide a clickable link to the generated markdown file.
-2. Provide a **Short Upwork Hook**. This is a short, highly-optimized snippet that the user will paste into Upwork *instead* of the full proposal text (since the full text is now on the webpage). This hook MUST NOT contain generic introductions. It must immediately address the client's problem and provide a direct link to the custom webpage to funnel the client there.
-   - Example Hook: 
-     "I have extensive experience converting SolidWorks CAD files into photorealistic renders, which perfectly aligns with your project needs. Since you already have detailed CAD files, we can jump straight into production efficiently. I've prepared a custom proposal detailing my exact workflow, pricing, and relevant portfolio examples specifically for your project. You can view it here: https://sydoryk.com/upwork/<client>"
-3. Ask the user if they would like to refine the hook, the webpage content, or the portfolio links selected.
+### 3. Verify the Build
+- Run `.\node_modules\.bin\astro.cmd build` (or `yarn astro build`) and confirm `dist/upwork/<slug>/index.html` is generated without errors in the new file.
+
+### 4. Draft the Very Short Upwork Cover Letter Hook
+Write a tight, human plain-text message (~60-110 words) to paste directly into Upwork's cover letter field. Use zero Markdown (`#`, `*`, `_`, `[links]`), zero em/en dashes (`—`, `–`), and zero AI clichés.
+
+Structure:
+1. **First 2 lines (Upwork preview hook):** Immediately answer whether you can deliver their scope with concrete proof from their brief/attachments and relevant experience (e.g., similar variant volume or CAD renders). Skip generic intros like "Hi, my name is...".
+2. **Custom proposal link:** State in one crisp sentence what they will see on the custom page (exact workflow, milestone breakdown, kickoff notes, and visual examples) followed by the raw URL `https://sydoryk.com/upwork/<slug>/`.
+3. **One easy reply question + short sign-off:** End with a single 10-second question to start the conversation, then:
+   ```text
+   Best regards,
+   Sydoryk Oleh
+   ```
+
+Example Hook:
+```text
+Yes, I can deliver all 1,080 Dominus 1500 rack renders at 1500 x 1500 px under consistent studio lighting. I reviewed your 4-sheet workbook and reference renders, and I previously built a Houdini pipeline that generated 7,000+ catalog variants for a furniture client.
+
+I put together a dedicated proposal page with the exact procedural workflow, milestone plan, a few small drawing details to confirm at kickoff, and relevant examples here:
+https://sydoryk.com/upwork/pallet-racks-catalog/
+
+Do you also have raw CAD/STEP files behind Sheet 2, or only the drawings in the Excel workbook?
+
+Best regards,
+Sydoryk Oleh
+```
+
+### 5. Respond to the User
+1. Link to the created `.md` file and state the verified build status plus local preview (`http://localhost:4321/upwork/<slug>/`) and production URL (`https://sydoryk.com/upwork/<slug>/`).
+2. Remind the user to push/deploy the site **before** submitting the Upwork proposal so the link is live when the client clicks it.
+3. Provide the **Short Upwork Hook** inside a `text` code block for instant copy-pasting.
+4. Recommend 2-4 concrete `.jpg`/`.png` images from `public/assets/gallery/` or `src/assets/projects/` to upload as Upwork attachments alongside the hook (plus suggested Upwork milestone amounts if fixed-price, and screening question answers if any).
