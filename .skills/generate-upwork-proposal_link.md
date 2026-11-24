@@ -44,7 +44,17 @@ Create a dedicated, visually polished proposal page in `src/content/upwork/` so 
 ### 3. Verify the Build
 - Run `.\node_modules\.bin\astro.cmd build` (or `yarn astro build`) and confirm `dist/upwork/<slug>/index.html` is generated without errors in the new file.
 
-### 4. Draft the Very Short Upwork Cover Letter Hook
+### 4. Commit, Push & Post-Commit Deploy Verification
+When the user asks to commit or publish to the website:
+1. Stage and commit the proposal page (`src/content/upwork/<slug>.md`) along with any updated skills or newly added assets (`public/assets/...`).
+2. Push to `origin/main` (`git push origin main`) so Cloudflare Pages builds the updated site.
+3. Run the post-commit deploy check to wait for Cloudflare Pages propagation and verify the live page plus every embedded asset:
+   ```powershell
+   node scripts/verify-deploy.js src/content/upwork/<slug>.md
+   ```
+4. Never tell the user the link is ready for Upwork until `verify-deploy.js` reports `PASS` with `HTTP 200`, the expected title, and `0` broken assets.
+
+### 5. Draft the Very Short Upwork Cover Letter Hook
 Write a tight, human plain-text message (~60-110 words) to paste directly into Upwork's cover letter field. Use zero Markdown (`#`, `*`, `_`, `[links]`), zero em/en dashes (`—`, `–`), and zero AI clichés.
 
 Structure:
@@ -69,8 +79,8 @@ Best regards,
 Sydoryk Oleh
 ```
 
-### 5. Respond to the User
+### 6. Respond to the User
 1. Link to the created `.md` file and state the verified build status plus local preview (`http://localhost:4321/upwork/<slug>/`) and production URL (`https://sydoryk.com/upwork/<slug>/`).
-2. Remind the user to push/deploy the site **before** submitting the Upwork proposal so the link is live when the client clicks it.
+2. If committed and pushed, report the live `verify-deploy.js` check result; otherwise remind the user to push/deploy and run `node scripts/verify-deploy.js src/content/upwork/<slug>.md` before submitting on Upwork.
 3. Provide the **Short Upwork Hook** inside a `text` code block for instant copy-pasting.
 4. Recommend 2-4 concrete `.jpg`/`.png` images from `public/assets/gallery/` or `src/assets/projects/` to upload as Upwork attachments alongside the hook (plus suggested Upwork milestone amounts if fixed-price, and screening question answers if any).

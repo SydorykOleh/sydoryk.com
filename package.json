@@ -13,6 +13,7 @@
     "start": "astro dev",
     "build": "npm install sharp --no-save && astro build",
     "build:resumes": "node scripts/build-resumes.js",
+    "verify:deploy": "node scripts/verify-deploy.js",
     "preview": "astro preview",
     "astro": "astro",
     "update-houdini-assets": "powershell -ExecutionPolicy Bypass -File ./scripts/update-houdini-assets.ps1"
