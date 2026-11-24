@@ -44,10 +44,10 @@ Create a dedicated, visually polished proposal page in `src/content/upwork/` so 
 ### 3. Verify the Build
 - Run `.\node_modules\.bin\astro.cmd build` (or `yarn astro build`) and confirm `dist/upwork/<slug>/index.html` is generated without errors in the new file.
 
-### 4. Commit, Push & Post-Commit Deploy Verification
+### 4. Commit, Sync & Post-Commit Deploy Verification
 When the user asks to commit or publish to the website:
 1. Stage and commit the proposal page (`src/content/upwork/<slug>.md`) along with any updated skills or newly added assets (`public/assets/...`).
-2. Push to `origin/main` (`git push origin main`) so Cloudflare Pages builds the updated site.
+2. Pull/rebase if needed (`git pull --rebase origin main`) and push to `origin/main` (`git push origin main`) so Cloudflare Pages builds the updated site.
 3. Run the post-commit deploy check to wait for Cloudflare Pages propagation and verify the live page plus every embedded asset:
    ```powershell
    node scripts/verify-deploy.js src/content/upwork/<slug>.md

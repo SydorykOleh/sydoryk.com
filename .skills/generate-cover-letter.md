@@ -65,7 +65,17 @@ Write a tailored cover letter that follows the structure of `template.md`:
 - Use your file writing tools to save the new markdown file in the `src/content/coverletter/` directory.
 - **Generate PDF Version**: After saving the markdown file, use the command `node scripts/build-cover-letter.js src/content/coverletter/<filename>.md` to generate the PDF version. This script will automatically inject a link to the interactive web version at the top of the PDF, strip out the web-only portfolio cards, and output a formatted PDF in the `public/assets/coverletter` directory.
 
-### 5. Respond to the User
+### 5. Build, Sync & Post-Commit Deploy Verification
+When the user asks to commit or publish to the website:
+1. Run `.\node_modules\.bin\astro.cmd build` and confirm the generated route builds cleanly.
+2. Stage and commit `src/content/coverletter/<filename>.md` and `public/assets/coverletter/<filename>.pdf`.
+3. Pull/rebase if needed (`git pull --rebase origin main`) and push to `origin/main` (`git push origin main`).
+4. Run the post-commit deploy check and wait for `PASS` (`HTTP 200` and `0` broken assets) before confirming the link is live:
+   ```powershell
+   node scripts/verify-deploy.js src/content/coverletter/<filename>.md public/assets/coverletter/<filename>.pdf
+   ```
+
+### 6. Respond to the User
 - Present a clickable link to the newly created markdown file for the website.
 - Inform the user that the PDF version has been generated at `public/assets/coverletter/<filename>.pdf`, and have a link to the file.
 - Inform the user of the URL where the online cover letter will be available. **IMPORTANT**: Astro automatically lowercases slugs, so the URL must be entirely lowercase (e.g., `https://sydoryk.com/coverletter_sydorykoleh_<position>_<company>`). Also provide the localhost link using the lowercase slug.

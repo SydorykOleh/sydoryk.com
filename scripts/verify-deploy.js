@@ -3,7 +3,7 @@ import path from 'path';
 import { execSync } from 'child_process';
 
 const DEFAULT_BASE_URL = process.env.PUBLIC_SITE_URL || 'https://sydoryk.com';
-const DEFAULT_TIMEOUT_SEC = 180;
+const DEFAULT_TIMEOUT_SEC = 300;
 const DEFAULT_INTERVAL_SEC = 10;
 
 /**
@@ -15,6 +15,7 @@ function parseArgs(argv) {
 		baseUrl: DEFAULT_BASE_URL.replace(/\/+$/, ''),
 		timeoutSec: DEFAULT_TIMEOUT_SEC,
 		intervalSec: DEFAULT_INTERVAL_SEC,
+		commits: 1,
 		expected: null,
 		targets: [],
 	};
@@ -27,6 +28,8 @@ function parseArgs(argv) {
 			opts.timeoutSec = Math.max(1, Number(argv[++i]) || DEFAULT_TIMEOUT_SEC);
 		} else if (arg === '--interval' && argv[i + 1]) {
 			opts.intervalSec = Math.max(1, Number(argv[++i]) || DEFAULT_INTERVAL_SEC);
+		} else if (arg === '--commits' && argv[i + 1]) {
+			opts.commits = Math.max(1, Number(argv[++i]) || 1);
 		} else if (arg === '--expected' && argv[i + 1]) {
 			opts.expected = argv[++i];
 		} else if (arg === '--help' || arg === '-h') {
@@ -52,6 +55,7 @@ Options:
   --base <url>       Site base URL (default: ${DEFAULT_BASE_URL})
   --timeout <sec>    Max wait time in seconds (default: ${DEFAULT_TIMEOUT_SEC})
   --interval <sec>   Poll interval in seconds (default: ${DEFAULT_INTERVAL_SEC})
+  --commits <n>      Number of recent commits to inspect when targets are omitted (default: 1)
   --expected <text>  Required substring on target HTML pages`);
 }
 
@@ -147,7 +151,11 @@ function resolveTargets(opts) {
 	}
 
 	try {
-		const out = execSync('git diff-tree --no-commit-id --name-only -r HEAD', {
+		const cmd =
+			opts.commits > 1
+				? `git diff --name-only HEAD~${opts.commits}..HEAD`
+				: 'git diff-tree --no-commit-id --name-only -r HEAD';
+		const out = execSync(cmd, {
 			encoding: 'utf8',
 			stdio: ['ignore', 'pipe', 'ignore'],
 		});
